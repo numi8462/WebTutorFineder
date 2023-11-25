@@ -4,13 +4,17 @@
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  background-color: rgb(255, 255, 255)
+  background-color: rgb(88, 88, 252);
 }
 
 .auth-form-container, .login, .register {
   display: flex;
   flex-direction: column;
   padding: 5rem;
+}
+
+h2 {
+ font-size: 30px;
 }
 
 .auth-form-container{
@@ -47,3 +51,4 @@ button {
   color: blue;
   text-decoration: underline;
 }
+
