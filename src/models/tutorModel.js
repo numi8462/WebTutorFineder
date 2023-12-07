@@ -2,18 +2,18 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const StudentSchema = new Schema({
+const TutorSchema = new Schema({
     UID: String,
     email: String,
     password: String,
     name: String,
     birthdate: String,
-    educationLevel: String,
-    subjectOfInterest: Array,
+    qalification: String,
+    subjects: Array,
     credit: Number,
     gender: String
 });
 
-const StudentModel = mongoose.model('students', StudentSchema);
+const TutorModel = mongoose.model('tutors', StudentSchema);
 
-module.exports = StudentModel;  
+module.exports = TutorModel;  
