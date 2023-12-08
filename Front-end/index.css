@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Jost:wght@300&display=swap');
+:root {
+background-color: #F4F9F4;
+}
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: 2.s linear;
+}
+html {
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    color: #3E6A67;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+} 
+header {
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 9%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    font-size: 24px;
+}
+a {
+    cursor: pointer;
+    color: #3E6A67;
+}
+a:hover {
+    color: #FF9130;
+}
+header .logo {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 36px;
+    text-shadow: 2px 1px rgba(0,0,0,.1);
+}
+header .logo span {
+    color: #FF5B22;
+}
+header nav {
+    background: none;
+    font-size: 20px;
+}
+header nav a {
+    margin-left: 2rem;
+}
