@@ -51,9 +51,6 @@ a {
     cursor: pointer;
     color: #3E6A67;
 }
-a:hover {
-    color: #FF9130;
-}
 header .logo {
     font-family: 'Comfortaa', sans-serif;
     font-size: 36px;
@@ -69,6 +66,10 @@ header nav {
 }
 header nav a {
     margin-left: 2rem;
+}
+.quick-link:hover {
+    color: #FF9130;
+    transition: 0.3s;
 }
 .container {
     position: relative;
@@ -114,13 +115,27 @@ header nav a {
     width: 220px;
     background: #F4F9F4;
 }
-.form-box .enter-info .link {
+.link {
+    color: #3E6A67;
+    position: relative;
+}
+.enter-info .link {
     font-size: 12px;
     margin-left: .2rem;
 }
-.form-box .link:hover {
-    text-decoration: underline;
-    color: #3E6A67;
+.link::after {
+    position: absolute;
+    content: '';
+    width: 0;
+    left: 0;
+    bottom: 0;
+    display: block;
+    height: 1px;
+    background: #3E6A67;
+    transition: 0.3s;
+}
+.link:hover:after {
+    width:100%;
 }
 .btn {
     background: #FF9130;
@@ -137,6 +152,7 @@ header nav a {
 }
 .btn:hover {
     background: #3E6A67;
+    transition: .7s;
 }
 .buttons {
     display: flex;
