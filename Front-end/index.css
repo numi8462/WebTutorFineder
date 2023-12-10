@@ -107,6 +107,7 @@ header nav a {
     padding: .5rem;
     border-radius: 10px;
     width: 220px;
+    background: #F4F9F4;
 }
 .form-box .enter-info .link {
     font-size: 12px;
