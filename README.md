@@ -15,7 +15,7 @@ The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
 
-### 'node server.js'
+### `node server.js`
 
 Runs the server side of the application by connecting to MongoDB Atlas.
 
