@@ -16,23 +16,27 @@ mongoose.connect("mongodb+srv://yhk8462:2510@cluster0.lt8ygbd.mongodb.net/tutorf
     }))
 .catch((err) => console.log('Failed to connect to MongoDB', err));
 
-async function insert(){
-    await StudentModel.create({
-        name: "asd",
-        email: "asd@gmail.com"
-    });
-}
 
-insert();
 // Routes for Student collection
 app.get('/getStudents', async (req, res) => {
     StudentModel.find()
       .then(students => {
-        console.log(students); // Log the actual data
+        // console.log(students); // Log the actual data
+        res.json(students);
+      })
+      .catch(err => res.json(err));
+});
+
+app.get('/getStudents/:uid', async (req, res) => {
+    const uid = req.params.uid;
+    StudentModel.findOne({uid: uid})
+      .then(students => {
+        // console.log(students); // Log the actual data
         res.json(students);
       })
       .catch(err => res.json(err));
   });
+  
 
 app.post('/postStudents', async (req, res) => {
 
