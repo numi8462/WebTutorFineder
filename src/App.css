@@ -1,12 +1,12 @@
 .App {
-  text-align: center;
+  /* text-align: center;
   display: flex;
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  background-color: rgb(88, 88, 252);
+  background-color: rgb(88, 88, 252); */
 }
-
+/* 
 .auth-form-container, .login, .register {
   display: flex;
   flex-direction: column;
@@ -53,4 +53,4 @@ button {
   color: blue;
   text-decoration: underline;
 }
-
+ */
