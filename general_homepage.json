@@ -1,0 +1,185 @@
+{
+    "#comment": "",
+    "html": {
+      "@lang": "en",
+      "head": {
+        "meta": [
+          {
+            "@charset": "UTF-8"
+          },
+          {
+            "@name": "viewport",
+            "@content": "width=device-width, initial-scale=1.0"
+          }
+        ],
+        "title": "TutorFinder",
+        "link": [
+          {
+            "@href": "css/fontawesome.css",
+            "@rel": "stylesheet"
+          },
+          {
+            "@href": "css/solid.css",
+            "@rel": "stylesheet"
+          },
+          {
+            "@href": "index.css",
+            "@rel": "stylesheet",
+            "@type": "text/css"
+          }
+        ]
+      },
+      "body": {
+        "div": [
+          {
+            "@class": "wrapper",
+            "#comment": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            "header": {
+              "div": [
+                {
+                  "@class": "logo",
+                  "p": {
+                    "span": "Finder",
+                    "#text": [
+                      "Tutor",
+                      "."
+                    ]
+                  }
+                },
+                {
+                  "@class": "navbar",
+                  "nav": {
+                    "a": [
+                      {
+                        "@class": "quick-link",
+                        "@href": "#home",
+                        "#text": "Home"
+                      },
+                      {
+                        "@class": "quick-link",
+                        "@href": "#sign-up",
+                        "#text": "Sign up"
+                      },
+                      {
+                        "@class": "quick-link",
+                        "@href": "#log-in",
+                        "#text": "Log in"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "section": {
+              "@class": "footer",
+              "div": {
+                "@class": "footer-content",
+                "a": [
+                  {
+                    "@class": "quick-link",
+                    "@href": "#",
+                    "#text": "My profile"
+                  },
+                  {
+                    "@class": "quick-link",
+                    "@href": "#",
+                    "#text": "Home"
+                  },
+                  {
+                    "@class": "quick-link",
+                    "@href": "#",
+                    "#text": "About us"
+                  },
+                  {
+                    "@class": "quick-link",
+                    "@href": "#",
+                    "#text": "Private policy"
+                  }
+                ]
+              }
+            },
+            "h1": {
+              "br": "",
+              "#text": [
+                "Effectively leverage your study",
+                "with the best tutors"
+              ]
+            },
+            "a": {
+              "@href": "sign_up_page.html",
+              "@,": "",
+              "@class": "find-now-button",
+              "button": {
+                "@type": "button",
+                "#text": "Start Now!"
+              }
+            }
+          },
+          {
+            "@class": "container",
+            "#comment": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "div": [
+              {
+                "@class": "box",
+                "p": {
+                  "@class": "box-content",
+                  "#text": "200+ tutors with intensive experience"
+                }
+              },
+              {
+                "@class": "box",
+                "p": {
+                  "@class": "box-content",
+                  "#text": "20+ subjects"
+                }
+              },
+              {
+                "@class": "box",
+                "p": {
+                  "@class": "box-content",
+                  "#text": "95% of 5-star tutor reviews"
+                }
+              },
+              {
+                "@class": "box",
+                "p": {
+                  "@class": "box-content",
+                  "#text": "Another box content"
+                }
+              }
+            ]
+          },
+          {
+            "@class": "search-container",
+            "#comment": [
+              "",
+              ""
+            ],
+            "input": {
+              "@type": "text",
+              "@class": "search-bar",
+              "@placeholder": "Type your courses you want to study here!"
+            },
+            "button": {
+              "@class": "search-button",
+              "#text": "Search"
+            }
+          }
+        ],
+        "#comment": ""
+      }
+    }
+  }
