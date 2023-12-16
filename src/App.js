@@ -1,11 +1,11 @@
 import logo from './logo.svg';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route, Link, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 import { Login } from "./contents/Login"
 import { Register } from "./contents/Register"
-import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link, Routes, Navigate } from 'react-router-dom';
-import Profile from './contents/Profile';
-import Details from './contents/Details'
+import { Profile } from './contents/Profile';
+import { Details } from './contents/Details';
 import { AuthProvider, useAuth } from './authentication/AuthContext'
 
 
@@ -25,7 +25,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register  />} />
           <Route path="/profile" element={<Profile />} />
-          
         </Routes>
       </div>
       </AuthProvider>
