@@ -38,7 +38,13 @@ app.get('/getStudents/:uid', async (req, res) => {
   });
   
 
-app.post('/postStudents', async (req, res) => {
-
+  app.post('/postStudents', async (req, res) => {
+    const student = new StudentModel(req.body);
+    try {
+        await student.save();
+        res.send(student);
+    } catch (err) {
+        res.status(500).send(err);
+    }
 });
 

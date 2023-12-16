@@ -3,7 +3,7 @@ import React, { useState, useEffect  } from "react";
 import { useAuth } from '../authentication/AuthContext'
 import firebase from "firebase/compat/app";
 
-function Profile() {
+export const Profile = (props) => {
     const [email,setEmail] = useState('')
     const [pass, setPass] = useState('')
     const [uid, setUid] = useState('')
@@ -49,4 +49,3 @@ function Profile() {
     )
 }
 
-export default Profile; 
