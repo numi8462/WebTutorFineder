@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const TutorSchema = new Schema({
-    UID: String,
+    uid: String,
     email: String,
     password: String,
     name: String,
@@ -14,6 +14,6 @@ const TutorSchema = new Schema({
     gender: String
 });
 
-const TutorModel = mongoose.model('tutors', StudentSchema);
+const TutorModel = mongoose.model('tutors', TutorSchema);
 
 module.exports = TutorModel;  

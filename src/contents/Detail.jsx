@@ -3,7 +3,7 @@ import { Alert, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import '../index.css'
 
-export const Details = (props) => {
+export const Detail = (props) => {
     const [student, setStudent] = useState({
         uid: '',
         email: '',
