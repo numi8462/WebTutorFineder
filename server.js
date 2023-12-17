@@ -88,9 +88,10 @@ app.get('/getCourses', async (req, res) => {
     .catch(err => res.json(err));
 });
 
-app.get('/getCourses/:uid', async (req, res) => {
-  const uid = req.params.uid;
-  CourseModel.findOne({uid: uid})
+app.get('/getCourse/:cid', async (req, res) => {
+  const cid = req.params.cid;
+  console.log(`Fetching course with cid: ${cid}`)
+  CourseModel.findOne({cid: cid})
     .then(courses => {
       res.json(courses);
     })
@@ -98,7 +99,7 @@ app.get('/getCourses/:uid', async (req, res) => {
 });
 
 
-app.post('/postStudents', async (req, res) => {
+app.post('/postCourse', async (req, res) => {
   const course = new CourseModel(req.body);
   try {
       await course.save();

@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const CourseSchema = new Schema({
-    uid: String,
+    cid: String,
     subject: String,
     name: String,
     description: String,
     tutorID: String,
-    hours: Int16Array
+    hours: Number
 });
 
 const CourseModel = mongoose.model('courses', CourseSchema);
