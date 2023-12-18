@@ -50,7 +50,7 @@ export const StuDashboard = (props) => {
                         <span>Favorites</span></a>
                     </li>
                     <li>
-                        <a href=""><span className="fa-solid fa-user"></span>
+                        <a href="/profile"><span className="fa-solid fa-user"></span>
                         <span>Account</span></a>
                     </li>
                     <li>

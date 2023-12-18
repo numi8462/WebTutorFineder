@@ -30,6 +30,8 @@ body {
     min-height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 header {
     position:fixed;
@@ -94,6 +96,7 @@ header nav a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 .form-box h1 {
     color: #3E6A67;
@@ -123,6 +126,12 @@ header nav a {
 .enter-info .link {
     font-size: 12px;
     margin-left: .2rem;
+}
+.form-box  .login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .link::after {
     position: absolute;
