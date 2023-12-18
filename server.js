@@ -3,6 +3,8 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const StudentModel = require('./src/models/studentModel')
+const TutorModel = require('./src/models/tutorModel')
+const CourseModel = require('./src/models/courseModel')
 
 
 app.use(cors());
@@ -35,11 +37,11 @@ app.get('/getStudents/:uid', async (req, res) => {
         res.json(students);
       })
       .catch(err => res.json(err));
-  });
+});
   
 
-  app.post('/postStudents', async (req, res) => {
-    const student = new StudentModel(req.body);
+app.post('/postStudents', async (req, res) => {
+  const student = new StudentModel(req.body);
     try {
         await student.save();
         res.send(student);
@@ -48,3 +50,61 @@ app.get('/getStudents/:uid', async (req, res) => {
     }
 });
 
+//Routes for tutor collection
+app.get('/getTutors', async (req, res) => {
+  TutorModel.find()
+    .then(tutors => {
+      res.json(tutors);
+    })
+    .catch(err => res.json(err));
+});
+
+app.get('/getTutors/:uid', async (req, res) => {
+  const uid = req.params.uid;
+  TutorModel.findOne({uid: uid})
+    .then(tutors => {
+      res.json(tutors);
+    })
+    .catch(err => res.json(err));
+});
+
+
+app.post('/postStudents', async (req, res) => {
+  const tutor = new TutorModel(req.body);
+  try {
+      await tutor.save();
+      res.send(tutor);
+  } catch (err) {
+      res.status(500).send(err);
+  }
+});
+
+//Routes for course collection
+app.get('/getCourses', async (req, res) => {
+  CourseModel.find()
+    .then(courses => {
+      res.json(courses);
+    })
+    .catch(err => res.json(err));
+});
+
+app.get('/getCourse/:cid', async (req, res) => {
+  const cid = req.params.cid;
+  console.log(`Fetching course with cid: ${cid}`)
+  CourseModel.findOne({cid: cid})
+    .then(courses => {
+      res.json(courses);
+    })
+    .catch(err => res.json(err));
+});
+
+
+app.post('/postCourse', async (req, res) => {
+  const course = new CourseModel(req.body);
+  try {
+      await course.save();
+      res.send(course);
+  } catch (err) {
+      res.status(500).send(err);
+  }
+});
