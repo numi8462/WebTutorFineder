@@ -47,6 +47,9 @@ header {
     box-shadow: none;
     justify-content: center;
 }
+.no-cap {
+    text-transform: none;
+}
 a {
     cursor: pointer;
     color: #3E6A67;
@@ -75,17 +78,16 @@ header nav a {
     position: relative;
     flex: 1 1 auto;
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    align-content: center;
     z-index: 0;
     margin-top: 7rem;
 }
 .form-box {
     background: #A7D7C5;
-    /*width: 400px; 
-    height: 500px;
-    padding: 40px;*/
     padding: 3rem 2rem;
     border-radius: 15px;
     box-shadow: 0 15px 35px rgba(0,0,0,1);
@@ -152,14 +154,19 @@ header nav a {
 }
 .btn:hover {
     background: #3E6A67;
-    transition: .7s;
+    transition: .5s;
+}
+.btn:not(:hover) {
+    transition: .5s;
 }
 .buttons {
     display: flex;
     justify-content: space-around;
     margin-bottom: 0.7rem;
 }
-
+.role {
+    width: 110px;
+}
 
 
 
