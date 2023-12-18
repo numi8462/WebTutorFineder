@@ -9,6 +9,7 @@ import { Detail } from './contents/Detail';
 import { AuthProvider, useAuth } from './authentication/AuthContext'
 import { FindCourses } from './contents/student/FindCourses'
 import { Course } from './contents/Course'
+import { StuDashboard } from './contents/student/StuDashboard';
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -28,6 +29,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path='/findcourses' element={<FindCourses/>}/>
           <Route path='/course/:cid' element={<Course/>}/> 
+          <Route path='/studentDashboard' element={<StuDashboard/>}/>
         </Routes>
       </div>
       </AuthProvider>

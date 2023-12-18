@@ -21,7 +21,7 @@ export const Login = (props) => {
             setError("")
             setLoading(true)
             await login(email, pass)
-            navigate('/profile');
+            navigate('/studentDashboard');
         } catch {
             console.log(email)
             console.log(pass)
