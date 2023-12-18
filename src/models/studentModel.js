@@ -11,7 +11,8 @@ const StudentSchema = new Schema({
     educationLevel: String,
     subjectOfInterest: Array,
     credit: Number,
-    gender: String
+    gender: String,
+    user: String
 });
 
 const StudentModel = mongoose.model('students', StudentSchema);

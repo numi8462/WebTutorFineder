@@ -11,7 +11,8 @@ const TutorSchema = new Schema({
     qalification: String,
     subjects: Array,
     credit: Number,
-    gender: String
+    gender: String,
+    user: String
 });
 
 const TutorModel = mongoose.model('tutors', TutorSchema);

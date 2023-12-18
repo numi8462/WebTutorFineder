@@ -2,7 +2,7 @@ import { React,useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import firebase from "firebase/compat/app";
 import axios from "axios";
-import '../../dashboard.css'
+import '../dashboard.css'
 
 export const StuDashboard = (props) => {
     const [student, setStudent] = useState({});
@@ -46,8 +46,8 @@ export const StuDashboard = (props) => {
                         <span>Courses</span></a>
                     </li>
                     <li>
-                        <a href=""><span className="fa-solid fa-heart"></span>
-                        <span>Favorites</span></a>
+                        <a href="/findcourses"><span className="fa-solid fa-heart"></span>
+                        <span>Search</span></a>
                     </li>
                     <li>
                         <a href="/profile"><span className="fa-solid fa-user"></span>
