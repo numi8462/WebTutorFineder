@@ -21,7 +21,7 @@ function App() {
       <AuthProvider>
       <div className="App">
         <Routes>
-          <Route path="*" element={<Navigate to="/findcourses" />} /> {/* Default route */} 
+          <Route path="*" element={<Navigate to="/login" />} /> {/* Default route */} 
           <Route path="/details" element={<Detail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register  />} />

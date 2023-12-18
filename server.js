@@ -24,13 +24,6 @@ mongoose.connect("mongodb+srv://yhk8462:2510@cluster0.lt8ygbd.mongodb.net/tutorf
 })
 .catch((err) => console.log('Failed to connect to MongoDB', err));
 
-async function insert(){
-    await StudentModel.create({
-        name: "asd",
-        email: "asd@gmail.com"
-    });
-};
-
 
 app.get('/profile/:uid', async (req, res) => {
     const student = await StudentModel.findOne({ uid: req.params.uid });
@@ -40,37 +33,24 @@ app.get('/profile/:uid', async (req, res) => {
     res.json(student);
   });
   
-  app.put('/update/:uid', async (req, res) => {
-    const updatedStudent = await StudentModel.findOneAndUpdate(
-      { uid: req.params.uid },
-      { $set: req.body },
-      { new: true }
-    );
-  
-    if (!updatedStudent) {
-      return res.status(404).json({ message: 'Student not found' });
-    }
-  
-    res.json(updatedStudent);
-  });
+app.put('/update/:uid', async (req, res) => {
+  const updatedStudent = await StudentModel.findOneAndUpdate(
+    { uid: req.params.uid },
+    { $set: req.body },
+    { new: true }
+  );
+
+  if (!updatedStudent) {
+    return res.status(404).json({ message: 'Student not found' });
+  }
+
+  res.json(updatedStudent);
+});
 
 //Define route for /profile page
   app.get('/profile', (req, res) => {
     res.send('This is the profile page');
   });
-
-
-
-app.use(cors());
-app.use(express.json());
-
-mongoose.connect("mongodb+srv://yhk8462:2510@cluster0.lt8ygbd.mongodb.net/tutorfinder?retryWrites=true&w=majority")
-.then(() => 
-    console.log('Connected to MongoDB'),
-    app.listen(3001, () => {
-        console.log('Server is running on port 3001');
-    }))
-.catch((err) => console.log('Failed to connect to MongoDB', err));
 
 
 // Routes for Student collection

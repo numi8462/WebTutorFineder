@@ -19,6 +19,7 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
     overflow-x: hidden;
+    text-transform: capitalize;
     padding: 0;
     margin: 0;
 } 
@@ -160,7 +161,230 @@ header nav a {
     margin-bottom: 0.7rem;
 }
 
-
+.div-8 {
+    align-self: start;
+    width: 1288px;
+    max-width: 100%;
+    margin: 135px 0 0 16px; /* Added top margin */
+    text-transform: none;
+  }
+  .div-9 {
+    gap: 20px;
+    display: flex;
+  }
+  @media (max-width: 991px) {
+    .div-9 {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0px;
+    }
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 16%;
+    margin-left: 0px;
+  }
+  
+  .div-10 {
+    color: #fff;
+    white-space: nowrap;
+    border-radius: 15px;
+    background-color: #a7d7c5;
+    justify-content: center;
+    width: 100%;
+    padding: 88px 26px 92px 19px;
+    font: 400 20px Jost, sans-serif;
+  }
+  
+  .column-2 {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 84%;
+    margin-left: 20px;
+  }
+  
+  .div-11 {
+    background-color: #fff;
+    display: flex;
+    flex-grow: 1;
+    align-items: start;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    padding: 12px 40px 19px 30px;
+  }
+  
+  .div-12 {
+    display: flex;
+    flex-direction: column;
+  }
+  .div-13 {
+    color: #3e6a67;
+    font: 600 32px Jost, sans-serif;
+  }
+  .div-14 {
+    color: #3e6a67;
+    margin-top: 25px;
+    font: 500 28px Jost, sans-serif;
+  }
+  .div-15 {
+    color: #000;
+    margin-top: 25px;
+    font: 500 24px Jost, sans-serif;
+  }
+  .div-16 {
+    color: #3e6a67;
+    margin-top: 47px;
+    font: 500 28px Jost, sans-serif;
+  }
+  
+  .div-17 {
+    color: #000;
+    margin-top: 17px;
+    font: 500 24px Jost, sans-serif;
+  }
+  .div-18 {
+    color: #3e6a67;
+    margin-top: 42px;
+    font: 500 28px Jost, sans-serif;
+  }
+  
+  .div-19 {
+    color: #000;
+    margin-top: 25px;
+    font: 500 24px Jost, sans-serif;
+  }
+  .div-20 {
+    align-self: end;
+    display: flex;
+    margin-top: 49px;
+    flex-direction: column;
+  }
+  
+  .div-21 {
+    color: #3e6a67;
+    align-self: stretch;
+    font: 500 28px Jost, sans-serif;
+  }
+  .div-22 {
+    color: #000;
+    align-self: stretch;
+    margin-top: 24px;
+    font: 500 24px Jost, sans-serif;
+  }
+  .div-23 {
+    color: #3e6a67;
+    align-self: stretch;
+    margin-top: 33px;
+    font: 500 28px Jost, sans-serif;
+  }
+  .div-24 {
+    color: #000;
+    align-self: stretch;
+    margin-top: 29px;
+    font: 500 24px Jost, sans-serif;
+  }
+  .div-25 {
+    color: #3e6a67;
+    align-self: stretch;
+    margin-top: 37px;
+    font: 500 28px Jost, sans-serif;
+  }
+  .div-26 {
+    color: #000;
+    align-self: stretch;
+    margin-top: 24px;
+    font: 500 24px Jost, sans-serif;
+  }
+  .div-27 {
+    color: #f4f9f4;
+    text-align: center;
+    white-space: nowrap;
+    justify-content: center;
+    border-radius: 70px;
+    background-color: #ff9130;
+    align-self: end;
+    margin-top: 40px;
+    padding: 13px;
+    font: 500 24px Jost, sans-serif;
+  }
+  
+  .div-28 {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    align-self: start;
+    display: flex;
+    width: 1062px;
+    max-width: 100%;
+    flex-direction: column;
+    margin: 24px 0 0 242px;
+    padding: 9px 80px 15px 30px;
+  }
+  
+  .div-29 {
+    display: flex;
+    margin-right: 23px;
+    width: 929px;
+    max-width: 100%;
+    align-items: start;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .div-30 {
+    display: flex;
+    flex-direction: column;
+  }
+  .div-31 {
+    color: #3e6a67;
+    font: 600 32px Jost, sans-serif;
+  }
+  .div-32 {
+    color: #3e6a67;
+    margin-top: 31px;
+    white-space: nowrap;
+    font: 500 28px Jost, sans-serif;
+  }
+  
+  .div-33 {
+    color: #000;
+    margin-top: 22px;
+    font: 500 24px Jost, sans-serif;
+  }
+  .div-34 {
+    align-self: end;
+    display: flex;
+    margin-top: 57px;
+    flex-direction: column;
+  }
+  
+  .div-35 {
+    color: #3e6a67;
+    white-space: nowrap;
+    font: 500 28px Jost, sans-serif;
+  }
+  
+  .div-36 {
+    color: #000;
+    margin-top: 23px;
+    font: 500 24px Jost, sans-serif;
+  }
+  .div-37 {
+    color: #3e6a67;
+    max-width: 999px;
+    margin: 15px 23px 0 0;
+    font: 500 28px Jost, sans-serif;
+  }
+  
+  .div-38 {
+    color: #000;
+    max-width: 999px;
+    margin: 28px 23px 0 0;
+    font: 500 24px Jost, sans-serif;
+  }
 
 
 .footer-content {
