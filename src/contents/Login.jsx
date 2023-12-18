@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Alert, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../authentication/AuthContext"
+import '../index.css'
 
 export const Login = (props) => {
     const [email,setEmail] = useState('');
@@ -35,19 +36,43 @@ export const Login = (props) => {
     };
 
     return (
+        <div className="wrapper">
+            <header className="forms">
+                <div className="logo">
+                    <p>Tutor<span>Finder</span>.</p>
+                </div>
+            </header>
 
-        <div className="auth-form-container">
-            <h2>Login</h2>
-            {error && <Alert variant="danger" style={{ border: 'none', backgroundColor: 'transparent', color: 'red', fontWeight:'', fontSize:'1.5rem' }}>{error}</Alert>}
-            <form onSubmit={handleSubmit} className="login">
-                <label htmlFor = "email">email</label>
-                <input value={email} name="email" id="email" type="email" placeholder="youremail@gmail.com" onChange = {(e) => setEmail(e.target.value)}/>
-                <label htmlFor = "password">password</label>
-                <input value={pass} type="password" placeholder="***********" id="password" name="password" onChange={(e) => setPass(e.target.value)}/>
-                
-                <button disabled={loading} type="submit">Log In</button>
-            </form>
-            <button className="switch-link-btn" onClick={handleSwitch}>Don't have an account? Register here.</button>
+            <div className="container">
+                <div className="form-box">
+                    <div>
+                        <h2>Login</h2>
+
+                    </div>
+                    <div className="enter-info">
+                    {error && <Alert variant="danger" style={{ border: 'none', backgroundColor: 'transparent', color: 'red', fontWeight:'', fontSize:'1.5rem' }}>{error}</Alert>}
+                    <form onSubmit={handleSubmit} className="login">
+                        <div className="input-group">
+                            <input value={email} name="email" id="email" type="email" placeholder="youremail@gmail.com" onChange = {(e) => setEmail(e.target.value)}/>
+                        </div>
+                        <div className="input-group">
+                            <input value={pass} type="password" placeholder="***********" id="password" name="password" onChange={(e) => setPass(e.target.value)}/>
+                        </div>
+                        <div className="buttons">
+                            <div className="btn">
+                                <button disabled={loading} type="submit">Log In</button>
+                            </div>
+
+                        </div>
+                        <div>
+                            <span>New user? <a onClick={handleSwitch} className="link" href="">Sign up as Student</a> or <a className="link" href="">Sign up as Tutor</a></span>
+                        </div>
+                    </form>
+                </div>
+                </div>
+
+            </div>
         </div>
+
     )
 }
