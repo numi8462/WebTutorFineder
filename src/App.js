@@ -1,13 +1,14 @@
 import logo from './logo.svg';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route, Link, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 import { Login } from "./contents/Login"
 import { Register } from "./contents/Register"
-import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link, Routes, Navigate } from 'react-router-dom';
-import Profile from './contents/Profile';
-import Details from './contents/Details'
+import { Profile } from './contents/Profile';
+import { Detail } from './contents/Detail';
 import { AuthProvider, useAuth } from './authentication/AuthContext'
-
+import { FindCourses } from './contents/student/FindCourses'
+import { Course } from './contents/Course'
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -20,12 +21,13 @@ function App() {
       <AuthProvider>
       <div className="App">
         <Routes>
-          <Route path="*" element={<Navigate to="/details" />} /> {/* Default route */} 
-          <Route path="/details" element={<Details />} />
+          <Route path="*" element={<Navigate to="/findcourses" />} /> {/* Default route */} 
+          <Route path="/details" element={<Detail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register  />} />
           <Route path="/profile" element={<Profile />} />
-          
+          <Route path='/findcourses' element={<FindCourses/>}/>
+          <Route path='/course/:cid' element={<Course/>}/> 
         </Routes>
       </div>
       </AuthProvider>
