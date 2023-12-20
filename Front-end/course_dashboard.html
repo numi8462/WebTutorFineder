@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>TutorFinder</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="dashboard.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
+    <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
         <div class="sidebar-brand">
             <p>Tutor<span>Finder</span>.</p>
@@ -46,7 +47,7 @@
         <header>
             <div class="header-title">
                 <h1>
-                <label for="">
+                <label for="nav-toggle">
                     <span class="fa-solid fa-bars"></span>
                 </label>
                 Dashboard
@@ -115,10 +116,11 @@
                 <div class="courses">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Recent courses</h3>
+                            <h3>Your courses</h3>
                             <button>See all <span class="fa-solid fa-chevron-down"></span></button>
                         </div>
                         <div class="card-body">
+                            <div class="table-responsive">
                             <table width="100%">
                                 <thead>
                                     <tr>
@@ -156,102 +158,11 @@
                                 </tbody>
                             </table>
                         </div>
+                        </div>
 
                     </div>
                 </div>
-                <div class="tutors">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3>Recent tutors</h3>
-                            <button>See all <span class="fa-solid fa-chevron-down"></span></button>
-                        </div>
-                        <div class="card-body">
-                            <div class="user">
-                                <div>
-                                <img src="img.jpg" width="40px" height="40px">
-                                <div>
-                                    <h4>A. Smith</h4>
-                                    <small>Spanish language</small>
-                                </div>
-
-                                </div>
-                                <div>
-                                    <span class="fa-solid fa-user"></span>
-                                    <span class="las la-comment-circle"></span>
-                                    <span class="las la-phone-circle"></span>
-                                </div>
-
-                                </div>
-
-                                <div class="user">
-                                    <div>
-                                    <img src="img.jpg" width="40px" height="40px">
-                                    <div>
-                                        <h4>A. Smith</h4>
-                                        <small>Spanish language</small>
-                                    </div>
-    
-                                    </div>
-                                    <div>
-                                        <span class="las la-user-circle"></span>
-                                        <span class="las la-comment-circle"></span>
-                                        <span class="las la-phone-circle"></span>
-                                    </div>
-    
-                                    </div>
-                                    <div class="user">
-                                        <div>
-                                        <img src="img.jpg" width="40px" height="40px">
-                                        <div>
-                                            <h4>A. Smith</h4>
-                                            <small>Spanish language</small>
-                                        </div>
-        
-                                        </div>
-                                        <div>
-                                            <span class="las la-user-circle"></span>
-                                            <span class="las la-comment-circle"></span>
-                                            <span class="las la-phone-circle"></span>
-                                        </div>
-        
-                                        </div>
-
-                                        <div class="user">
-                                            <div>
-                                            <img src="img.jpg" width="40px" height="40px">
-                                            <div>
-                                                <h4>A. Smith</h4>
-                                                <small>Spanish language</small>
-                                            </div>
-            
-                                            </div>
-                                            <div>
-                                                <span class="las la-user-circle"></span>
-                                                <span class="las la-comment-circle"></span>
-                                                <span class="las la-phone-circle"></span>
-                                            </div>
-            
-                                            </div>
-
-                                            <div class="user">
-                                                <div>
-                                                <img src="img.jpg" width="40px" height="40px">
-                                                <div>
-                                                    <h4>A. Smith</h4>
-                                                    <small>Spanish language</small>
-                                                </div>
                 
-                                                </div>
-                                                <div>
-                                                    <span class="las la-user-circle"></span>
-                                                    <span class="las la-comment-circle"></span>
-                                                    <span class="las la-phone-circle"></span>
-                                                </div>
-                
-                                                </div>
-                            </div>
-                        </div>
-                </div>
             </div>
 
         </main>
