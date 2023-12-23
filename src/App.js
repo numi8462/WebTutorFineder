@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link, Routes, Navigate } from '
 import './App.css';
 import { Login } from "./contents/Login"
 import { Register } from "./contents/Register/Register"
+import { RegisterTut } from "./contents/Register/RegisterTut"
 import { Profile } from './contents/Profile';
 import { Detail } from './contents/Detail';
 import { AuthProvider, useAuth } from './authentication/AuthContext'
@@ -27,6 +28,7 @@ function App() {
           <Route path="/details" element={<Detail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register  />} />
+          <Route path="/registerTutor" element={<RegisterTut  />} />
           <Route path="/profile" element={<Profile />} />
           <Route path='/findcourses' element={<FindCourses/>}/>
           <Route path='/course/:cid' element={<Course/>}/> 

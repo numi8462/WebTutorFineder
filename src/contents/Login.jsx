@@ -13,25 +13,6 @@ export const Login = (props) => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
-    // async function handleSubmit(e) {
-    //     e.preventDefault();
-    //     // console.log(email);
-
-    //     try {
-    //         setError("")
-    //         setLoading(true)
-    //         await login(email, pass)
-    //         navigate('/studentDashboard');
-    //     } catch {
-    //         console.log(email)
-    //         console.log(pass)
-    //         setError("Failed to login")
-    //     }
-    //     setLoading(false)
-    //     console.log(email);
-
-    // }
-
     async function handleSubmit(e) {
         e.preventDefault();
 

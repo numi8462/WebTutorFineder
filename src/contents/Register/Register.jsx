@@ -80,7 +80,7 @@ export const Register = (props) => {
             setError("Failed to create account!")
         }
         setLoading(false);
-        navigate('/studentDashboard');
+        navigate('/login');
     };
     
     

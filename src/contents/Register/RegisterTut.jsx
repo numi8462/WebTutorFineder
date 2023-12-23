@@ -2,11 +2,11 @@ import React , { useState } from "react";
 import { Alert, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from '../../authentication/AuthContext';
-import '../index.css'
+import '../../index.css'
 import axios from 'axios';
 import Select from 'react-select';
 
-export const Register = (props) => {
+export const RegisterTut = (props) => {
     const [email,setEmail] = useState(''); 
     const [pass, setPass] = useState('');
     const [passConf, setPassConf] = useState('');
@@ -16,15 +16,15 @@ export const Register = (props) => {
     const [id, setId] = useState('')
     const navigate = useNavigate();
 
-    const [student, setStudent] = useState({
+    const [tutor, setTutor] = useState({
         uid: '',
         email: '',
         password: '',
         name: '',
         birthdate: '',
-        educationLevel: '',
-        subjectOfInterest: [],
-        credit: 100,
+        qualification: '',
+        subjects: [],
+        credit: 0,
         gender: '',
         user: 'tutor'
     });
@@ -40,7 +40,7 @@ export const Register = (props) => {
       ];
       
     const handleChange = (e) => {
-        setStudent({ ...student, [e.target.name]: e.target.value });
+        setTutor({ ...tutor, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e) => {
@@ -58,15 +58,15 @@ export const Register = (props) => {
                 setPass(pass);
                 console.log(uid);  // Prints the uid of the newly created user
 
-                const updatedStudent = {
-                    ...student,
+                const updatedTutor = {
+                    ...tutor,
                     uid: uid,
                     email: email,
                     password: pass,
                 };
 
                 try {
-                    const response = await axios.post('http://localhost:3001/postStudents', updatedStudent);
+                    const response = await axios.post('http://localhost:3001/postTutor', updatedTutor);
                     console.log(response.data);
                 } catch (err) {
                     console.error(err);
@@ -80,7 +80,7 @@ export const Register = (props) => {
             setError("Failed to create account!")
         }
         setLoading(false);
-        navigate('/studentDashboard');
+        navigate('/login');
     };
     
     
@@ -100,7 +100,7 @@ export const Register = (props) => {
             <div className="container">
                 <div className="form-box">
                     <div>
-                        <h2>Register</h2>
+                        <h2>Register as Tutor</h2>
                     </div>
                     <div className="enter-info">
                         {error && <Alert variant="danger" style={{ border: 'none', backgroundColor: 'transparent', color: 'red', fontWeight:'', fontSize:'1.5rem' }}>{error}</Alert>}
@@ -121,26 +121,26 @@ export const Register = (props) => {
                                 <input type="date" name="birthdate" onChange={handleChange} placeholder="Birthdate" />
                             </div>
                             <div className='input-group'>
-                                <select name="educationLevel" onChange={handleChange}>
-                                    <option value="">Education Level</option>
-                                    <option value="highSchool">High School</option>
+                                <select name="qualification" onChange={handleChange}>
+                                    <option value="">Qualification</option>
                                     <option value="bachelors">Bachelor's Degree</option>
                                     <option value="masters">Master's Degree</option>
-                                    <option value="doctorate">Doctorate</option>
+                                    <option value="doctorate">Doctorate's Degree</option>
+                                    <option value="teaching degree">Teaching Degree</option>
                                 </select>
                             </div>
 
                             <Select
                             isMulti
-                            name="subjectOfInterest"
+                            name="subjects"
                             options={options}
                             className="basic-multi-select"
                             classNamePrefix="select"
                             onChange={selectedOptions => {
                                 // Update state
-                                setStudent(prevState => ({
+                                setTutor(prevState => ({
                                 ...prevState,
-                                subjectOfInterest: selectedOptions.map(option => option.value),
+                                subjects: selectedOptions.map(option => option.value),
                                 }));
                             }}
                             />

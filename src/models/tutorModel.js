@@ -8,7 +8,7 @@ const TutorSchema = new Schema({
     password: String,
     name: String,
     birthdate: String,
-    qalification: String,
+    qualification: String,
     subjects: Array,
     credit: Number,
     gender: String,
