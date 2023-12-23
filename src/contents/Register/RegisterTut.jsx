@@ -1,7 +1,7 @@
 import React , { useState } from "react";
 import { Alert, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from '../authentication/AuthContext';
+import { AuthProvider, useAuth } from '../../authentication/AuthContext';
 import '../index.css'
 import axios from 'axios';
 import Select from 'react-select';
@@ -26,7 +26,7 @@ export const Register = (props) => {
         subjectOfInterest: [],
         credit: 100,
         gender: '',
-        user: 'Student'
+        user: 'tutor'
     });
 
     const options = [

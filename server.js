@@ -2,12 +2,10 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
-const Student = require('./src/models/studentModel')
 const bodyParser = require('body-parser');
 const StudentModel = require('./src/models/studentModel');
 const TutorModel = require('./src/models/tutorModel')
 const CourseModel = require('./src/models/courseModel')
-
 
 app.use(cors());
 app.use(express.json());
@@ -72,7 +70,8 @@ app.get('/getStudents/:uid', async (req, res) => {
       })
       .catch(err => res.json(err));
 });
-  
+
+
 
 app.post('/postStudents', async (req, res) => {
   const student = new StudentModel(req.body);
@@ -102,8 +101,7 @@ app.get('/getTutors/:uid', async (req, res) => {
     .catch(err => res.json(err));
 });
 
-
-app.post('/postStudents', async (req, res) => {
+app.post('/postTutor', async (req, res) => {
   const tutor = new TutorModel(req.body);
   try {
       await tutor.save();
@@ -141,4 +139,35 @@ app.post('/postCourse', async (req, res) => {
   } catch (err) {
       res.status(500).send(err);
   }
+});
+
+//returns both student and tutor
+app.get('/users', async (req, res) => {
+  const uid = req.params.uid;
+  Promise.all([
+    StudentModel.find(),
+    TutorModel.find()
+  ])
+  .then(([students, tutors]) => {
+    res.json({students, tutors});
+  })
+  .catch(err => res.json(err));
+});
+
+app.get('/getUser/:uid', async (req, res) => {
+  const uid = req.params.uid;
+  Promise.all([
+    StudentModel.findOne({ uid: uid }),
+    TutorModel.findOne({ uid: uid })
+  ])
+  .then(([student, tutor]) => {
+    if (student) {
+      res.json({user: student, role: 'student'});
+    } else if (tutor) {
+      res.json({user: tutor, role: 'tutor'});
+    } else {
+      res.status(404).json({error: 'User not found'});
+    }
+  })
+  .catch(err => res.json(err));
 });

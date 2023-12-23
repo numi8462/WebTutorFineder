@@ -13,7 +13,7 @@ const TutorSchema = new Schema({
     credit: Number,
     gender: String,
     user: String
-});
+}, { collection: 'tutors' });
 
 const TutorModel = mongoose.model('tutors', TutorSchema);
 
