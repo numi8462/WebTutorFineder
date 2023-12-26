@@ -83,6 +83,9 @@ export const Login = (props) => {
                         <div>
                             <span>New user? <a onClick={handleSwitch} className="link" href="">Sign up as Student</a> or <a onClick={handleSwitchTut} className="link" href="">Sign up as Tutor</a></span>
                         </div>
+                        <div>
+                            <span><a className="link" href="/forgotPassword">Forgot Password</a></span>
+                        </div>
                     </form>
                 </div>
                 </div>
