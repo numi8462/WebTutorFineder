@@ -23,7 +23,16 @@ export function AuthProvider({ children }) {
     const [loading, setLoading] = useState()
 
     function signUp(email, password) {
-        return auth.createUserWithEmailAndPassword(email, password)
+        return auth.createUserWithEmailAndPassword(email, password).then((userCredential) => {
+            // Signed in 
+            var user = userCredential.user;
+            //return uid
+            return user.uid;
+        }).catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // Handle errors here
+        });
     }
 
     function login(email,password){

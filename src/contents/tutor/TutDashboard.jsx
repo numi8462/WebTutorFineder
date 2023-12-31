@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
 import axios from 'axios';
 import '../../contents/dashboard.css';
@@ -28,7 +27,7 @@ export const TutDashboard = (props) => {
         .where('tutorID', '==', uid)
         .get();
 
-      const coursesData = coursesCollection.docs.map(doc => doc.data());
+      const coursesData = coursesCollection.docs.map(doc => ({ ...doc.data(), _id: doc.id }));
       setCourses(coursesData);
     } catch (error) {
       console.error('Error fetching courses:', error);
@@ -37,7 +36,10 @@ export const TutDashboard = (props) => {
 
   const deleteCourse = async (cid) => {
     try {
+      // Make a DELETE request to the server endpoint
       await axios.delete(`http://localhost:3001/courses/${cid}`);
+      
+      // Refresh the courses after deletion
       fetchCourses(tutorUID);
     } catch (error) {
       console.error('Error deleting course:', error);
@@ -182,7 +184,7 @@ export const TutDashboard = (props) => {
                             <td>{course.subject}</td>
                             <td>{course.hours}</td>
                             <td>
-                              <button onClick={() => deleteCourse(course.id)}>
+                              <button onClick={() => deleteCourse(course._id)}>
                                 Delete
                               </button>
                             </td>
@@ -214,20 +216,19 @@ export const TutDashboard = (props) => {
                         </tr>
                       </thead>
                       <tbody>
-                      <tr>
+                        <tr>
                           <td>John Doe</td>
                           <td>Language Arts Workshop</td>
                           <td>
-                             <span class="status"></span>
-                                pending
-                           </td>
-                           <td>
-                          <button>
-                            Approve
-                          </button>
-                        </td>
-                      </tr>
-                      
+                            <span className="status"></span>
+                            pending
+                          </td>
+                          <td>
+                            <button>
+                              Approve
+                            </button>
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>

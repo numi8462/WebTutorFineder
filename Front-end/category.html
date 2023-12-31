@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>TutorFinder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="dashboard.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <p>Tutor<span>Finder</span>.</p>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul>           
+                <li>
+                    <a href="course_dashboard.html"><span class="fa-solid fa-list-check"></span>
+                    <span>My Courses</span></a>
+                </li>
+                <li>
+                    <a href="category.html" class="active"><span class="fa-solid fa-magnifying-glass"></span>
+                    <span>Search courses</span></a>
+                </li>
+                <li>
+                    <a href=""><span class="fa-solid fa-heart"></span>
+                    <span>Saved</span></a>
+                </li>
+                <li>
+                    <a href=""><span class="fa-solid fa-user"></span>
+                    <span>My Account</span></a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="header-title">
+                <h1>
+                <label for="nav-toggle">
+                    <span class="fa-solid fa-bars"></span>
+                </label>
+                Courses
+                </h1>
+            </div>
+
+                <div class="user-wrapper">
+                    <div>
+                        <h4>John Doe</h4>
+                        <small>Student</small>
+                    </div>
+                </div>
+
+            
+        </header>
+    
+        <main>
+            <div class="main-container">
+                <h2>Search for courses and find your <span>tutor</span></h2>
+                <div class="search">
+                    <div class="search-wrapper">
+                        <div class="search-wrapper-content">
+                            <input type="search" placeholder="Search here" />
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-container">
+                    <div class="category-head">
+                        <ul>
+                            <div class="category-title" id="all">
+                                <li>All</li>
+                                <span><i class="fas fa-border-all"></i></span>
+                            </div>
+                            <div class="category-title" id="location">
+                                <li>Location</li>
+                                <span><i class="fa-solid fa-location-dot"></i></span>
+                            </div>
+                            <div class="category-title" id="price">
+                                <li>Price</li>
+                                <span><i class="fas fa-coins"></i></span>
+                            </div>
+                            <div class="category-title" id="university">
+                                <li>University</li>
+                                <span><i class="fas fa-landmark"></i></span>
+                            </div>
+                            <div class="category-title" id="degree">
+                                <li>Degree level</li>
+                                <span><i class="fa-solid fa-graduation-cap"></i></span>
+                            </div>
+                        </ul>
+                        <div class="tutors-collect">
+                            <div class="tutors-main-container">
+                                     <!--single post-->
+                                    <div class="all location">
+                                        <div class="post-img">
+                                            <img src="imagies/1.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard</span> 
+                                                <span>Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                                     <!--single post-->
+                                    <div class="all university">
+                                        <div class="post-img">
+                                            <img src="imagies/2.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard, Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                                     <!--single post-->
+                                    <div class="all degree">
+                                        <div class="post-img">
+                                            <img src="imagies/3.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard, Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                                     <!--single post-->
+                                    <div class="all location">
+                                        <div class="post-img">
+                                            <img src="imagies/4.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard, Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                                     <!--single post-->
+                                    <div class="all university">
+                                        <div class="post-img">
+                                            <img src="imagies/3.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard, Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                                     <!--single post-->
+                                    <div class="all degree">
+                                        <div class="post-img">
+                                            <img src="imagies/5.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard, Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                                     <!--single post-->
+                                    <div class="all location">
+                                        <div class="post-img">
+                                            <img src="imagies/6.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard, Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                                     <!--single post-->
+                                    <div class="all university">
+                                        <div class="post-img">
+                                            <img src="imagies/2.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard, Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                                     <!--single post-->
+                                    <div class="all degree">
+                                        <div class="post-img">
+                                            <img src="imagies/1.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard, Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                                     <!--single post-->
+                                    <div class="all location">
+                                        <div class="post-img">
+                                            <img src="imagies/4.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard, Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                                     <!--single post-->
+                                    <div class="all university">
+                                        <div class="post-img">
+                                            <img src="imagies/5.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard, Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                                     <!--single post-->
+                                    <div class="all degree">
+                                        <div class="post-img">
+                                            <img src="imagies/6.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard, Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                                     <!--single post-->
+                                    <div class="all location">
+                                        <div class="post-img">
+                                            <img src="imagies/1.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard, Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                                     <!--single post-->
+                                    <div class="all university">
+                                        <div class="post-img">
+                                            <img src="imagies/4.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard, Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                                     <!--single post-->
+                                    <div class="all degree">
+                                        <div class="post-img">
+                                            <img src="imagies/2.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard, Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                                     <!--single post-->
+                                    <div class="all location">
+                                        <div class="post-img">
+                                            <img src="imagies/5.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard, Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                                     <!--single post-->
+                                    <div class="all university">
+                                        <div class="post-img">
+                                            <img src="imagies/6.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard, Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                                     <!--single post-->
+                                    <div class="all degree">
+                                        <div class="post-img">
+                                            <img src="imagies/3.jpg" alt="post">
+                                        </div>
+
+                                        <div class="post-content">
+                                            <div class="post-content-top">
+                                                <span><i class="fa-solid fa-user"></i>Jack Richard, Phd in IT</span>
+                                                <span><i class="fas fa-comment"></i>6</span>
+                                            </div>
+                                            <h4>Web design</h4>
+                                            <p>This course is about this and this. 
+                                                You will learn a lot. Like fedwedv
+                                            wfecefcfcc ewfcwf frgreo ewfw wrgl wefw
+                                            </p>
+                                        </div>
+                                        <button type="button" class="read-btn">View all</button>
+                                    </div>
+                                     <!--single post ends-->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </main>
+    </div>
+    </div>
+    
+</body>
+</html>
