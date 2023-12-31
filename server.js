@@ -2,12 +2,10 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
-const Student = require('./src/models/studentModel')
 const bodyParser = require('body-parser');
 const StudentModel = require('./src/models/studentModel');
 const TutorModel = require('./src/models/tutorModel')
 const CourseModel = require('./src/models/courseModel')
-
 
 app.use(cors());
 app.use(express.json());
@@ -72,7 +70,8 @@ app.get('/getStudents/:uid', async (req, res) => {
       })
       .catch(err => res.json(err));
 });
-  
+
+
 
 app.post('/postStudents', async (req, res) => {
   const student = new StudentModel(req.body);
@@ -102,8 +101,7 @@ app.get('/getTutors/:uid', async (req, res) => {
     .catch(err => res.json(err));
 });
 
-
-app.post('/postStudents', async (req, res) => {
+app.post('/postTutor', async (req, res) => {
   const tutor = new TutorModel(req.body);
   try {
       await tutor.save();
@@ -173,7 +171,6 @@ app.get('/getUser/:uid', async (req, res) => {
   })
   .catch(err => res.json(err));
 });
-
 
 // API endpoint to delete a course by ID
 app.delete('/courses/:cid', async (req, res) => {

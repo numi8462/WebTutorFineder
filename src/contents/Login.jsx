@@ -15,24 +15,39 @@ export const Login = (props) => {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        // console.log(email);
 
         try {
-            setError("")
-            setLoading(true)
-            await login(email, pass)
-            navigate('/studentDashboard');
-        } catch {
-            console.log(email)
-            console.log(pass)
-            setError("Failed to login")
-        }
-        setLoading(false)
-        console.log(email);
+            setError("");
+            setLoading(true);
+            const userCredential = await login(email, pass); // Assuming login returns userCredential
+            const uid = userCredential.user.uid; // Get uid from userCredential
+            console.log(uid)
+            // Fetch user by uid
+            const response = await fetch(`http://localhost:3001/getUser/${uid}`);
+            const data = await response.json();
+            console.log("role is: "+data.role)
+            // Navigate based on user's role
+            if (data.role === 'student') {
+                navigate('/studentDashboard');
+            } else if (data.role === 'tutor') {
+                navigate('/tutorDashboard');
+            } else {
+                setError("Failed to determine user role");
+            }
 
+        } catch (error) {
+            setError(`Failed to login: ${error.message}`);
+            console.error(error);
+        }
+
+        setLoading(false);
     }
+
     const handleSwitch = () => {
         navigate('/register');
+    };
+    const handleSwitchTut = () => {
+        navigate('/registerTutor');
     };
 
     return (
@@ -66,7 +81,10 @@ export const Login = (props) => {
 
                         </div>
                         <div>
-                            <span>New user? <a onClick={handleSwitch} className="link" href="">Sign up as Student</a> or <a className="link" href="">Sign up as Tutor</a></span>
+                            <span>New user? <a onClick={handleSwitch} className="link" href="">Sign up as Student</a> or <a onClick={handleSwitchTut} className="link" href="">Sign up as Tutor</a></span>
+                        </div>
+                        <div>
+                            <span><a className="link" href="/forgotPassword">Forgot Password</a></span>
                         </div>
                     </form>
                 </div>
