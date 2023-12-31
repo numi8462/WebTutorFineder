@@ -6,7 +6,7 @@ import axios from 'axios';
 import '../style.css';
 
 return(
-<div>
+ <div>
   <meta charSet="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>TutorFinder</title>
@@ -98,7 +98,8 @@ return(
                   </div>
                   <div className="post-content">
                     <div className="post-content-top">
-                      <span><i className="fa-solid fa-user" />Jack Richard, Phd in IT</span>
+                      <span><i className="fa-solid fa-user" />Jack Richard</span> 
+                      <span>Phd in IT</span>
                       <span><i className="fas fa-comment" />6</span>
                     </div>
                     <h4>Web design</h4>
@@ -441,4 +442,5 @@ return(
     </main>
   </div>
 </div>
+
 )
