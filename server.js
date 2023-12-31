@@ -171,7 +171,7 @@ app.get('/getUser/:uid', async (req, res) => {
       res.status(404).json({error: 'User not found'});
     }
   })
-  .catch(err => res.json(err))
+  .catch(err => res.json(err));
 });
 
 
