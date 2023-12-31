@@ -10,25 +10,17 @@ export const TutDashboard = (props) => {
 
   const fetchTutorInfo = async (uid) => {
     try {
-      const tutorDoc = await firebase.firestore().collection('tutors').doc(uid).get();
-      if (tutorDoc.exists) {
-        setTutor(tutorDoc.data());
-      } else {
-        console.error('Tutor not found.');
-      }
+      const response = await axios.get(`http://localhost:3001/tutors/${uid}`);
+      setTutor(response.data);
     } catch (error) {
       console.error('Error fetching tutor information:', error);
     }
   };
-
+  
   const fetchCourses = async (uid) => {
     try {
-      const coursesCollection = await firebase.firestore().collection('courses')
-        .where('tutorID', '==', uid)
-        .get();
-
-      const coursesData = coursesCollection.docs.map(doc => ({ ...doc.data(), _id: doc.id }));
-      setCourses(coursesData);
+      const response = await axios.get(`http://localhost:3001/courses?tutorID=${uid}`);
+      setCourses(response.data);
     } catch (error) {
       console.error('Error fetching courses:', error);
     }
@@ -36,9 +28,7 @@ export const TutDashboard = (props) => {
 
   const deleteCourse = async (cid) => {
     try {
-      // Make a DELETE request to the server endpoint
       await axios.delete(`http://localhost:3001/courses/${cid}`);
-      
       // Refresh the courses after deletion
       fetchCourses(tutorUID);
     } catch (error) {
@@ -50,15 +40,15 @@ export const TutDashboard = (props) => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         const uid = user.uid;
-        setTutorUID(uid); // Set tutorUID in the state
+        setTutorUID(uid);
         fetchTutorInfo(uid);
         fetchCourses(uid);
       }
     });
 
-    // Cleanup function for unsubscribing when the component unmounts
     return () => unsubscribe();
   }, []);
+
 
   return (
     <>
@@ -173,7 +163,7 @@ export const TutDashboard = (props) => {
                       <thead>
                         <tr>
                           <td>Course title</td>
-                          <td>Area</td>
+                          <td>Subject</td>
                           <td>Duration</td>
                         </tr>
                       </thead>
