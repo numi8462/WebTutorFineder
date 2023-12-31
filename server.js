@@ -143,24 +143,25 @@ app.post('/postCourse', async (req, res) => {
   }
 });
 
-// API endpoint to delete a course by ID
-app.delete('/courses/:cid', async (req, res) => {
-  const courseId = req.params.cid;
+// // API endpoint to delete a course by ID
+// app.delete('/courses/:cid', async (req, res) => {
+//   const courseId = req.params.cid;
 
-  try {
-    // Find and delete the course by ID
-    const result = await Course.findByIdAndDelete(courseId);
+//   try {
+//     // Find and delete the course by ID
+//     const result = await Course.findByIdAndDelete(courseId);
     
-    if (result) {
-      res.status(204).end(); // Course deleted successfully
-    } else {
-      res.status(404).json({ error: 'Course not found' });
-    }
-  } catch (error) {
-    console.error('Error deleting course:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
+//     if (result) {
+//       res.status(204).end(); // Course deleted successfully
+//     } else {
+//       res.status(404).json({ error: 'Course not found' });
+//     }
+//   } catch (error) {
+//     console.error('Error deleting course:', error);
+//     res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// });
+
 
 //returns both student and tutor
 app.get('/users', async (req, res) => {
