@@ -11,7 +11,6 @@ import { FindCourses } from './contents/student/FindCourses'
 import { Course } from './contents/Course'
 import { StuDashboard } from './contents/student/StuDashboard';
 import { TutDashboard } from './contents/tutor/TutDashboard';
-import UpdateProfile from './profile/UpdateProfile.js';
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -32,7 +31,6 @@ function App() {
           <Route path='/findcourses' element={<FindCourses/>}/>
           <Route path='/course/:cid' element={<Course/>}/> 
           <Route path='/studentDashboard' element={<StuDashboard/>}/>
-          <Route path="/updateprofile" element={<UpdateProfile />} />
           <Route path='/tutorDashboard' element={<TutDashboard/>}/>
         </Routes>
       </div>
