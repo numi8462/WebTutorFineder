@@ -34,66 +34,56 @@ export const StuDashboard = (props) => {
                 <title>TutorFinder</title>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
             </head>
+            <input type="checkbox" id="nav-toggle"/>
             <div className="sidebar">
-            <div className="sidebar-brand">
-                <p>Tutor<span>Finder</span>.</p>
-            </div>
+                <div className="sidebar-brand">
+                    <p>Tutor<span>Finder</span>.</p>
+                </div>
 
-            <div className="sidebar-menu">
-                <ul>
-                    <li>
-                        <a href="" className="active"><span class="fa-solid fa-list-check"></span>
-                        <span>Courses</span></a>
-                    </li>
-                    <li>
-                        <a href="/findcourses"><span className="fa-solid fa-heart"></span>
-                        <span>Search</span></a>
-                    </li>
-                    <li>
-                        <a href="/profile"><span className="fa-solid fa-user"></span>
-                        <span>Account</span></a>
-                    </li>
-                    <li>
-                        <a href=""><span className="fa-solid fa-bookmark"></span>
-                        <span>Saved</span></a>
-                    </li>
-                    <li>
-                        <a href=""><span className="fa-solid fa-list-check"></span>
-                        <span>Courses</span></a>
-                    </li>
-                </ul>
+                <div className="sidebar-menu">
+                    <ul>
+                        <li>
+                            <a href="/studentDashboard" className="active"><span className="fa-solid fa-list-check"></span>
+                            <span>My Courses</span></a>
+                        </li>
+                        <li>
+                            <a href="/findcourses"><span className="fa-solid fa-magnifying-glass"></span>
+                            <span>Search courses</span></a>
+                        </li>
+                        <li>
+                            <a href=""><span className="fa-solid fa-heart"></span>
+                            <span>Saved</span></a>
+                        </li>
+                        <li>
+                            <a href=""><span className="fa-solid fa-user"></span>
+                            <span>My Account</span></a>
+                        </li>
+                    </ul>
+
+                </div>
 
             </div>
-
-        </div>
 
         <div className="main-content">
             <header>
                 <div className="header-title">
                     <h1>
-                    <label for="">
+                    <label for="nav-toggle">
                         <span className="fa-solid fa-bars"></span>
                     </label>
-                    Dashboard
+                    My courses
                     </h1>
                 </div>
-                    <div className="search-wrapper">
-                        <input type="search" placeholder="Search here" />
+                <div className="user-wrapper">
+                    <div>
+                        <h4>John Doe</h4>
+                        <small>Student</small>
                     </div>
-
-                    <div className="user-wrapper">
-                        <div>
-                            <h4>John Doe</h4>
-                            <small>Student</small>
-                        </div>
-                    </div>
-
-                
+                </div>
             </header>
         
             <main>
                 <div className="cards">
-
                     <div className="card-single">
                         <div>
                             <h1>3</h1>
@@ -130,10 +120,11 @@ export const StuDashboard = (props) => {
                     <div className="courses">
                         <div className="card">
                             <div className="card-header">
-                                <h3>Recent courses</h3>
+                                <h3>Your courses</h3>
                                 <button>See all <span className="fa-solid fa-chevron-down"></span></button>
                             </div>
                             <div className="card-body">
+                                <div className="table-responsive">
                                 <table width="100%">
                                     <thead>
                                         <tr>
@@ -144,7 +135,7 @@ export const StuDashboard = (props) => {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Spanish laguage</td>
+                                            <td><a href="course_page.html">Spanish laguage</a></td>
                                             <td>Foreign language</td>
                                             <td>
                                                 <span className="status"></span>
@@ -153,7 +144,7 @@ export const StuDashboard = (props) => {
                                         
                                         </tr>
                                         <tr>
-                                            <td>Into to IT</td>
+                                            <td><a href="course_page.html">Intro to IT</a></td>
                                             <td>Frontend</td>
                                             <td>
                                                 <span className="status"></span>
@@ -161,7 +152,7 @@ export const StuDashboard = (props) => {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>UI/UX design</td>
+                                            <td><a href="course_page.html">UI/UX design</a></td>
                                             <td>UI team</td>
                                             <td>
                                                 <span className="status"></span>
@@ -171,102 +162,11 @@ export const StuDashboard = (props) => {
                                     </tbody>
                                 </table>
                             </div>
+                            </div>
 
                         </div>
                     </div>
-                    <div className="tutors">
-                        <div className="card">
-                            <div className="card-header">
-                                <h3>Recent tutors</h3>
-                                <button>See all <span className="fa-solid fa-chevron-down"></span></button>
-                            </div>
-                            <div className="card-body">
-                                <div className="user">
-                                    <div>
-                                    <img src="img.jpg" width="40px" height="40px"/>
-                                    <div>
-                                        <h4>A. Smith</h4>
-                                        <small>Spanish language</small>
-                                    </div>
-
-                                    </div>
-                                    <div>
-                                        <span className="fa-solid fa-user"></span>
-                                        <span className="las la-comment-circle"></span>
-                                        <span className="las la-phone-circle"></span>
-                                    </div>
-
-                                    </div>
-
-                                    <div className="user">
-                                        <div>
-                                        <img src="img.jpg" width="40px" height="40px"/>
-                                        <div>
-                                            <h4>A. Smith</h4>
-                                            <small>Spanish language</small>
-                                        </div>
-        
-                                        </div>
-                                        <div>
-                                            <span className="las la-user-circle"></span>
-                                            <span className="las la-comment-circle"></span>
-                                            <span className="las la-phone-circle"></span>
-                                        </div>
-        
-                                        </div>
-                                        <div className="user">
-                                            <div>
-                                            <img src="img.jpg" width="40px" height="40px"/>
-                                            <div>
-                                                <h4>A. Smith</h4>
-                                                <small>Spanish language</small>
-                                            </div>
-            
-                                            </div>
-                                            <div>
-                                                <span className="las la-user-circle"></span>
-                                                <span className="las la-comment-circle"></span>
-                                                <span className="las la-phone-circle"></span>
-                                            </div>
-            
-                                            </div>
-
-                                            <div className="user">
-                                                <div>
-                                                <img src="img.jpg" width="40px" height="40px"/>
-                                                <div>
-                                                    <h4>A. Smith</h4>
-                                                    <small>Spanish language</small>
-                                                </div>
-                
-                                                </div>
-                                                <div>
-                                                    <span className="las la-user-circle"></span>
-                                                    <span className="las la-comment-circle"></span>
-                                                    <span className="las la-phone-circle"></span>
-                                                </div>
-                
-                                                </div>
-
-                                                <div className="user">
-                                                    <div>
-                                                    <img src="img.jpg" width="40px" height="40px"/>
-                                                    <div>
-                                                        <h4>A. Smith</h4>
-                                                        <small>Spanish language</small>
-                                                    </div>
                     
-                                                    </div>
-                                                    <div>
-                                                        <span className="las la-user-circle"></span>
-                                                        <span className="las la-comment-circle"></span>
-                                                        <span className="las la-phone-circle"></span>
-                                                    </div>
-                    
-                                                    </div>
-                                </div>
-                            </div>
-                    </div>
                 </div>
 
             </main>

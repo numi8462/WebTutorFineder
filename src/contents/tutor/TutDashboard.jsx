@@ -10,7 +10,7 @@ export const TutDashboard = (props) => {
 
   const fetchTutorInfo = async (uid) => {
     try {
-      const response = await axios.get(`http://localhost:3001/tutors/${uid}`);
+      const response = await axios.get(`http://localhost:3001/getTutors/${uid}`);
       setTutor(response.data);
     } catch (error) {
       console.error('Error fetching tutor information:', error);
@@ -19,7 +19,7 @@ export const TutDashboard = (props) => {
   
   const fetchCourses = async (uid) => {
     try {
-      const response = await axios.get(`http://localhost:3001/courses?tutorID=${uid}`);
+      const response = await axios.get(`http://localhost:3001/getCourses?tutorID=${uid}`);
       setCourses(response.data);
     } catch (error) {
       console.error('Error fetching courses:', error);
