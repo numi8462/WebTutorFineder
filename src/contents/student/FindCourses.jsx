@@ -3,6 +3,7 @@ import React, { useState, useEffect  } from "react";
 import { useAuth } from '../../authentication/AuthContext'
 import firebase from "firebase/compat/app";
 import { useNavigate } from 'react-router-dom';
+import courseImg from '../../images/course1.png';
 
 export const FindCourses = (props) => {
     const [uid, setUid] = useState('')
@@ -68,11 +69,11 @@ export const FindCourses = (props) => {
                   <span>Search courses</span></a>
               </li>
               <li>
-                <a href><span className="fa-solid fa-heart" />
+                <a href=""><span className="fa-solid fa-heart" />
                   <span>Saved</span></a>
               </li>
               <li>
-                <a href><span className="fa-solid fa-user" />
+                <a href=""><span className="fa-solid fa-user" />
                   <span>My Account</span></a>
               </li>
             </ul>
@@ -132,20 +133,21 @@ export const FindCourses = (props) => {
                   <div className="tutors-collect">
                     <div className="tutors-main-container">
                       {course.map((item, index) => (
-                        <div className="" key={index} onClick={() => navigate(`/course/${item.cid}`)}>
+                        <div className="all location" key={index} >
                             <div className='post-img'>
-                              <img src="../../images/course1.png" alt="post" />  
+                              <img src={courseImg} alt="post" />  
                             </div>
                             <div className='post-content'>
                               <div className='post-content-top'>
                                 <span><i className='fa-solid fa-user'></i>{item.name}</span>
-                                <span>{item.qualification}</span>
-                                <span><i className='fas fa-comment'></i></span>
+                                
+                                <span><i className='fas fa-hourglass'></i>{item.hours} hours</span>
                               </div>
+                              <h4>{item.subject}</h4>
+                              <p>{item.description}
+                              </p>
                             </div>
-                            <td>{item.name}</td>
-                            <td>{item.subject}</td>
-                            <td>{item.hours}</td>
+                            <button type="button" className="read-btn" onClick={() => navigate(`/course/${item.cid}`)}>Details</button>
                         </div>
                       ))}
                     </div>
