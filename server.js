@@ -95,6 +95,7 @@ app.get('/getTutors', async (req, res) => {
 
 app.get('/getTutors/:uid', async (req, res) => {
   const uid = req.params.uid;
+  console.log(`Fetching tutor with uid: ${uid}`)
   TutorModel.findOne({uid: uid})
     .then(tutors => {
       res.json(tutors);
@@ -131,15 +132,15 @@ app.get('/getCourse/:cid', async (req, res) => {
     .catch(err => res.json(err));
 });
 
-app.get('/getCourses/:uid', async (req, res) => {
-  const uid = req.params.uid;
-  console.log(`Fetching courses with tutor uid: ${uid}`)
-  CourseModel.find({tutorID: uid})
-    .then(courses => {
-      res.json(courses);
-    })
-    .catch(err => res.json(err));
-});
+// app.get('/getCourses/:uid', async (req, res) => {
+//   const uid = req.params.uid;
+//   console.log(`Fetching courses with tutor uid: ${uid}`)
+//   CourseModel.find({tutorID: uid})
+//     .then(courses => {
+//       res.json(courses);
+//     })
+//     .catch(err => res.json(err));
+// });
 
 
 app.post('/postCourse', async (req, res) => {

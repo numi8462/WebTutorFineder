@@ -8,16 +8,26 @@ import courseImg from '../../images/course1.png';
 export const FindCourses = (props) => {
     const [uid, setUid] = useState('')
     const [course, setCourses] = useState([])
+    const [student, setStudent] = useState({});
     const { currentUser } = useAuth()
     const navigate = useNavigate();
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        setUid(user.uid);
+
       }
     });
     
     useEffect(() => {
+      axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
+      .then((response) => {
+          setStudent(response.data);
+          console.log(response.data.name);
+      })
+      .catch((error) => {
+          console.error("Error fetching profile data:", error);
+      });
+
       axios.get(`http://localhost:3001/getCourses`)
         .then(response => {
           console.log(response.data); // Log the response data
@@ -27,26 +37,6 @@ export const FindCourses = (props) => {
     
 
     return (
-        // <div>
-        //     <table className="table">
-        //       <thead>
-        //           <tr>
-        //               <th>Course Name</th>
-        //               <th>Subject</th>
-        //               <th>Hours</th>
-        //           </tr>
-        //       </thead>
-        //       <tbody>
-        //       {course.map((item, index) => (
-        //           <tr key={index} onClick={() => navigate(`/course/${item.cid}`)}>
-        //               <td>{item.name}</td>
-        //               <td>{item.subject}</td>
-        //               <td>{item.hours}</td>
-        //           </tr>
-        //       ))}
-        //       </tbody>
-        //     </table>
-        // </div>
         <div>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -61,11 +51,11 @@ export const FindCourses = (props) => {
           <div className="sidebar-menu">
             <ul>           
               <li>
-                <a href="course_dashboard.html"><span className="fa-solid fa-list-check" />
+                <a onClick={() => navigate('/studentDashboard')}><span className="fa-solid fa-list-check" />
                   <span>My Courses</span></a>
               </li>
               <li>
-                <a href="category.html" className="active"><span className="fa-solid fa-magnifying-glass" />
+                <a className='active'><span className="fa-solid fa-magnifying-glass" />
                   <span>Search courses</span></a>
               </li>
               <li>
@@ -91,7 +81,7 @@ export const FindCourses = (props) => {
             </div>
             <div className="user-wrapper">
               <div>
-                <h4>John Doe</h4>
+                <h4>{student.name}</h4>
                 <small>Student</small>
               </div>
             </div>

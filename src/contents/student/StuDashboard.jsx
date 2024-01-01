@@ -1,5 +1,6 @@
 import { React,useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
+import { useAuth } from '../../authentication/AuthContext'
 import firebase from "firebase/compat/app";
 import axios from "axios";
 import '../dashboard.css'
@@ -8,6 +9,7 @@ export const StuDashboard = (props) => {
     const [student, setStudent] = useState({});
     // const { uid } = useParams();
     const [uid, setUid] = useState('')
+    const navigate = useNavigate();
 
     firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -43,11 +45,11 @@ export const StuDashboard = (props) => {
                 <div className="sidebar-menu">
                     <ul>
                         <li>
-                            <a href="/studentDashboard" className="active"><span className="fa-solid fa-list-check"></span>
+                            <a className="active"><span className="fa-solid fa-list-check"></span>
                             <span>My Courses</span></a>
                         </li>
                         <li>
-                            <a href="/findcourses"><span className="fa-solid fa-magnifying-glass"></span>
+                            <a onClick={() => navigate('/findcourses')}><span className="fa-solid fa-magnifying-glass"></span>
                             <span>Search courses</span></a>
                         </li>
                         <li>
@@ -76,7 +78,7 @@ export const StuDashboard = (props) => {
                 </div>
                 <div className="user-wrapper">
                     <div>
-                        <h4>John Doe</h4>
+                        <h4>{student.name}</h4>
                         <small>Student</small>
                     </div>
                 </div>
