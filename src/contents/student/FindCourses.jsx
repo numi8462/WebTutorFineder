@@ -131,7 +131,23 @@ export const FindCourses = (props) => {
                   </ul>
                   <div className="tutors-collect">
                     <div className="tutors-main-container">
-                      
+                      {course.map((item, index) => (
+                        <div className="" key={index} onClick={() => navigate(`/course/${item.cid}`)}>
+                            <div className='post-img'>
+                              <img src="../../images/course1.png" alt="post" />  
+                            </div>
+                            <div className='post-content'>
+                              <div className='post-content-top'>
+                                <span><i className='fa-solid fa-user'></i>{item.name}</span>
+                                <span>{item.qualification}</span>
+                                <span><i className='fas fa-comment'></i></span>
+                              </div>
+                            </div>
+                            <td>{item.name}</td>
+                            <td>{item.subject}</td>
+                            <td>{item.hours}</td>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>

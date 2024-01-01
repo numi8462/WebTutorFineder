@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const StudentModel = require('./src/models/studentModel');
 const TutorModel = require('./src/models/tutorModel')
 const CourseModel = require('./src/models/courseModel')
+const SessionModel = require('./src/models/sessionModel')
 
 app.use(cors());
 app.use(express.json());
@@ -201,3 +202,21 @@ app.get('/getUser/:uid', async (req, res) => {
   .catch(err => res.json(err));
 });
 
+//Sessions
+app.get('/getSessions', async (req, res) => {
+  SessionModel.find()
+    .then(courses => {
+      res.json(courses);
+    })
+    .catch(err => res.json(err));
+});
+
+app.post('/postSessions', async (req, res) => {
+  const session = new SessionModel(req.body);
+    try {
+        await session.save();
+        res.send(session);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
