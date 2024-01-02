@@ -7,6 +7,8 @@ import '../dashboard.css'
 
 export const StuDashboard = (props) => {
     const [student, setStudent] = useState({});
+    const [session, setSession] = useState([]);
+    const [mySession, setMySession] = useState([]);
     // const { uid } = useParams();
     const [uid, setUid] = useState('')
     const navigate = useNavigate();
@@ -18,24 +20,64 @@ export const StuDashboard = (props) => {
     });
 
     useEffect(() => {
-    axios.get(`http://localhost:3001/profile/${uid}`)
-    .then((response) => {
-        setStudent(response.data);
-    })
-    .catch((error) => {
-        console.error("Error fetching profile data:", error);
-    });
+        fetchData();
     }, [uid]);
+
+    // Function to call data
+    function fetchData() {
+        axios.get(`http://localhost:3001/profile/${uid}`)
+        .then((response) => {
+            setStudent(response.data);
+            return axios.get(`http://localhost:3001/getSessions`);
+        })
+        .then((response) => {
+            const filteredSessions = response.data.filter(session => session.sid === uid && session.isConfirmed === false);
+            setSession(filteredSessions);
+            console.log(filteredSessions);
+    
+            // Filter again to check if session.isConfirmed is true
+            const confirmedSessions = response.filter(session => session.isConfirmed === true);
+            setMySession(confirmedSessions);  // Set mySession with the result
+        })
+        .catch((error) => {
+            console.error("Error fetching data:", error);
+        });
+    }
+
+    // Function to update the session
+    function updateSession(id) {
+        axios.put(`http://localhost:3001/updateSession/${id}`, { isConfirmed: true })
+        .then(response => {
+            console.log(response.data);
+            window.alert("Session updated successfully!");
+            fetchData();
+        })
+        .catch(error => {
+            console.error("Error updating session:", error);
+        });
+    }
+
+    // Function to delete the session
+    function deleteSession(id) {
+        axios.delete(`http://localhost:3001/deleteSession/${id}`)
+        .then(response => {
+            console.log(response.data);
+            window.alert("Session deleted successfully!");
+            fetchData();
+        })
+        .catch(error => {
+            console.error("Error deleting session:", error);
+        });
+    }
 
     return (
         
-        <body>
-            <head>
-                <meta charset="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title>TutorFinder</title>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-            </head>
+        <div>
+            <meta charSet="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+            <title>TutorFinder</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+            <link href="dashboard.css" rel="stylesheet" type="text/css" />
             <input type="checkbox" id="nav-toggle"/>
             <div className="sidebar">
                 <div className="sidebar-brand">
@@ -70,7 +112,7 @@ export const StuDashboard = (props) => {
             <header>
                 <div className="header-title">
                     <h1>
-                    <label for="nav-toggle">
+                    <label htmlFor="nav-toggle">
                         <span className="fa-solid fa-bars"></span>
                     </label>
                     My courses
@@ -122,7 +164,7 @@ export const StuDashboard = (props) => {
                     <div className="courses">
                         <div className="card">
                             <div className="card-header">
-                                <h3>Your courses</h3>
+                                <h3>Your current courses</h3>
                                 <button>See all <span className="fa-solid fa-chevron-down"></span></button>
                             </div>
                             <div className="card-body">
@@ -136,31 +178,62 @@ export const StuDashboard = (props) => {
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {mySession.map((item, index) => (
+                                                <tr key={index}>
+                                                    <td>{item.cName}</td>
+                                                    <td>{item.subject}</td>
+                                                    <td>
+                                                        <span className="status"></span>
+                                                        <span style={{color: item.status === 1 ? 'green' : item.status === 2 ? 'red' : 'blue'}}>
+                                                        {item.status === 0 ? 'Pending' : item.status === 1 ? 'Approved' : item.status === 2 ? 'Declined' : item.status}
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                </div>
+                <div className="recent-flex">
+                    <div className="courses">
+                        <div className="card">
+                            <div className="card-header">
+                                <h3>Pending Requests</h3>
+                            </div>
+                            <div className="card-body">
+                                <div className="table-responsive">
+                                <table width="100%">
+                                    <thead>
                                         <tr>
-                                            <td><a href="course_page.html">Spanish laguage</a></td>
-                                            <td>Foreign language</td>
-                                            <td>
-                                                <span className="status"></span>
-                                                review
-                                            </td>
-                                        
+                                            <td>Course title</td>
+                                            <td>Area</td>
+                                            <td>Status</td>
                                         </tr>
-                                        <tr>
-                                            <td><a href="course_page.html">Intro to IT</a></td>
-                                            <td>Frontend</td>
-                                            <td>
-                                                <span className="status"></span>
-                                                in progress
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="course_page.html">UI/UX design</a></td>
-                                            <td>UI team</td>
-                                            <td>
-                                                <span className="status"></span>
-                                                pending
-                                            </td>
-                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {session.map((item, index) => (
+                                            <tr key={index}>
+                                                <td>{item.cName}</td>
+                                                <td>{item.subject}</td>
+                                                <td>
+                                                    <span className="status"></span>
+                                                    <span style={{color: item.status === 1 ? 'green' : item.status === 2 ? 'red' : 'blue'}}>
+                                                    {item.status === 0 ? 'Pending' : item.status === 1 ? 'Approved' : item.status === 2 ? 'Declined' : item.status}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <div className="">
+                                                        {item.status === 1 && <button type="button" onClick={() => updateSession(item._id)}>Confirm</button>}
+                                                        {item.status === 2 && <button type="button" onClick={() => deleteSession(item._id)}>Confirm</button>}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        ))}
                                     </tbody>
                                 </table>
                             </div>
@@ -173,6 +246,6 @@ export const StuDashboard = (props) => {
 
             </main>
         </div>
-    </body>
+    </div>
     )
 }
