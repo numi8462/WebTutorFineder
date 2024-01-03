@@ -33,11 +33,12 @@ export const StuDashboard = (props) => {
         .then((response) => {
             const filteredSessions = response.data.filter(session => session.sid === uid && session.isConfirmed === false);
             setSession(filteredSessions);
-            console.log(filteredSessions);
+            // console.log(filteredSessions);
     
-            // Filter again to check if session.isConfirmed is true
-            const confirmedSessions = response.filter(session => session.isConfirmed === true);
+            // Filter for session.isConfirmed is true
+            const confirmedSessions = response.data.filter(session => session.isConfirmed === true);
             setMySession(confirmedSessions);  // Set mySession with the result
+            // console.log(confirmedSessions);
         })
         .catch((error) => {
             console.error("Error fetching data:", error);
