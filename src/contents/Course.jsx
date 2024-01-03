@@ -13,6 +13,7 @@ export const Course = () => {
     const [student, setStudent] = useState({});
     const { currentUser } = useAuth()
     const navigate = useNavigate();
+    
 
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
@@ -20,10 +21,13 @@ export const Course = () => {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
-        .then((response) => {
-            setStudent(response.data);
-        })
+        if (currentUser && currentUser.uid) {
+            axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
+            .then((response) => {
+                setStudent(response.data);
+            })
+            .catch(err => console.log(err));
+        }
         // Fetch the course details
         axios.get(`http://localhost:3001/getCourse/${cid}`)
             .then(response => {
@@ -39,9 +43,78 @@ export const Course = () => {
                     })
                     .catch(err => console.log(err));
             })
-            .catch(err => console.log(err));
+        .catch(err => console.log(err));
     }, [cid]); // Dependency array
+    
+    const postSession = () => {
+        const sessionData = {
+            cid: course.cid,
+            tid: tutor.uid,
+            sid: student.uid,
+            subject: course.subject,
+            cName: course.name,
+            description: course.description,
+            hours: course.hours,
+            hoursLeft: course.hours,
+            totalCost: course.hours * course.cost,
+            status: 0, // 0 is pending, 1 is approved, 2 is declined
+            isConfirmed: false,
+        };
+        fetch('http://localhost:3001/getSessions')
+        .then(response => response.json())
+        .then(sessions => {
+            // Filter sessions by sid
+            const studentSessions = sessions.filter(session => session.sid === sessionData.sid);
 
+            // Check if enough credit is available
+            // Check if a session with the same cid already exists
+            if (student.credit >= sessionData.totalCost) {
+                if (studentSessions.some(session => session.cid === sessionData.cid)) {
+                    alert('You have already sent a request for this course.');
+                } else {
+                    if (window.confirm('Do you really want to send this request?')) {
+                        // If not, send the POST request to create a new session
+                        fetch('http://localhost:3001/postSessions', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(sessionData),
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            alert('Request sent to tutor.');
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                    }
+
+                }
+            } else {
+                alert('You do not have enough credit for this course.');
+            }
+
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+        // fetch('http://localhost:3001/postSessions', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(sessionData),
+        // })
+        // .then(response => response.json())
+        // .then(data => console.log(data))
+        // .catch((error) => {
+        //     console.error('Error:', error);
+        // });
+        
+    }
     // Render the course details
     return (
         <div>
@@ -111,7 +184,7 @@ export const Course = () => {
                     <span className="price">${course.cost} per hour</span>
                 </div>
                 <div className="buttons">
-                    <button type="button">Send Request</button>
+                    <button id="request" type="button" onClick={postSession}>Send Request</button>
                     <button type="button">Contact the tutor</button>
                 </div>
             </div>

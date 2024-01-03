@@ -95,7 +95,7 @@ app.get('/getTutors', async (req, res) => {
 
 app.get('/getTutors/:uid', async (req, res) => {
   const uid = req.params.uid;
-  console.log(`Fetching tutor with uid: ${uid}`)
+  console.log(`Fetching tutor uid: ${uid}`)
   TutorModel.findOne({uid: uid})
     .then(tutors => {
       res.json(tutors);
@@ -132,15 +132,15 @@ app.get('/getCourse/:cid', async (req, res) => {
     .catch(err => res.json(err));
 });
 
-// app.get('/getCourses/:uid', async (req, res) => {
-//   const uid = req.params.uid;
-//   console.log(`Fetching courses with tutor uid: ${uid}`)
-//   CourseModel.find({tutorID: uid})
-//     .then(courses => {
-//       res.json(courses);
-//     })
-//     .catch(err => res.json(err));
-// });
+app.get('/getCourses/:uid', async (req, res) => {
+  const uid = req.params.uid;
+  console.log(`Fetching courses with tutor uid: ${uid}`)
+  CourseModel.find({tutorID: uid})
+    .then(courses => {
+      res.json(courses);
+    })
+    .catch(err => res.json(err));
+});
 
 
 app.post('/postCourse', async (req, res) => {
@@ -221,3 +221,35 @@ app.post('/postSessions', async (req, res) => {
         res.status(500).send(err);
     }
 });
+
+app.put('/updateSession/:id', async (req, res) => {
+  try {
+      const updatedSession = await SessionModel.findByIdAndUpdate(
+          req.params.id,
+          req.body,
+          { new: true }  // This option returns the updated document
+      );
+      res.send(updatedSession);
+  } catch (err) {
+      res.status(500).send(err);
+  }
+});
+
+app.delete('/deleteSession/:id', async (req, res) => {
+  try {
+      const deletedSession = await SessionModel.findByIdAndDelete(req.params.id);
+      if (!deletedSession) res.status(404).send("No item found");
+      res.status(200).send("Session deleted");
+  } catch (err) {
+      res.status(500).send(err);
+  }
+});
+// app.get('/getSessions/:sid', async (req, res) => {
+//   const sid = req.params.sid;
+//   console.log(`Fetching session with sid: ${sid}`)
+//   SessionModel.findOne({sid: sid})
+//     .then(sessions => {
+//       res.json(sessions);
+//     })
+//     .catch(err => res.json(err));
+// });
