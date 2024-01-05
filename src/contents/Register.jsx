@@ -92,11 +92,6 @@ export const Register = (props) => {
 
     return (
         <div className="wrapper">
-            <header className="forms">
-                <div className="logo">
-                    <p>Tutor<span>Finder</span>.</p>
-                </div>
-            </header>
             <div className="container">
                 <div className="form-box">
                     <div>
@@ -152,8 +147,8 @@ export const Register = (props) => {
                                     <option value="female">Female</option>
                                 </select>
                             </div>
-                            <div className="buttons">
-                                <div className="btn">
+                            <div className="buttons-register">
+                                <div className="btn-register">
                                     <button  disabled={loading} type="submit">Register</button>
 
                                 </div>
@@ -164,8 +159,9 @@ export const Register = (props) => {
 
 
                     
-                    <div>
-                        <span> Already have account?  <a className="link" onClick={handleSwitch}>Login here.</a> </span>
+                    <div className="register-bottom">
+                        <span> Already have account?</span>
+                        <a className="link" onClick={handleSwitch}>Login here</a> 
                     </div>
                     
                 </div>

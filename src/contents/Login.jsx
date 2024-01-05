@@ -36,14 +36,13 @@ export const Login = (props) => {
     };
 
     return (
+        <div>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <title>TutorFinder</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+        <link href="../index.css" rel="stylesheet" type="text/css" />
         <div className="wrapper">
-            
-            <header className="forms">
-                <div className="logo">
-                    <p>Tutor<span>Finder</span>.</p>
-                </div>
-            </header>
-
             <div className="container">
                 <div className="form-box">
                     <div>
@@ -59,14 +58,18 @@ export const Login = (props) => {
                         <div className="input-group">
                             <input value={pass} type="password" placeholder="***********" id="password" name="password" onChange={(e) => setPass(e.target.value)}/>
                         </div>
-                        <div className="buttons">
-                            <div className="btn">
+                        <div className="buttons-register">
+                            <div className="btn-register">
                                 <button disabled={loading} type="submit">Log In</button>
                             </div>
 
                         </div>
-                        <div>
-                            <span>New user? <a onClick={handleSwitch} className="link" href="">Sign up as Student</a> or <a className="link" href="">Sign up as Tutor</a></span>
+                        <div className="bottom-links">
+                            <span>New user?</span> 
+                            <div className="q-links">
+                                <a onClick={handleSwitch} className="link" href="">Sign up as Student</a> 
+                                <a className="link" href="">Sign up as Tutor</a>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -74,6 +77,6 @@ export const Login = (props) => {
 
             </div>
         </div>
-
+        </div>
     )
 }

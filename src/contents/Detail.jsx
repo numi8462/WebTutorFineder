@@ -38,11 +38,6 @@ export const Detail = (props) => {
 
     return (
         <div className="wrapper">
-        <header className="forms">
-            <div className="logo">
-                <p>Tutor<span>Finder</span>.</p>
-            </div>
-        </header>
         <div className="container">
             <div className="form-box">
                 <div>
@@ -82,8 +77,8 @@ export const Detail = (props) => {
                             <input type="text" name="gender" onChange={handleChange} placeholder="Gender" />
                         </div>
 
-                        <div className="buttons">
-                            <div className="btn">
+                        <div className="buttons-register">
+                            <div className="btn-register">
                                 <button  disabled={loading} type="submit">Register</button>
 
                             </div>
