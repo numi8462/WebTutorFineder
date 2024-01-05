@@ -7,6 +7,7 @@ const StudentModel = require('./src/models/studentModel');
 const TutorModel = require('./src/models/tutorModel')
 const CourseModel = require('./src/models/courseModel')
 const SessionModel = require('./src/models/sessionModel')
+import firebase from 'firebase/compat/auth';
 
 app.use(cors());
 app.use(express.json());
@@ -253,3 +254,49 @@ app.delete('/deleteSession/:id', async (req, res) => {
 //     })
 //     .catch(err => res.json(err));
 // });
+
+
+//Functions for creating the courses
+
+// Function to get the tutorID from the authenticated user
+const getTutorIDFromAuthenticatedUser = () => {
+  // Get the current authenticated user
+  const currentUser = firebase.auth().currentUser;
+
+  if (currentUser) {
+    const tutorID = currentUser.uid;
+
+    return tutorID;
+  } else {
+    console.error('No authenticated user found.');
+    return null;
+  }
+};
+
+export default getTutorIDFromAuthenticatedUser;
+
+ //Route to handle creating new course. "status" automatically set as "In progress"
+app.post('/postCourse', async (req, res) => {
+  try {
+    const { subject, name, description, hours, cost } = req.body;
+
+    const tutorID = getTutorIDFromAuthenticatedUser(); 
+    // Create a new Course document with tutorID and default status
+    const newCourse = new CourseModel({
+      subject,
+      name,
+      description,
+      hours,
+      cost,
+      tutorID,
+      status: 'In progress', // Set the default status
+    });
+    // Save the new course to the database
+    const savedCourse = await newCourse.save();
+    // Respond with the created course
+    res.status(201).json(savedCourse);
+  } catch (error) {
+    console.error('Error creating course:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});

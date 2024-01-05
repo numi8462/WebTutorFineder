@@ -14,6 +14,7 @@ import { StuDashboard } from './contents/student/StuDashboard';
 import { TutDashboard } from './contents/tutor/TutDashboard';
 import { ForgotPassword } from './contents/ForgotPassword';
 import UpdateProfile from './contents/UpdateProfile';
+import CreateCourse from './contents/tutor/createCourses'
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -38,6 +39,7 @@ function App() {
           <Route path='/tutorDashboard' element={<TutDashboard/>}/>
           <Route path='/forgotPassword' element={<ForgotPassword/>}/>
           <Route path="/updateProfile" element={<UpdateProfile/>}/>
+          <Route path='/createCourse' element={<CreateCourse/>}/>
         </Routes>
       </div>
       </AuthProvider>
