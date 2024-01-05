@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import './profile.css';  
 
@@ -12,7 +12,7 @@ const UpdateProfile = () => {
     phoneNumber: '',
   });
 
-  const history = useHistory();  // Used for redirection after updating
+  const navigate = useNavigate();
 
   const { uid } = useParams();  
 
@@ -28,7 +28,7 @@ const UpdateProfile = () => {
       .then(() => {
         alert('Profile updated successfully!');
         // Redirect to the user's profile page after successful update
-        history.push(`/profile/${uid}`);
+        navigate(`/profile/${uid}`);
       })
       .catch((error) => {
         console.error('Error updating profile:', error);

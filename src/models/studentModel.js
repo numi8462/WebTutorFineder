@@ -12,8 +12,9 @@ const StudentSchema = new Schema({
     subjectOfInterest: Array,
     credit: Number,
     gender: String,
-    user: String
-});
+    user: String,
+    bookmark: Array
+}, { collection: 'students' });
 
 const StudentModel = mongoose.model('students', StudentSchema);
 

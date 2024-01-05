@@ -58,8 +58,8 @@ export const Login = (props) => {
                         <div className="input-group">
                             <input value={pass} type="password" placeholder="***********" id="password" name="password" onChange={(e) => setPass(e.target.value)}/>
                         </div>
-                        <div className="buttons-register">
-                            <div className="btn-register">
+                        <div className="buttons">
+                            <div className="btn">
                                 <button disabled={loading} type="submit">Log In</button>
                             </div>
 

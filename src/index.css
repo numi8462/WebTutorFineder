@@ -9,7 +9,6 @@ background-color: #F4F9F4;
     outline: none;
     border: none;
     text-decoration: none;
-    /* text-transform: capitalize; */
     transition: 2.s linear;
 }
 html {
@@ -19,7 +18,6 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
     overflow-x: hidden;
-    /* text-transform: capitalize; */
     padding: 0;
     margin: 0;
 } 
