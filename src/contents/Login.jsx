@@ -69,8 +69,8 @@ export const Login = (props) => {
                         <div className="bottom-links">
                             <span>New user?</span> 
                             <div className="q-links">
-                                <a onClick={handleSwitch} className="link" href="">Sign up as Student</a> 
-                                <a onClick={handleSwitch} className="link" href="">Sign up as Tutor</a>
+                                <a onClick={handleSwitch} className="link" href="/register">Sign up as Student</a> 
+                                <a onClick={handleSwitch} className="link" href="/registerTutor">Sign up as Tutor</a>
                             </div>
                         </div>
                     </form>

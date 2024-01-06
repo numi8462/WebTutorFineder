@@ -155,10 +155,6 @@ header nav a {
     background: #F4F9F4;
     color: #3e6a67;
 }
-.link {
-    color: #3E6A67;
-    position: relative;
-}
 .enter-info .reset {
   width: 210px;
   display: flex;
@@ -169,8 +165,10 @@ header nav a {
   margin-top: -5px;
 }
 .link {
-    font-size: 12px;
-    margin-left: .2rem;
+  color: #3E6A67;
+  position: relative;
+  font-size: 16px;
+  margin-left: .2rem;
 }
 .link::after {
     position: absolute;
