@@ -1,8 +1,8 @@
 import React , { useState } from "react";
 import { Alert, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from '../../authentication/AuthContext';
-import '../../index.css'
+import { AuthProvider, useAuth } from '../authentication/AuthContext';
+import '../index.css'
 import axios from 'axios';
 import Select from 'react-select';
 
@@ -26,7 +26,7 @@ export const Register = (props) => {
         subjectOfInterest: [],
         credit: 100,
         gender: '',
-        user: 'student'
+        user: 'Student'
     });
 
     const options = [
@@ -80,7 +80,7 @@ export const Register = (props) => {
             setError("Failed to create account!")
         }
         setLoading(false);
-        navigate('/login');
+        navigate('/studentDashboard');
     };
     
     
@@ -91,6 +91,12 @@ export const Register = (props) => {
 
 
     return (
+        <div>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <title>TutorFinder</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+        <link href="../index.css" rel="stylesheet" type="text/css" />
         <div className="wrapper">
             <div className="container-register">
                 <div className="form-box">
@@ -168,6 +174,6 @@ export const Register = (props) => {
                 
             </div>
         </div>
-
+    </div>
     )
 }

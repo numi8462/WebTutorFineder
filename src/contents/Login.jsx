@@ -43,11 +43,10 @@ export const Login = (props) => {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
         <link href="../index.css" rel="stylesheet" type="text/css" />
         <div className="wrapper">
-            <div className="container">
+            <div className="container-register">
                 <div className="form-box">
                     <div>
                         <h2>Login</h2>
-
                     </div>
                     <div className="enter-info">
                     {error && <Alert variant="danger" style={{ border: 'none', backgroundColor: 'transparent', color: 'red', fontWeight:'', fontSize:'1.5rem' }}>{error}</Alert>}
@@ -58,8 +57,8 @@ export const Login = (props) => {
                         <div className="input-group">
                             <input value={pass} type="password" placeholder="***********" id="password" name="password" onChange={(e) => setPass(e.target.value)}/>
                         </div>
-                        <div className="buttons">
-                            <div className="btn">
+                        <div className="buttons-register">
+                            <div className="btn-register">
                                 <button disabled={loading} type="submit">Log In</button>
                             </div>
 
@@ -68,7 +67,7 @@ export const Login = (props) => {
                             <span>New user?</span> 
                             <div className="q-links">
                                 <a onClick={handleSwitch} className="link" href="">Sign up as Student</a> 
-                                <a className="link" href="">Sign up as Tutor</a>
+                                <a nClick={handleSwitch} className="link" href="">Sign up as Tutor</a>
                             </div>
                         </div>
                     </form>

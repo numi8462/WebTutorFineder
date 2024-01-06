@@ -38,7 +38,7 @@ export const Detail = (props) => {
 
     return (
         <div className="wrapper">
-        <div className="container">
+        <div className="container-register">
             <div className="form-box">
                 <div>
                     <h2>Register</h2>

@@ -1,17 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Jost:wght@300&display=swap');
 :root {
 /*background-color: #F4F9F4;*/
-}
-* {
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style-type: none;
-    text-decoration: none;
-    text-transform: capitalize;
-    transition: 2.s linear;
-    font-family: 'Jost', sans-serif;
-    scroll-behavior: smooth;
+background-color: #222;
 }
 html {
     color: #3E6A67;
@@ -136,7 +126,7 @@ header label span {
 main {
     margin-top: 45px;
     padding: 2rem 3rem;
-   /* background: #f1f5f9;*/
+    background: #f1f5f9;
     min-height: calc(100vh - 90px);
 }
 .cards {
