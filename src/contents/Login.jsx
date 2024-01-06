@@ -57,6 +57,9 @@ export const Login = (props) => {
                         <div className="input-group">
                             <input value={pass} type="password" placeholder="***********" id="password" name="password" onChange={(e) => setPass(e.target.value)}/>
                         </div>
+                        <div className="reset">
+                            <a classNamehref="link" href="/forgotpassword"> Forgot password</a>
+                        </div>
                         <div className="buttons-register">
                             <div className="btn-register">
                                 <button disabled={loading} type="submit">Log In</button>
@@ -67,7 +70,7 @@ export const Login = (props) => {
                             <span>New user?</span> 
                             <div className="q-links">
                                 <a onClick={handleSwitch} className="link" href="">Sign up as Student</a> 
-                                <a nClick={handleSwitch} className="link" href="">Sign up as Tutor</a>
+                                <a onClick={handleSwitch} className="link" href="">Sign up as Tutor</a>
                             </div>
                         </div>
                     </form>

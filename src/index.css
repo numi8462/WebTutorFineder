@@ -119,6 +119,12 @@ header nav a {
   justify-content: center;
   flex-direction: column;
 }
+.form-box  .login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .form-box .enter-info input, select {
     padding: .5rem;
     border-radius: 10px;
@@ -153,15 +159,18 @@ header nav a {
     color: #3E6A67;
     position: relative;
 }
-.enter-info .link {
+.enter-info .reset {
+  width: 210px;
+  display: flex;
+  justify-content: start;
+}
+.enter-info a {
+  font-size: 12px;
+  margin-top: -5px;
+}
+.link {
     font-size: 12px;
     margin-left: .2rem;
-}
-.form-box  .login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 .link::after {
     position: absolute;
