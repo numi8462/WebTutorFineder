@@ -145,7 +145,7 @@ export const RegisterTut = (props) => {
                     
                     <div className="register-bottom">
                         <span> Already have account?</span>
-                        <a className="link" onClick={handleSwitch}>Login here.</a>
+                        <a className="link" onClick={handleSwitch}>Login here</a>
                     </div>
                     
                 </div>

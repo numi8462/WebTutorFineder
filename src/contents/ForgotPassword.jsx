@@ -60,8 +60,10 @@ export const ForgotPassword = (props) => {
                             </div>
 
                         </div>
-                        <div>
-                            <span><a onClick={handleSwitch} className="link" href="">Go back to Login</a></span>
+                        <div className="bottom-links">
+                            <span className="q-links">
+                                <a onClick={handleSwitch} className="link" href="">Go back to Login</a>
+                            </span>
                         </div>
                     </form>
                 </div>
