@@ -38,13 +38,6 @@ export const ForgotPassword = (props) => {
 
     return (
         <div className="wrapper">
-            
-            <header className="forms">
-                <div className="logo">
-                    <p>Tutor<span>Finder</span>.</p>
-                </div>
-            </header>
-
             <div className="container">
                 <div className="form-box">
                     <div>
@@ -61,8 +54,8 @@ export const ForgotPassword = (props) => {
                         <div className="input-group">
                             <input ame="email" id="email" type="email" placeholder="youremail@gmail.com" ref={emailRef}/>
                         </div>
-                        <div className="buttons">
-                            <div className="btn">
+                        <div className="buttons-register">
+                            <div className="btn-register">
                                 <button disabled={loading} type="submit">Send Verification</button>
                             </div>
 
