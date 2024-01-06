@@ -125,21 +125,8 @@ export const Register = (props) => {
                                 </select>
                             </div>
 
-                            <Select
-                            isMulti
-                            name="subjectOfInterest"
-                            options={options}
-                            className="basic-multi-select"
-                            classNamePrefix="select"
-                            onChange={selectedOptions => {
-                                // Update state
-                                setStudent(prevState => ({
-                                ...prevState,
-                                subjectOfInterest: selectedOptions.map(option => option.value),
-                                }));
-                            }}
-                            />
-
+                            
+                            
                             <div className='input-group'>
                                 <select name="gender" onChange={handleChange}>
                                     <option value="">Gender</option>
