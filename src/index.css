@@ -125,6 +125,7 @@ header nav a {
     width: 220px;
     background: #F4F9F4;
     color: #3e6a67;
+    border: none;
 }
 .form-box .enter-info .css-13cymwt-control {
     border-radius: 10px;
@@ -189,6 +190,7 @@ header nav a {
     background: none;
     color: #F4F9F4;
     font-size: 16px;
+    border: none;
 }
 .btn-register:hover {
     background: #3E6A67;

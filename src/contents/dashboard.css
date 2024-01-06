@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Jost:wght@300&display=swap');
 :root {
-/*background-color: #F4F9F4;*/
-background-color: #222;
+background-color: #F4F9F4;
 }
 html {
     color: #3E6A67;
@@ -126,7 +125,6 @@ header label span {
 main {
     margin-top: 45px;
     padding: 2rem 3rem;
-    background: #f1f5f9;
     min-height: calc(100vh - 90px);
 }
 .cards {
