@@ -50,7 +50,7 @@ export const Profile = (props) => {
                 <div className="sidebar-menu">
                     <ul>
                         <li>
-                            <a className="active"><span className="fa-solid fa-list-check"></span>
+                            <a><span className="fa-solid fa-list-check"></span>
                             <span>My Courses</span></a>
                         </li>
                         <li>
@@ -62,7 +62,7 @@ export const Profile = (props) => {
                             <span>Saved</span></a>
                         </li>
                         <li>
-                            <a href=""><span className="fa-solid fa-user"></span>
+                            <a className="active" href=""><span className="fa-solid fa-user"></span>
                             <span>My Account</span></a>
                         </li>
                     </ul>
@@ -78,7 +78,7 @@ export const Profile = (props) => {
                     <label htmlFor="nav-toggle">
                         <span className="fa-solid fa-bars"></span>
                     </label>
-                    My courses
+                    My account
                     </h1>
                 </div>
                 <div className="user-wrapper">
