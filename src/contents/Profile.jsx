@@ -35,27 +35,62 @@ export const Profile = (props) => {
 }, [uid]);
 
   return (
-    
-    <div className="wrapper">
-      {/* header section starts */}
-      <header>
-        <div className="logo">
-          <p>
-            Tutor<span>Finder</span>.
-          </p>
-        </div>
-        <div className="navbar">
-          <nav>
-            <a href="#home">Home</a>
-            <a href="#sign-up">Sign up</a>
-            <a href="#log-in">Log in</a>
-          </nav>
-        </div>
-      </header>
-      {/* header section ends */}
+    <div>
+            <meta charSet="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+            <title>TutorFinder</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+            <link href="dashboard.css" rel="stylesheet" type="text/css" />
+            <input type="checkbox" id="nav-toggle"/>
+            <div className="sidebar">
+                <div className="sidebar-brand">
+                    <p>Tutor<span>Finder</span>.</p>
+                </div>
 
-      {/* main section starts */}
-      <div className="div-8">
+                <div className="sidebar-menu">
+                    <ul>
+                        <li>
+                            <a className="active"><span className="fa-solid fa-list-check"></span>
+                            <span>My Courses</span></a>
+                        </li>
+                        <li>
+                            <a onClick={() => navigate('/findcourses')}><span className="fa-solid fa-magnifying-glass"></span>
+                            <span>Search courses</span></a>
+                        </li>
+                        <li>
+                            <a href=""><span className="fa-solid fa-heart"></span>
+                            <span>Saved</span></a>
+                        </li>
+                        <li>
+                            <a href=""><span className="fa-solid fa-user"></span>
+                            <span>My Account</span></a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        <div className="main-content">
+            <header>
+                <div className="header-title">
+                    <h1>
+                    <label htmlFor="nav-toggle">
+                        <span className="fa-solid fa-bars"></span>
+                    </label>
+                    My courses
+                    </h1>
+                </div>
+                <div className="user-wrapper">
+                    <div>
+                        <h4>{student.name}</h4>
+                        <small>Student</small>
+                    </div>
+                </div>
+            </header>
+        
+            <main>
+            <div className="div-8">
         <div className="div-9">
           <div className="column">
             <div className="div-10">Edit profile picture</div>
@@ -99,18 +134,10 @@ export const Profile = (props) => {
         <div className="div-37">Credit</div>
         <div className="div-38">{student.credit}$</div>
       </div>
-      {/* main section ends */}
 
-      {/* footer section starts */}
-      <section className="footer">
-        <div className="footer-content">
-          <Link to="#" >My profile</Link>
-          <Link to="#" >Home</Link>
-          <Link to="#" >About us</Link>
-          <Link to="#" >Private policy</Link>
+
+            </main>
         </div>
-      </section>
-      {/* footer section ends */}
     </div>
   );
 };

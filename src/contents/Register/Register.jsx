@@ -124,9 +124,6 @@ export const Register = (props) => {
                                     <option value="doctorate">Doctorate</option>
                                 </select>
                             </div>
-
-                            
-                            
                             <div className='input-group'>
                                 <select name="gender" onChange={handleChange}>
                                     <option value="">Gender</option>
