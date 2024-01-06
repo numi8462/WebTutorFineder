@@ -8,6 +8,8 @@ import '../index.css';
 
 export const Profile = (props) => {
   const [student, setStudent] = useState({});
+  const [tutor, setTutor] = useState({});
+
   // const { uid } = useParams();
   const [uid, setUid] = useState('')
 
@@ -18,9 +20,14 @@ export const Profile = (props) => {
   });
 
  useEffect(() => {
-  axios.get(`http://localhost:3001/profile/${uid}`)
+  axios.get(`http://localhost:3001/getUser/${uid}`)
     .then((response) => {
-      setStudent(response.data);
+      if(response.data.role == "student"){
+        setStudent(response.data);
+      } else {
+        setTutor(response.data);
+      }
+
     })
     .catch((error) => {
       console.error("Error fetching profile data:", error);
