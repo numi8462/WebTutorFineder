@@ -99,7 +99,7 @@ export const StuDashboard = (props) => {
                             <span>Saved</span></a>
                         </li>
                         <li>
-                            <a href=""><span className="fa-solid fa-user"></span>
+                            <a onClick={() => navigate('/profile')}><span className="fa-solid fa-user"></span>
                             <span>My Account</span></a>
                         </li>
                     </ul>

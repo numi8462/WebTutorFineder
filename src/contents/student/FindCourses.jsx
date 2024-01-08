@@ -63,7 +63,7 @@ export const FindCourses = (props) => {
                   <span>Saved</span></a>
               </li>
               <li>
-                <a href=""><span className="fa-solid fa-user" />
+                <a onClick={() => navigate('/profile')}><span className="fa-solid fa-user" />
                   <span>My Account</span></a>
               </li>
             </ul>

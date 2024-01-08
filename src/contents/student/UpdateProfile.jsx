@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-import '../index.css';  
+import '../../index.css';  
 
 const UpdateProfile = () => {
   const [formData, setFormData] = useState({
@@ -106,15 +106,7 @@ const UpdateProfile = () => {
 
         <button type="submit">Update</button>
       </form>
-      {/* Footer content */}
-      <section className="footer">
-        <div className="footer-content">
-          <Link to="#" >My profile</Link>
-          <Link to="#" >Home</Link>
-          <Link to="#" >About us</Link>
-          <Link to="#" >Private policy</Link>
-        </div>
-      </section>
+
     </div>
   );
 };

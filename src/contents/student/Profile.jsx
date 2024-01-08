@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { useAuth } from '../authentication/AuthContext';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../authentication/AuthContext';
 import firebase from "firebase/compat/app";
 import axios from 'axios';
-import '../index.css';
+import '../../index.css';
 
 
 export const Profile = (props) => {
   const [student, setStudent] = useState({});
   const [tutor, setTutor] = useState({});
-
+  const navigate = useNavigate();
   // const { uid } = useParams();
   const [uid, setUid] = useState('')
 
@@ -20,13 +20,9 @@ export const Profile = (props) => {
   });
 
  useEffect(() => {
-  axios.get(`http://localhost:3001/getUser/${uid}`)
+  axios.get(`http://localhost:3001/profile/${uid}`)
     .then((response) => {
-      if(response.data.role == "student"){
-        setStudent(response.data);
-      } else {
-        setTutor(response.data);
-      }
+      setStudent(response.data);
 
     })
     .catch((error) => {
@@ -78,7 +74,7 @@ export const Profile = (props) => {
                 <div className="div-24">Male</div>
                 <div className="div-25">Day of birth</div>
                 <div className="div-26">{student.birthdate}</div>
-                <div className="div-27">Update your info</div>
+                <div className="div-27" onClick={() => navigate('/updateProfile')}>Update your info</div>
               </div>
             </div>
           </div>
@@ -101,16 +97,6 @@ export const Profile = (props) => {
       </div>
       {/* main section ends */}
 
-      {/* footer section starts */}
-      <section className="footer">
-        <div className="footer-content">
-          <Link to="#" >My profile</Link>
-          <Link to="#" >Home</Link>
-          <Link to="#" >About us</Link>
-          <Link to="#" >Private policy</Link>
-        </div>
-      </section>
-      {/* footer section ends */}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
-import '../index.css'
+import '../../index.css'
 
 export const Detail = (props) => {
     const [student, setStudent] = useState({

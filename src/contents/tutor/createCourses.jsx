@@ -85,7 +85,7 @@ import '../../contents/dashboard.css';
                 <div className="sidebar-menu">
                     <ul>
                         <li>
-                            <a className="active"><span className="fa-solid fa-list-check"></span>
+                            <a className="active" onClick={() => navigate('/tutorDashboard')}><span className="fa-solid fa-list-check"></span>
                             <span>My Courses</span></a>
                         </li>
                         <li>

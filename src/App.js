@@ -3,17 +3,19 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 import { Login } from "./contents/Login"
-import { Register } from "./contents/Register/Register"
+import { Register, } from "./contents/Register/Register"
 import { RegisterTut } from "./contents/Register/RegisterTut"
-import { Profile } from './contents/Profile';
-import { Detail } from './contents/Detail';
+import { Profile } from './contents/student/Profile';
+import { Detail } from './contents/Register/Detail';
 import { AuthProvider, useAuth } from './authentication/AuthContext'
 import { FindCourses } from './contents/student/FindCourses'
 import { Course } from './contents/Course'
 import { StuDashboard } from './contents/student/StuDashboard';
 import { TutDashboard } from './contents/tutor/TutDashboard';
 import { ForgotPassword } from './contents/ForgotPassword';
-import UpdateProfile from './contents/UpdateProfile';
+import { tutProfile } from './contents/tutor/tutProfile'
+import { tutUpdateProfile } from './contents/tutor/tutUpdateProfile'
+import UpdateProfile from './contents/student/UpdateProfile';
 import CreateCourse from './contents/tutor/createCourses'
 // import Homepage from './homepage-frontend/homepage'
 
