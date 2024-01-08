@@ -96,7 +96,7 @@ app.get('/getTutors', async (req, res) => {
 
 app.get('/getTutors/:uid', async (req, res) => {
   const uid = req.params.uid;
-  console.log(`Fetching tutor uid: ${uid}`)
+  // console.log(`Fetching tutor uid: ${uid}`)
   TutorModel.findOne({uid: uid})
     .then(tutors => {
       res.json(tutors);
@@ -125,7 +125,7 @@ app.get('/getCourses', async (req, res) => {
 
 app.get('/getCourse/:cid', async (req, res) => {
   const cid = req.params.cid;
-  console.log(`Fetching course with cid: ${cid}`)
+  // console.log(`Fetching course with cid: ${cid}`)
   CourseModel.findOne({cid: cid})
     .then(courses => {
       res.json(courses);
@@ -135,7 +135,7 @@ app.get('/getCourse/:cid', async (req, res) => {
 
 app.get('/getCourses/:uid', async (req, res) => {
   const uid = req.params.uid;
-  console.log(`Fetching courses with tutor uid: ${uid}`)
+  // console.log(`Fetching courses with tutor uid: ${uid}`)
   CourseModel.find({tutorID: uid})
     .then(courses => {
       res.json(courses);
