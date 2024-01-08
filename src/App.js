@@ -38,6 +38,7 @@ function App() {
           <Route path='/tutorDashboard' element={<TutDashboard/>}/>
           <Route path='/forgotPassword' element={<ForgotPassword/>}/>
           <Route path="/updateProfile" element={<UpdateProfile/>}/>
+          <Route path='/createCourse' element={<CreateCourse/>}/>
         </Routes>
       </div>
       </AuthProvider>
