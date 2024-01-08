@@ -536,3 +536,38 @@ tr td:last-child {
 .read-btn:hover {
     background: #3E6A67;
 }
+
+
+/*Styling for the form of the createCourse.jsx*/
+
+/* Add some basic styling to the form */
+#createcourse-form {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+#createcourse-input,
+#createcourse-textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+  }
+
+  #createcourse-button {
+    background-color: #74B49B;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #createcourse-button:hover {
+    background-color: #5C8D89;
+  }

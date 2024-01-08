@@ -101,10 +101,6 @@ export const TutDashboard = (props) => {
     }
   }
 
-
-
-
-
   return (
     <>
       <div>
@@ -128,6 +124,10 @@ export const TutDashboard = (props) => {
                         <li>
                             <a onClick={() => navigate('/profile')}><span className="fa-solid fa-magnifying-glass"></span>
                             <span>Profile</span></a>
+                        </li>
+                        <li>
+                            <a onClick={() => navigate('/createCourse')}><span className="fa-solid fa-plus"></span>
+                            <span>Create A New Course</span></a>
                         </li>
                     </ul>
 
