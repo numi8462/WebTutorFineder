@@ -89,11 +89,11 @@ export const Profile = (props) => {
                 </div>
             </header>
         
-            <main>
-            <div className="div-8">
-        <div className="div-9">
+            <main className='main'>
+            
+          <div className="div-9">
           <div className="column">
-            <div className="div-10">Edit profile picture</div>
+          <div className="div-10">Edit profile picture</div>
           </div>
           <div className="column-2">
             <div className="div-11">
@@ -113,12 +113,12 @@ export const Profile = (props) => {
                 <div className="div-24">Male</div>
                 <div className="div-25">Day of birth</div>
                 <div className="div-26">{student.birthdate}</div>
-                <div className="div-27">Update your info</div>
+                <button className="btn">Update your info</button>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      
       <div className="div-28">
         <div className="div-29">
           <div className="div-30">
@@ -134,7 +134,6 @@ export const Profile = (props) => {
         <div className="div-37">Credit</div>
         <div className="div-38">{student.credit}$</div>
       </div>
-
 
             </main>
         </div>

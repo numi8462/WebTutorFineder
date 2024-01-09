@@ -221,12 +221,6 @@ header nav a {
   font-size: 16px;
   margin: 0 10px;
 }
-.register {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
 .register-bottom {
   display: flex;
   justify-content: center;
@@ -237,16 +231,30 @@ header nav a {
   font-size: 16px;
   font-weight: 600;
 }
-.div-8 {
+.main {
+  margin-top: 45px;
+  padding: 2rem 3rem;
+  min-height: calc(100vh - 90px);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.main-content {
+  margin-left: 345px;
+  transition: margin-left 300ms;
+}
+/*.div-8 {
     align-self: start;
     width: 1288px;
     max-width: 100%;
-    margin: 135px 0 0 16px; /* Added top margin */
     text-transform: none;
-  }
+  }*/
   .div-9 {
     gap: 20px;
     display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    width: 100%;
   }
   @media (max-width: 991px) {
     .div-9 {
@@ -259,15 +267,16 @@ header nav a {
     display: flex;
     flex-direction: column;
     line-height: normal;
-    width: 16%;
+    /*width: 16%;*/
     margin-left: 0px;
   }
   
   .div-10 {
-    color: #fff;
+    color: #3E6A67;
+    font-weight: 800;
     white-space: nowrap;
     border-radius: 15px;
-    background-color: #a7d7c5;
+    background-color: #A7D7C5;
     justify-content: center;
     width: 100%;
     padding: 88px 26px 92px 19px;
@@ -278,12 +287,12 @@ header nav a {
     display: flex;
     flex-direction: column;
     line-height: normal;
-    width: 84%;
-    margin-left: 20px;
+    width: 100%;
   }
   
   .div-11 {
-    background-color: #fff;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-grow: 1;
     align-items: start;
@@ -375,7 +384,7 @@ header nav a {
     margin-top: 24px;
     font: 500 24px Jost, sans-serif;
   }
-  .div-27 {
+  .btn {
     color: #f4f9f4;
     text-align: center;
     white-space: nowrap;
@@ -386,17 +395,20 @@ header nav a {
     margin-top: 40px;
     padding: 13px;
     font: 500 24px Jost, sans-serif;
+    transition: all .4s ease;
+    border: none;
   }
-  
+  .btn:hover {
+    background: #3E6A67;
+  }
   .div-28 {
-    background-color: rgba(255, 255, 255, 1);
+    /*background-color: rgba(255, 255, 255, 1);*/
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     align-self: start;
     display: flex;
-    width: 1062px;
-    max-width: 100%;
+    width: 100%;
     flex-direction: column;
-    margin: 24px 0 0 242px;
+    margin-top: 4rem;
     padding: 9px 80px 15px 30px;
   }
   
