@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { useAuth } from '../authentication/AuthContext';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../authentication/AuthContext';
 import firebase from "firebase/compat/app";
 import axios from 'axios';
-import '../index.css';
-import { useNavigate } from "react-router-dom";
+import '../../index.css';
 
 export const Profile = (props) => {
   const [student, setStudent] = useState({});
@@ -21,14 +20,9 @@ export const Profile = (props) => {
   });
 
  useEffect(() => {
-  axios.get(`http://localhost:3001/getUser/${uid}`)
+  axios.get(`http://localhost:3001/profile/${uid}`)
     .then((response) => {
-      if(response.data.role == "student"){
-        setStudent(response.data);
-      } else {
-        setTutor(response.data);
-      }
-
+      setStudent(response.data);
     })
     .catch((error) => {
       console.error("Error fetching profile data:", error);
@@ -114,7 +108,7 @@ export const Profile = (props) => {
                 <div className="div-24">Male</div>
                 <div className="div-25">Day of birth</div>
                 <div className="div-26">{student.birthdate}</div>
-                <button className="btn">Update your info</button>
+                <button className="btn" onClick={() => navigate('/updateProfile')}>Update your info</button>
               </div>
             </div>
           </div>
