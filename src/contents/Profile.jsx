@@ -4,11 +4,12 @@ import { useAuth } from '../authentication/AuthContext';
 import firebase from "firebase/compat/app";
 import axios from 'axios';
 import '../index.css';
-
+import { useNavigate } from "react-router-dom";
 
 export const Profile = (props) => {
   const [student, setStudent] = useState({});
   const [tutor, setTutor] = useState({});
+  const navigate = useNavigate();
 
   // const { uid } = useParams();
   const [uid, setUid] = useState('')
@@ -91,22 +92,22 @@ export const Profile = (props) => {
         
             <main className='main'>
             
-          <div className="div-9">
-          <div className="column">
-          <div className="div-10">Edit profile picture</div>
+          <div className="upper">
+          <div className="p-pic-container">
+            <p>Edit profile picture</p>
           </div>
-          <div className="column-2">
-            <div className="div-11">
-              <div className="div-12">
-                <div className="div-13">Your Student Profile</div>
-                <div className="div-14">UID</div>
-                <div className="div-15">{student.uid}</div>
-                <div className="div-16">Name</div>
-                <div className="div-17">{student.name}</div>
-                <div className="div-18">Phone number</div>
-                <div className="div-19">0123456789</div>
+          <div className="change-info">
+            <div className="change-info-inside">
+              <div className="left-info">
+                <div className="head">Your Student Profile</div>
+                <div className="stable">UID</div>
+                <div className="changed">{student.uid}</div>
+                <div className="stable">Name</div>
+                <div className="changed">{student.name}</div>
+                <div className="stable">Phone number</div>
+                <div className="changed">0123456789</div>
               </div>
-              <div className="div-20">
+              <div className="right-info">
                 <div className="div-21">Email</div>
                 <div className="div-22">{student.email}</div>
                 <div className="div-23">Gender</div>
@@ -119,7 +120,7 @@ export const Profile = (props) => {
           </div>
         </div>
       
-      <div className="div-28">
+      <div className="web-info">
         <div className="div-29">
           <div className="div-30">
             <div className="div-31">Your website info</div>

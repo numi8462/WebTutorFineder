@@ -249,7 +249,7 @@ header nav a {
     max-width: 100%;
     text-transform: none;
   }*/
-  .div-9 {
+  .upper {
     gap: 20px;
     display: flex;
     justify-content: center;
@@ -263,34 +263,31 @@ header nav a {
       gap: 0px;
     }
   }
-  .column {
-    display: flex;
-    flex-direction: column;
-    line-height: normal;
-    /*width: 16%;*/
-    margin-left: 0px;
-  }
-  
-  .div-10 {
-    color: #3E6A67;
-    font-weight: 800;
+  .p-pic-container {
     white-space: nowrap;
     border-radius: 15px;
     background-color: #A7D7C5;
     justify-content: center;
-    width: 100%;
-    padding: 88px 26px 92px 19px;
-    font: 400 20px Jost, sans-serif;
+    line-height: normal;
+    /*width: 16%;*/
+    margin-left: 0px;
+    height: 160px;
+
   }
-  
-  .column-2 {
+  .p-pic-container p {
+    color: #3E6A67;
+    font-weight: 800;
+    padding: 4rem 1rem;
+    font-size: 20px;
+  }
+  .change-info {
     display: flex;
     flex-direction: column;
     line-height: normal;
     width: 100%;
   }
   
-  .div-11 {
+  .change-info-inside {
     background: rgba(255, 255, 255, 1);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -302,47 +299,25 @@ header nav a {
     padding: 12px 40px 19px 30px;
   }
   
-  .div-12 {
+  .left-info {
     display: flex;
     flex-direction: column;
   }
-  .div-13 {
+  .head {
     color: #3e6a67;
     font: 600 32px Jost, sans-serif;
   }
-  .div-14 {
+  .stable {
     color: #3e6a67;
     margin-top: 25px;
     font: 500 28px Jost, sans-serif;
   }
-  .div-15 {
+  .changed {
     color: #000;
     margin-top: 25px;
     font: 500 24px Jost, sans-serif;
   }
-  .div-16 {
-    color: #3e6a67;
-    margin-top: 47px;
-    font: 500 28px Jost, sans-serif;
-  }
-  
-  .div-17 {
-    color: #000;
-    margin-top: 17px;
-    font: 500 24px Jost, sans-serif;
-  }
-  .div-18 {
-    color: #3e6a67;
-    margin-top: 42px;
-    font: 500 28px Jost, sans-serif;
-  }
-  
-  .div-19 {
-    color: #000;
-    margin-top: 25px;
-    font: 500 24px Jost, sans-serif;
-  }
-  .div-20 {
+  .right-info {
     align-self: end;
     display: flex;
     margin-top: 49px;
@@ -401,7 +376,7 @@ header nav a {
   .btn:hover {
     background: #3E6A67;
   }
-  .div-28 {
+  .web-info {
     /*background-color: rgba(255, 255, 255, 1);*/
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     align-self: start;
