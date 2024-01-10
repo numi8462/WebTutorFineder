@@ -95,8 +95,8 @@ export const StuDashboard = (props) => {
                             <span>Search courses</span></a>
                         </li>
                         <li>
-                            <a href=""><span className="fa-solid fa-heart"></span>
-                            <span>Saved</span></a>
+                            <a onClick={() => navigate('/matching')}><span className="fa-solid fa-heart"></span>
+                            <span>Match Tutor</span></a>
                         </li>
                         <li>
                             <a onClick={() => navigate('/profile')}><span className="fa-solid fa-user"></span>

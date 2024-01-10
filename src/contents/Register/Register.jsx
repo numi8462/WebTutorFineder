@@ -1,10 +1,11 @@
-import React , { useState } from "react";
+import React , { useState, useEffect } from "react";
 import { Alert, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from '../../authentication/AuthContext';
 import '../../index.css'
 import axios from 'axios';
 import Select from 'react-select';
+import majorData from '../text/majors.txt'
 
 export const Register = (props) => {
     const [email,setEmail] = useState(''); 
@@ -15,7 +16,8 @@ export const Register = (props) => {
     const [loading, setLoading] = useState(false);
     const [id, setId] = useState('')
     const navigate = useNavigate();
-
+    const [options, setOptions] = useState([]);
+    const [majors, setMajors] = useState([]);
     const [student, setStudent] = useState({
         uid: '',
         email: '',
@@ -26,21 +28,25 @@ export const Register = (props) => {
         subjectOfInterest: [],
         credit: 100,
         gender: '',
-        user: 'student'
+        user: 'student',
+        major: '',
     });
 
-    const options = [
-        { value: 'math', label: 'Math' },
-        { value: 'science', label: 'Science' },
-        { value: 'history', label: 'History' },
-        { value: 'art', label: 'Art' },
-        { value: 'music', label: 'Music' },
-        { value: 'it', label: 'IT' },
-        { value: 'design', label: 'Design' },
-      ];
-      
-    const handleChange = (e) => {
-        setStudent({ ...student, [e.target.name]: e.target.value });
+    useEffect(() => {
+        fetch(majorData)
+            .then(response => response.text())
+            .then(data => {
+                const majors = data.split('\n');
+                setMajors(majors); // Set the majors directly
+            });
+    }, []);
+
+    // const handleChange = (e) => {
+    //     setStudent({ ...student, [e.target.name]: e.target.value });
+    // };
+    const handleChange = (selectedOption) => {
+        console.log('Option selected:', selectedOption);
+        setStudent(prevStudent => ({ ...prevStudent, major: selectedOption ? selectedOption.value : '' }));
     };
 
     const handleSubmit = async (e) => {
@@ -125,8 +131,13 @@ export const Register = (props) => {
                                 </select>
                             </div>
 
-                            
-                            
+                            {/* <div className='input-group'>
+                                <select name="major" onChange={handleChange}>
+                                    <option value="">Major</option>
+                                    <option value="it">IT</option>
+                                    <option value="design">Design</option>
+                                </select>
+                            </div> */}
                             <div className='input-group'>
                                 <select name="gender" onChange={handleChange}>
                                     <option value="">Gender</option>
@@ -134,12 +145,23 @@ export const Register = (props) => {
                                     <option value="female">Female</option>
                                 </select>
                             </div>
+                            <div className='input-group'>
+                                <Select
+                                    name="major"
+                                    options={majors.map(item => ({ value: item.toLowerCase().replace(/ /g, '_'), label: item }))}
+                                    onChange={handleChange}
+                                    placeholder="Search your Major"
+                                    isClearable={true}
+                                    isSearchable={true}
+                                />
+                            </div>
                             <div className="buttons-register">
                                 <div className="btn-register">
                                     <button  disabled={loading} type="submit">Register</button>
 
                                 </div>
                             </div>
+
 
                         </form>
                     </div>
