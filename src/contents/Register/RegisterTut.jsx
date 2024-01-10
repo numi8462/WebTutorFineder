@@ -1,10 +1,13 @@
-import React , { useState } from "react";
+import React , { useState, useEffect } from "react";
 import { Alert, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from '../../authentication/AuthContext';
 import '../../index.css'
 import axios from 'axios';
 import Select from 'react-select';
+import majorData from '../text/majors.txt'
+import uni from '../text/world-universities.csv'
+import Papa from 'papaparse';
 
 export const RegisterTut = (props) => {
     const [email,setEmail] = useState(''); 
@@ -14,6 +17,8 @@ export const RegisterTut = (props) => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [id, setId] = useState('')
+    const [majors, setMajors] = useState([]);
+    const [uniList, setUniList] = useState([])
     const navigate = useNavigate();
 
     const [tutor, setTutor] = useState({
@@ -26,21 +31,34 @@ export const RegisterTut = (props) => {
         subjects: [],
         credit: 0,
         gender: '',
-        user: 'tutor'
+        user: 'tutor',
+        uni: '',
     });
 
-    const options = [
-        { value: 'math', label: 'Math' },
-        { value: 'science', label: 'Science' },
-        { value: 'history', label: 'History' },
-        { value: 'art', label: 'Art' },
-        { value: 'music', label: 'Music' },
-        { value: 'it', label: 'IT' },
-        { value: 'design', label: 'Design' },
-      ];
-      
+    useEffect(() => {
+        fetch(majorData)
+            .then(response => response.text())
+            .then(data => {
+                const majors = data.split('\n');
+                setMajors(majors); // Set the majors directly
+            });
+        fetch(uni)
+            .then(response => response.text())
+            .then(data => {
+                const results = Papa.parse(data, { header: false });
+                const universities = results.data.map(row => row[1]);
+                setUniList(universities);
+      });
+    }, []);
+    
     const handleChange = (e) => {
         setTutor({ ...tutor, [e.target.name]: e.target.value });
+    };
+    const handleMajorChange = (selectedOption) => {
+        setTutor(prevTutor => ({ ...prevTutor, major: selectedOption ? selectedOption.value : '' }))
+    };
+    const handleUniChange = (selectedOption) => {
+        setTutor(prevTutor => ({ ...prevTutor, uni: selectedOption ? selectedOption.value : '' }))
     };
 
     const handleSubmit = async (e) => {
@@ -130,6 +148,26 @@ export const RegisterTut = (props) => {
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                 </select>
+                            </div>
+                            <div className='input-group'>
+                                <Select
+                                name="uni"
+                                options={uniList.map(item => ({ value: item ? item.toLowerCase().replace(/ /g, '_') : '', label: item ? item : '' }))}                                
+                                onChange={handleUniChange}
+                                placeholder="Search your University"
+                                isClearable={true}
+                                isSearchable={true}
+                                />
+                            </div>
+                            <div className='input-group'>
+                                <Select
+                                    name="major"
+                                    options={majors.map(item => ({ value: item.toLowerCase().replace(/ /g, '_'), label: item }))}
+                                    onChange={handleMajorChange}
+                                    placeholder="Search your Major"
+                                    isClearable={true}
+                                    isSearchable={true}
+                                />
                             </div>
                             <div className="buttons-register">
                                 <div className="btn-register">

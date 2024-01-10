@@ -9,9 +9,11 @@ const TutorSchema = new Schema({
     name: String,
     birthdate: String,
     qualification: String,
+    uni: String,
     subjects: Array,
     credit: Number,
     gender: String,
+    major: String,
     user: String
 }, { collection: 'tutors' });
 

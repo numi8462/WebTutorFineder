@@ -1,4 +1,5 @@
 import React , { useState, useEffect } from "react";
+import Papa from 'papaparse';
 import { Alert, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from '../../authentication/AuthContext';
@@ -6,6 +7,7 @@ import '../../index.css'
 import axios from 'axios';
 import Select from 'react-select';
 import majorData from '../text/majors.txt'
+import uni from '../text/world-universities.csv'
 
 export const Register = (props) => {
     const [email,setEmail] = useState(''); 
@@ -18,6 +20,7 @@ export const Register = (props) => {
     const navigate = useNavigate();
     const [options, setOptions] = useState([]);
     const [majors, setMajors] = useState([]);
+    const [uniList, setUniList] = useState([])
     const [student, setStudent] = useState({
         uid: '',
         email: '',
@@ -29,6 +32,7 @@ export const Register = (props) => {
         credit: 100,
         gender: '',
         user: 'student',
+        uni: '',
         major: '',
     });
 
@@ -39,15 +43,27 @@ export const Register = (props) => {
                 const majors = data.split('\n');
                 setMajors(majors); // Set the majors directly
             });
+        fetch(uni)
+            .then(response => response.text())
+            .then(data => {
+                const results = Papa.parse(data, { header: false });
+                const universities = results.data.map(row => row[1]);
+                setUniList(universities);
+      });
     }, []);
 
-    // const handleChange = (e) => {
-    //     setStudent({ ...student, [e.target.name]: e.target.value });
-    // };
-    const handleChange = (selectedOption) => {
-        console.log('Option selected:', selectedOption);
+    const handleChange = (e) => {
+        setStudent({ ...student, [e.target.name]: e.target.value });
+    };
+    const handleMajorChange = (selectedOption) => {
+        // console.log('Option selected:', selectedOption);
         setStudent(prevStudent => ({ ...prevStudent, major: selectedOption ? selectedOption.value : '' }));
     };
+
+    const handleUniChange = (selectedOption) => {
+        console.log('University selected:', selectedOption);
+        setStudent(prevStudent => ({ ...prevStudent, uni: selectedOption ? selectedOption.value : '' }));
+      };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -147,9 +163,19 @@ export const Register = (props) => {
                             </div>
                             <div className='input-group'>
                                 <Select
+                                name="uni"
+                                options={uniList.map(item => ({ value: item ? item.toLowerCase().replace(/ /g, '_') : '', label: item ? item : '' }))}                                
+                                onChange={handleUniChange}
+                                placeholder="Search your University"
+                                isClearable={true}
+                                isSearchable={true}
+                                />
+                            </div>
+                            <div className='input-group'>
+                                <Select
                                     name="major"
                                     options={majors.map(item => ({ value: item.toLowerCase().replace(/ /g, '_'), label: item }))}
-                                    onChange={handleChange}
+                                    onChange={handleMajorChange}
                                     placeholder="Search your Major"
                                     isClearable={true}
                                     isSearchable={true}
