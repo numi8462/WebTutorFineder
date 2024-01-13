@@ -101,19 +101,40 @@ export const Profile = (props) => {
               <div className="left-info">
                 <div className="head">Your Student Profile</div>
                 <div className="stable">UID</div>
-                <div className="changed">{student.uid}</div>
+                <div className="input-group">
+                  <input name="email" id="email" placeholder="Enter your email" type="email"/>
+                </div>
                 <div className="stable">Name</div>
-                <div className="changed">{student.name}</div>
+                <div className="input-group">
+                  <input name="email" id="email" placeholder="Enter your email" type="email"/>
+                </div>
                 <div className="stable">Phone number</div>
-                <div className="changed">0123456789</div>
+                <div className="input-group">
+                  <input name="email" id="email" placeholder="Enter your email" type="email"/>
+                </div>
               </div>
               <div className="right-info">
                 <div className="stable">Email</div>
-                <div className="changed">{student.email}</div>
+                <div className="input-group">
+                  <input name="email" id="email" placeholder="Enter your email" type="email"/>
+                </div>
                 <div className="stable">Gender</div>
-                <div className="changed">Male</div>
+                <div>
+                  <input type="radio" id="male" name="circle" value="male" checked />
+                  <label for="huey">Male</label>
+                </div>
+                <div>
+                  <input type="radio" id="female" name="circle" value="female" />
+                  <label for="dewey">Female</label>
+                </div>
+                <div>
+                  <input type="radio" id="other" name="circle" value="other" />
+                  <label for="louie">Other</label>
+                </div>
                 <div className="stable">Day of birth</div>
-                <div className="changed">{student.birthdate}</div>
+                <div className="changed">
+                 <input type="date" name="begin" placeholder="dd-mm-yyyy" defaultValue min="1997-01-01" max="2030-12-31" />
+ </div>
                 <button className="btn">Update your info</button>
               </div>
             </div>

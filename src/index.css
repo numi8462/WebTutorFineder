@@ -310,11 +310,11 @@ header nav a {
   .stable {
     color: #3e6a67;
     margin-top: 25px;
-    font: 500 28px Jost, sans-serif;
+    font: 500 22px Jost, sans-serif;
   }
   .changed {
     color: #000;
-    margin-top: 25px;
+    margin-top: 20px;
     font: 500 24px Jost, sans-serif;
   }
   .right-info {
@@ -333,7 +333,7 @@ header nav a {
     align-self: end;
     margin-top: 40px;
     padding: 13px;
-    font: 500 24px Jost, sans-serif;
+    font: 500 22px Jost, sans-serif;
     transition: all .4s ease;
     border: none;
   }
@@ -369,51 +369,12 @@ header nav a {
     color: #3e6a67;
     font: 600 32px Jost, sans-serif;
   }
-  .div-32 {
-    color: #3e6a67;
-    margin-top: 31px;
-    white-space: nowrap;
-    font: 500 28px Jost, sans-serif;
-  }
-  
-  .div-33 {
-    color: #000;
-    margin-top: 22px;
-    font: 500 24px Jost, sans-serif;
-  }
   .div-34 {
     align-self: end;
     display: flex;
     margin-top: 57px;
     flex-direction: column;
   }
-  
-  .div-35 {
-    color: #3e6a67;
-    white-space: nowrap;
-    font: 500 28px Jost, sans-serif;
-  }
-  
-  .div-36 {
-    color: #000;
-    margin-top: 23px;
-    font: 500 24px Jost, sans-serif;
-  }
-  .div-37 {
-    color: #3e6a67;
-    max-width: 999px;
-    margin: 15px 23px 0 0;
-    font: 500 28px Jost, sans-serif;
-  }
-  
-  .div-38 {
-    color: #000;
-    max-width: 999px;
-    margin: 28px 23px 0 0;
-    font: 500 24px Jost, sans-serif;
-  }
-
-
 .footer-content {
     padding: 1.5rem 9%;
     display:flex;
