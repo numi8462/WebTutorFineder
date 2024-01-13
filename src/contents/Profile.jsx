@@ -93,11 +93,11 @@ export const Profile = (props) => {
             <main className='main'>
             
           <div className="upper">
-          <div className="p-pic-container">
-            <p>Edit profile picture</p>
-          </div>
           <div className="change-info">
             <div className="change-info-inside">
+              <div className="p-pic-container">
+                <p>Edit profile picture</p>
+              </div>
               <div className="left-info">
                 <div className="head">Your Student Profile</div>
                 <div className="stable">UID</div>
@@ -108,12 +108,12 @@ export const Profile = (props) => {
                 <div className="changed">0123456789</div>
               </div>
               <div className="right-info">
-                <div className="div-21">Email</div>
-                <div className="div-22">{student.email}</div>
-                <div className="div-23">Gender</div>
-                <div className="div-24">Male</div>
-                <div className="div-25">Day of birth</div>
-                <div className="div-26">{student.birthdate}</div>
+                <div className="stable">Email</div>
+                <div className="changed">{student.email}</div>
+                <div className="stable">Gender</div>
+                <div className="changed">Male</div>
+                <div className="stable">Day of birth</div>
+                <div className="changed">{student.birthdate}</div>
                 <button className="btn">Update your info</button>
               </div>
             </div>
@@ -124,16 +124,16 @@ export const Profile = (props) => {
         <div className="div-29">
           <div className="div-30">
             <div className="div-31">Your website info</div>
-            <div className="div-32">Education Level</div>
-            <div className="div-33">{student.educationLevel}</div>
+            <div className="stable">Education Level</div>
+            <div className="changed">{student.educationLevel}</div>
           </div>
           <div className="div-34">
-            <div className="div-35">Subject of Interest</div>
-            <div className="div-36">{student.subjectOfInterest}</div>
+            <div className="stable">Subject of Interest</div>
+            <div className="changed">{student.subjectOfInterest}</div>
           </div>
         </div>
-        <div className="div-37">Credit</div>
-        <div className="div-38">{student.credit}$</div>
+        <div className="stable">Credit</div>
+        <div className="changed">{student.credit}$</div>
       </div>
 
             </main>

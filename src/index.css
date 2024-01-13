@@ -270,7 +270,7 @@ header nav a {
     justify-content: center;
     line-height: normal;
     /*width: 16%;*/
-    margin-left: 0px;
+    margin-top: 2.5rem;
     height: 160px;
 
   }
@@ -322,42 +322,6 @@ header nav a {
     display: flex;
     margin-top: 49px;
     flex-direction: column;
-  }
-  
-  .div-21 {
-    color: #3e6a67;
-    align-self: stretch;
-    font: 500 28px Jost, sans-serif;
-  }
-  .div-22 {
-    color: #000;
-    align-self: stretch;
-    margin-top: 24px;
-    font: 500 24px Jost, sans-serif;
-  }
-  .div-23 {
-    color: #3e6a67;
-    align-self: stretch;
-    margin-top: 33px;
-    font: 500 28px Jost, sans-serif;
-  }
-  .div-24 {
-    color: #000;
-    align-self: stretch;
-    margin-top: 29px;
-    font: 500 24px Jost, sans-serif;
-  }
-  .div-25 {
-    color: #3e6a67;
-    align-self: stretch;
-    margin-top: 37px;
-    font: 500 28px Jost, sans-serif;
-  }
-  .div-26 {
-    color: #000;
-    align-self: stretch;
-    margin-top: 24px;
-    font: 500 24px Jost, sans-serif;
   }
   .btn {
     color: #f4f9f4;
