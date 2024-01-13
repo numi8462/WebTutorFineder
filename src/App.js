@@ -14,6 +14,11 @@ import { StuDashboard } from './contents/student/StuDashboard';
 import { TutDashboard } from './contents/tutor/TutDashboard';
 import { ForgotPassword } from './contents/ForgotPassword';
 import UpdateProfile from './contents/UpdateProfile';
+import { tutProfile } from './contents/tutor/tutProfile'
+import { tutUpdateProfile } from './contents/tutor/tutUpdateProfile'
+import UpdateProfile from './contents/student/UpdateProfile';
+import CreateCourse from './contents/tutor/createCourses'
+import Homepage from './homepage-frontend/homepage'
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -39,6 +44,7 @@ function App() {
           <Route path='/forgotPassword' element={<ForgotPassword/>}/>
           <Route path="/updateProfile" element={<UpdateProfile/>}/>
           <Route path='/createCourse' element={<CreateCourse/>}/>
+          <Route path='/homepage' element={<Homepage/>}/>
         </Routes>
       </div>
       </AuthProvider>
