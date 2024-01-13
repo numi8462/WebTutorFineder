@@ -254,6 +254,7 @@ app.delete('/deleteSession/:id', async (req, res) => {
 //     })
 //     .catch(err => res.json(err));
 // });
+// });
 
 
 //Functions for creating the courses
@@ -300,3 +301,30 @@ app.delete('/deleteSession/:id', async (req, res) => {
 //     res.status(500).json({ error: 'Internal Server Error' });
 //   }
 // });
+
+
+//Route for course searching and filtering
+router.get('/getFilteredCourses', async (req, res) => {
+  const { search, sort } = req.query;
+
+  try {
+    let filteredCourses = await CourseModel.find();
+
+    // Filter courses based on the search term (Search by name)
+    if (search) {
+      filteredCourses = filteredCourses.filter(course => course.name.toLowerCase().includes(search.toLowerCase()));
+    }
+
+    // Sort courses based on the sort option
+    if (sort === 'costHighToLow') {
+      filteredCourses.sort((a, b) => b.cost - a.cost);
+    } else if (sort === 'hoursHighToLow') {
+      filteredCourses.sort((a, b) => b.hours - a.hours);
+    }
+
+    res.json(filteredCourses);
+  } catch (error) {
+    console.error('Error fetching filtered courses:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});

@@ -11,6 +11,9 @@ export const FindCourses = (props) => {
     const [student, setStudent] = useState({});
     const { currentUser } = useAuth()
     const navigate = useNavigate();
+    const [sortOption, setSortOption] = useState(''); // Empty string = Default
+    const [searchTerm, setSearchTerm] = useState('');
+  
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -19,22 +22,38 @@ export const FindCourses = (props) => {
     });
     
     useEffect(() => {
-      axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
-      .then((response) => {
-          setStudent(response.data);
-          console.log(response.data.name);
-      })
-      .catch((error) => {
-          console.error("Error fetching profile data:", error);
-      });
+      // axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
+      // .then((response) => {
+      //     setStudent(response.data);
+      //     console.log(response.data.name);
+      // })
+      // .catch((error) => {
+      //     console.error("Error fetching profile data:", error);
+      // });
+      // axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
+      // .then((response) => {
+      //     setStudent(response.data);
+      //     console.log(response.data.name);
+      // })
+      // .catch((error) => {
+      //     console.error("Error fetching profile data:", error);
+      // });
 
-      axios.get(`http://localhost:3001/getCourses`)
-        .then(response => {
-          console.log(response.data); // Log the response data
-          setCourses(response.data);
-        }).catch(err => console.log(err));
-    }, []); // Dependency array
-    
+
+      // axios.get(`http://localhost:3001/getCourses`)
+      //   .then(response => {
+      //     console.log(response.data); // Log the response data
+      //     setCourses(response.data);
+      //   }).catch(err => console.log(err));
+
+      axios.get(`http://localhost:3001/getFilteredCourses?search=${searchTerm}&sort=${sortOption}`)
+      .then(response => {
+        console.log(response.data); // Log the response data
+        setCourses(response.data);
+      })
+      .catch(err => console.log(err));
+  }, [currentUser.uid, sortOption, searchTerm]);
+      
 
     return (
         <div>
@@ -81,7 +100,7 @@ export const FindCourses = (props) => {
             </div>
             <div className="user-wrapper">
               <div>
-                <h4>{student.name}</h4>
+                <h4>{student.name}</h4> 
                 <small>Student</small>
               </div>
             </div>
@@ -92,7 +111,12 @@ export const FindCourses = (props) => {
               <div className="search">
                 <div className="search-wrapper">
                   <div className="search-wrapper-content">
-                    <input type="search" placeholder="Search here" />
+                  <input
+                    type="search"
+                    placeholder="Search here"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
                   </div>
                 </div>
               </div>
@@ -101,15 +125,19 @@ export const FindCourses = (props) => {
                   <ul>
                     <div className="category-title" id="all">
                       <li>All</li>
-                      <span><i className="fas fa-border-all" /></span>
+                      <span onClick={() => setSortOption('')}><i className="fas fa-border-all" /></span>
                     </div>
                     <div className="category-title" id="location">
                       <li>Location</li>
                       <span><i className="fa-solid fa-location-dot" /></span>
                     </div>
                     <div className="category-title" id="price">
-                      <li>Price</li>
-                      <span><i className="fas fa-coins" /></span>
+                      <li>Price(High to Low)</li>
+                      <span onClick={() => setSortOption('costHighToLow')}><i className="fas fa-coins" /></span>
+                    </div>
+                    <div className="category-title" id="hours">
+                      <li>Hours(High to Low)</li>
+                      <span onClick={() => setSortOption('hoursHighToLow')}><i className="fas fa-hourglass" /></span>
                     </div>
                     <div className="category-title" id="university">
                       <li>University</li>
