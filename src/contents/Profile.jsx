@@ -121,20 +121,20 @@ export const Profile = (props) => {
                 <div className="stable">Gender</div>
                 <div>
                   <input type="radio" id="male" name="circle" value="male" checked />
-                  <label for="huey">Male</label>
+                  <label for="male">Male</label>
                 </div>
                 <div>
                   <input type="radio" id="female" name="circle" value="female" />
-                  <label for="dewey">Female</label>
+                  <label for="female">Female</label>
                 </div>
                 <div>
                   <input type="radio" id="other" name="circle" value="other" />
-                  <label for="louie">Other</label>
+                  <label for="other">Other</label>
                 </div>
                 <div className="stable">Day of birth</div>
                 <div className="changed">
                  <input type="date" name="begin" placeholder="dd-mm-yyyy" defaultValue min="1997-01-01" max="2030-12-31" />
- </div>
+                </div>
                 <button className="btn">Update your info</button>
               </div>
             </div>
