@@ -14,9 +14,8 @@ import { StuDashboard } from './contents/student/StuDashboard';
 import { TutDashboard } from './contents/tutor/TutDashboard';
 import { ForgotPassword } from './contents/ForgotPassword';
 import UpdateProfile from './contents/UpdateProfile';
-import { tutProfile } from './contents/tutor/tutProfile'
-import { tutUpdateProfile } from './contents/tutor/tutUpdateProfile'
-import UpdateProfile from './contents/student/UpdateProfile';
+// import { tutProfile } from './contents/tutor/tutProfile'
+// import { tutUpdateProfile } from './contents/tutor/tutUpdateProfile'
 import CreateCourse from './contents/tutor/createCourses'
 import Homepage from './homepage-frontend/homepage'
 
