@@ -164,7 +164,7 @@ export const Register = (props) => {
                             <div className='input-group'>
                                 <Select
                                 name="uni"
-                                options={uniList.map(item => ({ value: item ? item.toLowerCase().replace(/ /g, '_') : '', label: item ? item : '' }))}                                
+                                options={uniList.map(item => ({ value: item ? item.toLowerCase() : '', label: item ? item : '' }))}                                
                                 onChange={handleUniChange}
                                 placeholder="Search your University"
                                 isClearable={true}
@@ -174,7 +174,7 @@ export const Register = (props) => {
                             <div className='input-group'>
                                 <Select
                                     name="major"
-                                    options={majors.map(item => ({ value: item.toLowerCase().replace(/ /g, '_'), label: item }))}
+                                    options={majors.map(item => ({ value: item.toLowerCase(), label: item }))}
                                     onChange={handleMajorChange}
                                     placeholder="Search your Major"
                                     isClearable={true}

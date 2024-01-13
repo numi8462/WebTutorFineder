@@ -59,8 +59,8 @@ export const FindCourses = (props) => {
                   <span>Search courses</span></a>
               </li>
               <li>
-                <a href=""><span className="fa-solid fa-heart" />
-                  <span>Saved</span></a>
+                <a onClick={() => navigate('/matching')}><span className="fa-solid fa-heart" />
+                  <span>Match Tutor</span></a>
               </li>
               <li>
                 <a onClick={() => navigate('/profile')}><span className="fa-solid fa-user" />
@@ -137,7 +137,7 @@ export const FindCourses = (props) => {
                               <p>{item.description}
                               </p>
                             </div>
-                            <button type="button" className="read-btn" onClick={() => navigate(`/course/${item.cid}`)}>Details</button>
+                            <button type="button" className="read-btn" onClick={() => navigate(`/course/${item._id}`)}>Details</button>
                         </div>
                       ))}
                     </div>

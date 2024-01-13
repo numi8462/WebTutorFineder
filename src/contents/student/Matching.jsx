@@ -4,38 +4,49 @@ import { useAuth } from '../../authentication/AuthContext';
 import firebase from "firebase/compat/app";
 import axios from 'axios';
 import '../../index.css';
+import courseImg from '../../homepage-frontend/images/default.jpg';
+import Course from './Matching-Course'
 
 export const Matching = (props) => {
     const [student, setStudent] = useState({});
-    const [tutor, setTutor] = useState({});
     const [courses, setCourses] = useState([]);
     const navigate = useNavigate();
     const [uid, setUid] = useState('');
+    // const [myUni, setMyUni] = useState(false);
   
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         setUid(user.uid);
       }
     });
-  
-   useEffect(() => {
-        axios.get(`http://localhost:3001/profile/${uid}`)
-            .then((response) => {
-                setStudent(response.data);
-            })
-            .catch((error) => {
-                console.error("Error fetching profile data:", error);
-            });
 
-        axios.get(`http://localhost:3001/getCourses`)
-            .then(res => {
-                setCourses(res.data)
-            })
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const profileResponse = await axios.get(`http://localhost:3001/profile/${uid}`);
+                setStudent(profileResponse.data);
+                const coursesResponse = await axios.get(`http://localhost:3001/getCourses`);
+                const courses = coursesResponse.data;
+                const filteredCoursesPromises = courses.map(async (course) => {
+                    if (profileResponse.data.subjectOfInterest.includes(course.subject)) {
+                        return course;
+                    } else {
+                        const tutorResponse = await axios.get(`http://localhost:3001/getTutors/${course.tutorID}`);
+                        console.log(tutorResponse.data.uni)
+                        if (tutorResponse.data.major === profileResponse.data.major) {
+                            return course;
+                        }
+                    }
+                });
+                const filteredCourses = await Promise.all(filteredCoursesPromises);
+                setCourses(filteredCourses.filter(Boolean)); // filter out any undefined values
+                console.log(filteredCourses)
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+        fetchData();
     }, [uid]);
-
-    const filteredCourses = courses.filter(course => {
-        return student.major === course.subject || student.subjectOfInterest.includes(course.subject);
-    });
 
     return (
         <div>
@@ -61,7 +72,7 @@ export const Matching = (props) => {
                         </li>
                         <li>
                             <a className="active" ><span className="fa-solid fa-heart"></span>
-                            <span>Match Tutor</span></a>
+                            <span>Match a Tutor</span></a>
                         </li>
                         <li>
                             <a onClick={() => navigate('/profile')}><span className="fa-solid fa-user"></span>
@@ -78,7 +89,7 @@ export const Matching = (props) => {
                         <label htmlFor="nav-toggle">
                             <span className="fa-solid fa-bars"></span>
                         </label>
-                        Match Tutor
+                        Match a Tutor
                         </h1>
                     </div>
                     <div className="user-wrapper">
@@ -88,40 +99,16 @@ export const Matching = (props) => {
                         </div>
                     </div>
                 </header>
-            
-                <main className='main'>
-                {/* Main section */}
-                    <div className="recent-flex">
-                        <div className="courses">
-                            <div className="card">
-                                <div className="card-header">
-                                    <h3>Match results</h3>
-                                    <button>See all <span className="fa-solid fa-chevron-down"></span></button>
-                                </div>
-                                <div className="card-body">
-                                    <div className="table-responsive">
-                                    <table width="100%">
-                                        <thead>
-                                            <tr>
-                                                <td>Course title</td>
-                                                <td>Subject</td>
-                                                <td>Tutor</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                            {filteredCourses.map(course => (
-                                                    <Course key={course.cid} course={course}/>
-                                                ))}
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                </div>
 
-                            </div>
-                        </div>
-                        
+                <main>
+                {/* Main section */}
+                    <div className='main-container'>
+                        <h2 style={{marginTop: '2rem'}}>Here are some Recommended Tutors and their Courses</h2>
+                        <table className="">
+                            {courses.map(course => (
+                                    <Course key={course._id} course={course} student={student}/>
+                                ))}
+                        </table>
                     </div>
                 {/* Main section */}
                 </main>
@@ -130,26 +117,3 @@ export const Matching = (props) => {
     );
 }
 
-const Course = ({ course }) => {
-    const [tutor, setTutor] = useState(null);
-
-    useEffect(() => {
-        // Fetch the tutor's data
-        axios.get(`http://localhost:3001/getTutors/${course.tutorID}`)
-            .then(res => {
-                setTutor(res.data);
-            });
-    }, [course.tutorID]);
-
-    if (!tutor) {
-        return <div>Loading...</div>;
-    }
-
-    return (
-        <tr>
-            <td>{course.name}</td>
-            <td>{course.description}</td>
-            <td>{tutor.name}</td>
-        </tr>
-    );
-};
