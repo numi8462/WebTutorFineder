@@ -7,11 +7,12 @@ const StudentSchema = new Schema({
     email: String,
     password: String,
     name: String,
-    birthdate: String,
+    birthdate: Date,
     educationLevel: String,
     subjectOfInterest: Array,
     credit: Number,
     gender: String,
+    phonenumber: Number,
     user: String,
     bookmark: Array
 }, { collection: 'students' });

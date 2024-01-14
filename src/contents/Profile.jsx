@@ -23,7 +23,7 @@ export const Profile = (props) => {
  useEffect(() => {
   axios.get(`http://localhost:3001/getUser/${uid}`)
     .then((response) => {
-      if(response.data.role == "student"){
+      if(response.data.user == "student"){
         setStudent(response.data);
       } else {
         setTutor(response.data);
@@ -34,6 +34,33 @@ export const Profile = (props) => {
       console.error("Error fetching profile data:", error);
     });
 }, [uid]);
+
+const updateUserInfo = async (updatedData) => {
+  try {
+    await axios.post(`http://localhost:3001/updateStudent/${uid}`, updatedData)
+  } catch (error) {
+    console.error("Error updating profile data:", error);
+  }
+};
+
+const handleInputChange = (field, value) => {
+  if (student.user === "student") {
+    setStudent((prevStudent) => ({
+      ...prevStudent,
+      [field]: value,
+    }));
+  } else {
+    setTutor((prevTutor) => ({
+      ...prevTutor,
+      [field]: value,
+    }));
+  }
+};
+
+const handleUpdateClick = () => {
+  const updatedData = student.user === "student" ? student : tutor;
+  updateUserInfo(updatedData);
+};
 
   return (
     <div>
@@ -106,36 +133,88 @@ export const Profile = (props) => {
                 </div>
                 <div className="stable">Name</div>
                 <div className="input-group">
-                  <input name="email" id="email" placeholder="Enter your email" type="email"/>
+                  <input
+                    name="name"
+                    id="name"
+                    placeholder="Enter your name"
+                    type="text"
+                    value={student.name}
+                    onChange={(e) => handleInputChange("name", e.target.value)}
+                  />
                 </div>
                 <div className="stable">Phone number</div>
-                <div className="input-group">
-                  <input name="email" id="email" placeholder="Enter your email" type="email"/>
+                  <div className="input-group">
+                    <input
+                      name="phone"
+                      id="phone"
+                      placeholder="Enter your phone number"
+                      type="text"
+                      value={student.phonenumber}
+                      onChange={(e) => handleInputChange("phone", e.target.value)}
+                    />
+                  </div>
                 </div>
-              </div>
               <div className="right-info">
-                <div className="stable">Email</div>
+              <div className="stable">Email</div>
                 <div className="input-group">
-                  <input name="email" id="email" placeholder="Enter your email" type="email"/>
+                  <input
+                    name="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    type="email"
+                    value={student.email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                  />
                 </div>
                 <div className="stable">Gender</div>
-                <div>
-                  <input type="radio" id="male" name="circle" value="male" checked />
-                  <label for="male">Male</label>
-                </div>
-                <div>
-                  <input type="radio" id="female" name="circle" value="female" />
-                  <label for="female">Female</label>
-                </div>
-                <div>
-                  <input type="radio" id="other" name="circle" value="other" />
-                  <label for="other">Other</label>
-                </div>
-                <div className="stable">Day of birth</div>
-                <div className="changed">
-                 <input type="date" name="begin" placeholder="dd-mm-yyyy" defaultValue min="1997-01-01" max="2030-12-31" />
-                </div>
-                <button className="btn">Update your info</button>
+                  <div>
+                    <input
+                      type="radio"
+                      id="male"
+                      name="gender"
+                      value="male"
+                      checked={student.gender === "male"}
+                      onChange={() => handleInputChange("gender", "male")}
+                    />
+                    <label htmlFor="male">Male</label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="female"
+                      name="gender"
+                      value="female"
+                      checked={student.gender === "female"}
+                      onChange={() => handleInputChange("gender", "female")}
+                    />
+                    <label htmlFor="female">Female</label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="other"
+                      name="gender"
+                      value="other"
+                      checked={student.gender === "other"}
+                      onChange={() => handleInputChange("gender", "other")}
+                    />
+                    <label htmlFor="other">Other</label>
+                  </div>
+                  <div className="stable">Day of birth</div>
+                  <div className="changed">
+                    <input
+                      type="date"
+                      name="dob"
+                      placeholder="dd-mm-yyyy"
+                      defaultValue={student.birthdate}
+                      min="1997-01-01"
+                      max="2030-12-31"
+                      onChange={(e) => handleInputChange("dob", e.target.value)}
+                    />
+                  </div>
+                  <button className="btn" onClick={handleUpdateClick}>
+                    Update your info
+                  </button>
               </div>
             </div>
           </div>
