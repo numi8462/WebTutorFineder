@@ -130,7 +130,7 @@ export const FindCourses = (props) => {
           </header>
           <main>
             <div className="main-container">
-              <h2>Search for courses and find your <span>tutor</span></h2>
+              <h2>Search for courses</h2>
               <div className="search">
                 <div className="search-wrapper">
                   <div className="search-wrapper-content">
@@ -146,16 +146,16 @@ export const FindCourses = (props) => {
               <div className="filter-container">
                 <div className="category-head">
                   <ul>
-                    <div className="category-title" id="all">
-                      <span onClick={() => setSortOption('')}><i className="fas fa-border-all" ></i></span>
+                    <div className="category-title" id="all" onClick={() => setSortOption('')}>
+                      <span ><i className="fas fa-border-all" ></i></span>
                       <li>All</li>
                     </div>
-                    <div className="category-title" id="price">
-                      <span onClick={() => setSortOption('costHighToLow')}><i className="fas fa-coins"></i> </span>
-                      <li>Price(High to Low)</li>
+                    <div className="category-title" id="price" onClick={() => setSortOption('costHighToLow')}>
+                      <span ><i className="fas fa-coins"></i> </span><li>Price(High to Low)</li>
+                      
                     </div>
-                    <div className="category-title" id="hours">
-                      <span onClick={() => setSortOption('hoursHighToLow')}><i className="fas fa-hourglass"> </i></span>
+                    <div className="category-title" id="hours" onClick={() => setSortOption('hoursHighToLow')}>
+                      <span ><i className="fas fa-hourglass"> </i></span>
                       <li>Hours(High to Low)</li>
                     </div>
                     <div className="category-title" id="university">

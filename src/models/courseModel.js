@@ -10,7 +10,9 @@ const CourseSchema = new Schema({
     tutorID: String,
     hours: Number,
     status: String,
-    cost: Number
+    cost: Number,
+    tutDegree: String,
+
 });
 
 const CourseModel = mongoose.model('courses', CourseSchema);
