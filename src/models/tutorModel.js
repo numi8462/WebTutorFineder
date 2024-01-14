@@ -7,11 +7,12 @@ const TutorSchema = new Schema({
     email: String,
     password: String,
     name: String,
-    birthdate: String,
+    birthdate: Date,
     qualification: String,
     subjects: Array,
     credit: Number,
     gender: String,
+    phonenumber: Number,
     user: String
 }, { collection: 'tutors' });
 

@@ -32,19 +32,19 @@ app.get('/profile/:uid', async (req, res) => {
     res.json(student);
   });
   
-app.put('/update/:uid', async (req, res) => {
-  const updatedStudent = await StudentModel.findOneAndUpdate(
-    { uid: req.params.uid },
-    { $set: req.body },
-    { new: true }
-  );
+// app.put('/update/:uid', async (req, res) => {
+//   const updatedStudent = await StudentModel.findOneAndUpdate(
+//     { uid: req.params.uid },
+//     { $set: req.body },
+//     { new: true }
+//   );
 
-  if (!updatedStudent) {
-    return res.status(404).json({ message: 'Student not found' });
-  }
+//   if (!updatedStudent) {
+//     return res.status(404).json({ message: 'Student not found' });
+//   }
 
-  res.json(updatedStudent);
-});
+//   res.json(updatedStudent);
+// });
 
 //Define route for /profile page
   app.get('/profile', (req, res) => {
@@ -253,3 +253,38 @@ app.delete('/deleteSession/:id', async (req, res) => {
 //     })
 //     .catch(err => res.json(err));
 // });
+
+//Route for updated Profile Page
+//Student Profile Page
+app.post('/updateStudent/:uid', async (req, res) => {
+  const uid = req.params.uid;
+  const updatedData = req.body;
+
+  try {
+    const updatedUser = await StudentModel.findOneAndUpdate(
+      { uid: uid },
+      { $set: updatedData },
+    );
+    res.json(updatedUser);
+  } catch (error) {
+    console.error("Error updating user:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//Tutor Profile Page
+app.post('/updateTutor/:uid', async (req, res) => {
+  const uid = req.params.uid;
+  const updatedData = req.body;
+
+  try {
+    const updatedUser = await TutorModel.findOneAndUpdate(
+      { uid: uid },
+      { $set: updatedData },
+    );
+    res.json(updatedUser);
+  } catch (error) {
+    console.error("Error updating user:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
