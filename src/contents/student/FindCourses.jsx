@@ -15,11 +15,6 @@ export const FindCourses = (props) => {
     const [searchTerm, setSearchTerm] = useState('');
   
 
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-
-      }
-    });
     
     useEffect(() => {
       // axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
@@ -40,19 +35,47 @@ export const FindCourses = (props) => {
       // });
 
 
-      axios.get(`http://localhost:3001/getCourses`)
-        .then(response => {
-          console.log(response.data); // Log the response data
-          setCourses(response.data);
-        }).catch(err => console.log(err));
+      // axios.get(`http://localhost:3001/getCourses`)
+      //   .then(response => {
+      //     console.log(response.data); // Log the response data
+      //     setCourses(response.data);
+      //   }).catch(err => console.log(err));
 
-      axios.get(`http://localhost:3001/getFilteredCourses?search=${searchTerm}&sort=${sortOption}`)
-      .then(response => {
-        console.log(response.data); // Log the response data
-        setCourses(response.data);
-      })
-      .catch(err => console.log(err));
-  }, [currentUser.uid, sortOption, searchTerm]);
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(`http://localhost:3001/profile/${uid}`);
+          setStudent(response.data);
+        } catch (error) {
+          console.error("Error fetching profile data:", error);
+        }
+      };
+  
+      const fetchCourses = async () => {
+        try {
+          const response = await axios.get(`http://localhost:3001/getFilteredCourses?search=${searchTerm}&sort=${sortOption}`);
+          setCourses(response.data);
+        } catch (error) {
+          console.error("Error fetching courses:", error);
+        }
+      };
+  
+      const handleAuthStateChange = (user) => {
+        if (user) {
+          setUid(user.uid);
+          fetchData(); // Fetch student data when user logs in
+        }
+      };
+  
+      const authUnsubscribe = firebase.auth().onAuthStateChanged(handleAuthStateChange);
+  
+      // Fetch courses when any of the dependencies change
+      fetchCourses();
+  
+      return () => {
+        // Cleanup the auth state subscription
+        authUnsubscribe();
+      };
+  }, [uid, sortOption, searchTerm]);
       
 
     return (
@@ -124,20 +147,17 @@ export const FindCourses = (props) => {
                 <div className="category-head">
                   <ul>
                     <div className="category-title" id="all">
-                      <li>All</li>
-                      <span onClick={() => setSortOption('')}><i className="fas fa-border-all" /></span>
+                      <span onClick={() => setSortOption('')}><i className="fas fa-border-all" ><li>All</li></i></span>
                     </div>
                     <div className="category-title" id="location">
                       <li>Location</li>
                       <span><i className="fa-solid fa-location-dot" /></span>
                     </div>
                     <div className="category-title" id="price">
-                      <li>Price(High to Low)</li>
-                      <span onClick={() => setSortOption('costHighToLow')}><i className="fas fa-coins" /></span>
+                      <span onClick={() => setSortOption('costHighToLow')}><i className="fas fa-coins">Price(High to Low)</i> </span>
                     </div>
                     <div className="category-title" id="hours">
-                      <li>Hours(High to Low)</li>
-                      <span onClick={() => setSortOption('hoursHighToLow')}><i className="fas fa-hourglass" /></span>
+                      <span onClick={() => setSortOption('hoursHighToLow')}><i className="fas fa-hourglass"> <li>Hours(High to Low)</li></i></span>
                     </div>
                     <div className="category-title" id="university">
                       <li>University</li>
@@ -160,6 +180,7 @@ export const FindCourses = (props) => {
                                 <span><i className='fa-solid fa-user'></i>{item.name}</span>
                                 
                                 <span><i className='fas fa-hourglass'></i>{item.hours} hours</span>
+                                <span><i className='fas fa-money-bill-wave'></i>{item.cost}</span>
                               </div>
                               <h4>{item.subject}</h4>
                               <p>{item.description}

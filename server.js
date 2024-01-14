@@ -304,7 +304,7 @@ app.delete('/deleteSession/:id', async (req, res) => {
 
 
 //Route for course searching and filtering
-router.get('/getFilteredCourses', async (req, res) => {
+app.get('/getFilteredCourses', async (req, res) => {
   const { search, sort } = req.query;
 
   try {
