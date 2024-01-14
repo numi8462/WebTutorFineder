@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useAuth } from '../authentication/AuthContext';
+import { ToastContainer, toast } from 'react-toastify';
 import firebase from "firebase/compat/app";
 import axios from 'axios';
 import '../index.css';
@@ -14,54 +15,80 @@ export const Profile = (props) => {
   // const { uid } = useParams();
   const [uid, setUid] = useState('')
 
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      setUid(user.uid);
-    }
-  });
 
- useEffect(() => {
-  axios.get(`http://localhost:3001/profile/${uid}`)
-    .then((response) => {
-      if(response.data.user == "student"){
-        setStudent(response.data);
-      } else {
-        setTutor(response.data);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3001/profile/${uid}`);
+        if (response.data.user === "student") {
+          setStudent(response.data);
+        } else {
+          setTutor(response.data);
+        }
+      } catch (error) {
+        console.error("Error fetching profile data:", error);
       }
+    };
 
-    })
-    .catch((error) => {
-      console.error("Error fetching profile data:", error);
-    });
-}, [uid]);
+    const handleAuthStateChange = (user) => {
+      if (user) {
+        setUid(user.uid);
+        fetchData(); // Fetch student data when user logs in
+      }
+    };
 
-const updateUserInfo = async (updatedData) => {
-  try {
-    await axios.post(`http://localhost:3001/updateStudent/${uid}`, updatedData)
-  } catch (error) {
-    console.error("Error updating profile data:", error);
+    const authUnsubscribe = firebase.auth().onAuthStateChanged(handleAuthStateChange);
+
+    return () => {
+      // Cleanup the auth state subscription
+      authUnsubscribe();
+    };
+  }, [uid]);
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault(); 
   }
-};
+  const updateStudentInfo = async (updatedData) => {
+    try {
+      await axios.post(`http://localhost:3001/updateStudent/${uid}`, updatedData);
+    } catch (error) {
+      console.error("Error updating profile data:", error);
+    }
+  };
 
-const handleInputChange = (field, value) => {
-  if (student.user === "student") {
-    setStudent((prevStudent) => ({
-      ...prevStudent,
-      [field]: value,
-    }));
-  } else {
-    setTutor((prevTutor) => ({
-      ...prevTutor,
-      [field]: value,
-    }));
-  }
-};
+  const handleInputChange = (field, value) => {
+    if (student.user === "student") {
+      setStudent((prevStudent) => ({
+        ...prevStudent,
+        [field]: value,
+      }));
+    } else {
+      setTutor((prevTutor) => ({
+        ...prevTutor,
+        [field]: value,
+      }));
+    }
+  };
 
-const handleUpdateClick = () => {
-  const updatedData = student.user === "student" ? student : tutor;
-  updateUserInfo(updatedData);
-};
+  const handleUpdateClick = async () => {
+    const updatedData = {
+      name: student.name,
+      phonenumber: student.phonenumber,
+      email: student.email,
+      gender: student.gender,
+      birthdate: student.birthdate,
+    };
 
+    try {
+      await updateStudentInfo(updatedData);
+      alert('Profile updated successfully!');
+      window.location.reload();
+    } catch (error) {
+      console.error("Error updating profile data:", error);
+      toast.error('Error updating profile');
+    }
+  };
   return (
     <div>
             <meta charSet="UTF-8" />
@@ -118,7 +145,7 @@ const handleUpdateClick = () => {
             </header>
         
             <main className='main'>
-            
+        <form onSubmit={handleFormSubmit}>
           <div className="upper">
           <div className="change-info">
             <div className="change-info-inside">
@@ -129,7 +156,7 @@ const handleUpdateClick = () => {
                 <div className="head">Your Student Profile</div>
                 <div className="stable">UID</div>
                 <div className="changed">
-                  <input name="email" id="email" placeholder="579276" type="email"/>
+                  <input name="email" id="email" placeholder={student.uid} type="email"/>
                 </div>
                 <div className="stable">Name</div>
 
@@ -151,7 +178,7 @@ const handleUpdateClick = () => {
                       placeholder="Enter your phone number"
                       type="text"
                       value={student.phonenumber}
-                      onChange={(e) => handleInputChange("phone", e.target.value)}
+                      onChange={(e) => handleInputChange("phonenumber", e.target.value)}
                     />
                   </div>
                 </div>
@@ -211,17 +238,17 @@ const handleUpdateClick = () => {
                       defaultValue={student.birthdate}
                       min="1997-01-01"
                       max="2030-12-31"
-                      onChange={(e) => handleInputChange("dob", e.target.value)}
+                      onChange={(e) => handleInputChange("birthdate", e.target.value)}
                     />
                   </div>
-                  <button className="btn" onClick={handleUpdateClick}>
+                  <button className="btn" type='onSubmit' onClick={handleUpdateClick}>
                     Update your info
                   </button>
               </div>
             </div>
           </div>
         </div>
-      
+      </form>
       <div className="web-info">
         <div className="div-29">
           <div className="div-30">
@@ -243,4 +270,3 @@ const handleUpdateClick = () => {
     </div>
   );
 };
-

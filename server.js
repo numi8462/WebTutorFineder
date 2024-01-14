@@ -261,13 +261,18 @@ app.post('/updateStudent/:uid', async (req, res) => {
   const updatedData = req.body;
 
   try {
-    const updatedUser = await StudentModel.findOneAndUpdate(
+    const updatedStudent = await StudentModel.findOneAndUpdate(
       { uid: uid },
       { $set: updatedData },
     );
-    res.json(updatedUser);
+
+    if (updatedStudent) {
+      res.json(updatedStudent);
+    } else {
+      res.status(404).json({ error: 'User not found' });
+    }
   } catch (error) {
-    console.error("Error updating user:", error);
+    console.error("Error updating student:", error);
     res.status(500).send("Internal Server Error");
   }
 });
@@ -278,13 +283,18 @@ app.post('/updateTutor/:uid', async (req, res) => {
   const updatedData = req.body;
 
   try {
-    const updatedUser = await TutorModel.findOneAndUpdate(
+    const updatedTutor = await TutorModel.findOneAndUpdate(
       { uid: uid },
       { $set: updatedData },
     );
-    res.json(updatedUser);
+
+    if (updatedTutor) {
+      res.json(updatedTutor);
+    } else {
+      res.status(404).json({ error: 'User not found' });
+    }
   } catch (error) {
-    console.error("Error updating user:", error);
+    console.error("Error updating tutor:", error);
     res.status(500).send("Internal Server Error");
   }
 });
