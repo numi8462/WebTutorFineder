@@ -8,7 +8,7 @@ background-color: #F4F9F4;
   box-sizing: border-box;
   list-style-type: none;
   text-decoration: none;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   transition: 2.s linear;
   font-family: 'Jost', sans-serif;
   scroll-behavior: smooth;
@@ -460,4 +460,24 @@ header nav a {
 }
 .footer-content a {
     margin: 1rem;
+}
+
+.matching-td {
+  background-color: 'gray';
+  text-transform: capitalize;
+}
+
+.filter-btn {
+  color: #f4f9f4;
+  white-space: nowrap;
+  justify-content: right;
+  border-radius: 70px;
+  background-color: #ff9130;
+  padding: 13px;
+  font: 500 24px Jost, sans-serif;
+  transition: all .4s ease;
+  border: none;
+}
+.filter-btn:hover {
+  background: #3E6A67;
 }

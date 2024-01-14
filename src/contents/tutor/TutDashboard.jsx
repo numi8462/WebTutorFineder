@@ -34,7 +34,7 @@ export const TutDashboard = (props) => {
 
   const fetchCourses = async (uid) => {
     try {
-      const response = await axios.get(`http://localhost:3001/getCourses?tutorID=${uid}`);
+      const response = await axios.get(`http://localhost:3001/getCourses/${uid}`);
       setCourses(response.data);
       // console.log("course data: "+response.data)
     } catch (error) {
@@ -64,7 +64,7 @@ export const TutDashboard = (props) => {
         console.log(filteredSessions);
 
         // Filter for session.isConfirmed is true
-        const confirmedSessions = response.data.filter(session => session.isConfirmed === true);
+        const confirmedSessions = response.data.filter(session => session.tid === id && session.isConfirmed === true);
         setMySession(confirmedSessions);  // Set mySession with the result
         // console.log(confirmedSessions);
     })

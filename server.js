@@ -123,10 +123,10 @@ app.get('/getCourses', async (req, res) => {
     .catch(err => res.json(err));
 });
 
-app.get('/getCourse/:cid', async (req, res) => {
-  const cid = req.params.cid;
-  // console.log(`Fetching course with cid: ${cid}`)
-  CourseModel.findOne({cid: cid})
+app.get('/getCourse/:_id', async (req, res) => {
+  const id = req.params._id;
+  // console.log(`Fetching course with cid: ${id}`)
+  CourseModel.findOne({_id: id})
     .then(courses => {
       res.json(courses);
     })

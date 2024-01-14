@@ -27,7 +27,7 @@ export const Profile = (props) => {
     .catch((error) => {
       console.error("Error fetching profile data:", error);
     });
-}, [uid]);
+  }, [uid]);
 
   return (
     <div>
