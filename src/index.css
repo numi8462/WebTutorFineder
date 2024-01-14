@@ -71,6 +71,9 @@ header nav {
 header nav a {
     margin-left: 2rem;
 }
+header h1 {
+  font-size: 34px;
+}
 .quick-link:hover {
     color: #FF9130;
     transition: 0.3s;

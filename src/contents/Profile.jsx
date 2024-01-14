@@ -21,7 +21,7 @@ export const Profile = (props) => {
   });
 
  useEffect(() => {
-  axios.get(`http://localhost:3001/getUser/${uid}`)
+  axios.get(`http://localhost:3001/profile/${uid}`)
     .then((response) => {
       if(response.data.user == "student"){
         setStudent(response.data);
@@ -78,7 +78,7 @@ const handleUpdateClick = () => {
                 <div className="sidebar-menu">
                     <ul>
                         <li>
-                            <a><span className="fa-solid fa-list-check"></span>
+                            <a onClick={() => navigate('/studentDashboard')}><span className="fa-solid fa-list-check"></span>
                             <span>My Courses</span></a>
                         </li>
                         <li>
