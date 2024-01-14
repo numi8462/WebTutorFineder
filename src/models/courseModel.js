@@ -11,6 +11,7 @@ const CourseSchema = new Schema({
     hours: Number,
     status: String,
     cost: Number,
+    tutUni: String,
     tutDegree: String,
 
 });
