@@ -168,8 +168,8 @@ const handleUpdateClick = () => {
                     onChange={(e) => handleInputChange("email", e.target.value)}
                   />
                 </div>
-                <div className="stable">Gender</div>
-                  <div>
+                <div className="stable gender">Gender</div>
+                  <div className='option'>
                     <input
                       type="radio"
                       id="male"
@@ -180,7 +180,7 @@ const handleUpdateClick = () => {
                     />
                     <label htmlFor="male">Male</label>
                   </div>
-                  <div>
+                  <div className='option'>
                     <input
                       type="radio"
                       id="female"
@@ -191,7 +191,7 @@ const handleUpdateClick = () => {
                     />
                     <label htmlFor="female">Female</label>
                   </div>
-                  <div>
+                  <div className='option'>
                     <input
                       type="radio"
                       id="other"
