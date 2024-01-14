@@ -11,30 +11,72 @@ export const FindCourses = (props) => {
     const [student, setStudent] = useState({});
     const { currentUser } = useAuth()
     const navigate = useNavigate();
+    const [sortOption, setSortOption] = useState(''); // Empty string = Default
+    const [searchTerm, setSearchTerm] = useState('');
+  
 
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-
-      }
-    });
     
     useEffect(() => {
-      axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
-      .then((response) => {
-          setStudent(response.data);
-          console.log(response.data.name);
-      })
-      .catch((error) => {
-          console.error("Error fetching profile data:", error);
-      });
+      // axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
+      // .then((response) => {
+      //     setStudent(response.data);
+      //     console.log(response.data.name);
+      // })
+      // .catch((error) => {
+      //     console.error("Error fetching profile data:", error);
+      // });
+      // axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
+      // .then((response) => {
+      //     setStudent(response.data);
+      //     console.log(response.data.name);
+      // })
+      // .catch((error) => {
+      //     console.error("Error fetching profile data:", error);
+      // });
 
-      axios.get(`http://localhost:3001/getCourses`)
-        .then(response => {
-          console.log(response.data); // Log the response data
+
+      // axios.get(`http://localhost:3001/getCourses`)
+      //   .then(response => {
+      //     console.log(response.data); // Log the response data
+      //     setCourses(response.data);
+      //   }).catch(err => console.log(err));
+
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(`http://localhost:3001/profile/${uid}`);
+          setStudent(response.data);
+        } catch (error) {
+          console.error("Error fetching profile data:", error);
+        }
+      };
+  
+      const fetchCourses = async () => {
+        try {
+          const response = await axios.get(`http://localhost:3001/getFilteredCourses?search=${searchTerm}&sort=${sortOption}`);
           setCourses(response.data);
-        }).catch(err => console.log(err));
-    }, []); // Dependency array
-    
+        } catch (error) {
+          console.error("Error fetching courses:", error);
+        }
+      };
+  
+      const handleAuthStateChange = (user) => {
+        if (user) {
+          setUid(user.uid);
+          fetchData(); // Fetch student data when user logs in
+        }
+      };
+  
+      const authUnsubscribe = firebase.auth().onAuthStateChanged(handleAuthStateChange);
+  
+      // Fetch courses when any of the dependencies change
+      fetchCourses();
+  
+      return () => {
+        // Cleanup the auth state subscription
+        authUnsubscribe();
+      };
+  }, [uid, sortOption, searchTerm]);
+      
 
     return (
         <div>
@@ -81,7 +123,7 @@ export const FindCourses = (props) => {
             </div>
             <div className="user-wrapper">
               <div>
-                <h4>{student.name}</h4>
+                <h4>{student.name}</h4> 
                 <small>Student</small>
               </div>
             </div>
@@ -92,7 +134,12 @@ export const FindCourses = (props) => {
               <div className="search">
                 <div className="search-wrapper">
                   <div className="search-wrapper-content">
-                    <input type="search" placeholder="Search here" />
+                  <input
+                    type="search"
+                    placeholder="Search here"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
                   </div>
                 </div>
               </div>
@@ -100,16 +147,17 @@ export const FindCourses = (props) => {
                 <div className="category-head">
                   <ul>
                     <div className="category-title" id="all">
-                      <li>All</li>
-                      <span><i className="fas fa-border-all" /></span>
+                      <span onClick={() => setSortOption('')}><i className="fas fa-border-all" ><li>All</li></i></span>
                     </div>
                     <div className="category-title" id="location">
                       <li>Location</li>
                       <span><i className="fa-solid fa-location-dot" /></span>
                     </div>
                     <div className="category-title" id="price">
-                      <li>Price</li>
-                      <span><i className="fas fa-coins" /></span>
+                      <span onClick={() => setSortOption('costHighToLow')}><i className="fas fa-coins">Price(High to Low)</i> </span>
+                    </div>
+                    <div className="category-title" id="hours">
+                      <span onClick={() => setSortOption('hoursHighToLow')}><i className="fas fa-hourglass"> <li>Hours(High to Low)</li></i></span>
                     </div>
                     <div className="category-title" id="university">
                       <li>University</li>
@@ -132,6 +180,7 @@ export const FindCourses = (props) => {
                                 <span><i className='fa-solid fa-user'></i>{item.name}</span>
                                 
                                 <span><i className='fas fa-hourglass'></i>{item.hours} hours</span>
+                                <span><i className='fas fa-money-bill-wave'></i>{item.cost}</span>
                               </div>
                               <h4>{item.subject}</h4>
                               <p>{item.description}
