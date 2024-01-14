@@ -149,10 +149,6 @@ export const FindCourses = (props) => {
                     <div className="category-title" id="all">
                       <span onClick={() => setSortOption('')}><i className="fas fa-border-all" ><li>All</li></i></span>
                     </div>
-                    <div className="category-title" id="location">
-                      <li>Location</li>
-                      <span><i className="fa-solid fa-location-dot" /></span>
-                    </div>
                     <div className="category-title" id="price">
                       <span onClick={() => setSortOption('costHighToLow')}><i className="fas fa-coins">Price(High to Low)</i> </span>
                     </div>
