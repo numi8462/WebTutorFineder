@@ -288,6 +288,7 @@ header h1 {
     flex-direction: column;
     line-height: normal;
     width: 100%;
+
   }
   
   .change-info-inside {
@@ -296,10 +297,10 @@ header h1 {
     display: flex;
     flex-grow: 1;
     align-items: start;
-    justify-content: space-between;
     gap: 20px;
     width: 100%;
     padding: 12px 40px 19px 30px;
+    justify-content: space-between;
   }
   
   .left-info {
@@ -340,10 +341,13 @@ header h1 {
   margin-right: 5px;
 }
   .right-info {
-    align-self: end;
-    display: flex;
     margin-top: 49px;
     flex-direction: column;
+  }
+  .end-info {
+    display: flex;
+    align-self: end;
+    justify-content: space-between;
   }
   .btn {
     color: #f4f9f4;
@@ -408,3 +412,4 @@ header h1 {
 .footer-content a {
     margin: 1rem;
 }
+

@@ -19,11 +19,8 @@ export const Profile = (props) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://localhost:3001/profile/${uid}`);
-        if (response.data.user === "student") {
-          setStudent(response.data);
-        } else {
-          setTutor(response.data);
-        }
+        setStudent(response.data);
+
       } catch (error) {
         console.error("Error fetching profile data:", error);
       }
@@ -47,6 +44,7 @@ export const Profile = (props) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault(); 
   }
+
   const updateStudentInfo = async (updatedData) => {
     try {
       await axios.post(`http://localhost:3001/updateStudent/${uid}`, updatedData);
@@ -67,7 +65,6 @@ export const Profile = (props) => {
   const handleUpdateClick = async () => {
     const updatedData = {
       name: student.name,
-      phonenumber: student.phonenumber,
       email: student.email,
       gender: student.gender,
       birthdate: student.birthdate,
@@ -142,15 +139,11 @@ export const Profile = (props) => {
           <div className="upper">
           <div className="change-info">
             <div className="change-info-inside">
-              <div className="p-pic-container">
+              {/* <div className="p-pic-container">
                 <p>Edit profile picture</p>
-              </div>
+              </div> */}
               <div className="left-info">
                 <div className="head">Your Student Profile</div>
-                <div className="stable">UID</div>
-                <div className="changed">
-                  <input name="email" id="email" placeholder={student.uid} type="email"/>
-                </div>
                 <div className="stable">Name</div>
 
                 <div className="input-group">
@@ -163,21 +156,7 @@ export const Profile = (props) => {
                     onChange={(e) => handleInputChange("name", e.target.value)}
                   />
                 </div>
-                <div className="stable">Phone number</div>
-                  <div className="input-group">
-                    <input
-                      name="phone"
-                      id="phone"
-                      placeholder="Enter your phone number"
-                      type="text"
-                      value={student.phonenumber}
-                      onChange={(e) => handleInputChange("phonenumber", e.target.value)}
-                    />
-                  </div>
-                </div>
-              <div className="right-info">
-
-              <div className="stable">Email</div>
+                <div className="stable">Email</div>
                 <div className="input-group">
                   <input
                     name="email"
@@ -188,6 +167,21 @@ export const Profile = (props) => {
                     onChange={(e) => handleInputChange("email", e.target.value)}
                   />
                 </div>
+                <div className="stable">Date of birth</div>
+                  <div className="changed">
+                    <input
+                      type="date"
+                      name="birthdate"
+                      placeholder="yyyy-mm-dd"
+                      value={student.birthdate}
+                      min="1950-01-01"
+                      max="2030-12-31"
+                      onChange={(e) => handleInputChange("birthdate", e.target.value)}
+                    />
+                  </div>
+              </div>
+                
+              <div className="right-info">
                 <div className="stable gender">Gender</div>
                   <div className='option'>
                     <input
@@ -222,34 +216,31 @@ export const Profile = (props) => {
                     />
                     <label htmlFor="other">Other</label>
                   </div>
-                  <div className="stable">Day of birth</div>
-                  <div className="changed">
-                    <input
-                      type="date"
-                      name="dob"
-                      placeholder="dd-mm-yyyy"
-                      defaultValue={student.birthdate}
-                      min="1997-01-01"
-                      max="2030-12-31"
-                      onChange={(e) => handleInputChange("birthdate", e.target.value)}
-                    />
-                  </div>
-                  <button className="btn" type='onSubmit' onClick={handleUpdateClick}>
-                    Update your info
-                  </button>
               </div>
+              <div className="end-info">
+                <button className="btn" type='onSubmit' onClick={handleUpdateClick}>
+                  Update your info
+                </button>
+              </div>
+
             </div>
+            
           </div>
+          
         </div>
       </form>
       <div className="web-info">
         <div className="div-29">
           <div className="div-30">
             <div className="div-31">Your Student info</div>
+            <div className="stable"><h4>University</h4></div>
+            <div className="changed">{student.uni}</div>
             <div className="stable"><h4>Education Level</h4></div>
             <div className="changed">{student.educationLevel}</div>
           </div>
           <div className="div-34">
+            <div className="stable"><h4>Major</h4></div>
+            <div className="changed">{student.major}</div>
             <div className="stable"><h4>Subject of Interest</h4></div>
             <div className="changed">{student.subjectOfInterest}</div>
           </div>
