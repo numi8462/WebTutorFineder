@@ -40,11 +40,11 @@ export const FindCourses = (props) => {
       // });
 
 
-      // axios.get(`http://localhost:3001/getCourses`)
-      //   .then(response => {
-      //     console.log(response.data); // Log the response data
-      //     setCourses(response.data);
-      //   }).catch(err => console.log(err));
+      axios.get(`http://localhost:3001/getCourses`)
+        .then(response => {
+          console.log(response.data); // Log the response data
+          setCourses(response.data);
+        }).catch(err => console.log(err));
 
       axios.get(`http://localhost:3001/getFilteredCourses?search=${searchTerm}&sort=${sortOption}`)
       .then(response => {
