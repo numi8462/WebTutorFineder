@@ -84,8 +84,8 @@ export const Profile = (props) => {
                 </div>
                 <div className="user-wrapper">
                     <div>
-                        <h4>{student.name}</h4>
-                        <small>Student</small>
+                        <h4>{tutor.name}</h4>
+                        <small>Tutor</small>
                     </div>
                 </div>
             </header>
@@ -99,43 +99,41 @@ export const Profile = (props) => {
                 <p>Edit profile picture</p>
               </div>
               <div className="left-info">
-                <div className="head">Your Student Profile</div>
+                <div className="head">Your Tutor Profile</div>
                 <div className="stable">UID</div>
-                <div className="changed">
-                  <input name="email" id="email" placeholder="579276" type="email"/>
+                <div className="input-group">
+                  <input name="email" id="email" placeholder="Enter your email" type="email"/>
                 </div>
                 <div className="stable">Name</div>
-                <div className="changed">
-                  <input name="email" id="email" placeholder="Tom Richard" type="email"/>
+                <div className="input-group">
+                  <input name="email" id="email" placeholder="Enter your email" type="email"/>
                 </div>
                 <div className="stable">Phone number</div>
-                <div className="changed">
-                  <input name="email" id="email" placeholder="0382667543" type="email"/>
+                <div className="input-group">
+                  <input name="email" id="email" placeholder="Enter your email" type="email"/>
                 </div>
               </div>
               <div className="right-info">
                 <div className="stable">Email</div>
-                <div className="changed">
-                  <input name="email" id="email" placeholder="example@email.com" type="email"/>
+                <div className="input-group">
+                  <input name="email" id="email" placeholder="Enter your email" type="email"/>
+                </div>
+                <div className="stable">Gender</div>
+                <div>
+                  <input type="radio" id="male" name="circle" value="male" checked />
+                  <label for="male">Male</label>
+                </div>
+                <div>
+                  <input type="radio" id="female" name="circle" value="female" />
+                  <label for="female">Female</label>
+                </div>
+                <div>
+                  <input type="radio" id="other" name="circle" value="other" />
+                  <label for="other">Other</label>
                 </div>
                 <div className="stable">Day of birth</div>
                 <div className="changed">
-                 <input type="date" name="begin" placeholder="dd-mm-yyyy" defaultValue min="1923-01-01" max="2023-12-31" />
-                </div>
-                <div className="stable">Gender</div>
-                <div className="changed gender">
-                <div className="option">
-                  <input type="radio" checked="checked" name="a"/>
-                  <label for="male">Male</label>
-                </div>
-                <div className="option">
-                  <input type="radio" checked="checked" name="a"/>
-                  <label for="female">Female</label>
-                </div>
-                <div className="option">
-                  <input type="radio" checked="checked" name="a"/>
-                  <label for="other">Other</label>
-                </div>
+                 <input type="date" name="begin" placeholder="dd-mm-yyyy" defaultValue min="1997-01-01" max="2030-12-31" />
                 </div>
                 <button className="btn">Update your info</button>
               </div>

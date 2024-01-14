@@ -126,7 +126,7 @@ export const TutDashboard = (props) => {
                             <span>My Courses</span></a>
                         </li>
                         <li>
-                            <a onClick={() => navigate('/profile')}><span className="fa-solid fa-magnifying-glass"></span>
+                            <a onClick={() => navigate('/tutprofile')}><span className="fa-solid fa-magnifying-glass"></span>
                             <span>Profile</span></a>
                         </li>
                     </ul>
