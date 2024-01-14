@@ -147,21 +147,24 @@ export const FindCourses = (props) => {
                 <div className="category-head">
                   <ul>
                     <div className="category-title" id="all">
-                      <span onClick={() => setSortOption('')}><i className="fas fa-border-all" ><li>All</li></i></span>
+                      <span onClick={() => setSortOption('')}><i className="fas fa-border-all" ></i></span>
+                      <li>All</li>
                     </div>
                     <div className="category-title" id="price">
-                      <span onClick={() => setSortOption('costHighToLow')}><i className="fas fa-coins">Price(High to Low)</i> </span>
+                      <span onClick={() => setSortOption('costHighToLow')}><i className="fas fa-coins"></i> </span>
+                      <li>Price(High to Low)</li>
                     </div>
                     <div className="category-title" id="hours">
-                      <span onClick={() => setSortOption('hoursHighToLow')}><i className="fas fa-hourglass"> <li>Hours(High to Low)</li></i></span>
+                      <span onClick={() => setSortOption('hoursHighToLow')}><i className="fas fa-hourglass"> </i></span>
+                      <li>Hours(High to Low)</li>
                     </div>
                     <div className="category-title" id="university">
-                      <li>University</li>
                       <span><i className="fas fa-landmark" /></span>
+                      <li>University</li>
                     </div>
                     <div className="category-title" id="degree">
-                      <li>Degree level</li>
                       <span><i className="fa-solid fa-graduation-cap" /></span>
+                      <li>Degree level</li>
                     </div>
                   </ul>
                   <div className="tutors-collect">
