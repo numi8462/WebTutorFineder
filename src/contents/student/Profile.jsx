@@ -47,7 +47,7 @@ export const Profile = (props) => {
 
   const updateStudentInfo = async (updatedData) => {
     try {
-      await axios.post(`http://localhost:3001/updateStudent/${uid}`, updatedData);
+      await axios.put(`http://localhost:3001/update/${uid}`, updatedData);
     } catch (error) {
       console.error("Error updating profile data:", error);
     }
@@ -103,8 +103,8 @@ export const Profile = (props) => {
                             <span>Search courses</span></a>
                         </li>
                         <li>
-                            <a href=""><span className="fa-solid fa-heart"></span>
-                            <span>Saved</span></a>
+                            <a onClick={() => navigate('/matching')}><span className="fa-solid fa-heart"></span>
+                            <span>Match Tutor</span></a>
                         </li>
                         <li>
                             <a className="active" href=""><span className="fa-solid fa-user"></span>
