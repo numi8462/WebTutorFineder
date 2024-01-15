@@ -47,6 +47,20 @@ app.put('/update/:uid', async (req, res) => {
   res.json(updatedStudent);
 });
 
+app.put('/updateTutor/:uid', async (req, res) => {
+  const updatedTutor = await TutorModel.findOneAndUpdate(
+    { uid: req.params.uid },
+    { $set: req.body },
+    { new: true }
+  );
+
+  if (!updatedTutor) {
+    return res.status(404).json({ message: 'Tutor not found' });
+  }
+
+  res.json(updatedTutor);
+});
+
 //Define route for /profile page
   app.get('/profile', (req, res) => {
     res.send('This is the profile page');

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import firebase from "firebase/compat/app";
 import axios from 'axios';
 import '../../index.css';
 import { useNavigate } from "react-router-dom";
+import Select from 'react-select';
 
 export const Profile = (props) => {
   const [student, setStudent] = useState({});
@@ -13,7 +14,15 @@ export const Profile = (props) => {
   // const { uid } = useParams();
   const [uid, setUid] = useState('')
 
-
+  const options = [
+    { value: 'Creative Arts and Design', label: 'Creative Arts and Design' },
+    { value: 'Marketing', label: 'Marketing' },
+    { value: 'Business and Management', label: 'Business and Management' },
+    { value: 'IT', label: 'IT' },
+    { value: 'Software Development', label: 'Software Development' },
+    { value: 'Engineering', label: 'Engineering' },
+    { value: 'Law', label: 'Law' },
+  ];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,12 +63,17 @@ export const Profile = (props) => {
   };
 
   const handleInputChange = (field, value) => {
- 
-    setStudent((prevStudent) => ({
-      ...prevStudent,
-      [field]: value,
-    }));
-    
+    if (field === 'subjectOfInterest') {
+      setStudent((prevStudent) => ({
+        ...prevStudent,
+        [field]: value.map(option => option.value),
+      }));
+    } else {
+      setStudent((prevStudent) => ({
+        ...prevStudent,
+        [field]: value,
+      }));
+    }
   };
 
   const handleUpdateClick = async () => {
@@ -68,8 +82,8 @@ export const Profile = (props) => {
       email: student.email,
       gender: student.gender,
       birthdate: student.birthdate,
-    };
-
+      subjectOfInterest: student.subjectOfInterest,
+    }
     try {
       await updateStudentInfo(updatedData);
       alert('Profile updated successfully!');
@@ -79,7 +93,9 @@ export const Profile = (props) => {
       toast.error('Error updating profile');
     }
   };
+
   return (
+
     <div>
             <meta charSet="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -182,6 +198,18 @@ export const Profile = (props) => {
               </div>
                 
               <div className="right-info">
+              <div className="stable gender">Subject of Interest</div>
+              <div className="input-group">
+              <Select
+                isMulti
+                name="subjectOfInterest"
+                options={options}
+                className="basic-multi-select select-fixed-size"
+                classNamePrefix="select"
+                onChange={(selectedOptions) => handleInputChange("subjectOfInterest", selectedOptions)}
+                value={student.subjectOfInterest ? student.subjectOfInterest.map(subject => ({ value: subject, label: subject })) : []}
+              />
+              </div>
                 <div className="stable gender">Gender</div>
                   <div className='option'>
                     <input
@@ -232,7 +260,7 @@ export const Profile = (props) => {
       <div className="web-info">
         <div className="div-29">
           <div className="div-30">
-            <div className="div-31">Your Student info</div>
+            <div className="div-31">Your info</div>
             <div className="stable"><h4>University</h4></div>
             <div className="changed">{student.uni}</div>
             <div className="stable"><h4>Education Level</h4></div>
