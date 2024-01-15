@@ -121,8 +121,8 @@ export const StuDashboard = (props) => {
                     </h1>
                 </div>
                 <div className="user-wrapper">
-                    <div>
-                        <h4>{student.name}</h4>
+                    <div className='user-wrapper-field'>
+                        <h4><span><i className='fa-solid fa-user'></i></span> {student.name}</h4> 
                         <small>Student</small>
                     </div>
                 </div>

@@ -139,11 +139,11 @@ export const Course = () => {
                   <span>Search courses</span></a>
               </li>
               <li>
-                <a href=""><span className="fa-solid fa-heart" />
-                  <span>Saved</span></a>
+                  <a onClick={() => navigate('/matching')}><span className="fa-solid fa-heart"></span>
+                  <span>Match Tutor</span></a>
               </li>
               <li>
-                <a href=""><span className="fa-solid fa-user" />
+                  <a onClick={() => navigate('/profile')}><span className="fa-solid fa-user"></span>
                   <span>My Account</span></a>
               </li>
             </ul>
@@ -160,9 +160,9 @@ export const Course = () => {
               </h1>
             </div>
             <div className="user-wrapper">
-              <div>
-                <h4>{student.name}</h4>
-                <small>Student</small>
+              <div className='user-wrapper-field'>
+                  <h4><span><i className='fa-solid fa-user'></i></span> {student.name}</h4> 
+                  <small>Student</small>
               </div>
             </div>
           </header>

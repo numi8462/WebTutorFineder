@@ -13,13 +13,19 @@ export const FindCourses = (props) => {
     const navigate = useNavigate();
     const [sortOption, setSortOption] = useState(''); // Empty string = Default
     const [searchTerm, setSearchTerm] = useState('');
-  
+    const [degree, setDegree] = useState('all');
+
     function capitalizeFirstLetter(str) {
       if (str && typeof str === 'string') {
         return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
       }
       return '';
     }
+
+    const handleChange = (event) => {
+      setDegree(event.target.value);
+      setSortOption(event.target.value);
+    };
     
     useEffect(() => {
       // axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
@@ -130,10 +136,12 @@ export const FindCourses = (props) => {
               </h1>
             </div>
             <div className="user-wrapper">
-              <div>
-                <h4>{student.name}</h4> 
+
+              <div className='user-wrapper-field'>
+                <h4><span><i className='fa-solid fa-user'></i></span> {student.name}</h4> 
                 <small>Student</small>
               </div>
+              
             </div>
           </header>
           <main>
@@ -155,41 +163,41 @@ export const FindCourses = (props) => {
                 <div className="category-head">
                                     <ul>
                     <div className="category-title" id="all" onClick={() => setSortOption('all')}>
+                    <span><i className="fas fa-border-all" ></i></span>
                       <li>All</li>
-                      <span><i className="fas fa-border-all" ></i></span>
+                      
                     </div>
                     {/* <div className="category-title" id="location">
                       <li>Location</li>courseteaching
                       <span><i className="fa-solid fa-location-dot" /></span>
                     </div> */}
                     <div className="category-title" id="price" onClick={() => setSortOption('costHighToLow')}>
+                    <span><i className="fas fa-coins"></i> </span>
                       <li>Price(High to Low)</li>
-                      <span><i className="fas fa-coins"></i> </span>
+                      
                     </div>
                     <div className="category-title" id="hours" onClick={() => setSortOption('hoursHighToLow')}>
+                    <span><i className="fas fa-hourglass"></i></span>
                       <li>Hours(High to Low)</li>
-                      <span><i className="fas fa-hourglass"></i></span>
+                      
                     </div>
                     <div className="category-title" id="university" onClick={() => setSortOption(`university-${student.uni}`)}>
+                    <span><i className="fas fa-landmark" /></span>
                       <li>University</li>
-                      <span><i className="fas fa-landmark" /></span>
+                      
                     </div>
-                    <div className="category-title" id="degree" onClick={() => setSortOption('bachelor')}>
-                      <li>Bachelor's Degree</li>
+                    <div className="category-title2" id="degree">
                       <span><i className="fa-solid fa-graduation-cap" /></span>
+                      <select className='degree-select' value={degree} onChange={handleChange}>
+                      
+                        <option value="all">All Degrees</option>
+                        <option value="bachelor">Bachelor's Degree</option>
+                        <option value="doctorate">Doctorate's Degree</option>
+                        <option value="masters">Master's Degree</option>
+                        <option value="teaching">Teaching Degree</option>
+                      </select>
                     </div>
-                    <div className="category-title" id="degree" onClick={() => setSortOption('doctorate')}>
-                      <li>Doctorate's Degree</li>
-                      <span><i className="fa-solid fa-graduation-cap" /></span>
-                    </div>
-                    <div className="category-title" id="degree" onClick={() => setSortOption('masters')}>
-                      <li>Master's Degree</li>
-                      <span><i className="fa-solid fa-graduation-cap" /></span>
-                    </div>
-                    <div className="category-title" id="degree" onClick={() => setSortOption('teaching')}>
-                      <li>Teaching Degree</li>
-                      <span><i className="fa-solid fa-graduation-cap" /></span>
-                    </div>
+
                   </ul>
                   <div className="tutors-collect">
                     <div className="tutors-main-container">
@@ -198,17 +206,27 @@ export const FindCourses = (props) => {
                             <div className='post-img'>
                               <img src={courseImg} alt="post" />  
                             </div>
+            
                             <div className='post-content'>
+                              <h4>{item.name}</h4>
+
+                              <p>{item.description}</p>
+                              
                               <div className='post-content-top'>
-                                <span><i className='fa-solid fa-user'></i>{item.name}</span>
-                                <span><i className="fa-solid fa-building-columns"></i>{capitalizeFirstLetter(item.tutUni)}</span>
-                                <span><i className='fas fa-hourglass'></i>{item.hours} hours</span>
-                                <span><i className='fa-solid fa-scroll'></i>{item.tutDegree}</span>
-                                <span><i className='fas fa-money-bill-wave'></i>${item.cost}</span>
+                                <span><i className='fa fa-book'></i> {item.subject}</span>
+                                
+                                <span><i className='fas fa-hourglass'></i> Total {item.hours} hours</span>
+
+                                <span><i className='fas fa-money-bill-wave'></i> ${item.cost} per hour</span>
                               </div>
-                              <h4>{item.subject}</h4>
-                              <p>{item.description}
-                              </p>
+
+                              <h4>Tutor Info</h4>
+                              <div className='post-content-top'>
+                              
+                                <span><i className="fa-solid fa-building-columns"></i> {capitalizeFirstLetter(item.tutUni)}</span>
+                                <span><i className='fa-solid fa-scroll'></i> {capitalizeFirstLetter(item.tutDegree)} Degree</span>
+                              </div>
+
                             </div>
                             <button type="button" className="read-btn" onClick={() => navigate(`/course/${item._id}`)}>Details</button>
                         </div>
