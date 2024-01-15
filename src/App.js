@@ -13,10 +13,9 @@ import { Course } from './contents/Course'
 import { StuDashboard } from './contents/student/StuDashboard';
 import { TutDashboard } from './contents/tutor/TutDashboard';
 import { ForgotPassword } from './contents/ForgotPassword';
-import { tutProfile } from './contents/tutor/tutProfile'
-import { tutUpdateProfile } from './contents/tutor/tutUpdateProfile'
-import UpdateProfile from './contents/student/UpdateProfile';
+import { TutProfile } from './contents/tutor/TutProfile'
 import CreateCourse from './contents/tutor/createCourses'
+import {Matching} from './contents/student/Matching';
 // import Homepage from './homepage-frontend/homepage'
 
 function App() {
@@ -36,13 +35,14 @@ function App() {
           <Route path="/register" element={<Register  />} />
           <Route path="/registerTutor" element={<RegisterTut  />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profileTutor" element={<TutProfile />} />
           <Route path='/findcourses' element={<FindCourses/>}/>
           <Route path='/course/:cid' element={<Course/>}/> 
           <Route path='/studentDashboard' element={<StuDashboard/>}/>
           <Route path='/tutorDashboard' element={<TutDashboard/>}/>
           <Route path='/forgotPassword' element={<ForgotPassword/>}/>
-          <Route path="/updateProfile" element={<UpdateProfile/>}/>
           <Route path='/createCourse' element={<CreateCourse/>}/>
+          <Route path='/matching' element={<Matching/>}/>
           {/* <Route path='/homepage' element={<Homepage/>}/> */}
         </Routes>
       </div>

@@ -71,6 +71,9 @@ header nav {
 header nav a {
     margin-left: 2rem;
 }
+header h1 {
+  font-size: 34px;
+}
 .quick-link:hover {
     color: #FF9130;
     transition: 0.3s;
@@ -270,7 +273,7 @@ header nav a {
     justify-content: center;
     line-height: normal;
     /*width: 16%;*/
-    margin-left: 0px;
+    margin-top: 2.5rem;
     height: 160px;
 
   }
@@ -285,6 +288,7 @@ header nav a {
     flex-direction: column;
     line-height: normal;
     width: 100%;
+
   }
   
   .change-info-inside {
@@ -293,10 +297,10 @@ header nav a {
     display: flex;
     flex-grow: 1;
     align-items: start;
-    justify-content: space-between;
     gap: 20px;
     width: 100%;
     padding: 12px 40px 19px 30px;
+    justify-content: space-between;
   }
   
   .left-info {
@@ -305,59 +309,45 @@ header nav a {
   }
   .head {
     color: #3e6a67;
-    font: 600 32px Jost, sans-serif;
+    font-size: 32px;
   }
   .stable {
     color: #3e6a67;
     margin-top: 25px;
-    font: 500 28px Jost, sans-serif;
+    font-size: 22px;
   }
   .changed {
-    color: #000;
-    margin-top: 25px;
-    font: 500 24px Jost, sans-serif;
+    color: #3E6A67;
+    margin-top: 5px;
+    font-size: 22px;
   }
+  .main ::placeholder {
+    color: #3E6A67;
+    font-size: 16px;
+    opacity: 1;
+}
+.main input {
+  width: 200px;
+  height: 100%;
+  padding: .5rem 1rem;
+  border: 1px #3E6A67 solid;
+  border-radius: 5px;
+  outline: none;
+  text-align: center;
+  background: none;
+}
+.option input {
+  width: auto;
+  margin-right: 5px;
+}
   .right-info {
-    align-self: end;
-    display: flex;
     margin-top: 49px;
     flex-direction: column;
   }
-  
-  .div-21 {
-    color: #3e6a67;
-    align-self: stretch;
-    font: 500 28px Jost, sans-serif;
-  }
-  .div-22 {
-    color: #000;
-    align-self: stretch;
-    margin-top: 24px;
-    font: 500 24px Jost, sans-serif;
-  }
-  .div-23 {
-    color: #3e6a67;
-    align-self: stretch;
-    margin-top: 33px;
-    font: 500 28px Jost, sans-serif;
-  }
-  .div-24 {
-    color: #000;
-    align-self: stretch;
-    margin-top: 29px;
-    font: 500 24px Jost, sans-serif;
-  }
-  .div-25 {
-    color: #3e6a67;
-    align-self: stretch;
-    margin-top: 37px;
-    font: 500 28px Jost, sans-serif;
-  }
-  .div-26 {
-    color: #000;
-    align-self: stretch;
-    margin-top: 24px;
-    font: 500 24px Jost, sans-serif;
+  .end-info {
+    display: flex;
+    align-self: end;
+    justify-content: space-between;
   }
   .btn {
     color: #f4f9f4;
@@ -368,8 +358,8 @@ header nav a {
     background-color: #ff9130;
     align-self: end;
     margin-top: 40px;
-    padding: 13px;
-    font: 500 24px Jost, sans-serif;
+    padding: 5px 10px;
+    font-size: 22px;
     transition: all .4s ease;
     border: none;
   }
@@ -405,51 +395,12 @@ header nav a {
     color: #3e6a67;
     font: 600 32px Jost, sans-serif;
   }
-  .div-32 {
-    color: #3e6a67;
-    margin-top: 31px;
-    white-space: nowrap;
-    font: 500 28px Jost, sans-serif;
-  }
-  
-  .div-33 {
-    color: #000;
-    margin-top: 22px;
-    font: 500 24px Jost, sans-serif;
-  }
   .div-34 {
     align-self: end;
     display: flex;
     margin-top: 57px;
     flex-direction: column;
   }
-  
-  .div-35 {
-    color: #3e6a67;
-    white-space: nowrap;
-    font: 500 28px Jost, sans-serif;
-  }
-  
-  .div-36 {
-    color: #000;
-    margin-top: 23px;
-    font: 500 24px Jost, sans-serif;
-  }
-  .div-37 {
-    color: #3e6a67;
-    max-width: 999px;
-    margin: 15px 23px 0 0;
-    font: 500 28px Jost, sans-serif;
-  }
-  
-  .div-38 {
-    color: #000;
-    max-width: 999px;
-    margin: 28px 23px 0 0;
-    font: 500 24px Jost, sans-serif;
-  }
-
-
 .footer-content {
     padding: 1.5rem 9%;
     display:flex;
@@ -460,4 +411,8 @@ header nav a {
 }
 .footer-content a {
     margin: 1rem;
+}
+
+.select-fixed-size {
+
 }

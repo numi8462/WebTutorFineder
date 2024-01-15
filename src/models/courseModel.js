@@ -11,8 +11,8 @@ const CourseSchema = new Schema({
     hours: Number,
     status: String,
     cost: Number,
-    tutDegree: String,
     tutUni: String,
+    tutDegree: String,
 });
 
 const CourseModel = mongoose.model('courses', CourseSchema);

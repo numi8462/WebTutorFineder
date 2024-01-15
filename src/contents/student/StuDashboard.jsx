@@ -28,6 +28,8 @@ export const StuDashboard = (props) => {
         axios.get(`http://localhost:3001/profile/${uid}`)
         .then((response) => {
             setStudent(response.data);
+            console.log(response.data)
+            console.log("name: ",student.name)
             return axios.get(`http://localhost:3001/getSessions`);
         })
         .then((response) => {
@@ -36,7 +38,7 @@ export const StuDashboard = (props) => {
             // console.log(filteredSessions);
     
             // Filter for session.isConfirmed is true
-            const confirmedSessions = response.data.filter(session => session.isConfirmed === true);
+            const confirmedSessions = response.data.filter(session => session.sid === uid && session.isConfirmed === true);
             setMySession(confirmedSessions);  // Set mySession with the result
             // console.log(confirmedSessions);
         })
@@ -95,8 +97,8 @@ export const StuDashboard = (props) => {
                             <span>Search courses</span></a>
                         </li>
                         <li>
-                            <a href=""><span className="fa-solid fa-heart"></span>
-                            <span>Saved</span></a>
+                            <a onClick={() => navigate('/matching')}><span className="fa-solid fa-heart"></span>
+                            <span>Match Tutor</span></a>
                         </li>
                         <li>
                             <a onClick={() => navigate('/profile')}><span className="fa-solid fa-user"></span>

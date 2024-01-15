@@ -1,34 +1,83 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../authentication/AuthContext';
+import { ToastContainer, toast } from 'react-toastify';
 import firebase from "firebase/compat/app";
 import axios from 'axios';
 import '../../index.css';
+import { useNavigate } from "react-router-dom";
 
 export const Profile = (props) => {
-  const [student, setStudent] = useState({});
   const [tutor, setTutor] = useState({});
   const navigate = useNavigate();
 
   // const { uid } = useParams();
   const [uid, setUid] = useState('')
 
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      setUid(user.uid);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3001/getTutors/${uid}`);
+        setTutor(response.data);
+
+      } catch (error) {
+        console.error("Error fetching profile data:", error);
+      }
+    };
+
+    const handleAuthStateChange = (user) => {
+      if (user) {
+        setUid(user.uid);
+        fetchData(); // Fetch student data when user logs in
+      }
+    };
+
+    const authUnsubscribe = firebase.auth().onAuthStateChanged(handleAuthStateChange);
+
+    return () => {
+      // Cleanup the auth state subscription
+      authUnsubscribe();
+    };
+  }, [uid]);
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault(); 
+  }
+
+  const updateTutorInfo = async (updatedData) => {
+    try {
+      await axios.post(`http://localhost:3001/updateTutor/${uid}`, updatedData);
+    } catch (error) {
+      console.error("Error updating profile data:", error);
     }
-  });
+  };
 
- useEffect(() => {
-  axios.get(`http://localhost:3001/profile/${uid}`)
-    .then((response) => {
-      setStudent(response.data);
-    })
-    .catch((error) => {
-      console.error("Error fetching profile data:", error);
-    });
-}, [uid]);
+  const handleInputChange = (field, value) => {
+ 
+    setTutor((prevTutor) => ({
+      ...prevTutor,
+      [field]: value,
+    }));
+    
+  };
 
+  const handleUpdateClick = async () => {
+    const updatedData = {
+      name: tutor.name,
+      email: tutor.email,
+      gender: tutor.gender,
+      birthdate: tutor.birthdate,
+    };
+
+    try {
+      await updateTutorInfo(updatedData);
+      alert('Profile updated successfully!');
+      window.location.reload();
+    } catch (error) {
+      console.error("Error updating profile data:", error);
+      toast.error('Error updating profile');
+    }
+  };
   return (
     <div>
             <meta charSet="UTF-8" />
@@ -45,16 +94,8 @@ export const Profile = (props) => {
                 <div className="sidebar-menu">
                     <ul>
                         <li>
-                            <a><span className="fa-solid fa-list-check"></span>
+                            <a onClick={() => navigate('/tutorDashboard')}><span className="fa-solid fa-list-check"></span>
                             <span>My Courses</span></a>
-                        </li>
-                        <li>
-                            <a onClick={() => navigate('/findcourses')}><span className="fa-solid fa-magnifying-glass"></span>
-                            <span>Search courses</span></a>
-                        </li>
-                        <li>
-                            <a href=""><span className="fa-solid fa-heart"></span>
-                            <span>Saved</span></a>
                         </li>
                         <li>
                             <a className="active" href=""><span className="fa-solid fa-user"></span>
@@ -78,56 +119,123 @@ export const Profile = (props) => {
                 </div>
                 <div className="user-wrapper">
                     <div>
-                        <h4>{student.name}</h4>
-                        <small>Student</small>
+                        <h4>{tutor.name}</h4>
+                        <small>Tutor</small>
                     </div>
                 </div>
             </header>
         
             <main className='main'>
-            
+        <form onSubmit={handleFormSubmit}>
           <div className="upper">
-          <div className="p-pic-container">
-            <p>Edit profile picture</p>
-          </div>
           <div className="change-info">
             <div className="change-info-inside">
+              {/* <div className="p-pic-container">
+                <p>Edit profile picture</p>
+              </div> */}
               <div className="left-info">
-                <div className="head">Your Student Profile</div>
-                <div className="stable">UID</div>
-                <div className="changed">{student.uid}</div>
+                <div className="head">Your Tutor Profile</div>
                 <div className="stable">Name</div>
-                <div className="changed">{student.name}</div>
-                <div className="stable">Phone number</div>
-                <div className="changed">0123456789</div>
+
+                <div className="input-group">
+                  <input
+                    name="name"
+                    id="name"
+                    placeholder="Enter your name"
+                    type="text"
+                    value={tutor.name}
+                    onChange={(e) => handleInputChange("name", e.target.value)}
+                  />
+                </div>
+                <div className="stable">Email</div>
+                <div className="input-group">
+                  <input
+                    name="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    type="email"
+                    value={tutor.email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                  />
+                </div>
+                <div className="stable">Date of birth</div>
+                  <div className="changed">
+                    <input
+                      type="date"
+                      name="birthdate"
+                      placeholder="yyyy-mm-dd"
+                      value={tutor.birthdate}
+                      min="1950-01-01"
+                      max="2030-12-31"
+                      onChange={(e) => handleInputChange("birthdate", e.target.value)}
+                    />
+                  </div>
               </div>
+                
               <div className="right-info">
-                <div className="div-21">Email</div>
-                <div className="div-22">{student.email}</div>
-                <div className="div-23">Gender</div>
-                <div className="div-24">Male</div>
-                <div className="div-25">Day of birth</div>
-                <div className="div-26">{student.birthdate}</div>
-                <button className="btn" onClick={() => navigate('/updateProfile')}>Update your info</button>
+                <div className="stable gender">Gender</div>
+                  <div className='option'>
+                    <input
+                      type="radio"
+                      id="male"
+                      name="gender"
+                      value="male"
+                      checked={tutor.gender === "male"}
+                      onChange={() => handleInputChange("gender", "male")}
+                    />
+                    <label htmlFor="male">Male</label>
+                  </div>
+                  <div className='option'>
+                    <input
+                      type="radio"
+                      id="female"
+                      name="gender"
+                      value="female"
+                      checked={tutor.gender === "female"}
+                      onChange={() => handleInputChange("gender", "female")}
+                    />
+                    <label htmlFor="female">Female</label>
+                  </div>
+                  <div className='option'>
+                    <input
+                      type="radio"
+                      id="other"
+                      name="gender"
+                      value="other"
+                      checked={tutor.gender === "other"}
+                      onChange={() => handleInputChange("gender", "other")}
+                    />
+                    <label htmlFor="other">Other</label>
+                  </div>
               </div>
+              <div className="end-info">
+                <button className="btn" type='onSubmit' onClick={handleUpdateClick}>
+                  Update your info
+                </button>
+              </div>
+
             </div>
+            
           </div>
+          
         </div>
-      
+      </form>
       <div className="web-info">
         <div className="div-29">
           <div className="div-30">
-            <div className="div-31">Your website info</div>
-            <div className="div-32">Education Level</div>
-            <div className="div-33">{student.educationLevel}</div>
+            <div className="div-31">Your Student info</div>
+            <div className="stable"><h4>University</h4></div>
+            <div className="changed">{tutor.uni}</div>
+            <div className="stable"><h4>Qaulification</h4></div>
+            <div className="changed">{tutor.qualification}</div>
           </div>
           <div className="div-34">
-            <div className="div-35">Subject of Interest</div>
-            <div className="div-36">{student.subjectOfInterest}</div>
+            <div className="stable"><h4>Major</h4></div>
+            <div className="changed">{tutor.major}</div>
           </div>
         </div>
-        <div className="div-37">Credit</div>
-        <div className="div-38">{student.credit}$</div>
+        <div className="stable"><h4>Credit</h4></div>
+        <div className="changed">{tutor.credit}$</div>
       </div>
 
             </main>
@@ -135,4 +243,3 @@ export const Profile = (props) => {
     </div>
   );
 };
-

@@ -109,8 +109,8 @@ export const FindCourses = (props) => {
                   <span>Search courses</span></a>
               </li>
               <li>
-                <a href=""><span className="fa-solid fa-heart" />
-                  <span>Saved</span></a>
+                <a onClick={() => navigate('/matching')}><span className="fa-solid fa-heart" />
+                  <span>Match Tutor</span></a>
               </li>
               <li>
                 <a onClick={() => navigate('/profile')}><span className="fa-solid fa-user" />
@@ -138,7 +138,7 @@ export const FindCourses = (props) => {
           </header>
           <main>
             <div className="main-container">
-              <h2>Search for courses and find your <span>tutor</span></h2>
+              <h2>Search for courses</h2>
               <div className="search">
                 <div className="search-wrapper">
                   <div className="search-wrapper-content">
@@ -153,7 +153,7 @@ export const FindCourses = (props) => {
               </div>
               <div className="filter-container">
                 <div className="category-head">
-                  <ul>
+                                    <ul>
                     <div className="category-title" id="all" onClick={() => setSortOption('all')}>
                       <li>All</li>
                       <span><i className="fas fa-border-all" ></i></span>
@@ -210,7 +210,7 @@ export const FindCourses = (props) => {
                               <p>{item.description}
                               </p>
                             </div>
-                            <button type="button" className="read-btn" onClick={() => navigate(`/course/${item.cid}`)}>Details</button>
+                            <button type="button" className="read-btn" onClick={() => navigate(`/course/${item._id}`)}>Details</button>
                         </div>
                       ))}
                     </div>

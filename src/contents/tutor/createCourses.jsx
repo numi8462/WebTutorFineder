@@ -45,6 +45,8 @@ import '../../contents/dashboard.css';
             hours,
             cost,
             tutorID,
+            tutUni: tutor.uni,
+            tutDegree: tutor.qualification,
           });
         // Navigate back to tutor dashboard after creating a course
           navigate('/tutorDashboard');
