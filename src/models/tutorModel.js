@@ -13,8 +13,10 @@ const TutorSchema = new Schema({
     subjects: Array,
     credit: Number,
     gender: String,
+    user: String,
     major: String,
-    user: String
+    uni: String,
+
 }, { collection: 'tutors' });
 
 const TutorModel = mongoose.model('tutors', TutorSchema);

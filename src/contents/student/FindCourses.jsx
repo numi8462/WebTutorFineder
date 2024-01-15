@@ -14,7 +14,12 @@ export const FindCourses = (props) => {
     const [sortOption, setSortOption] = useState(''); // Empty string = Default
     const [searchTerm, setSearchTerm] = useState('');
   
-
+    function capitalizeFirstLetter(str) {
+      if (str && typeof str === 'string') {
+        return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+      }
+      return '';
+    }
     
     useEffect(() => {
       // axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
@@ -40,42 +45,45 @@ export const FindCourses = (props) => {
       //     console.log(response.data); // Log the response data
       //     setCourses(response.data);
       //   }).catch(err => console.log(err));
-
-      const fetchData = async () => {
-        try {
-          const response = await axios.get(`http://localhost:3001/profile/${uid}`);
-          setStudent(response.data);
-        } catch (error) {
-          console.error("Error fetching profile data:", error);
+        if (!currentUser) {
+          return; 
         }
-      };
-  
-      const fetchCourses = async () => {
-        try {
-          const response = await axios.get(`http://localhost:3001/getFilteredCourses?search=${searchTerm}&sort=${sortOption}`);
-          setCourses(response.data);
-        } catch (error) {
-          console.error("Error fetching courses:", error);
-        }
-      };
-  
-      const handleAuthStateChange = (user) => {
-        if (user) {
-          setUid(user.uid);
-          fetchData(); // Fetch student data when user logs in
-        }
-      };
-  
-      const authUnsubscribe = firebase.auth().onAuthStateChanged(handleAuthStateChange);
-  
-      // Fetch courses when any of the dependencies change
-      fetchCourses();
-  
-      return () => {
-        // Cleanup the auth state subscription
-        authUnsubscribe();
-      };
-  }, [uid, sortOption, searchTerm]);
+    
+        const fetchData = async () => {
+          try {
+            const response = await axios.get(`http://localhost:3001/profile/${currentUser.uid}`);
+            setStudent(response.data);
+          } catch (error) {
+            console.error("Error fetching profile data:", error);
+          }
+        };
+    
+        const fetchCourses = async () => {
+          try {
+            const response = await axios.get(`http://localhost:3001/getFilteredCourses?search=${searchTerm}&sort=${sortOption}`);
+            setCourses(response.data);
+          } catch (error) {
+            console.error("Error fetching courses:", error);
+          }
+        };
+    
+        const handleAuthStateChange = (user) => {
+          if (user) {
+            setUid(user.uid);
+            fetchData(); // Fetch student data when user logs in
+          }
+        };
+    
+        const authUnsubscribe = firebase.auth().onAuthStateChanged(handleAuthStateChange);
+    
+        // Fetch courses when any of the dependencies change
+        fetchCourses();
+    
+        return () => {
+          // Cleanup the auth state subscription
+          authUnsubscribe();
+        };
+      }, [currentUser, uid, sortOption, searchTerm]);
       
 
     return (
@@ -145,26 +153,42 @@ export const FindCourses = (props) => {
               </div>
               <div className="filter-container">
                 <div className="category-head">
-                  <ul>
-                    <div className="category-title" id="all" onClick={() => setSortOption('')}>
-                      <span ><i className="fas fa-border-all" ></i></span>
+                                    <ul>
+                    <div className="category-title" id="all" onClick={() => setSortOption('all')}>
                       <li>All</li>
+                      <span><i className="fas fa-border-all" ></i></span>
                     </div>
+                    {/* <div className="category-title" id="location">
+                      <li>Location</li>courseteaching
+                      <span><i className="fa-solid fa-location-dot" /></span>
+                    </div> */}
                     <div className="category-title" id="price" onClick={() => setSortOption('costHighToLow')}>
-                      <span ><i className="fas fa-coins"></i> </span><li>Price(High to Low)</li>
-                      
+                      <li>Price(High to Low)</li>
+                      <span><i className="fas fa-coins"></i> </span>
                     </div>
                     <div className="category-title" id="hours" onClick={() => setSortOption('hoursHighToLow')}>
-                      <span ><i className="fas fa-hourglass"> </i></span>
                       <li>Hours(High to Low)</li>
+                      <span><i className="fas fa-hourglass"></i></span>
                     </div>
-                    <div className="category-title" id="university">
-                      <span><i className="fas fa-landmark" /></span>
+                    <div className="category-title" id="university" onClick={() => setSortOption(`university-${student.uni}`)}>
                       <li>University</li>
+                      <span><i className="fas fa-landmark" /></span>
                     </div>
-                    <div className="category-title" id="degree">
+                    <div className="category-title" id="degree" onClick={() => setSortOption('bachelor')}>
+                      <li>Bachelor's Degree</li>
                       <span><i className="fa-solid fa-graduation-cap" /></span>
-                      <li>Degree level</li>
+                    </div>
+                    <div className="category-title" id="degree" onClick={() => setSortOption('doctorate')}>
+                      <li>Doctorate's Degree</li>
+                      <span><i className="fa-solid fa-graduation-cap" /></span>
+                    </div>
+                    <div className="category-title" id="degree" onClick={() => setSortOption('masters')}>
+                      <li>Master's Degree</li>
+                      <span><i className="fa-solid fa-graduation-cap" /></span>
+                    </div>
+                    <div className="category-title" id="degree" onClick={() => setSortOption('teaching')}>
+                      <li>Teaching Degree</li>
+                      <span><i className="fa-solid fa-graduation-cap" /></span>
                     </div>
                   </ul>
                   <div className="tutors-collect">
@@ -177,9 +201,10 @@ export const FindCourses = (props) => {
                             <div className='post-content'>
                               <div className='post-content-top'>
                                 <span><i className='fa-solid fa-user'></i>{item.name}</span>
-                                
+                                <span><i className="fa-solid fa-building-columns"></i>{capitalizeFirstLetter(item.tutUni)}</span>
                                 <span><i className='fas fa-hourglass'></i>{item.hours} hours</span>
-                                <span><i className='fas fa-money-bill-wave'></i>{item.cost}</span>
+                                <span><i className='fa-solid fa-scroll'></i>{item.tutDegree}</span>
+                                <span><i className='fas fa-money-bill-wave'></i>${item.cost}</span>
                               </div>
                               <h4>{item.subject}</h4>
                               <p>{item.description}

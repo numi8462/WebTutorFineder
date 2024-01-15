@@ -322,20 +322,47 @@ app.get('/getFilteredCourses', async (req, res) => {
   const { search, sort } = req.query;
 
   try {
+    console.log('Fetching courses with search:', search, 'and sort:', sort);
     let filteredCourses = await CourseModel.find();
 
-    // Filter courses based on the search term (Search by name)
+    // Filter courses based on the search term (Search by name or subject)
     if (search) {
-      filteredCourses = filteredCourses.filter(course => course.name.toLowerCase().includes(search.toLowerCase()));
+      const searchTerm = search.toLowerCase();
+      filteredCourses = filteredCourses.filter(course =>
+        course.name.toLowerCase().includes(searchTerm) ||
+        course.subject.toLowerCase().includes(searchTerm)
+      );
     }
 
-    // Sort courses based on the sort option
-    if (sort === 'costHighToLow') {
-      filteredCourses.sort((a, b) => b.cost - a.cost);
-    } else if (sort === 'hoursHighToLow') {
-      filteredCourses.sort((a, b) => b.hours - a.hours);
+    // Apply sorting and filtering based on the sort option
+    if (sort) {
+      switch (sort) {
+        case 'all':
+          // No sorting needed for 'all'
+          break;
+        case 'costHighToLow':
+          filteredCourses.sort((a, b) => b.cost - a.cost);
+          break;
+        case 'hoursHighToLow':
+          filteredCourses.sort((a, b) => b.hours - a.hours);
+          break;
+        case 'bachelor':
+        case 'doctorate':
+        case 'masters':
+        case 'teaching':
+          filteredCourses = filteredCourses.filter(course => course.tutDegree.toLowerCase() === sort.toLowerCase());
+          break;
+        default:
+          if (sort.startsWith('university-')) {
+            const uni = sort.replace('university-', ''); // Extract the university value
+            filteredCourses = filteredCourses.filter(course =>
+              course.tutUni.toLowerCase() === uni.toLowerCase()
+            );
+          }
+          break;
+      }
     }
-
+  // console.log('Filtered courses:', filteredCourses);
     res.json(filteredCourses);
   } catch (error) {
     console.error('Error fetching filtered courses:', error);

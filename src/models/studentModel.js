@@ -13,7 +13,7 @@ const StudentSchema = new Schema({
     credit: Number,
     gender: String,
     user: String,
-    university: String,
+    bookmark: Array,
     major: String,
     uni: String,
 }, { collection: 'students' });
