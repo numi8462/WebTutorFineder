@@ -5,7 +5,7 @@ import axios from 'axios';
 import '../../index.css';
 import { useNavigate } from "react-router-dom";
 
-export const Profile = (props) => {
+export const TutProfile = (props) => {
   const [tutor, setTutor] = useState({});
   const navigate = useNavigate();
 
