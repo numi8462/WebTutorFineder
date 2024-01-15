@@ -8,6 +8,7 @@ import axios from 'axios';
 import Select from 'react-select';
 import majorData from '../text/majors.txt'
 import uni from '../text/world-universities.csv'
+import logoImg from '../../homepage-frontend/images/logo.png'
 
 export const Register = (props) => {
     const [email,setEmail] = useState(''); 
@@ -115,6 +116,11 @@ export const Register = (props) => {
     return (
         <div className="wrapper">
             <div className="container-register">
+            <div className="main-logo">
+                    <a href="index.html">
+                    <img src={logoImg} alt="logo" className="img-fluid"></img>
+                    </a>
+                </div>
                 <div className="form-box">
                     <div>
                         <h2>Register</h2>

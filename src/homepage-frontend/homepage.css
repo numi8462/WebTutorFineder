@@ -1,6 +1,3 @@
-
-    
-
 :root {
   /* widths for rows and containers
      */
@@ -43,7 +40,7 @@ body {
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.3rem;
-  --bs-body-color: #0a1622;
+  /* --bs-body-color: #0a1622; */
 
   --bs-primary: #5C8D89;
   --bs-primary-rgb: 167, 215, 197;
@@ -337,4 +334,3 @@ a.course:hover {
 a.course:hover {
   color: var(--accent-color);
 }
-

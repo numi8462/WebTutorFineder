@@ -8,6 +8,7 @@ import Select from 'react-select';
 import majorData from '../text/majors.txt'
 import uni from '../text/world-universities.csv'
 import Papa from 'papaparse';
+import logoImg from '../../homepage-frontend/images/logo.png'
 
 export const RegisterTut = (props) => {
     const [email,setEmail] = useState(''); 
@@ -111,6 +112,11 @@ export const RegisterTut = (props) => {
     return (
         <div className="wrapper">
             <div className="container">
+            <div className="main-logo">
+                    <a href="index.html">
+                    <img src={logoImg} alt="logo" className="img-fluid"></img>
+                    </a>
+                </div>
                 <div className="form-box">
                     <div>
                         <h2>Register as Tutor</h2>

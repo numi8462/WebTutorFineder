@@ -3,6 +3,8 @@ import { Alert, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../authentication/AuthContext"
 import '../index.css'
+import logoImg from '../homepage-frontend/images/logo.png'
+
 
 export const Login = (props) => {
     const [email,setEmail] = useState('');
@@ -57,9 +59,17 @@ export const Login = (props) => {
         <title>TutorFinder</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
         <link href="../index.css" rel="stylesheet" type="text/css" />
+        
         <div className="wrapper">
+
             <div className="container-register">
+                <div className="main-logo">
+                    <a href="index.html">
+                    <img src={logoImg} alt="logo" className="img-fluid"></img>
+                    </a>
+                </div>
                 <div className="form-box">
+                    
                     <div>
                         <h2>Login</h2>
                     </div>

@@ -8,7 +8,7 @@ background-color: #F4F9F4;
   box-sizing: border-box;
   list-style-type: none;
   text-decoration: none;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   transition: 2.s linear;
   font-family: 'Jost', sans-serif;
   scroll-behavior: smooth;
@@ -33,6 +33,8 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    flex-direction: column;
+
 }
 header {
     position:fixed;
@@ -86,6 +88,8 @@ header h1 {
     justify-content: center;
     align-items: center;
     z-index: 0;
+    flex-direction: column;
+
 }
 .form-box {
     background: #A7D7C5;
@@ -413,6 +417,8 @@ header h1 {
     margin: 1rem;
 }
 
-.select-fixed-size {
-
+.main-logo {
+  position: 'relative';
+  margin-top: -10px;
+  margin-bottom: 50px;
 }

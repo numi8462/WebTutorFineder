@@ -16,7 +16,7 @@ import { ForgotPassword } from './contents/ForgotPassword';
 import { TutProfile } from './contents/tutor/TutProfile'
 import CreateCourse from './contents/tutor/createCourses'
 import {Matching} from './contents/student/Matching';
-// import Homepage from './homepage-frontend/homepage'
+import Homepage from './homepage-frontend/homepage'
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -29,7 +29,7 @@ function App() {
       <AuthProvider>
       <div className="App">
         <Routes>
-          <Route path="*" element={<Navigate to="/login" />} /> {/* Default route */} 
+          <Route path="*" element={<Navigate to="/homepage" />} /> {/* Default route */} 
           <Route path="/details" element={<Detail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register  />} />
@@ -43,7 +43,7 @@ function App() {
           <Route path='/forgotPassword' element={<ForgotPassword/>}/>
           <Route path='/createCourse' element={<CreateCourse/>}/>
           <Route path='/matching' element={<Matching/>}/>
-          {/* <Route path='/homepage' element={<Homepage/>}/> */}
+          <Route path='/homepage' element={<Homepage/>}/>
         </Routes>
       </div>
       </AuthProvider>
