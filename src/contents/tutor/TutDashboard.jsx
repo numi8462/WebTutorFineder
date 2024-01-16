@@ -116,6 +116,74 @@ export const TutDashboard = (props) => {
     }
   }
 
+  function updateSession(id,sessionHours,maxHours){
+    let hoursChange = window.prompt("Enter the number of hours to decrease:");
+    hoursChange = Number(hoursChange);
+
+    // Check if the input is a number and within the valid range
+    if (isNaN(hoursChange) || hoursChange < 0 || hoursChange > sessionHours) {
+        alert("Invalid input. Please enter a number between 0 and " + (sessionHours) + ".");
+        return;
+    }
+
+    // Calculate the new hoursLeft
+    let newHoursLeft = sessionHours - hoursChange;
+
+    // Ensure newHoursLeft is within the valid range
+    newHoursLeft = Math.max(0, newHoursLeft);
+
+    if(newHoursLeft === 0){
+        let confirmCompletion = window.confirm(`Are you sure to decrease by ${hoursChange} hours? This will complete the session.`);
+        if (!confirmCompletion) {
+            return;
+        }
+        axios.put(`http://localhost:3001/updateSession/${id}`, { hoursLeft: newHoursLeft, status: 3 })
+        .then(response => {
+            fetchData(tutorUID);
+        })
+        .catch(error => {
+            console.error("Error updating session:", error);
+        });
+    } else {
+        axios.put(`http://localhost:3001/updateSession/${id}`, { hoursLeft: newHoursLeft })
+        .then(response => {
+            fetchData(tutorUID);
+        })
+        .catch(error => {
+            console.error("Error updating session:", error);
+        });
+    }
+}
+
+    function updateSessionPlus(id, sessionHours,maxHours){
+        let hoursChange = window.prompt("Enter the number of hours to increase:");
+        hoursChange = Number(hoursChange);
+    
+        // Check if the input is a number and within the valid range
+        if (isNaN(hoursChange) || hoursChange < 0 || hoursChange > maxHours - sessionHours) {
+            alert("Invalid input. Please enter a number between 0 and " + (maxHours - sessionHours) + ".");
+            return;
+        }
+    
+        // Calculate the new hoursLeft
+        let newHoursLeft = sessionHours + hoursChange;
+    
+        // Ensure newHoursLeft is within the valid range
+        // newHoursLeft = Math.min(2*sessionHours, newHoursLeft);
+    
+        axios.put(`http://localhost:3001/updateSession/${id}`, { hoursLeft: newHoursLeft })
+        .then(response => {
+            fetchData(tutorUID);
+        })
+        .catch(error => {
+            console.error("Error updating session:", error);
+        });
+
+    }
+    
+
+
+
   return (
     <>
       <div>
@@ -266,8 +334,15 @@ export const TutDashboard = (props) => {
                                                 {mySession.map((item, index) => (
                                                         <tr key={index}>
                                                             <td>{item.cName}</td>
-                                                            <td>{item.subject}</td>
-                                                            <td>{item.hoursLeft} / {item.hours} hours remaining</td>
+                                                            <td>{item.subject}</td> 
+                                                            <td>
+                                                                <i class="fa fa-minus-square fa-lg" aria-hidden="true" onClick={() => {updateSession(item._id, item.hoursLeft, item.hours)}}></i>
+                                                                <div style={{padding: '1rem'}}> 
+                                                                    {item.hoursLeft} / {item.hours} hours
+                                                                </div>
+                                                                <i class="fa fa-plus-square fa-lg" aria-hidden="true" onClick={() => {updateSessionPlus(item._id, item.hoursLeft, item.hours)}}></i>
+                                                            </td>
+
                                                         </tr>
                                                     ))}
                                             </tbody>
@@ -334,7 +409,7 @@ export const TutDashboard = (props) => {
                         <div className="courses">
                             <div className="card">
                                 <div className="card-header">
-                                    <h3>Completed Sessions</h3>
+                                    <h3>Past Sessions</h3>
                                 </div>
                                 <div className="card-body">
                                     <div className="table-responsive">
@@ -342,7 +417,6 @@ export const TutDashboard = (props) => {
                                         <thead>
                                             <tr>
                                                 <td>Course title</td>
-                                                <td>Area</td>
                                                 <td>Student</td>
                                             </tr>
                                         </thead>
@@ -350,7 +424,6 @@ export const TutDashboard = (props) => {
                                             {mySession.filter(item => item.hoursLeft === 0).map((item, index) => (
                                                 <tr key={index}>
                                                     <td>{item.cName}</td>
-                                                    <td>{item.subject}</td>
                                                     <td>{student.name}</td>
                                                 </tr>
                                             ))}

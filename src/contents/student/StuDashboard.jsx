@@ -179,6 +179,7 @@ export const StuDashboard = (props) => {
                                                     <td>Course title</td>
                                                     <td>Area</td>
                                                     <td>Status</td>
+                                                    <td>Progress</td>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -189,9 +190,10 @@ export const StuDashboard = (props) => {
                                                             <td>
                                                                 <span className="status"></span>
                                                                 <span style={{color: item.status === 1 ? 'green' : item.status === 2 ? 'red' : 'blue'}}>
-                                                                {item.status === 0 ? 'Pending' : item.status === 1 ? 'Approved' : item.status === 2 ? 'Declined' : item.status}
+                                                                {item.status === 0 ? 'Pending' : item.status === 1 ? 'Approved' : item.status === 2 ? 'Declined' : item.status === 3 ? 'Completed' : item.status}
                                                                 </span>
                                                             </td>
+                                                            <td>{item.hoursLeft} / {item.hours} hours</td>
                                                         </tr>
                                                     ))}
                                             </tbody>
