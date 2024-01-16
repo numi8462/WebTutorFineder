@@ -16,7 +16,7 @@ import { ForgotPassword } from './contents/ForgotPassword';
 import UpdateProfile from './contents/UpdateProfile';
 // import { tutProfile } from './contents/tutor/tutProfile'
 // import { tutUpdateProfile } from './contents/tutor/tutUpdateProfile'
-import CreateCourse from './contents/tutor/createCourses'
+// import CreateCourse from './contents/tutor/createCourses'
 import Homepage from './homepage-frontend/homepage'
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
           <Route path='/tutorDashboard' element={<TutDashboard/>}/>
           <Route path='/forgotPassword' element={<ForgotPassword/>}/>
           <Route path="/updateProfile" element={<UpdateProfile/>}/>
-          <Route path='/createCourse' element={<CreateCourse/>}/>
+          {/* <Route path='/createCourse' element={<CreateCourse/>}/> */}
           <Route path='/homepage' element={<Homepage/>}/>
         </Routes>
       </div>
