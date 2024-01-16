@@ -274,7 +274,7 @@ export const Profile = (props) => {
           </div>
         </div>
         <div className="stable"><h4>Credit</h4></div>
-        <div className="changed">{student.credit}$</div>
+        <div className="changed">$ {student.credit}</div>
       </div>
 
             </main>

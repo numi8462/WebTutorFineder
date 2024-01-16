@@ -128,7 +128,7 @@ export const StuDashboard = (props) => {
                 </div>
             </header>
         
-            <main>
+            <main className='main-flex'>
                 <div className="cards">
                     <div className="card-single">
                         <div>
@@ -162,89 +162,94 @@ export const StuDashboard = (props) => {
 
                 </div>
 
-                <div className="recent-flex">
-                    <div className="courses">
-                        <div className="card">
-                            <div className="card-header">
-                                <h3>Your current courses</h3>
-                                <button>See all <span className="fa-solid fa-chevron-down"></span></button>
-                            </div>
-                            <div className="card-body">
-                                <div className="table-responsive">
-                                <table width="100%">
-                                    <thead>
-                                        <tr>
-                                            <td>Course title</td>
-                                            <td>Area</td>
-                                            <td>Status</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {mySession.map((item, index) => (
-                                                <tr key={index}>
-                                                    <td>{item.cName}</td>
-                                                    <td>{item.subject}</td>
-                                                    <td>
-                                                        <span className="status"></span>
-                                                        <span style={{color: item.status === 1 ? 'green' : item.status === 2 ? 'red' : 'blue'}}>
-                                                        {item.status === 0 ? 'Pending' : item.status === 1 ? 'Approved' : item.status === 2 ? 'Declined' : item.status}
-                                                        </span>
-                                                    </td>
+                <div className='main-content-row'>
+                    <div className='content-column'>
+                        <div className="recent-flex">
+                            <div className="courses">
+                                <div className="card">
+                                    <div className="card-header">
+                                        <h3>Your current courses</h3>
+                                        <button>See all <span className="fa-solid fa-chevron-down"></span></button>
+                                    </div>
+                                    <div className="card-body">
+                                        <div className="table-responsive">
+                                        <table width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <td>Course title</td>
+                                                    <td>Area</td>
+                                                    <td>Status</td>
                                                 </tr>
-                                            ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                            </div>
+                                            </thead>
+                                            <tbody>
+                                                {mySession.map((item, index) => (
+                                                        <tr key={index}>
+                                                            <td>{item.cName}</td>
+                                                            <td>{item.subject}</td>
+                                                            <td>
+                                                                <span className="status"></span>
+                                                                <span style={{color: item.status === 1 ? 'green' : item.status === 2 ? 'red' : 'blue'}}>
+                                                                {item.status === 0 ? 'Pending' : item.status === 1 ? 'Approved' : item.status === 2 ? 'Declined' : item.status}
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    </div>
 
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div className="recent-flex">
+                            <div className="courses">
+                                <div className="card">
+                                    <div className="card-header">
+                                        <h3>Pending Requests</h3>
+                                    </div>
+                                    <div className="card-body">
+                                        <div className="table-responsive">
+                                        <table width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <td>Course title</td>
+                                                    <td>Area</td>
+                                                    <td>Status</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {session.map((item, index) => (
+                                                    <tr key={index}>
+                                                        <td>{item.cName}</td>
+                                                        <td>{item.subject}</td>
+                                                        <td>
+                                                            <span className="status"></span>
+                                                            <span style={{color: item.status === 1 ? 'green' : item.status === 2 ? 'red' : 'blue'}}>
+                                                            {item.status === 0 ? 'Pending' : item.status === 1 ? 'Approved' : item.status === 2 ? 'Declined' : item.status}
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <div className="">
+                                                                {item.status === 1 && <button className="confirm" type="button" onClick={() => updateSession(item._id)}>Confirm</button>}
+                                                                {item.status === 2 && <button className="confirm" type="button" onClick={() => deleteSession(item._id)}>Confirm</button>}
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
-                    
                 </div>
-                <div className="recent-flex">
-                    <div className="courses">
-                        <div className="card">
-                            <div className="card-header">
-                                <h3>Pending Requests</h3>
-                            </div>
-                            <div className="card-body">
-                                <div className="table-responsive">
-                                <table width="100%">
-                                    <thead>
-                                        <tr>
-                                            <td>Course title</td>
-                                            <td>Area</td>
-                                            <td>Status</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {session.map((item, index) => (
-                                            <tr key={index}>
-                                                <td>{item.cName}</td>
-                                                <td>{item.subject}</td>
-                                                <td>
-                                                    <span className="status"></span>
-                                                    <span style={{color: item.status === 1 ? 'green' : item.status === 2 ? 'red' : 'blue'}}>
-                                                    {item.status === 0 ? 'Pending' : item.status === 1 ? 'Approved' : item.status === 2 ? 'Declined' : item.status}
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <div className="">
-                                                        {item.status === 1 && <button type="button" onClick={() => updateSession(item._id)}>Confirm</button>}
-                                                        {item.status === 2 && <button type="button" onClick={() => deleteSession(item._id)}>Confirm</button>}
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    
-                </div>
+                
 
             </main>
         </div>

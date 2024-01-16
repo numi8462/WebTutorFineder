@@ -48,7 +48,7 @@ export const Course = () => {
     
     const postSession = () => {
         const sessionData = {
-            cid: course.cid,
+            cid: course._id,
             tid: tutor.uid,
             sid: student.uid,
             subject: course.subject,
@@ -57,8 +57,10 @@ export const Course = () => {
             hours: course.hours,
             hoursLeft: course.hours,
             totalCost: course.hours * course.cost,
-            status: 0, // 0 is pending, 1 is approved, 2 is declined
+            status: 0, // 0 is pending, 1 is approved, 2 is declined, 3 is completed
             isConfirmed: false,
+            isCompleted: false,
+
         };
         fetch('http://localhost:3001/getSessions')
         .then(response => response.json())

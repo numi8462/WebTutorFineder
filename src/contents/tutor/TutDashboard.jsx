@@ -8,6 +8,7 @@ import '../../contents/dashboard.css';
 export const TutDashboard = (props) => {
   const [tutor, setTutor] = useState({});
   const [courses, setCourses] = useState([]);
+  const [student, setStudent] = useState({});
   const [tutorUID, setTutorUID] = useState(null);
   const [session, setSession] = useState([]);
   const [mySession, setMySession] = useState([]);
@@ -26,11 +27,17 @@ export const TutDashboard = (props) => {
         setTutorUID(uid)
         fetchData(uid);
         fetchCourses(uid);
-      }
+      } 
     });
 
     return () => unsubscribe();
   }, []);
+
+  useEffect(() => {
+    mySession.filter(item => item.hoursLeft === 0).forEach(item => {
+        fetchStudentData(item.sid);
+    });
+    }, [mySession]);
 
   const fetchCourses = async (uid) => {
     try {
@@ -51,6 +58,14 @@ export const TutDashboard = (props) => {
       console.error('Error deleting course:', error);
     }
   };
+
+  function fetchStudentData(id) {
+    axios.get(`http://localhost:3001/profile/${id}`)
+    .then((res) => {
+        setStudent(res.data)
+        return res.data
+    })
+  }
 
   function fetchData(id) { // fetch tutor and session data
     axios.get(`http://localhost:3001/getTutors/${id}`)
@@ -146,14 +161,14 @@ export const TutDashboard = (props) => {
                     </h1>
                 </div>
                 <div className="user-wrapper">
-                    <div>
-                        <h4>{tutor.name}</h4>
+                    <div className='user-wrapper-field'>
+                        <h4><span><i className='fa-solid fa-user'></i></span> {tutor.name}</h4> 
                         <small>Tutor</small>
                     </div>
                 </div>
             </header>
         
-            <main>
+            <main className='main-flex'>
                 <div className="cards">
                     <div className="card-single">
                         <div>
@@ -187,124 +202,171 @@ export const TutDashboard = (props) => {
 
                 </div>
 
-                <div className="recent-flex">
-                    <div className="courses">
-                        <div className="card">
-                            <div className="card-header">
-                                <h3>My courses</h3>
-                                <button>See all <span className="fa-solid fa-chevron-down"></span></button>
-                            </div>
-                            <div className="card-body">
-                                <div className="table-responsive">
-                                <table width="100%">
-                                    <thead>
-                                        <tr>
-                                            <td>Course title</td>
-                                            <td>Area</td>
-                                            <td>hours</td>
-                                            <td>Total cost</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {courses.map((item, index) => (
-                                                <tr key={index}>
-                                                    <td>{item.name}</td>
-                                                    <td>{item.subject}</td>
-                                                    <td>{item.hours}</td>
-                                                    <td>{item.cost * item.hours}</td>
+                <div className='main-content-row'>
+
+                    <div className='content-column'>
+                
+                        <div className="recent-flex">
+                            <div className="courses">
+                                <div className="card">
+                                    <div className="card-header">
+                                        <h3>My courses</h3>
+                                        <button>See all <span className="fa-solid fa-chevron-down"></span></button>
+                                    </div>
+                                    <div className="card-body">
+                                        <div className="table-responsive">
+                                        <table width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <td>Course title</td>
+                                                    <td>Area</td>
+                                                    <td>hours</td>
+                                                    <td>Total cost</td>
                                                 </tr>
-                                            ))}
-                                    </tbody>
-                                </table>
+                                            </thead>
+                                            <tbody>
+                                                {courses.map((item, index) => (
+                                                        <tr key={index}>
+                                                            <td>{item.name}</td>
+                                                            <td>{item.subject}</td>
+                                                            <td>{item.hours}</td>
+                                                            <td>{item.cost * item.hours}</td>
+                                                        </tr>
+                                                    ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    </div>
+
+                                </div>
                             </div>
+                            
+                        </div>
+
+
+
+                        <div className="recent-flex">
+                            <div className="courses">
+                                <div className="card">
+                                    <div className="card-header">
+                                        <h3>My on going Sessions</h3>
+                                        <button>See all <span className="fa-solid fa-chevron-down"></span></button>
+                                    </div>
+                                    <div className="card-body">
+                                        <div className="table-responsive">
+                                        <table width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <td>Course title</td>
+                                                    <td>Area</td>
+                                                    <td>Progress</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {mySession.map((item, index) => (
+                                                        <tr key={index}>
+                                                            <td>{item.cName}</td>
+                                                            <td>{item.subject}</td>
+                                                            <td>{item.hoursLeft} / {item.hours} hours remaining</td>
+                                                        </tr>
+                                                    ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
                             </div>
+                        </div>
 
                         </div>
-                    </div>
-                    
-                </div>
-                <div className="recent-flex">
-                    <div className="courses">
-                        <div className="card">
-                            <div className="card-header">
-                                <h3>My on going Sessions</h3>
-                                <button>See all <span className="fa-solid fa-chevron-down"></span></button>
+
+                        <div className="recent-flex">
+                            <div className="courses">
+                                <div className="card">
+                                    <div className="card-header">
+                                        <h3>Pending Requests</h3>
+                                    </div>
+                                    <div className="card-body">
+                                        <div className="table-responsive">
+                                        <table width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <td>Course title</td>
+                                                    <td>Area</td>
+                                                    <td>Status</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody >
+                                                {session.map((item, index) => (
+                                                    <tr key={index}>
+                                                        <td>{item.cName}</td>
+                                                        <td>{item.subject}</td>
+                                                        <td>
+                                                            <span className="status"></span>
+                                                            <span style={{color: item.status === 1 ? 'green' : item.status === 2 ? 'red' : 'blue'}}>
+                                                            {item.status === 0 ? 'Pending' : item.status === 1 ? 'Approved' : item.status === 2 ? 'Declined' : item.status}
+                                                            </span>
+                                                        </td>
+                                                        <td style={{justifyContent: 'center'}}>
+                                                            <div style={{display: 'flex', flexDirection: 'row'}}>
+                                                                {item.status === 0 && <button className="approve" type="button" onClick={() => approveSession(item._id)}>Approve</button>}
+
+                                                                {item.status === 0 && <button style={{marginLeft: '10%'}} className="decline" type="button" onClick={() => declineSession(item._id)}>Decline</button>}
+
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
                             </div>
-                            <div className="card-body">
-                                <div className="table-responsive">
-                                <table width="100%">
-                                    <thead>
-                                        <tr>
-                                            <td>Course title</td>
-                                            <td>Area</td>
-                                            <td>Progress</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {mySession.map((item, index) => (
+                        </div>
+                            
+                        </div>
+                    </div>
+
+
+
+                    <div className='recent-completed'>
+                        <div className="courses">
+                            <div className="card">
+                                <div className="card-header">
+                                    <h3>Completed Sessions</h3>
+                                </div>
+                                <div className="card-body">
+                                    <div className="table-responsive">
+                                    <table width="100%">
+                                        <thead>
+                                            <tr>
+                                                <td>Course title</td>
+                                                <td>Area</td>
+                                                <td>Student</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {mySession.filter(item => item.hoursLeft === 0).map((item, index) => (
                                                 <tr key={index}>
                                                     <td>{item.cName}</td>
                                                     <td>{item.subject}</td>
-                                                    <td>{item.hoursLeft} / {item.hours} hours remaining</td>
+                                                    <td>{student.name}</td>
                                                 </tr>
                                             ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                            </div>
 
+                                        </tbody>
+                                    </table>
+                                </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
-                    
-                </div>
-                <div className="recent-flex">
-                    <div className="courses">
-                        <div className="card">
-                            <div className="card-header">
-                                <h3>Pending Requests</h3>
-                            </div>
-                            <div className="card-body">
-                                <div className="table-responsive">
-                                <table width="100%">
-                                    <thead>
-                                        <tr>
-                                            <td>Course title</td>
-                                            <td>Area</td>
-                                            <td>Status</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {session.map((item, index) => (
-                                            <tr key={index}>
-                                              <td>{item.cName}</td>
-                                              <td>{item.subject}</td>
-                                              <td>
-                                                  <span className="status"></span>
-                                                  <span style={{color: item.status === 1 ? 'green' : item.status === 2 ? 'red' : 'blue'}}>
-                                                  {item.status === 0 ? 'Pending' : item.status === 1 ? 'Approved' : item.status === 2 ? 'Declined' : item.status}
-                                                  </span>
-                                              </td>
-                                              <td>
-                                                  <div className="">
-                                                      {item.status === 0 && <button type="button" onClick={() => approveSession(item._id)}>Approve</button>}
-                                                  </div>
-                                              </td>
-                                              <td>
-                                                  <div className="">
-                                                      {item.status === 0 && <button type="button" onClick={() => declineSession(item._id)}>Decline</button>}
-                                                  </div>
-                                              </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                            </div>
 
-                        </div>
-                    </div>
-                    
                 </div>
+                
+                
 
             </main>
         </div>

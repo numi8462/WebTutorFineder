@@ -98,8 +98,12 @@ export const TutProfile = (props) => {
                             <span>My Courses</span></a>
                         </li>
                         <li>
-                            <a className="active" href=""><span className="fa-solid fa-user"></span>
+                            <a className="active"><span className="fa-solid fa-user"></span>
                             <span>My Account</span></a>
+                        </li>
+                        <li>
+                            <a onClick={() => navigate('/createCourse')}><span className="fa-solid fa-plus"></span>
+                            <span>Create A New Course</span></a>
                         </li>
                     </ul>
 
@@ -118,8 +122,8 @@ export const TutProfile = (props) => {
                     </h1>
                 </div>
                 <div className="user-wrapper">
-                    <div>
-                        <h4>{tutor.name}</h4>
+                    <div className='user-wrapper-field'>
+                        <h4><span><i className='fa-solid fa-user'></i></span> {tutor.name}</h4>
                         <small>Tutor</small>
                     </div>
                 </div>
