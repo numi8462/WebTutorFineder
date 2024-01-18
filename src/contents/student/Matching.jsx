@@ -103,8 +103,8 @@ export const Matching = (props) => {
                 <main>
                 {/* Main section */}
                     <div className='main-container'>
-                        <h2 style={{marginTop: '2rem'}}>Here are some Recommended Tutors and their Courses</h2>
-                        <table className="">
+                        <h2 style={{marginTop: '2rem'}}>Here are your Recommended Tutors and their Courses</h2>
+                        <table className="tut-matching-table">
                             {courses.map(course => (
                                     <Course key={course._id} course={course} student={student}/>
                                 ))}
