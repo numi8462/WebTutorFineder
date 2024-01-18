@@ -13,10 +13,15 @@ import { Course } from './contents/Course'
 import { StuDashboard } from './contents/student/StuDashboard';
 import { TutDashboard } from './contents/tutor/TutDashboard';
 import { ForgotPassword } from './contents/ForgotPassword';
+
 import UpdateProfile from './contents/UpdateProfile';
 // import { tutProfile } from './contents/tutor/tutProfile'
 // import { tutUpdateProfile } from './contents/tutor/tutUpdateProfile'
 // import CreateCourse from './contents/tutor/createCourses'
+
+// import { TutProfile } from './contents/tutor/tutProfile'
+// import CreateCourse from './contents/tutor/createCourses'
+// import {Matching} from './contents/student/Matching';
 import Homepage from './homepage-frontend/homepage'
 
 function App() {
