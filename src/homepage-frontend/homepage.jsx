@@ -3,7 +3,7 @@ import './homepage.css'
 
 import { Icon } from '@iconify/react';
 import { Link,useNavigate } from 'react-router-dom';
-import logoImg from '../images/logo1.png'
+import logoImg from '../images/logo.png'
 import billboardImg from '../images/billboard-img.jpg'
 import item4Img from  '../images/item4.jpg'
 import item6Img from  '../images/item6.jpg'

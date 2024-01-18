@@ -26,6 +26,13 @@
   --secondary-font: 'Roboto Slab', serif;
 }
 
+/* Logo */
+.logo {
+  position: fixed;
+  top: 10px; /* You can adjust the top position based on your design */
+  left: 10px; /* You can adjust the left position based on your design */
+  z-index: 1000; /* You can adjust the z-index based on your layout */
+}
 
 /* Billboard Text */
 
@@ -68,7 +75,7 @@ body {
 
   --bs-secondary-rgb: 230, 243, 251;
 
-  --bs-success-rgb: 167, 215, 228;
+  --bs-success-rgb: 230, 115, 57;
   --bs-danger-rgb: 249, 235, 231;
   --bs-warning-rgb: 255, 249, 235;
   --bs-info-rgb: 230, 243, 250;
