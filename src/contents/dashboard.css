@@ -575,7 +575,17 @@ table {
 .read-btn:hover {
     background: #3E6A67;
 }
-
+.complete-btn {
+    border: none;
+    background: #FF9130;
+    color: #F4F9F4;
+    border-radius: 10px;
+    padding: 3px 25px;
+    transition: all .4s ease;
+}
+.complete-btn:hover {
+    background: #3E6A67;
+}
 
 /*Styling for the form of the createCourse.jsx*/
 

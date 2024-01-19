@@ -7,6 +7,7 @@ import '../dashboard.css'
 
 export const StuDashboard = (props) => {
     const [student, setStudent] = useState({});
+    const [tutor, setTutor] = useState({});
     const [session, setSession] = useState([]);
     const [mySession, setMySession] = useState([]);
     // const { uid } = useParams();
@@ -22,6 +23,20 @@ export const StuDashboard = (props) => {
     useEffect(() => {
         fetchData();
     }, [uid]);
+
+    useEffect(() => {
+        mySession.filter(item => item.hoursLeft === 0).forEach(item => {
+            fetchTutorData(item.tid);
+        });
+    }, [mySession]);
+
+    function fetchTutorData(id) {
+        axios.get(`http://localhost:3001/getTutors/${id}`)
+        .then((res) => {
+            setTutor(res.data)
+            return res.data
+        })
+    }
 
     // Function to call data
     function fetchData() {
@@ -72,6 +87,18 @@ export const StuDashboard = (props) => {
             console.error("Error deleting session:", error);
         });
     }
+
+    function complete(id) { // approve session
+        axios.put(`http://localhost:3001/updateSession/${id}`, { status: 4 })
+        .then(response => {
+            console.log(response.data);
+            window.alert("Course Completed");
+            fetchData();
+        })
+        .catch(error => {
+            console.error("Error updating session:", error);
+        });
+      }
 
     return (
         <div>
@@ -169,7 +196,7 @@ export const StuDashboard = (props) => {
                                 <div className="card">
                                     <div className="card-header">
                                         <h3>Your current courses</h3>
-                                        <button>See all <span className="fa-solid fa-chevron-down"></span></button>
+                                        {/* <button>See all <span className="fa-solid fa-chevron-down"></span></button> */}
                                     </div>
                                     <div className="card-body">
                                         <div className="table-responsive">
@@ -180,22 +207,30 @@ export const StuDashboard = (props) => {
                                                     <td>Area</td>
                                                     <td>Status</td>
                                                     <td>Progress</td>
+                                                    <td></td>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {mySession.map((item, index) => (
-                                                        <tr key={index}>
-                                                            <td>{item.cName}</td>
-                                                            <td>{item.subject}</td>
-                                                            <td>
-                                                                <span className="status"></span>
-                                                                <span style={{color: item.status === 1 ? 'green' : item.status === 2 ? 'red' : 'blue'}}>
-                                                                {item.status === 0 ? 'Pending' : item.status === 1 ? 'Approved' : item.status === 2 ? 'Declined' : item.status === 3 ? 'Completed' : item.status}
-                                                                </span>
-                                                            </td>
-                                                            <td>{item.hoursLeft} / {item.hours} hours</td>
-                                                        </tr>
-                                                    ))}
+                                                {mySession.map((item, index) => {
+                                                    if(item.status != 4){
+                                                        return(
+                                                            <tr key={index}>
+                                                                <td>{item.cName}</td>
+                                                                <td>{item.subject}</td>
+                                                                <td>
+                                                                    <span className="status"></span>
+                                                                    <span style={{color: item.status === 1 ? 'green' : item.status === 2 ? 'red' : 'blue'}}>
+                                                                    {item.status === 0 ? 'Pending' : item.status === 1 ? 'Approved' : item.status === 2 ? 'Declined' : item.status === 3 ? 'Completed' : item.status}
+                                                                    </span>
+                                                                </td>
+                                                                <td>{item.hoursLeft} / {item.hours} hours </td>
+                                                                {item.status === 3 && <td><button className="complete-btn" onClick={() => complete(item._id)}>Complete</button></td>}
+                                                            </tr>
+                                                        )
+                                                        
+                                                    }
+                                                        
+                                                })}
                                             </tbody>
                                         </table>
                                     </div>
@@ -248,6 +283,44 @@ export const StuDashboard = (props) => {
                                 </div>
                             </div>
                             
+                        </div>
+
+                        
+                    </div>
+                    <div className='recent-completed'>
+                        <div className="courses">
+                            <div className="card">
+                                <div className="card-header">
+                                    <h3>Past Sessions</h3>
+                                </div>
+                                <div className="card-body">
+                                    <div className="table-responsive">
+                                        <table width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <td>Course title</td>
+                                                    <td>Tutor</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {mySession.filter(item => item.hoursLeft === 0).map((item, index) => {
+                                                    if(item.status == 4){
+                                                        return (
+                                                            <tr key={index}>
+                                                                <td>{item.cName}</td>
+                                                                <td>{tutor.name}</td>
+                                                            </tr>
+                                                        )
+                                                    }
+
+                                                })}
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
