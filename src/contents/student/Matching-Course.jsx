@@ -34,17 +34,17 @@ export const Course = ({ course, student }) => {
     }
 
     return (
-            <tr className="">
-                <td style={{padding: '2rem', width: '20%'}}>
+            <tr className="tut-matching-container">
+                <td className="left-td">
                     <img src={courseImg} alt="post" /> 
                 </td>
-                <td className="matching-td" style={{width: '20%'}}>
+                <td className="matching-td">
                     <h4><i className='fa-solid fa-user'></i> {tutor.name}</h4>
                     <h4>{tutor.qualification} of {tutor.major}</h4>
                     <h4>{tutor.uni}</h4>
-                    {tutor && student && tutor.uni === student.uni && <h4 style={{color: 'blue'}}>Fellow Alumni</h4>}
+                    {tutor && student && tutor.uni === student.uni && <h4 className="status">Fellow Alumni</h4>}
                 </td>
-                <td style={{padding: '2rem'}}>
+                <td className="right-td">
                     <table>
                         <tr>
                             <h4>{course.name}</h4>

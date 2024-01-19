@@ -422,3 +422,29 @@ header h1 {
   margin-top: -10px;
   margin-bottom: 50px;
 }
+.tut-matching-table {
+  margin-top: 1rem;
+}
+.tut-matching-container {
+  background: #A7D7C5;
+  margin: 1.5rem 1rem;
+  border: 25px solid #F4F9F4;
+  padding: 2rem;
+}
+.left-td {
+  padding: 2rem;
+  width: 20%;
+}
+.matching-td {
+  width: 30%;
+  padding: 1rem;
+}
+.right-td {
+  padding: 1rem;
+}
+.status {
+  color: #FF5B22;
+}
+.right-td button {
+  margin-top: 1rem;
+} 
