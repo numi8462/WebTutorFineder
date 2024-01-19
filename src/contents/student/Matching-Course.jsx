@@ -40,9 +40,9 @@ export const Course = ({ course, student }) => {
                 </td>
                 <td className="matching-td">
                     <h4><i className='fa-solid fa-user'></i> {tutor.name}</h4>
-                    <h4>{tutor.qualification} of {tutor.major}</h4>
-                    <h4>{tutor.uni}</h4>
-                    {tutor && student && tutor.uni === student.uni && <h4 className="status">Fellow Alumni</h4>}
+                    <h4><i class="fa-solid fa-graduation-cap"/> {tutor.qualification} of {tutor.major}</h4>
+                    <h4><i className="fas fa-landmark"/> {tutor.uni}</h4>
+                    {tutor && student && tutor.uni === student.uni && <h4 className="status"><i className="fas fa-star"/> Fellow Alumni</h4>}
                 </td>
                 <td className="right-td">
                     <table>

@@ -436,12 +436,16 @@ header h1 {
 }
 .tut-matching-table {
   margin-top: 1rem;
+  border-radius: 15px;
+  overflow: hidden;
+
 }
 .tut-matching-container {
   background: #A7D7C5;
   margin: 1.5rem 1rem;
   border: 25px solid #F4F9F4;
   padding: 2rem;
+
 }
 .left-td {
   padding: 2rem;
@@ -450,6 +454,8 @@ header h1 {
 .matching-td {
   width: 30%;
   padding: 1rem;
+  text-transform: capitalize;
+  
 }
 .right-td {
   padding: 1rem;
@@ -460,3 +466,19 @@ header h1 {
 .right-td button {
   margin-top: 1rem;
 } 
+
+.update-btn {
+  margin: 0 1rem;
+  padding: 10px;
+  border-radius: 15px;
+  background: #FF9130;
+  color: #F4F9F4;
+  transition: all .4s ease;
+  border: none;
+  font-size: 18px;
+}
+
+.update-btn:hover{
+  background: #3E6A67;
+  transition: .7s;
+}

@@ -146,8 +146,8 @@ import '../../contents/dashboard.css';
                                 <h3>Creating a new Course</h3>
                             </div>
                             <div className="card-body">
-                                <div className="table-responsive">
-                                <form onSubmit={handleCreateCourse} width="100%" id="createcourse-form">
+                                <div className="table-responsive" >
+                                <form onSubmit={handleCreateCourse} width="100%" id="createcourse-form" >
                                     <label id="createcourse-label">
                                       Subject:
                                       <Select
@@ -158,7 +158,7 @@ import '../../contents/dashboard.css';
                                       />
                                     </label>
                                     <br />
-                                    <label>
+                                    <label >
                                     Name:
                                     <input id="createcourse-input" type="text" value={name} onChange={(e) => setName(e.target.value)} />
                                     </label>

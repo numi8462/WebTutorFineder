@@ -46,7 +46,7 @@ export const TutProfile = (props) => {
 
   const updateTutorInfo = async (updatedData) => {
     try {
-      await axios.post(`http://localhost:3001/updateTutor/${uid}`, updatedData);
+      await axios.put(`http://localhost:3001/updateTutor/${uid}`, updatedData);
     } catch (error) {
       console.error("Error updating profile data:", error);
     }
@@ -213,8 +213,8 @@ export const TutProfile = (props) => {
                   </div>
               </div>
               <div className="end-info">
-                <button className="btn" type='onSubmit' onClick={handleUpdateClick}>
-                  Update your info
+                <button className="update-btn" type='onSubmit' onClick={handleUpdateClick}>
+                  Update Profile
                 </button>
               </div>
 

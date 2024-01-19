@@ -3,7 +3,6 @@ import React, { useState, useEffect  } from "react";
 import { useAuth } from '../../authentication/AuthContext'
 import firebase from "firebase/compat/app";
 import { useNavigate } from 'react-router-dom';
-import courseImg from '../../images/course1.png';
 
 export const FindCourses = (props) => {
     const [uid, setUid] = useState('')
@@ -14,6 +13,27 @@ export const FindCourses = (props) => {
     const [sortOption, setSortOption] = useState(''); // Empty string = Default
     const [searchTerm, setSearchTerm] = useState('');
     const [degree, setDegree] = useState('all');
+    const [subject, setSubject] = useState('all');
+    const imageMap = {
+      'Creative Arts and Design': require('../../images/Creative Arts and Design.png'),
+      'Marketing': require('../../images/Marketing.png'),
+      'Business and Management': require('../../images/Business and Management.png'),
+      'IT': require('../../images/IT.png'),
+      'Software Development': require('../../images/Software Development.png'),
+      'Engineering': require('../../images/Engineering.png'),
+      'Law': require('../../images/Law.png'),
+      // add more subjects and images as needed
+  };
+
+  const options = [
+    { value: 'Creative Arts and Design', label: 'Creative Arts and Design' },
+    { value: 'Marketing', label: 'Marketing' },
+    { value: 'Business and Management', label: 'Business and Management' },
+    { value: 'IT', label: 'IT' },
+    { value: 'Software Development', label: 'Software Development' },
+    { value: 'Engineering', label: 'Engineering' },
+    { value: 'Law', label: 'Law' },
+  ];
 
     function capitalizeFirstLetter(str) {
       if (str && typeof str === 'string') {
@@ -22,35 +42,37 @@ export const FindCourses = (props) => {
       return '';
     }
 
+    const handleSortOption = () => {
+      if (sortOption === '') {
+        setSortOption('costHighToLow');
+      } else if (sortOption === 'costHighToLow') {
+        setSortOption('costLowToHigh');
+      } else {
+        setSortOption('costHighToLow');
+      }
+    };
+
+    const handleSortOptionHour = () => {
+      if (sortOption === '') {
+        setSortOption('hoursHighToLow');
+      } else if (sortOption === 'hoursHighToLow') {
+        setSortOption('hoursLowToHigh');
+      } else {
+        setSortOption('hoursHighToLow');
+      }
+    };
+
     const handleChange = (event) => {
       setDegree(event.target.value);
-      setSortOption(event.target.value);
+      setSortOption(event.target.value);     
+
     };
-    
+    const handleSubChange = (event) => {
+      setSubject(event.target.value);
+      setSortOption(event.target.value);      
+    };
+
     useEffect(() => {
-      // axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
-      // .then((response) => {
-      //     setStudent(response.data);
-      //     console.log(response.data.name);
-      // })
-      // .catch((error) => {
-      //     console.error("Error fetching profile data:", error);
-      // });
-      // axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
-      // .then((response) => {
-      //     setStudent(response.data);
-      //     console.log(response.data.name);
-      // })
-      // .catch((error) => {
-      //     console.error("Error fetching profile data:", error);
-      // });
-
-
-      // axios.get(`http://localhost:3001/getCourses`)
-      //   .then(response => {
-      //     console.log(response.data); // Log the response data
-      //     setCourses(response.data);
-      //   }).catch(err => console.log(err));
         if (!currentUser) {
           return; 
         }
@@ -164,29 +186,26 @@ export const FindCourses = (props) => {
               </div>
               <div className="filter-container">
                 <div className="category-head">
-                                    <ul>
+                  <ul>
                     <div className="category-title" id="all" onClick={() => setSortOption('all')}>
                     <span><i className="fas fa-border-all" ></i></span>
                       <li>All</li>
                       
                     </div>
-                    {/* <div className="category-title" id="location">
-                      <li>Location</li>courseteaching
-                      <span><i className="fa-solid fa-location-dot" /></span>
-                    </div> */}
-                    <div className="category-title" id="price" onClick={() => setSortOption('costHighToLow')}>
-                    <span><i className="fas fa-coins"></i> </span>
-                      <li>Price(High to Low)</li>
-                      
+                    <div className="category-title" id="price" onClick={handleSortOption}>
+                      <span><i className="fas fa-coins"></i> </span>
+                      <li>Price {sortOption === 'costHighToLow' ? <i class="fa fa-caret-down" aria-hidden="true"></i> : sortOption === 'costLowToHigh' ? <i class="fa fa-caret-up" aria-hidden="true"></i> : ''}</li>
                     </div>
-                    <div className="category-title" id="hours" onClick={() => setSortOption('hoursHighToLow')}>
+                    <div className="category-title" id="hours" onClick={() => handleSortOptionHour('hoursHighToLow')}>
                     <span><i className="fas fa-hourglass"></i></span>
-                      <li>Hours(High to Low)</li>
+                    <li>
+                      Hours {sortOption === 'hoursHighToLow' ? <i class="fa fa-caret-down" aria-hidden="true"></i> : sortOption === 'hoursLowToHigh' ? <i class="fa fa-caret-up" aria-hidden="true"></i> : ''}
+                    </li>
                       
                     </div>
                     <div className="category-title" id="university" onClick={() => setSortOption(`university-${student.uni}`)}>
                     <span><i className="fas fa-landmark" /></span>
-                      <li>University</li>
+                      <li>My Uni</li>
                       
                     </div>
 
@@ -197,18 +216,29 @@ export const FindCourses = (props) => {
                         <option value="masters">Master's Degree</option>
                         <option value="teaching">Teaching Degree</option>
                       </select>
+
+                      <select className='category-title' value={subject} onChange={handleSubChange}>
+                        
+                        <option value="">All Subjects</option>
+                        <option value="Creative Arts and Design">Creative Arts and Design</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Business and Management">Business and Management</option>
+                        <option value="IT">IT</option>
+                        <option value="Software Development">Software Development</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="Law">Law</option>
+                      </select>
+
                     
 
                   </ul>
                   <div className="tutors-collect">
                     <div className="tutors-main-container">
                       {course.map((item, index) => (
-                        <div className="all location" key={index} >
+                        <div className="all-location" key={index} >
                             <div className='post-img'>
-                              <img src={courseImg} alt="post" />  
-                            </div>
-            
-                            <div className='post-content'>
+                              <img src={imageMap[item.subject]} alt="post" /> 
+                              <div className='post-content'>
                               <h4>{item.name}</h4>
 
                               <p>{item.description}</p>
@@ -229,7 +259,13 @@ export const FindCourses = (props) => {
                               </div>
 
                             </div>
-                            <button type="button" className="read-btn" onClick={() => navigate(`/course/${item._id}`)}>Details</button>
+                            </div>
+            
+
+                            <div>
+                              <button type="button" className="read-btn" onClick={() => navigate(`/course/${item._id}`)}>View Course</button>
+
+                            </div>
                         </div>
                       ))}
                     </div>

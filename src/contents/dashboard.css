@@ -178,7 +178,6 @@ main {
 .recent-flex {
     margin-top: 3.5rem;
     /* width: 66%; */
-
 }
 .recent-completed {
     margin-top: 3.5rem;
@@ -192,6 +191,10 @@ main {
 .card-header, .cardbody {
     padding: 1rem;
 }
+.cardbody .thead{
+    font-style: bold;
+}
+
 .card-header {
     display: flex;
     justify-content: space-between;
@@ -239,6 +242,7 @@ table {
 .table-responsive {
     width: 100%;
     overflow: auto;
+    
 }
 
 @media only screen and (max-width: 960px) {
@@ -407,25 +411,33 @@ table {
     padding: 5px 10px;
 }
 .tutor-card {
-    height: 100%;
-    width: 30%;
+    height: 500px;
+    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     margin: 0 1rem;
     padding: 1rem;
     box-sizing: border-box;
-    background: #A7D7C5;
-    box-shadow: 0px 8px 22px -12px rgba(0,0,0,0.64);
+    /* background: #A7D7C5; */
+    /* box-shadow: 0px 8px 22px -12px rgba(0,0,0,0.64); */
 }
 .tutor-pp img {
-    height: 100px;
+    height: 200px;
     margin: .5rem;
+    border: 5px solid #3E6A67;
+}
+.info {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    margin-top: 1rem;
 }
 .tutor-info-top {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
     margin-bottom: 1rem;
 }
@@ -553,7 +565,17 @@ table {
 }
 .tutors-main-container > div {
     box-shadow: 0px 8px 22px -12px rgba(0,0,0,0.64);
+
 }
+.all-location {
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    height: 800px;
+    max-height: 800px;
+}
+
 .all {
     display: flex;
     justify-content: center;
@@ -570,8 +592,9 @@ table {
     padding: 25px;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     flex-direction: column;
+    justify-content: start;
+
 }
 .post-content-top {
     background: #F4F9F4;
@@ -604,9 +627,11 @@ table {
     border: none;
     background: #FF9130;
     color: #F4F9F4;
-    border-radius: 10px;
-    padding: 3px 25px;
+    border-radius: 15px;
+    padding: 10px 50px;
     transition: all .4s ease;
+    align-items: end;
+    margin-bottom: 3rem;
 }
 .read-btn:hover {
     background: #3E6A67;

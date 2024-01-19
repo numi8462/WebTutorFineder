@@ -249,7 +249,7 @@ export const StuDashboard = (props) => {
                                     </div>
                                     <div className="card-body">
                                         <div className="table-responsive">
-                                        <table width="100%">
+                                        <table width="100%" className="dash">
                                             <thead>
                                                 <tr>
                                                     <td>Course title</td>
@@ -297,7 +297,7 @@ export const StuDashboard = (props) => {
                                 </div>
                                 <div className="card-body">
                                     <div className="table-responsive">
-                                        <table width="100%">
+                                        <table width="100%" className="dash">
                                             <thead>
                                                 <tr>
                                                     <td>Course title</td>

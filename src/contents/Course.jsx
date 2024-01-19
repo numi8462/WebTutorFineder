@@ -14,7 +14,16 @@ export const Course = () => {
     const [student, setStudent] = useState({});
     const { currentUser } = useAuth()
     const navigate = useNavigate();
-    
+    const imageMap = {
+        'Creative Arts and Design': require('../images/Creative Arts and Design.png'),
+        'Marketing': require('../images/Marketing.png'),
+        'Business and Management': require('../images/Business and Management.png'),
+        'IT': require('../images/IT.png'),
+        'Software Development': require('../images/Software Development.png'),
+        'Engineering': require('../images/Engineering.png'),
+        'Law': require('../images/Law.png'),
+        // add more subjects and images as needed
+    };
 
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
@@ -60,7 +69,6 @@ export const Course = () => {
             totalCost: course.hours * course.cost,
             status: 0, // 0 is pending, 1 is approved, 2 is declined, 3 is completed
             isConfirmed: false,
-            isCompleted: false,
 
         };
         fetch('http://localhost:3001/getSessions')
@@ -173,9 +181,26 @@ export const Course = () => {
           <main>
             { course && tutor ? (
             <div className="course-page">
+
+                    <div className="tutor-card">
+                        <div className="tutor-info-top">
+                            <div className="tutor-pp">
+                                <img src={tutorImg} alt="profile picture"/>
+                            </div>
+                            <div className="info">
+                                <span><i className="fa-solid fa-user"></i> {tutor.name}</span>
+                                <span><i class="fa-solid fa-graduation-cap"/> {tutor.qualification}</span>
+                                <span><i className="fas fa-landmark"/> {tutor.uni}</span>
+                            </div>
+                            
+                        </div>
+                    {/* <span className="middle"><a className="link">View more</a></span> */}
+                    </div>
+
                     <div className="course-card">
                         <div className="course-pp">
-                            <img src={courseImg} alt="profile picture"/>
+                            <img src={imageMap[course.subject]} alt="profile picture"/>
+
                         </div>
 
                         <div className="course-info">
@@ -188,20 +213,10 @@ export const Course = () => {
                         </div>
                         <div className="buttons">
                             <button id="request" type="button" onClick={postSession}>Send Request</button>
-                            <button type="button">Contact the tutor</button>
+                            {/* <button type="button">Contact the tutor</button> */}
                     </div>
                     </div>
-                    <div className="tutor-card">
-                            <div className="tutor-info-top">
-                                <div className="tutor-pp">
-                                    <img src={tutorImg} alt="profile picture"/>
-                                </div>
-                                <span><i className="fa-solid fa-user"></i> {tutor.name}</span>
-                                <span><i class="fa-solid fa-graduation-cap"/> Degree level</span>
-                                <span><i className="fas fa-landmark"/> University</span>
-                            </div>
-                            <span className="middle"><a className="link">View more</a></span>
-                    </div>
+                    
                     
             </div>
 
