@@ -25,7 +25,7 @@
 
 .logo {
   position: fixed;
-  top: 10px; 
+  top: 100px; 
   left: 10px; 
   z-index: 1000; 
 }
@@ -88,7 +88,7 @@ body {
   transition: all 0.3s ease-in;
   font-size: 1rem;
   font-weight: 600;
-  border: 2px solid #000;
+  border: 2px solid #FF5B22;
 }
 
 .btn-outline-dark {
@@ -105,6 +105,21 @@ body {
 .btn:hover,.btn-outline-dark:hover {
   background-color: #FF5B22;
   color: #fff;
+}
+
+.login-box {
+  display: inline-block;
+  padding: 15px 20px; /* Adjust as needed for space inside the button */
+  /* background-color: orange; */
+  color: #000; /* Text color */
+  border-radius: 15px; /* Makes the edges rounded */
+  text-decoration: none; /* Removes underline */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.login-box:hover {
+  background-color: #FF5B22; /* Changes the background color on hover */
+  color: #fff; /* Changes the text color on hover */
 }
 
 a.coursename, a.tutorname {
@@ -129,7 +144,7 @@ h3,
 h5,
 h6 {
   font-family: var(--heading-font);
-  color: #3F6B67;
+  /* color: #3F6B67; */
   font-weight: 600;
   text-transform: capitalize;
   text-decoration: none;

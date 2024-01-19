@@ -42,10 +42,14 @@ header label span {
 }
 .sidebar-brand {
     font-family: 'Comfortaa', sans-serif;
-    font-size: 36px;
+    font-size: 50px;
     text-shadow: 2px 1px rgba(0,0,0,.1);
-    padding: 1rem 0 1rem 2rem;
+    padding: 1rem 0 1rem 1rem;
     margin-left: 1rem;
+}
+.sidebar-brand p {
+    color: #3E6A67;
+    font-weight: bold;
 }
 .sidebar-brand span {
     color: #FF5B22;
@@ -56,11 +60,14 @@ header label span {
 }
 .sidebar-menu {
     margin-top: 1rem;
+    color: #3E6A67;
+    
 }
 .sidebar-menu li{
     width: 100%;
     margin-bottom: 1.3rem;
     padding-left: 2rem;
+    
 }
 .sidebar-menu a {
     padding-left: 1rem;
@@ -68,6 +75,7 @@ header label span {
     font-size: 1.1rem;
     cursor: pointer;
     color: #3E6A67;
+    
 }
 .sidebar-menu a.active {
     background: #F4F9F4;
@@ -174,7 +182,7 @@ main {
 }
 .recent-completed {
     margin-top: 3.5rem;
-    width: 33%;
+    width: 31%;
 }
 .card {
     background: #F4F9F4;

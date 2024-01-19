@@ -31,11 +31,11 @@ const Homepage = () => {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossOrigin="anonymous"></link>
 
-        <nav className="main-menu d-flex navbar fixed-top navbar-expand-lg p-2 py-3 p-lg-4 py-lg-4 "style={{backgroundColor: "white", display: 'flex'}}>
-            <div className="container-fluid">
-                <div className="main-logo">
-                    <a href="index.html">
-                    <img src={logoImg} alt="logo" className="img-fluid"></img>
+        <nav className="main-menu d-flex navbar fixed-top navbar-expand-lg  "style={{backgroundColor: "#e9eeeb", display: 'flex'}}>
+            <div className="container-fluid" style={{height: "80px"}}>
+                <div className="main-logo" >
+                    <a>
+                    <img src={logoImg} alt="logo" className="img-fluid" style={{marginTop: '20%'}}></img>
                     </a>
                 </div>
 
@@ -57,12 +57,12 @@ const Homepage = () => {
                     <li className="nav-item">
                     <a href="contact.html" className="nav-link mx-2">About Us</a>
                     </li>
-                </ul>
+                </ul>   
 
                 <div className="d-none d-lg-flex align-items-center ms-5">
                     <ul className="d-flex justify-content-end  list-unstyled m-0">
                     <li>
-                        <Link to="/login" className="btn btn-outline-dark mx-3 p-3">Login/Signup</Link>
+                        <Link to="/login" className="login-box" style={{marginTop: "-5px", border: "2px solid #FF5B22", color: ""}}>Login/Signup</Link>
                     </li>
                     </ul>
                 </div>
@@ -75,7 +75,7 @@ const Homepage = () => {
             <div className="container-fluid">
             <div className="row">
                 <div className="col-md-8 col-lg-3 offset-md-2 padding-large ps-lg-0 pe-lg-5">
-                <h2 className="display-2 fw-semibold">Unlock Your Learning Potential with <span className="billboardtext-1">Tutor<span className='billboardtext-2'>Finder!</span></span></h2>
+                <h2 className="display-2 fw-semibold" style={{color: '#3F6B67'}}>Unlock Your</h2><h2 className="display-2 fw-semibold" style={{color: '#FF5B22'}}> Learning</h2><h2 className="display-2 fw-semibold" style={{color: '#3F6B67'}}> Potential with <span className="billboardtext-1">Tutor<span className='billboardtext-2'>Finder!</span></span></h2>
                 <p className="secondary-font my-4 pb-2"> Personalized online tutoring by expert educators. Tailored lessons, global community, and secure learning. Elevate your education with us today!</p>
                 </div>
                 <div className="col-md-6 col-lg-7 d-block d-md-none d-lg-block p-0">
@@ -98,32 +98,33 @@ const Homepage = () => {
                 <div className="z-1 position-absolute m-3">
                     <span className="badge text-muted bg-primary">10 Hours</span>
                 </div>
-                <div className="card position-relative">
+                <div className="card position-relative" style={{ height: '400px'}}>
                     <a href="courses-details.html"><img src={item4Img} className="img-fluid rounded-3" alt="image"></img></a>
-                    <div className="card-body p-0">
-                    <span className="badge text-muted bg-success mt-3 mb-1">Beginner</span>
 
-                    <a href="courses-details.html" className='coursename'>
-                        <h5 className="py-2 m-0"><strong>Introduction to Calculus</strong></h5>
-                    </a>
+                    <div style={{padding: '10px'}}>
+                        <div className="card-body p-0">
+                        <span className="badge text-muted-light bg-success mt-3 mb-1">Beginner</span>
 
-                    <div className="card-text">
-                        <span className="rating d-flex align-items-center mb-2">
-                        <p className="text-muted fw-semibold m-0 me-2">Young Ho</p>
-                        <Icon icon="clarity:star-solid" className="rating"></Icon>
-                        <Icon icon="clarity:star-solid" className="rating"></Icon>
-                        <Icon icon="clarity:star-solid" className="rating"></Icon>
-                        <Icon icon="clarity:star-solid" className="rating"></Icon>
-                        <Icon icon="clarity:star-solid" className="rating"></Icon>
-                        </span>
+                        <a href="courses-details.html" className='coursename'>
+                            <h5 className="py-2 m-0"><strong>Introduction to Calculus</strong></h5>
+                        </a>
 
-                        <h4 className="cost">$9.00 </h4>
+                        <div className="card-text">
+                            <span className="rating d-flex align-items-center mb-2">
+                            <p className="text-muted fw-semibold m-0 me-2">John Cass</p>
+                            <Icon icon="clarity:star-solid" className="rating"></Icon>
+                            <Icon icon="clarity:star-solid" className="rating"></Icon>
+                            <Icon icon="clarity:star-solid" className="rating"></Icon>
+                            <Icon icon="clarity:star-solid" className="rating"></Icon>
+                            <Icon icon="clarity:star-solid" className="rating"></Icon>
+                            </span>
 
-                        <div className="d-flex flex-wrap mt-2">
-                        <a href="#" className="btn btn-outline-dark text-capitalize me-2 px-4 py-3">Enroll Now</a>
+                            <h4 className="cost">$9.00 </h4>
+
+
                         </div>
-
                     </div>
+
 
                     </div>
                 </div>
@@ -132,34 +133,32 @@ const Homepage = () => {
                 <div className="z-1 position-absolute m-3">
                     <span className="badge text-muted bg-primary">25 Hours</span>
                 </div>
-                <div className="card position-relative">
+                <div className="card position-relative" style={{height: '400px'}}>
                     <a href="courses-details.html"><img src={item6Img} className="img-fluid rounded-3" alt="image"></img></a>
-                    <div className="card-body p-0">
+                    
+                    <div style={{padding: '10px'}}>
 
-                    <span className="badge text-muted bg-success mt-3 mb-1">All Level</span>
+                        <span className="badge text-muted-light bg-success mt-3 mb-1" >All Level</span>
 
 
-                    <a href="courses-details.html" className='coursename'>
-                        <h5 className="py-2 m-0"><strong>Language Arts Workshop</strong></h5>
-                    </a>
+                        <a href="courses-details.html" className='coursename'>
+                            <h5 className="py-2 m-0"><strong>Language Arts Workshop</strong></h5>
+                        </a>
 
-                    <div className="card-text">
-                        <span className="rating d-flex align-items-center mb-2">
-                        <p className="text-muted fw-semibold m-0 me-2">Young Ho</p>
-                        <Icon icon="clarity:star-solid" className="rating"></Icon>
-                        <Icon icon="clarity:star-solid" className="rating"></Icon>
-                        <Icon icon="clarity:star-solid" className="rating"></Icon>
-                        <Icon icon="clarity:star-solid" className="rating"></Icon>
-                        <Icon icon="clarity:half-star-solid" className="rating"></Icon>
-                        </span>
+                        <div className="card-text" >
+                            <span className="rating d-flex align-items-center mb-2">
+                            <p className="text-muted fw-semibold m-0 me-2">Alice Trey</p>
+                            <Icon icon="clarity:star-solid" className="rating"></Icon>
+                            <Icon icon="clarity:star-solid" className="rating"></Icon>
+                            <Icon icon="clarity:star-solid" className="rating"></Icon>
+                            <Icon icon="clarity:star-solid" className="rating"></Icon>
+                            <Icon icon="clarity:half-star-solid" className="rating"></Icon>
+                            </span>
 
-                        <h4 className="cost">$7.00</h4>
+                            <h4 className="cost">$7.00</h4>
 
-                        <div className="d-flex flex-wrap mt-2">
-                        <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Enroll Now</a>
+
                         </div>
-
-                    </div>
 
                     </div>
                 </div>
@@ -168,11 +167,11 @@ const Homepage = () => {
                 <div className="z-1 position-absolute m-3">
                     <span className="badge text-muted bg-primary">40 Hours</span>
                 </div>
-                <div className="card position-relative">
+                <div className="card position-relative" style={{ height: '400px'}}>
                     <a href="courses-details.html"><img src={item1Img} className="img-fluid rounded-3" alt="image"></img></a>
-                    <div className="card-body p-0">
+                    <div style={{padding: '10px',}}>
 
-                    <span className="badge text-muted bg-success mt-3 mb-1">Experts</span>
+                    <span className="badge text-muted-light bg-success mt-3 mb-1">Experts</span>
 
                     <a href="courses-details.html" className='coursename'>
                         <h5 className="py-2 m-0"><strong>Organic Chemistry</strong></h5>
@@ -180,7 +179,7 @@ const Homepage = () => {
 
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
-                        <p className="text-muted fw-semibold m-0 me-2">Young Ho</p>
+                        <p className="text-muted fw-semibold m-0 me-2">Troy Shelze</p>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
@@ -189,10 +188,6 @@ const Homepage = () => {
                         </span>
 
                         <h4 className="cost">$10.00</h4>
-
-                        <div className="d-flex flex-wrap mt-2">
-                        <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Enroll Now</a>
-                        </div>
 
                     </div>
 
@@ -203,11 +198,11 @@ const Homepage = () => {
                 <div className="z-1 position-absolute m-3">
                     <span className="badge text-muted bg-primary">35 Hours</span>
                 </div>
-                <div className="card position-relative">
+                <div className="card position-relative" style={{height: '400px'}}>
                     <a href="courses-details.html"><img src={item2Img} className="img-fluid rounded-3" alt="image"></img></a>
-                    <div className="card-body p-0">
+                    <div style={{padding: '10px',}}>
 
-                    <span className="badge text-muted bg-success mt-3 mb-1">Beginner</span>
+                    <span className="badge text-muted-light bg-success mt-3 mb-1">Beginner</span>
 
                     <a href="courses-details.html" className='coursename'>
                         <h5 className="py-2 m-0"><strong>Introduction to Physics</strong></h5>
@@ -215,7 +210,7 @@ const Homepage = () => {
 
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
-                        <p className="text-muted fw-semibold m-0 me-2">Young Ho</p>
+                        <p className="text-muted fw-semibold m-0 me-2">Shawn Deezle</p>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
@@ -224,10 +219,6 @@ const Homepage = () => {
                         </span>
 
                         <h4 className="cost">$5.00 </h4>
-
-                        <div className="d-flex flex-wrap mt-2">
-                        <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Enroll Now</a>
-                        </div>
 
                     </div>
 
@@ -238,18 +229,18 @@ const Homepage = () => {
                 <div className="z-1 position-absolute m-3">
                     <span className="badge text-muted bg-primary">45 Hours</span>
                 </div>
-                <div className="card position-relative">
+                <div className="card position-relative" style={{ height: '400px'}}>
                     <a href="courses-details.html"><img src={item5Img} className="img-fluid rounded-3" alt="image"></img></a>
-                    <div className="card-body p-0">
+                    <div style={{padding: '10px',}}>
 
-                    <span className="badge text-muted bg-success mt-3 mb-1">All Level</span>
+                    <span className="badge text-muted-light bg-success mt-3 mb-1">All Level</span>
                     <a href="courses-details.html" className='coursename'>
                         <h5 className="py-2 m-0"><strong>Environmental Challenges and Solutions</strong></h5>
                     </a>
 
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
-                        <p className="text-muted fw-semibold m-0 me-2">Young Ho</p>
+                        <p className="text-muted fw-semibold m-0 me-2">Chris Hao</p>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
@@ -257,10 +248,6 @@ const Homepage = () => {
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         </span>
                         <h4 className="cost">$5.00</h4>
-                        <div className="d-flex flex-wrap mt-2">
-                        <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Enroll Now</a>
-
-                        </div>
 
                     </div>
 
@@ -271,19 +258,19 @@ const Homepage = () => {
                 <div className="z-1 position-absolute m-3">
                     <span className="badge text-muted bg-primary">50 Hours</span>
                 </div>
-                <div className="card position-relative">
+                <div className="card position-relative" style={{ height: '400px'}}>
                     <a href="courses-details.html"><img src={item10Img} className="img-fluid rounded-3" alt="image"></img></a>
-                    <div className="card-body p-0">
+                    <div style={{padding: '10px',}}>
 
-                    <span className="badge text-muted bg-success mt-3 mb-1">Experts</span>
+                    <span className="badge text-muted-light bg-success mt-3 mb-1">Experts</span>
 
                     <a href="courses-details.html" className='coursename'>
-                        <h5 className="py-2 m-0"><strong>World Civilizations: From Ancient Times to the Present</strong></h5>
+                        <h5 className="py-2 m-0"><strong>World Civilizations: Ancient Times</strong></h5>
                     </a>
 
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
-                        <p className="text-muted fw-semibold m-0 me-2">Young Ho</p>
+                        <p className="text-muted fw-semibold m-0 me-2">George Brew</p>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
@@ -292,10 +279,6 @@ const Homepage = () => {
                         </span>
 
                         <h4 className="cost">$7.00</h4>
-
-                        <div className="d-flex flex-wrap mt-2">
-                        <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Enroll Now</a>
-                        </div>
                     </div>
 
                     </div>
@@ -305,11 +288,11 @@ const Homepage = () => {
                 <div className="z-1 position-absolute m-3">
                     <span className="badge text-muted bg-primary">30 Hours</span>
                 </div>
-                <div className="card position-relative">
+                <div className="card position-relative" style={{height: '400px'}}>
                     <a href="courses-details.html"><img src={item9Img} className="img-fluid rounded-3" alt="image"></img></a>
-                    <div className="card-body p-0">
+                    <div style={{padding: '10px',}}>
 
-                    <span className="badge text-muted bg-success mt-3 mb-1">Beginner</span>
+                    <span className="badge text-muted-light bg-success mt-3 mb-1">Beginner</span>
 
                     <a href="courses-details.html" className='coursename'>
                         <h5 className="py-2 m-0"><strong>Introduction to Digital Art</strong></h5>
@@ -317,7 +300,7 @@ const Homepage = () => {
 
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
-                        <p className="text-muted fw-semibold m-0 me-2">Young Ho</p>
+                        <p className="text-muted fw-semibold m-0 me-2">Alex Davesan</p>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
@@ -327,9 +310,6 @@ const Homepage = () => {
 
                         <h4 className="cost">$20.00</h4>
 
-                        <div className="d-flex flex-wrap mt-2">
-                        <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Enroll Now</a>
-                        </div>
                     </div>
                     </div>
                 </div>
@@ -338,11 +318,11 @@ const Homepage = () => {
                 <div className="z-1 position-absolute m-3">
                     <span className="badge text-muted bg-primary">35 Hours</span>
                 </div>
-                <div className="card position-relative">
+                <div className="card position-relative" style={{ height: '400px'}}>
                     <a href="courses-details.html"><img src={item8Img} className="img-fluid rounded-3" alt="image"></img></a>
-                    <div className="card-body p-0">
+                    <div style={{padding: '10px',}}>
 
-                    <span className="badge text-muted bg-success mt-3 mb-1">Intermediate</span>
+                    <span className="badge text-muted-light bg-success mt-3 mb-1">Intermediate</span>
 
                     <a href="courses-details.html" className='coursename'>
                         <h5 className="py-2 m-0"><strong>Entrepreneurship 101</strong></h5>
@@ -350,7 +330,7 @@ const Homepage = () => {
 
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
-                        <p className="text-muted fw-semibold m-0 me-2">Young Ho</p>
+                        <p className="text-muted fw-semibold m-0 me-2">Donald Sim</p>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
@@ -359,9 +339,6 @@ const Homepage = () => {
                         </span>
 
                         <h4 className="cost">$20.00</h4>
-                        <div className="d-flex flex-wrap mt-2">
-                        <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Enroll Now</a>
-                        </div>
                     </div>
                     </div>
                 </div>
@@ -376,11 +353,11 @@ const Homepage = () => {
                 <h2 className="display-5 fw-semibold">Check our <span className="featured-tutor">Certified Tutors</span></h2>
                 <p className="secondary-font">Our Certified Tutors That Are Trusted by Thousands of Students</p>
             </div>
-            <div className="isotope-container row">
-                <div className="item digital col-md-4 col-lg-3 my-5">
-                <div className="card position-relative">
+            <div className="isotope-container row" >
+                <div className="item digital col-md-4 col-lg-3 my-5" >
+                <div className="card position-relative" style={{height: '500px'}}>
                     <a href="courses-details.html"><img src={team1Img} className="img-fluid rounded-3" alt="image"></img></a>
-                    <div className="card-body p-0">
+                    <div style={{padding: '10px', }}>
                     <span className="badge text-muted bg-success mt-3 mb-1">Certified</span>
 
                     <a href="courses-details.html" className='tutorname'>
@@ -396,9 +373,6 @@ const Homepage = () => {
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         </span>
-                        <div className="d-flex flex-wrap mt-2">
-                        <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Contact Tutor</a>
-                        </div>
 
                     </div>
 
@@ -407,11 +381,11 @@ const Homepage = () => {
                 </div>
                 <div className="item web col-md-4 col-lg-3 my-5">
 
-                <div className="card position-relative">
+                <div className="card position-relative" style={{ height: '500px'}}>
                     <a href="courses-details.html"><img src={team5Img} className="img-fluid rounded-3" alt="image"></img></a>
-                    <div className="card-body p-0">
+                    <div style={{padding: '10px', }}>
 
-                    <span className="badge text-muted bg-success mt-3 mb-1">Certified</span>
+                    <span className="badge text-muted bg-success mt-3 mb-1" >Certified</span>
 
                     <a href="courses-details.html" className='tutorname'>
                         <h5 className="py-2 m-0"><strong>May Sophia</strong></h5>
@@ -428,19 +402,15 @@ const Homepage = () => {
                         </span>
 
 
-                        <div className="d-flex flex-wrap mt-2">
-                        <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Contact Tutor</a>
-                        </div>
-
                     </div>
 
                     </div>
                 </div>
                 </div>
-                <div className="item photo col-md-4 col-lg-3 my-5">
-                <div className="card position-relative">
+                <div className="item photo col-md-4 col-lg-3 my-5" style={{ height: '500px'}}>
+                <div className="card position-relative" style={{height: '500px'}}>
                     <a href="courses-details.html"><img src={team4Img} className="img-fluid rounded-3" alt="image"></img></a>
-                    <div className="card-body p-0">
+                    <div style={{padding: '10px', }}>
                     <span className="badge text-muted bg-success mt-3 mb-1">Certified</span>
                     <a href="courses-details.html" className='tutorname'>
                         <h5 className="py-2 m-0"><strong>May Sophia</strong></h5>
@@ -455,21 +425,19 @@ const Homepage = () => {
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         </span>
-                        <div className="d-flex flex-wrap mt-2">
-                        <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Contact Tutor</a>
-                        </div>
+
                     </div>
                     </div>
                 </div>
                 </div>
-                <div className="item business col-md-4 col-lg-3 my-5">
+                <div className="item business col-md-4 col-lg-3 my-5" style={{ height: '500px'}}>
                 <div className="card position-relative">
                     <a href="courses-details.html"><img src={team2Img} className="img-fluid rounded-3" alt="image"></img></a>
-                    <div className="card-body p-0">
+                    <div style={{padding: '10px', }}>
 
                     <span className="badge text-muted bg-success mt-3 mb-1">Certified</span>
                     <a href="courses-details.html" className='tutorname'>
-                        <h5 className="py-2 m-0"><strong>Young Ho</strong></h5>
+                        <h5 className="py-2 m-0"><strong>Josh Shander</strong></h5>
                     </a>
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
@@ -480,9 +448,7 @@ const Homepage = () => {
                         <Icon icon="clarity:half-star-solid" className="rating"></Icon>
                         <Icon icon="clarity:star-line" className="rating"></Icon>
                         </span>
-                        <div className="d-flex flex-wrap mt-2">
-                        <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Contact Tutor</a>
-                        </div>
+
                     </div>
                     </div>
                 </div>
@@ -490,8 +456,8 @@ const Homepage = () => {
             </div>
             </div>
         </section>
-        <footer id="footer">
-            <div className="container padding-medium ">
+        <footer id="footer" style={{backgroundColor: '#cccccc'}}>
+            <div className="container padding-medium " >
             <div className="row">
                 <div className="col-md-4 my-3">
                 <h5 className="text-uppercase fw-bold mb-4">Contact us</h5>
