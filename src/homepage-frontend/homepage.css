@@ -1,4 +1,6 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Jost:wght@300&display=swap');
+
 :root {
   /* widths for rows and containers
      */
@@ -65,7 +67,7 @@ body {
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.3rem;
-  --bs-body-color: #0a1622;
+  /* --bs-body-color: #0a1622; */
 
   --bs-primary: #3F6B67;
   --bs-primary-rgb: 167, 215, 197;
@@ -225,8 +227,11 @@ iconify-icon.social-icon:hover {
 .nav-tabs .nav-item {
   transition: all 0.1s ease-in;
 }
+a.course:hover {
+  transition: all 0.3s ease-in;
+}
 
-
-
-
+a.course:hover {
+  color: var(--accent-color);
+}
 

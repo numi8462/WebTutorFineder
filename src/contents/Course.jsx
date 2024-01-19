@@ -5,6 +5,7 @@ import { useNavigate, Link } from "react-router";
 import axios from 'axios';
 import courseImg from "../images/course1.png";
 import firebase from "firebase/compat/app";
+import tutorImg from '../homepage-frontend/images/default.jpg';
 
 export const Course = () => {
     const { cid } = useParams(); // Get the course id from the URL
@@ -48,7 +49,7 @@ export const Course = () => {
     
     const postSession = () => {
         const sessionData = {
-            cid: course.cid,
+            cid: course._id,
             tid: tutor.uid,
             sid: student.uid,
             subject: course.subject,
@@ -57,8 +58,10 @@ export const Course = () => {
             hours: course.hours,
             hoursLeft: course.hours,
             totalCost: course.hours * course.cost,
-            status: 0, // 0 is pending, 1 is approved, 2 is declined
+            status: 0, // 0 is pending, 1 is approved, 2 is declined, 3 is completed
             isConfirmed: false,
+            isCompleted: false,
+
         };
         fetch('http://localhost:3001/getSessions')
         .then(response => response.json())
@@ -139,11 +142,11 @@ export const Course = () => {
                   <span>Search courses</span></a>
               </li>
               <li>
-                <a href=""><span className="fa-solid fa-heart" />
-                  <span>Saved</span></a>
+                  <a onClick={() => navigate('/matching')}><span className="fa-solid fa-heart"></span>
+                  <span>Match Tutor</span></a>
               </li>
               <li>
-                <a href=""><span className="fa-solid fa-user" />
+                  <a onClick={() => navigate('/profile')}><span className="fa-solid fa-user"></span>
                   <span>My Account</span></a>
               </li>
             </ul>
@@ -160,34 +163,48 @@ export const Course = () => {
               </h1>
             </div>
             <div className="user-wrapper">
-              <div>
-                <h4>{student.name}</h4>
-                <small>Student</small>
+              <div className='user-wrapper-field'>
+                  <h4><span><i className='fa-solid fa-user'></i></span> {student.name}</h4> 
+                  <small>Student</small>
               </div>
             </div>
           </header>
 
           <main>
             { course && tutor ? (
-            <div className="course-card">
-                <div className="tutor-pp">
-                    <img src={courseImg} alt="profile picture"/>
-                </div>
+            <div className="course-page">
+                    <div className="course-card">
+                        <div className="course-pp">
+                            <img src={courseImg} alt="profile picture"/>
+                        </div>
 
-                <div className="tutor-info">
-                    <div className="tutor-info-top">
-                        <span><i className="fa-solid fa-user"></i>{tutor.name}</span>
-                        <span><i className="fas fa-hourglass"></i>{course.hours} hours</span>
+                        <div className="course-info">
+                            <div className="course-info-top">
+                                <span><i className="fas fa-hourglass"></i>{course.hours} hours</span>
+                            </div>
+                            <h4>{course.subject}</h4>
+                            <p>{course.description}</p>
+                            <span className="price">${course.cost} per hour</span>
+                        </div>
+                        <div className="buttons">
+                            <button id="request" type="button" onClick={postSession}>Send Request</button>
+                            <button type="button">Contact the tutor</button>
                     </div>
-                    <h4>{course.subject}</h4>
-                    <p>{course.description}</p>
-                    <span className="price">${course.cost} per hour</span>
-                </div>
-                <div className="buttons">
-                    <button id="request" type="button" onClick={postSession}>Send Request</button>
-                    <button type="button">Contact the tutor</button>
-                </div>
+                    </div>
+                    <div className="tutor-card">
+                            <div className="tutor-info-top">
+                                <div className="tutor-pp">
+                                    <img src={tutorImg} alt="profile picture"/>
+                                </div>
+                                <span><i className="fa-solid fa-user"></i> {tutor.name}</span>
+                                <span><i class="fa-solid fa-graduation-cap"/> Degree level</span>
+                                <span><i className="fas fa-landmark"/> University</span>
+                            </div>
+                            <span className="middle"><a className="link">View more</a></span>
+                    </div>
+                    
             </div>
+
             ) : (
                 <></>
             )}

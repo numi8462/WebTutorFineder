@@ -13,7 +13,9 @@ const StudentSchema = new Schema({
     credit: Number,
     gender: String,
     user: String,
-    bookmark: Array
+    bookmark: Array,
+    major: String,
+    uni: String,
 }, { collection: 'students' });
 
 const StudentModel = mongoose.model('students', StudentSchema);

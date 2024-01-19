@@ -3,25 +3,19 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 import { Login } from "./contents/Login"
-import { Register } from "./contents/Register/Register"
+import { Register, } from "./contents/Register/Register"
 import { RegisterTut } from "./contents/Register/RegisterTut"
-import { Profile } from './contents/Profile';
-import { Detail } from './contents/Detail';
+import { Profile } from './contents/student/Profile';
+import { Detail } from './contents/Register/Detail';
 import { AuthProvider, useAuth } from './authentication/AuthContext'
 import { FindCourses } from './contents/student/FindCourses'
 import { Course } from './contents/Course'
 import { StuDashboard } from './contents/student/StuDashboard';
 import { TutDashboard } from './contents/tutor/TutDashboard';
 import { ForgotPassword } from './contents/ForgotPassword';
-
-import UpdateProfile from './contents/UpdateProfile';
-// import { tutProfile } from './contents/tutor/tutProfile'
-// import { tutUpdateProfile } from './contents/tutor/tutUpdateProfile'
-// import CreateCourse from './contents/tutor/createCourses'
-
-// import { TutProfile } from './contents/tutor/tutProfile'
-// import CreateCourse from './contents/tutor/createCourses'
-// import {Matching} from './contents/student/Matching';
+import { TutProfile } from './contents/tutor/TutProfile'
+import CreateCourse from './contents/tutor/createCourses'
+import {Matching} from './contents/student/Matching';
 import Homepage from './homepage-frontend/homepage'
 
 function App() {
@@ -35,19 +29,20 @@ function App() {
       <AuthProvider>
       <div className="App">
         <Routes>
-          <Route path="*" element={<Navigate to="/login" />} /> {/* Default route */} 
+          <Route path="*" element={<Navigate to="/homepage" />} /> {/* Default route */} 
           <Route path="/details" element={<Detail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register  />} />
           <Route path="/registerTutor" element={<RegisterTut  />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profileTutor" element={<TutProfile />} />
           <Route path='/findcourses' element={<FindCourses/>}/>
           <Route path='/course/:cid' element={<Course/>}/> 
           <Route path='/studentDashboard' element={<StuDashboard/>}/>
           <Route path='/tutorDashboard' element={<TutDashboard/>}/>
           <Route path='/forgotPassword' element={<ForgotPassword/>}/>
-          <Route path="/updateProfile" element={<UpdateProfile/>}/>
-          {/* <Route path='/createCourse' element={<CreateCourse/>}/> */}
+          <Route path='/createCourse' element={<CreateCourse/>}/>
+          <Route path='/matching' element={<Matching/>}/>
           <Route path='/homepage' element={<Homepage/>}/>
         </Routes>
       </div>

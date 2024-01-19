@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Alert, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import Select from 'react-select';
 import firebase from 'firebase/compat/app';
 import axios from 'axios';
 import '../../contents/dashboard.css';
-// import getTutorIDFromAuthenticatedUser from "../server.js"
 
 
   // firebase.auth().onAuthStateChanged((user) => {
@@ -21,6 +21,16 @@ import '../../contents/dashboard.css';
     const [tutor, setTutor] = useState(null);
     const navigate = useNavigate();
 
+    const options = [
+      { value: 'Creative Arts and Design', label: 'Creative Arts and Design' },
+      { value: 'Marketing', label: 'Marketing' },
+      { value: 'Business and Management', label: 'Business and Management' },
+      { value: 'IT', label: 'IT' },
+      { value: 'Software Development', label: 'Software Development' },
+      { value: 'Engineering', label: 'Engineering' },
+      { value: 'Law', label: 'Law' },
+    ];
+
     const getTutorIDFromAuthenticatedUser = () => {
         const user = firebase.auth().currentUser;
         if (user) {
@@ -34,11 +44,16 @@ import '../../contents/dashboard.css';
   
     const tutorID = getTutorIDFromAuthenticatedUser(); 
 
+    // const handleChange = (selectedOption) => {
+    //   setSubject(selectedOption);
+    // };
+
     const handleCreateCourse = async (e) => {
         e.preventDefault();
     
         try {
           // Make a request to your server to create a new course
+          console.log(subject)
           await axios.post('http://localhost:3001/postCourse', {
             subject,
             name,
@@ -54,7 +69,8 @@ import '../../contents/dashboard.css';
         } catch (error) {
           console.error('Error creating course:', error);
         }
-      };
+    };
+
 
       useEffect(() => {
         const fetchTutorInfo = async () => {
@@ -88,12 +104,16 @@ import '../../contents/dashboard.css';
                 <div className="sidebar-menu">
                     <ul>
                         <li>
-                            <a className="active" onClick={() => navigate('/tutorDashboard')}><span className="fa-solid fa-list-check"></span>
+                            <a onClick={() => navigate('/tutorDashboard')}><span className="fa-solid fa-list-check"></span>
                             <span>My Courses</span></a>
                         </li>
                         <li>
-                            <a onClick={() => navigate('/profile')}><span className="fa-solid fa-magnifying-glass"></span>
-                            <span>Profile</span></a>
+                            <a onClick={() => navigate('/profileTutor')}><span className="fa-solid fa-user"></span>
+                            <span>My Account</span></a>
+                        </li>
+                        <li>
+                            <a className="active"><span className="fa-solid fa-plus"></span>
+                            <span>Create A New Course</span></a>
                         </li>
                     </ul>
 
@@ -112,8 +132,8 @@ import '../../contents/dashboard.css';
                     </h1>
                 </div>
                 <div className="user-wrapper">
-                    <div>
-                        <h4>{tutor ? tutor.name : 'Loading...'}</h4>
+                    <div className='user-wrapper-field'>
+                        <h4><span><i className='fa-solid fa-user'></i></span> {tutor ? tutor.name : 'Loading...'}</h4>
                         <small>Tutor</small>
                     </div>
                 </div>
@@ -129,8 +149,13 @@ import '../../contents/dashboard.css';
                                 <div className="table-responsive">
                                 <form onSubmit={handleCreateCourse} width="100%" id="createcourse-form">
                                     <label id="createcourse-label">
-                                    Subject:
-                                    <input id="createcourse-input" type="text" value={subject} onChange={(e) => setSubject(e.target.value)} />
+                                      Subject:
+                                      <Select
+                                        id="createcourse-select"
+                                        value={options.find(option => option.value === subject)}
+                                        onChange={(selectedOption) => setSubject(selectedOption.value)}
+                                        options={options}
+                                      />
                                     </label>
                                     <br />
                                     <label>

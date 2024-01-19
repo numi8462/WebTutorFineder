@@ -1,10 +1,14 @@
-import React , { useState } from "react";
+import React , { useState, useEffect } from "react";
+import Papa from 'papaparse';
 import { Alert, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from '../../authentication/AuthContext';
 import '../../index.css'
 import axios from 'axios';
 import Select from 'react-select';
+import majorData from '../text/majors.txt'
+import uni from '../text/world-universities.csv'
+import logoImg from '../../homepage-frontend/images/logo.png'
 
 export const Register = (props) => {
     const [email,setEmail] = useState(''); 
@@ -15,7 +19,9 @@ export const Register = (props) => {
     const [loading, setLoading] = useState(false);
     const [id, setId] = useState('')
     const navigate = useNavigate();
-
+    const [options, setOptions] = useState([]);
+    const [majors, setMajors] = useState([]);
+    const [uniList, setUniList] = useState([])
     const [student, setStudent] = useState({
         uid: '',
         email: '',
@@ -26,22 +32,39 @@ export const Register = (props) => {
         subjectOfInterest: [],
         credit: 100,
         gender: '',
-        user: 'student'
+        user: 'student',
+        uni: '',
+        major: '',
     });
 
-    const options = [
-        { value: 'math', label: 'Math' },
-        { value: 'science', label: 'Science' },
-        { value: 'history', label: 'History' },
-        { value: 'art', label: 'Art' },
-        { value: 'music', label: 'Music' },
-        { value: 'it', label: 'IT' },
-        { value: 'design', label: 'Design' },
-      ];
-      
+    useEffect(() => {
+        fetch(majorData)
+            .then(response => response.text())
+            .then(data => {
+                const majors = data.split('\n');
+                setMajors(majors); // Set the majors directly
+            });
+        fetch(uni)
+            .then(response => response.text())
+            .then(data => {
+                const results = Papa.parse(data, { header: false });
+                const universities = results.data.map(row => row[1]);
+                setUniList(universities);
+      });
+    }, []);
+
     const handleChange = (e) => {
         setStudent({ ...student, [e.target.name]: e.target.value });
     };
+    const handleMajorChange = (selectedOption) => {
+        // console.log('Option selected:', selectedOption);
+        setStudent(prevStudent => ({ ...prevStudent, major: selectedOption ? selectedOption.value : '' }));
+    };
+
+    const handleUniChange = (selectedOption) => {
+        console.log('University selected:', selectedOption);
+        setStudent(prevStudent => ({ ...prevStudent, uni: selectedOption ? selectedOption.value : '' }));
+      };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -93,6 +116,11 @@ export const Register = (props) => {
     return (
         <div className="wrapper">
             <div className="container-register">
+            <div className="main-logo">
+                    <a href="index.html">
+                    <img src={logoImg} alt="logo" className="img-fluid"></img>
+                    </a>
+                </div>
                 <div className="form-box">
                     <div>
                         <h2>Register</h2>
@@ -125,8 +153,13 @@ export const Register = (props) => {
                                 </select>
                             </div>
 
-                            
-                            
+                            {/* <div className='input-group'>
+                                <select name="major" onChange={handleChange}>
+                                    <option value="">Major</option>
+                                    <option value="it">IT</option>
+                                    <option value="design">Design</option>
+                                </select>
+                            </div> */}
                             <div className='input-group'>
                                 <select name="gender" onChange={handleChange}>
                                     <option value="">Gender</option>
@@ -134,12 +167,33 @@ export const Register = (props) => {
                                     <option value="female">Female</option>
                                 </select>
                             </div>
+                            <div className='input-group'>
+                                <Select
+                                name="uni"
+                                options={uniList.map(item => ({ value: item ? item.toLowerCase() : '', label: item ? item : '' }))}                                
+                                onChange={handleUniChange}
+                                placeholder="Search your University"
+                                isClearable={true}
+                                isSearchable={true}
+                                />
+                            </div>
+                            <div className='input-group'>
+                                <Select
+                                    name="major"
+                                    options={majors.map(item => ({ value: item.toLowerCase(), label: item }))}
+                                    onChange={handleMajorChange}
+                                    placeholder="Search your Major"
+                                    isClearable={true}
+                                    isSearchable={true}
+                                />
+                            </div>
                             <div className="buttons-register">
                                 <div className="btn-register">
                                     <button  disabled={loading} type="submit">Register</button>
 
                                 </div>
                             </div>
+
 
                         </form>
                     </div>

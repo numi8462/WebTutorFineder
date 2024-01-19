@@ -1,6 +1,5 @@
 import React from 'react';
 import './homepage.css'
-
 import { Icon } from '@iconify/react';
 import { Link,useNavigate } from 'react-router-dom';
 import logoImg from '../images/logo.png'
@@ -24,7 +23,7 @@ const Homepage = () => {
   return (
     <div>
         <title>TuTorFinder Homepage</title>
-        <meta charSet="utf-8"></meta>
+        <meta charset="utf-8"></meta>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&family=Roboto+Slab&display=swap"
@@ -32,7 +31,7 @@ const Homepage = () => {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossOrigin="anonymous"></link>
 
-        <nav className="main-menu d-flex navbar fixed-top navbar-expand-lg p-2 py-3 p-lg-4 py-lg-4 ">
+        <nav className="main-menu d-flex navbar fixed-top navbar-expand-lg p-2 py-3 p-lg-4 py-lg-4 "style={{backgroundColor: "white", display: 'flex'}}>
             <div className="container-fluid">
                 <div className="main-logo">
                     <a href="index.html">
@@ -139,6 +138,7 @@ const Homepage = () => {
 
                     <span className="badge text-muted bg-success mt-3 mb-1">All Level</span>
 
+
                     <a href="courses-details.html" className='coursename'>
                         <h5 className="py-2 m-0"><strong>Language Arts Workshop</strong></h5>
                     </a>
@@ -243,7 +243,6 @@ const Homepage = () => {
                     <div className="card-body p-0">
 
                     <span className="badge text-muted bg-success mt-3 mb-1">All Level</span>
-
                     <a href="courses-details.html" className='coursename'>
                         <h5 className="py-2 m-0"><strong>Environmental Challenges and Solutions</strong></h5>
                     </a>
@@ -443,7 +442,6 @@ const Homepage = () => {
                     <a href="courses-details.html"><img src={team4Img} className="img-fluid rounded-3" alt="image"></img></a>
                     <div className="card-body p-0">
                     <span className="badge text-muted bg-success mt-3 mb-1">Certified</span>
-
                     <a href="courses-details.html" className='tutorname'>
                         <h5 className="py-2 m-0"><strong>May Sophia</strong></h5>
                     </a>
@@ -470,7 +468,6 @@ const Homepage = () => {
                     <div className="card-body p-0">
 
                     <span className="badge text-muted bg-success mt-3 mb-1">Certified</span>
-
                     <a href="courses-details.html" className='tutorname'>
                         <h5 className="py-2 m-0"><strong>Young Ho</strong></h5>
                     </a>
@@ -587,3 +584,4 @@ const Homepage = () => {
 };
 
 export default Homepage;
+

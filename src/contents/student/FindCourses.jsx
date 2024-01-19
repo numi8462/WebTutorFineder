@@ -11,30 +11,86 @@ export const FindCourses = (props) => {
     const [student, setStudent] = useState({});
     const { currentUser } = useAuth()
     const navigate = useNavigate();
+    const [sortOption, setSortOption] = useState(''); // Empty string = Default
+    const [searchTerm, setSearchTerm] = useState('');
+    const [degree, setDegree] = useState('all');
 
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-
+    function capitalizeFirstLetter(str) {
+      if (str && typeof str === 'string') {
+        return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
       }
-    });
+      return '';
+    }
+
+    const handleChange = (event) => {
+      setDegree(event.target.value);
+      setSortOption(event.target.value);
+    };
     
     useEffect(() => {
-      axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
-      .then((response) => {
-          setStudent(response.data);
-          console.log(response.data.name);
-      })
-      .catch((error) => {
-          console.error("Error fetching profile data:", error);
-      });
+      // axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
+      // .then((response) => {
+      //     setStudent(response.data);
+      //     console.log(response.data.name);
+      // })
+      // .catch((error) => {
+      //     console.error("Error fetching profile data:", error);
+      // });
+      // axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
+      // .then((response) => {
+      //     setStudent(response.data);
+      //     console.log(response.data.name);
+      // })
+      // .catch((error) => {
+      //     console.error("Error fetching profile data:", error);
+      // });
 
-      axios.get(`http://localhost:3001/getCourses`)
-        .then(response => {
-          console.log(response.data); // Log the response data
-          setCourses(response.data);
-        }).catch(err => console.log(err));
-    }, []); // Dependency array
+
+      // axios.get(`http://localhost:3001/getCourses`)
+      //   .then(response => {
+      //     console.log(response.data); // Log the response data
+      //     setCourses(response.data);
+      //   }).catch(err => console.log(err));
+        if (!currentUser) {
+          return; 
+        }
     
+        const fetchData = async () => {
+          try {
+            const response = await axios.get(`http://localhost:3001/profile/${currentUser.uid}`);
+            setStudent(response.data);
+          } catch (error) {
+            console.error("Error fetching profile data:", error);
+          }
+        };
+    
+        const fetchCourses = async () => {
+          try {
+            const response = await axios.get(`http://localhost:3001/getFilteredCourses?search=${searchTerm}&sort=${sortOption}`);
+            setCourses(response.data);
+          } catch (error) {
+            console.error("Error fetching courses:", error);
+          }
+        };
+    
+        const handleAuthStateChange = (user) => {
+          if (user) {
+            setUid(user.uid);
+            fetchData(); // Fetch student data when user logs in
+          }
+        };
+    
+        const authUnsubscribe = firebase.auth().onAuthStateChanged(handleAuthStateChange);
+    
+        // Fetch courses when any of the dependencies change
+        fetchCourses();
+    
+        return () => {
+          // Cleanup the auth state subscription
+          authUnsubscribe();
+        };
+      }, [currentUser, uid, sortOption, searchTerm]);
+      
 
     return (
         <div>
@@ -59,11 +115,11 @@ export const FindCourses = (props) => {
                   <span>Search courses</span></a>
               </li>
               <li>
-                <a href=""><span className="fa-solid fa-heart" />
-                  <span>Saved</span></a>
+                <a onClick={() => navigate('/matching')}><span className="fa-solid fa-heart" />
+                  <span>Match Tutor</span></a>
               </li>
               <li>
-                <a href=""><span className="fa-solid fa-user" />
+                <a onClick={() => navigate('/profile')}><span className="fa-solid fa-user" />
                   <span>My Account</span></a>
               </li>
             </ul>
@@ -80,45 +136,69 @@ export const FindCourses = (props) => {
               </h1>
             </div>
             <div className="user-wrapper">
-              <div>
-                <h4>{student.name}</h4>
+
+              <div className='user-wrapper-field'>
+                <h4><span><i className='fa-solid fa-user'></i></span> {student.name}</h4> 
                 <small>Student</small>
               </div>
+              
             </div>
           </header>
           <main>
             <div className="main-container">
-              <h2>Search for courses and find your <span>tutor</span></h2>
+              <h2>Search for courses</h2>
               <div className="search">
                 <div className="search-wrapper">
                   <div className="search-wrapper-content">
-                    <input type="search" placeholder="Search here" />
+                  <input
+                    type="search"
+                    placeholder="Search here"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                    <div className='search-button'>
+                    <button class="fa-solid fa-magnifying-glass"></button>
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="filter-container">
                 <div className="category-head">
-                  <ul>
-                    <div className="category-title" id="all">
+                                    <ul>
+                    <div className="category-title" id="all" onClick={() => setSortOption('all')}>
+                    <span><i className="fas fa-border-all" ></i></span>
                       <li>All</li>
-                      <span><i className="fas fa-border-all" /></span>
+                      
                     </div>
-                    <div className="category-title" id="location">
-                      <li>Location</li>
+                    {/* <div className="category-title" id="location">
+                      <li>Location</li>courseteaching
                       <span><i className="fa-solid fa-location-dot" /></span>
+                    </div> */}
+                    <div className="category-title" id="price" onClick={() => setSortOption('costHighToLow')}>
+                    <span><i className="fas fa-coins"></i> </span>
+                      <li>Price(High to Low)</li>
+                      
                     </div>
-                    <div className="category-title" id="price">
-                      <li>Price</li>
-                      <span><i className="fas fa-coins" /></span>
+                    <div className="category-title" id="hours" onClick={() => setSortOption('hoursHighToLow')}>
+                    <span><i className="fas fa-hourglass"></i></span>
+                      <li>Hours(High to Low)</li>
+                      
                     </div>
-                    <div className="category-title" id="university">
+                    <div className="category-title" id="university" onClick={() => setSortOption(`university-${student.uni}`)}>
+                    <span><i className="fas fa-landmark" /></span>
                       <li>University</li>
-                      <span><i className="fas fa-landmark" /></span>
+                      
                     </div>
-                    <div className="category-title" id="degree">
-                      <li>Degree level</li>
-                      <span><i className="fa-solid fa-graduation-cap" /></span>
-                    </div>
+
+                      <select className='category-title' value={degree} onChange={handleChange}>
+                        <option value="all">All Degrees</option>
+                        <option value="bachelor">Bachelor's Degree</option>
+                        <option value="doctorate">Doctorate's Degree</option>
+                        <option value="masters">Master's Degree</option>
+                        <option value="teaching">Teaching Degree</option>
+                      </select>
+                    
+
                   </ul>
                   <div className="tutors-collect">
                     <div className="tutors-main-container">
@@ -127,17 +207,29 @@ export const FindCourses = (props) => {
                             <div className='post-img'>
                               <img src={courseImg} alt="post" />  
                             </div>
+            
                             <div className='post-content'>
+                              <h4>{item.name}</h4>
+
+                              <p>{item.description}</p>
+                              
                               <div className='post-content-top'>
-                                <span><i className='fa-solid fa-user'></i>{item.name}</span>
+                                <span><i className='fa fa-book'></i> {item.subject}</span>
                                 
-                                <span><i className='fas fa-hourglass'></i>{item.hours} hours</span>
+                                <span><i className='fas fa-hourglass'></i> Total {item.hours} hours</span>
+
+                                <span><i className='fas fa-money-bill-wave'></i> ${item.cost} per hour</span>
                               </div>
-                              <h4>{item.subject}</h4>
-                              <p>{item.description}
-                              </p>
+
+                              <h4>Tutor Info</h4>
+                              <div className='post-content-top'>
+                              
+                                <span><i className="fa-solid fa-building-columns"></i> {capitalizeFirstLetter(item.tutUni)}</span>
+                                <span><i className='fa-solid fa-scroll'></i> {capitalizeFirstLetter(item.tutDegree)} Degree</span>
+                              </div>
+
                             </div>
-                            <button type="button" className="read-btn" onClick={() => navigate(`/course/${item.cid}`)}>Details</button>
+                            <button type="button" className="read-btn" onClick={() => navigate(`/course/${item._id}`)}>Details</button>
                         </div>
                       ))}
                     </div>

@@ -7,6 +7,7 @@ const StudentModel = require('./src/models/studentModel');
 const TutorModel = require('./src/models/tutorModel')
 const CourseModel = require('./src/models/courseModel')
 const SessionModel = require('./src/models/sessionModel')
+// import firebase from 'firebase/compat/app';
 
 app.use(cors());
 app.use(express.json());
@@ -44,6 +45,20 @@ app.put('/update/:uid', async (req, res) => {
   }
 
   res.json(updatedStudent);
+});
+
+app.put('/updateTutor/:uid', async (req, res) => {
+  const updatedTutor = await TutorModel.findOneAndUpdate(
+    { uid: req.params.uid },
+    { $set: req.body },
+    { new: true }
+  );
+
+  if (!updatedTutor) {
+    return res.status(404).json({ message: 'Tutor not found' });
+  }
+
+  res.json(updatedTutor);
 });
 
 //Define route for /profile page
@@ -95,7 +110,7 @@ app.get('/getTutors', async (req, res) => {
 
 app.get('/getTutors/:uid', async (req, res) => {
   const uid = req.params.uid;
-  console.log(`Fetching tutor uid: ${uid}`)
+  // console.log(`Fetching tutor uid: ${uid}`)
   TutorModel.findOne({uid: uid})
     .then(tutors => {
       res.json(tutors);
@@ -122,10 +137,10 @@ app.get('/getCourses', async (req, res) => {
     .catch(err => res.json(err));
 });
 
-app.get('/getCourse/:cid', async (req, res) => {
-  const cid = req.params.cid;
-  console.log(`Fetching course with cid: ${cid}`)
-  CourseModel.findOne({cid: cid})
+app.get('/getCourse/:_id', async (req, res) => {
+  const id = req.params._id;
+  // console.log(`Fetching course with cid: ${id}`)
+  CourseModel.findOne({_id: id})
     .then(courses => {
       res.json(courses);
     })
@@ -134,7 +149,7 @@ app.get('/getCourse/:cid', async (req, res) => {
 
 app.get('/getCourses/:uid', async (req, res) => {
   const uid = req.params.uid;
-  console.log(`Fetching courses with tutor uid: ${uid}`)
+  // console.log(`Fetching courses with tutor uid: ${uid}`)
   CourseModel.find({tutorID: uid})
     .then(courses => {
       res.json(courses);
@@ -253,3 +268,104 @@ app.delete('/deleteSession/:id', async (req, res) => {
 //     })
 //     .catch(err => res.json(err));
 // });
+// });
+
+
+//Functions for creating the courses
+
+// Function to get the tutorID from the authenticated user
+// const getTutorIDFromAuthenticatedUser = () => {
+//   // Get the current authenticated user
+//   const currentUser = firebase.auth().currentUser;
+
+//   if (currentUser) {
+//     const tutorID = currentUser.uid;
+
+//     return tutorID;
+//   } else {
+//     console.error('No authenticated user found.');
+//     return null;
+//   }
+// };
+
+// export default getTutorIDFromAuthenticatedUser;
+
+//  //Route to handle creating new course. "status" automatically set as "In progress"
+// app.post('/postCourse', async (req, res) => {
+//   try {
+//     const { subject, name, description, hours, cost } = req.body;
+
+//     const tutorID = getTutorIDFromAuthenticatedUser(); 
+//     // Create a new Course document with tutorID and default status
+//     const newCourse = new CourseModel({
+//       subject,
+//       name,
+//       description,
+//       hours,
+//       cost,
+//       tutorID,
+//       status: 'In progress', // Set the default status
+//     });
+//     // Save the new course to the database
+//     const savedCourse = await newCourse.save();
+//     // Respond with the created course
+//     res.status(201).json(savedCourse);
+//   } catch (error) {
+//     console.error('Error creating course:', error);
+//     res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// });
+
+
+//Route for course searching and filtering
+app.get('/getFilteredCourses', async (req, res) => {
+  const { search, sort } = req.query;
+
+  try {
+    console.log('Fetching courses with search:', search, 'and sort:', sort);
+    let filteredCourses = await CourseModel.find();
+
+    // Filter courses based on the search term (Search by name or subject)
+    if (search) {
+      const searchTerm = search.toLowerCase();
+      filteredCourses = filteredCourses.filter(course =>
+        course.name.toLowerCase().includes(searchTerm) ||
+        course.subject.toLowerCase().includes(searchTerm)
+      );
+    }
+
+    // Apply sorting and filtering based on the sort option
+    if (sort) {
+      switch (sort) {
+        case 'all':
+          // No sorting needed for 'all'
+          break;
+        case 'costHighToLow':
+          filteredCourses.sort((a, b) => b.cost - a.cost);
+          break;
+        case 'hoursHighToLow':
+          filteredCourses.sort((a, b) => b.hours - a.hours);
+          break;
+        case 'bachelor':
+        case 'doctorate':
+        case 'masters':
+        case 'teaching':
+          filteredCourses = filteredCourses.filter(course => course.tutDegree.toLowerCase() === sort.toLowerCase());
+          break;
+        default:
+          if (sort.startsWith('university-')) {
+            const uni = sort.replace('university-', ''); // Extract the university value
+            filteredCourses = filteredCourses.filter(course =>
+              course.tutUni.toLowerCase() === uni.toLowerCase()
+            );
+          }
+          break;
+      }
+    }
+  // console.log('Filtered courses:', filteredCourses);
+    res.json(filteredCourses);
+  } catch (error) {
+    console.error('Error fetching filtered courses:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
