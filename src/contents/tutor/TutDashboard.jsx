@@ -33,10 +33,10 @@ export const TutDashboard = (props) => {
     return () => unsubscribe();
   }, []);
 
-  useEffect(() => {
-    mySession.filter(item => item.hoursLeft === 0).forEach(item => {
-        fetchStudentData(item.sid);
-    });
+    useEffect(() => {
+        mySession.filter(item => item.hoursLeft === 0).forEach(item => {
+            fetchStudentData(item.sid);
+        });
     }, [mySession]);
 
   const fetchCourses = async (uid) => {
@@ -279,7 +279,7 @@ export const TutDashboard = (props) => {
                                 <div className="card">
                                     <div className="card-header">
                                         <h3>My courses</h3>
-                                        <button>See all <span className="fa-solid fa-chevron-down"></span></button>
+                                        {/* <button>See all <span className="fa-solid fa-chevron-down"></span></button> */}
                                     </div>
                                     <div className="card-body">
                                         <div className="table-responsive">
@@ -318,40 +318,44 @@ export const TutDashboard = (props) => {
                                 <div className="card">
                                     <div className="card-header">
                                         <h3>My on going Sessions</h3>
-                                        <button>See all <span className="fa-solid fa-chevron-down"></span></button>
+                                        {/* <button>See all <span className="fa-solid fa-chevron-down"></span></button> */}
                                     </div>
                                     <div className="card-body">
                                         <div className="table-responsive">
-                                        <table width="100%" className='dash'>
-                                            <thead>
-                                                <tr>
-                                                    <td>Course title</td>
-                                                    <td>Area</td>
-                                                    <td>Progress</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {mySession.map((item, index) => (
-                                                        <tr key={index}>
-                                                            <td>{item.cName}</td>
-                                                            <td>{item.subject}</td> 
-                                                            <td>
-                                                                <i class="fa fa-minus-square fa-lg" aria-hidden="true" onClick={() => {updateSession(item._id, item.hoursLeft, item.hours)}}></i>
-                                                                <div style={{padding: '1rem'}}> 
-                                                                    {item.hoursLeft} / {item.hours} hours
-                                                                </div>
-                                                                <i class="fa fa-plus-square fa-lg" aria-hidden="true" onClick={() => {updateSessionPlus(item._id, item.hoursLeft, item.hours)}}></i>
-                                                            </td>
+                                            <table width="100%" className="dash">
+                                                <thead>
+                                                    <tr>
+                                                        <td>Course title</td>
+                                                        <td>Area</td>
+                                                        <td>Progress</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {mySession.map((item, index) => {
+                                                        if(item.status !== 4) {
+                                                            return (
+                                                                <tr key={index}>
+                                                                    <td>{item.cName}</td>
+                                                                    <td>{item.subject}</td> 
+                                                                    <td>
+                                                                        <i class="fa fa-minus-square fa-lg" aria-hidden="true" onClick={() => {updateSession(item._id, item.hoursLeft, item.hours)}}></i>
+                                                                        <div style={{padding: '1rem'}}> 
+                                                                            {item.hoursLeft} / {item.hours} hours
+                                                                        </div>
+                                                                        <i class="fa fa-plus-square fa-lg" aria-hidden="true" onClick={() => {updateSessionPlus(item._id, item.hoursLeft, item.hours)}}></i>
+                                                                    </td>
+                                                                </tr>
+                                                            )
+                                                        }
+                                                    })}
 
-                                                        </tr>
-                                                    ))}
-                                            </tbody>
-                                        </table>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
-                        </div>
 
                         </div>
 
@@ -411,24 +415,30 @@ export const TutDashboard = (props) => {
                                 </div>
                                 <div className="card-body">
                                     <div className="table-responsive">
-                                    <table width="100%" className="dash">
-                                        <thead>
-                                            <tr>
-                                                <td>Course title</td>
-                                                <td>Student</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {mySession.filter(item => item.hoursLeft === 0).map((item, index) => (
-                                                <tr key={index}>
-                                                    <td>{item.cName}</td>
-                                                    <td>{student.name}</td>
-                                                </tr>
-                                            ))}
 
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        <table width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <td>Course title</td>
+                                                    <td>Student</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {mySession.filter(item => item.hoursLeft === 0).map((item, index) => {
+                                                    if(item.status == 4){
+                                                        return (
+                                                            <tr key={index}>
+                                                                <td>{item.cName}</td>
+                                                                <td>{student.name}</td>
+                                                            </tr>
+                                                        )
+                                                    }
+
+                                                })}
+
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
 
                             </div>

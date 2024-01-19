@@ -12,7 +12,7 @@ const SessionSchema = new Schema({
     hours: Number,
     hoursLeft: Number,
     totalCost: Number,
-    status: Number, // 0 is pending, 1 is approved, 2 is declined, 3 completed
+    status: Number, // 0 is pending, 1 is approved, 2 is declined, 3 completed, 4 pastSession
     isConfirmed: Boolean,
     isConpleted: Boolean,
 });
