@@ -45,29 +45,29 @@ const Homepage = () => {
                         <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
 
-                        <div className="offcanvas-body justify-content-end">
+                <div className="offcanvas-body justify-content-end">
 
-                        <ul className="navbar-nav menu-list list-unstyled align-items-lg-center d-flex gap-md-3 mb-0">
-                            <li className="nav-item">
-                            <a href="index.html" className="nav-link mx-2 active">Home</a>
-                            </li>
-                            <li className="nav-item">
-                            <a href="contact.html" className="nav-link mx-2">Contact</a>
-                            </li>
-                            <li className="nav-item">
-                            <a href="contact.html" className="nav-link mx-2">About Us</a>
-                            </li>
-                        </ul>
+                <ul className="navbar-nav menu-list list-unstyled align-items-lg-center d-flex gap-md-3 mb-0">
+                    <li className="nav-item">
+                    <a href="index.html" className="nav-link mx-2 active">Home</a>
+                    </li>
+                    <li className="nav-item">
+                    <a href="contact.html" className="nav-link mx-2">Contact</a>
+                    </li>
+                    <li className="nav-item">
+                    <a href="contact.html" className="nav-link mx-2">About Us</a>
+                    </li>
+                </ul>
 
-                        <div className="d-none d-lg-flex align-items-center ms-5" style={{position: 'relative', top: '-20px'}} >
-                            <ul className="d-flex justify-content-end  list-unstyled m-0">
-                                <li>
-                                    <Link to="/login" className="btn btn-outline-dark mx-3 p-3">Login/Signup</Link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <div className="d-none d-lg-flex align-items-center ms-5">
+                    <ul className="d-flex justify-content-end  list-unstyled m-0">
+                    <li>
+                        <Link to="/login" className="btn btn-outline-dark mx-3 p-3">Login/Signup</Link>
+                    </li>
+                    </ul>
                 </div>
+                </div>
+            </div>
             </div>
         </nav>
 
@@ -75,7 +75,7 @@ const Homepage = () => {
             <div className="container-fluid">
             <div className="row">
                 <div className="col-md-8 col-lg-3 offset-md-2 padding-large ps-lg-0 pe-lg-5">
-                <h2 className="display-2 fw-semibold">Unlock Your Learning Potential with <span className="text-primary">TutorFinder!</span></h2>
+                <h2 className="display-2 fw-semibold">Unlock Your Learning Potential with <span className="billboardtext-1">Tutor<span className='billboardtext-2'>Finder!</span></span></h2>
                 <p className="secondary-font my-4 pb-2"> Personalized online tutoring by expert educators. Tailored lessons, global community, and secure learning. Elevate your education with us today!</p>
                 </div>
                 <div className="col-md-6 col-lg-7 d-block d-md-none d-lg-block p-0">
@@ -89,7 +89,7 @@ const Homepage = () => {
             <div className="container">
 
             <div className="text-center mb-5">
-                <h2 className="display-5 fw-semibold">Check our <span className="text-primary">featured courses</span></h2>
+                <h2 className="display-5 fw-semibold">Check our <span className="featured-course">featured courses</span></h2>
                 <p className="secondary-font">Our Certified Courses That are Trusted by Students</p>
             </div>
             <div className="isotope-container row">
@@ -101,27 +101,26 @@ const Homepage = () => {
                 <div className="card position-relative">
                     <a href="courses-details.html"><img src={item4Img} className="img-fluid rounded-3" alt="image"></img></a>
                     <div className="card-body p-0">
-
                     <span className="badge text-muted bg-success mt-3 mb-1">Beginner</span>
 
-                    <a href="courses-details.html">
-                        <h5 className="py-2 m-0">Introduction to Calculus</h5>
+                    <a href="courses-details.html" className='coursename'>
+                        <h5 className="py-2 m-0"><strong>Introduction to Calculus</strong></h5>
                     </a>
 
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
                         <p className="text-muted fw-semibold m-0 me-2">Young Ho</p>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
                         </span>
 
-                        <h4 className=" text-primary">$9.00 </h4>
+                        <h4 className="cost">$9.00 </h4>
 
                         <div className="d-flex flex-wrap mt-2">
-                        <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Enroll Now</a>
+                        <a href="#" className="btn btn-outline-dark text-capitalize me-2 px-4 py-3">Enroll Now</a>
                         </div>
 
                     </div>
@@ -139,21 +138,22 @@ const Homepage = () => {
 
                     <span className="badge text-muted bg-success mt-3 mb-1">All Level</span>
 
-                    <a href="courses-details.html">
-                        <h5 className="py-2 m-0">Language Arts Workshop</h5>
+
+                    <a href="courses-details.html" className='coursename'>
+                        <h5 className="py-2 m-0"><strong>Language Arts Workshop</strong></h5>
                     </a>
 
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
                         <p className="text-muted fw-semibold m-0 me-2">Young Ho</p>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:half-star-solid" className="text-primary"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:half-star-solid" className="rating"></Icon>
                         </span>
 
-                        <h4 className=" text-primary">$7.00</h4>
+                        <h4 className="cost">$7.00</h4>
 
                         <div className="d-flex flex-wrap mt-2">
                         <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Enroll Now</a>
@@ -174,21 +174,21 @@ const Homepage = () => {
 
                     <span className="badge text-muted bg-success mt-3 mb-1">Experts</span>
 
-                    <a href="courses-details.html">
-                        <h5 className="py-2 m-0">Organic Chemistry</h5>
+                    <a href="courses-details.html" className='coursename'>
+                        <h5 className="py-2 m-0"><strong>Organic Chemistry</strong></h5>
                     </a>
 
-                    <div clclassNameass="card-text">
+                    <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
                         <p className="text-muted fw-semibold m-0 me-2">Young Ho</p>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
                         </span>
 
-                        <h4 className=" text-primary">$10.00</h4>
+                        <h4 className="cost">$10.00</h4>
 
                         <div className="d-flex flex-wrap mt-2">
                         <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Enroll Now</a>
@@ -209,21 +209,21 @@ const Homepage = () => {
 
                     <span className="badge text-muted bg-success mt-3 mb-1">Beginner</span>
 
-                    <a href="courses-details.html">
-                        <h5 className="py-2 m-0">Introduction to Physics</h5>
+                    <a href="courses-details.html" className='coursename'>
+                        <h5 className="py-2 m-0"><strong>Introduction to Physics</strong></h5>
                     </a>
 
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
                         <p className="text-muted fw-semibold m-0 me-2">Young Ho</p>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:half-star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-line" className="text-primary"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:half-star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-line" className="rating"></Icon>
                         </span>
 
-                        <h4 className=" text-primary">$5.00 </h4>
+                        <h4 className="cost">$5.00 </h4>
 
                         <div className="d-flex flex-wrap mt-2">
                         <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Enroll Now</a>
@@ -243,21 +243,20 @@ const Homepage = () => {
                     <div className="card-body p-0">
 
                     <span className="badge text-muted bg-success mt-3 mb-1">All Level</span>
-
-                    <a href="courses-details.html">
-                        <h5 className="py-2 m-0">Environmental Challenges and Solutions</h5>
+                    <a href="courses-details.html" className='coursename'>
+                        <h5 className="py-2 m-0"><strong>Environmental Challenges and Solutions</strong></h5>
                     </a>
 
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
                         <p className="text-muted fw-semibold m-0 me-2">Young Ho</p>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
                         </span>
-                        <h4 className=" text-primary">$5.00</h4>
+                        <h4 className="cost">$5.00</h4>
                         <div className="d-flex flex-wrap mt-2">
                         <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Enroll Now</a>
 
@@ -278,21 +277,21 @@ const Homepage = () => {
 
                     <span className="badge text-muted bg-success mt-3 mb-1">Experts</span>
 
-                    <a href="courses-details.html">
-                        <h5 className="py-2 m-0">World Civilizations: From Ancient Times to the Present</h5>
+                    <a href="courses-details.html" className='coursename'>
+                        <h5 className="py-2 m-0"><strong>World Civilizations: From Ancient Times to the Present</strong></h5>
                     </a>
 
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
                         <p className="text-muted fw-semibold m-0 me-2">Young Ho</p>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:half-star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-line" className="text-primary"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:half-star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-line" className="rating"></Icon>
                         </span>
 
-                        <h4 className=" text-primary">$7.00</h4>
+                        <h4 className="cost">$7.00</h4>
 
                         <div className="d-flex flex-wrap mt-2">
                         <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Enroll Now</a>
@@ -312,21 +311,21 @@ const Homepage = () => {
 
                     <span className="badge text-muted bg-success mt-3 mb-1">Beginner</span>
 
-                    <a href="courses-details.html">
-                        <h5 className="py-2 m-0">Introduction to Digital Art</h5>
+                    <a href="courses-details.html" className='coursename'>
+                        <h5 className="py-2 m-0"><strong>Introduction to Digital Art</strong></h5>
                     </a>
 
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
                         <p className="text-muted fw-semibold m-0 me-2">Young Ho</p>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
                         </span>
 
-                        <h4 className=" text-primary">$20.00</h4>
+                        <h4 className="cost">$20.00</h4>
 
                         <div className="d-flex flex-wrap mt-2">
                         <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Enroll Now</a>
@@ -345,21 +344,21 @@ const Homepage = () => {
 
                     <span className="badge text-muted bg-success mt-3 mb-1">Intermediate</span>
 
-                    <a href="courses-details.html">
-                        <h5 className="py-2 m-0">Entrepreneurship 101</h5>
+                    <a href="courses-details.html" className='coursename'>
+                        <h5 className="py-2 m-0"><strong>Entrepreneurship 101</strong></h5>
                     </a>
 
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
                         <p className="text-muted fw-semibold m-0 me-2">Young Ho</p>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:half-star-solid" className="text-primary"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:half-star-solid" className="rating"></Icon>
                         </span>
 
-                        <h4 className=" text-primary">$20.00</h4>
+                        <h4 className="cost">$20.00</h4>
                         <div className="d-flex flex-wrap mt-2">
                         <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Enroll Now</a>
                         </div>
@@ -374,7 +373,7 @@ const Homepage = () => {
         <section id="top-sell" className="padding-medium">
             <div className="container">
             <div className="text-center mb-5">
-                <h2 className="display-5 fw-semibold">Check our <span className="text-primary">Certified Tutors</span></h2>
+                <h2 className="display-5 fw-semibold">Check our <span className="featured-tutor">Certified Tutors</span></h2>
                 <p className="secondary-font">Our Certified Tutors That Are Trusted by Thousands of Students</p>
             </div>
             <div className="isotope-container row">
@@ -384,18 +383,18 @@ const Homepage = () => {
                     <div className="card-body p-0">
                     <span className="badge text-muted bg-success mt-3 mb-1">Certified</span>
 
-                    <a href="courses-details.html">
-                        <h5 className="py-2 m-0">Young Ho</h5>
+                    <a href="courses-details.html" className='tutorname'>
+                        <h5 className="py-2 m-0"><strong>Andrew Garfield</strong></h5>
                     </a>
 
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
                         <p className="text-muted fw-semibold m-0 me-2">Mathematics Tutor</p>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
                         </span>
                         <div className="d-flex flex-wrap mt-2">
                         <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Contact Tutor</a>
@@ -414,18 +413,18 @@ const Homepage = () => {
 
                     <span className="badge text-muted bg-success mt-3 mb-1">Certified</span>
 
-                    <a href="courses-details.html">
-                        <h5 className="py-2 m-0">Young Ho</h5>
+                    <a href="courses-details.html" className='tutorname'>
+                        <h5 className="py-2 m-0"><strong>May Sophia</strong></h5>
                     </a>
 
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
                         <p className="text-muted fw-semibold m-0 me-2">History Professor</p>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:half-star-solid" className="text-primary"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:half-star-solid" className="rating"></Icon>
                         </span>
 
 
@@ -443,19 +442,18 @@ const Homepage = () => {
                     <a href="courses-details.html"><img src={team4Img} className="img-fluid rounded-3" alt="image"></img></a>
                     <div className="card-body p-0">
                     <span className="badge text-muted bg-success mt-3 mb-1">Certified</span>
-
-                    <a href="courses-details.html">
-                        <h5 className="py-2 m-0">Young Ho</h5>
+                    <a href="courses-details.html" className='tutorname'>
+                        <h5 className="py-2 m-0"><strong>May Sophia</strong></h5>
                     </a>
 
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
                         <p className="text-muted fw-semibold m-0 me-2">Chemistry Expert</p>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
                         </span>
                         <div className="d-flex flex-wrap mt-2">
                         <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Contact Tutor</a>
@@ -470,18 +468,17 @@ const Homepage = () => {
                     <div className="card-body p-0">
 
                     <span className="badge text-muted bg-success mt-3 mb-1">Certified</span>
-
-                    <a href="courses-details.html">
-                        <h5 className="py-2 m-0">Young Ho</h5>
+                    <a href="courses-details.html" className='tutorname'>
+                        <h5 className="py-2 m-0"><strong>Young Ho</strong></h5>
                     </a>
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
                         <p className="text-muted fw-semibold m-0 me-2">Business Mentor</p>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:half-star-solid" className="text-primary"></Icon>
-                        <Icon icon="clarity:star-line" className="text-primary"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:half-star-solid" className="rating"></Icon>
+                        <Icon icon="clarity:star-line" className="rating"></Icon>
                         </span>
                         <div className="d-flex flex-wrap mt-2">
                         <a href="#" className=" btn btn-outline-dark text-capitalize me-2 px-4 py-3">Contact Tutor</a>
@@ -528,10 +525,10 @@ const Homepage = () => {
                     <h5 className="text-uppercase fw-bold mb-4">Support</h5>
                     <ul className="menu-list list-unstyled">
                     <li className="menu-item mb-2">
-                        <a href="#">FAQs</a>
+                        <a href="#" className="footer-link">FAQs</a>
                     </li>
                     <li className="menu-item mb-2">
-                        <a href="#">Support</a>
+                        <a href="#" className="footer-link">Support</a>
                     </li>
                     </ul>
                 </div>
@@ -575,7 +572,7 @@ const Homepage = () => {
             </div>
         </footer>
 
-        <script src="js/jquery-1.11.0.min.js"></script>
+        <script src="./js/jquery-1.11.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
             crossorigin="anonymous"></script>
@@ -587,3 +584,4 @@ const Homepage = () => {
 };
 
 export default Homepage;
+
