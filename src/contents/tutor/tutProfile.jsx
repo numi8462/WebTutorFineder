@@ -227,8 +227,8 @@ export const TutProfile = (props) => {
       <div className="web-info">
         <div className="div-29">
           <div className="div-30">
-            <div className="div-31">Your Student info</div>
-            <div className="stable"><h4>University</h4></div>
+            <div className="div-31">Your Tutor info</div>
+            <div className="stable"><h4>My University</h4></div>
             <div className="changed">{tutor.uni}</div>
             <div className="stable"><h4>Qaulification</h4></div>
             <div className="changed">{tutor.qualification}</div>
@@ -238,8 +238,6 @@ export const TutProfile = (props) => {
             <div className="changed">{tutor.major}</div>
           </div>
         </div>
-        <div className="stable"><h4>Credit</h4></div>
-        <div className="changed">{tutor.credit}$</div>
       </div>
 
             </main>

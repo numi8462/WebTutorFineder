@@ -261,7 +261,7 @@ export const Profile = (props) => {
         <div className="div-29">
           <div className="div-30">
             <div className="div-31">Your info</div>
-            <div className="stable"><h4>University</h4></div>
+            <div className="stable"><h4>My University</h4></div>
             <div className="changed">{student.uni}</div>
             <div className="stable"><h4>Education Level</h4></div>
             <div className="changed">{student.educationLevel}</div>

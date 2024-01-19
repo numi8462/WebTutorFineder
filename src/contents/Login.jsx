@@ -64,7 +64,7 @@ export const Login = (props) => {
 
             <div className="container-register">
                 <div className="main-logo">
-                    <a href="index.html">
+                    <a onClick={() => navigate('/homepage')}>
                     <div className="sidebar-brand" id='brand-logo'>
                         <p>Tutor<span>Finder</span>.</p>
                     </div>
@@ -75,13 +75,17 @@ export const Login = (props) => {
                     <div>
                         <h2>Login</h2>
                     </div>
-                    <div className="enter-info">
+                    <div className="enter-info" >
                     {error && <Alert variant="danger" style={{ border: 'none', backgroundColor: 'transparent', color: 'red', fontWeight:'', fontSize:'1.5rem' }}>{error}</Alert>}
                     <form onSubmit={handleSubmit} className="login">
                         <div className="input-group">
+                            {/* <p>Email</p> */}
+                            <i class="fa fa-user"></i>
                             <input value={email} name="email" id="email" type="email" placeholder="youremail@gmail.com" onChange = {(e) => setEmail(e.target.value)}/>
                         </div>
                         <div className="input-group">
+                            {/* <p>Password</p> */}
+                            <i class="fa fa-lock"></i>
                             <input value={pass} type="password" placeholder="***********" id="password" name="password" onChange={(e) => setPass(e.target.value)}/>
                         </div>
                         <div className="reset">
@@ -102,6 +106,7 @@ export const Login = (props) => {
                         </div>
                     </form>
                 </div>
+
                 </div>
 
             </div>

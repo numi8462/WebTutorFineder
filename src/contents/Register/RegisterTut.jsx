@@ -112,11 +112,7 @@ export const RegisterTut = (props) => {
     return (
         <div className="wrapper">
             <div className="container">
-            <div className="main-logo">
-                    <a href="index.html">
-                    <img src={logoImg} alt="logo" className="img-fluid"></img>
-                    </a>
-                </div>
+
                 <div className="form-box">
                     <div>
                         <h2>Register as Tutor</h2>
@@ -155,22 +151,22 @@ export const RegisterTut = (props) => {
                                     <option value="female">Female</option>
                                 </select>
                             </div>
-                            <div className='input-group'>
+                            <div className='input-select'>
                                 <Select
                                 name="uni"
                                 options={uniList.map(item => ({ value: item ? item.toLowerCase() : '', label: item ? item : '' }))}                                
                                 onChange={handleUniChange}
-                                placeholder="Search your University"
+                                placeholder="Choose University"
                                 isClearable={true}
                                 isSearchable={true}
                                 />
                             </div>
-                            <div className='input-group'>
+                            <div className='input-select'>
                                 <Select
                                     name="major"
                                     options={majors.map(item => ({ value: item.toLowerCase(), label: item }))}
                                     onChange={handleMajorChange}
-                                    placeholder="Search your Major"
+                                    placeholder="Choose Your Major"
                                     isClearable={true}
                                     isSearchable={true}
                                 />
