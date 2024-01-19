@@ -2,17 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Jost:wght@300&display=swap');
 
 :root {
-  /* widths for rows and containers
-     */
   --header-height: 160px;
   --header-height-min: 80px;
 }
 
 
-/* Theme Colors */
 :root {
   --accent-color: #3F6B67;
-  --dark-color: #0a1622;
   --light-dark-color: #727272;
   --light-color: #fff;
   --grey-color: #908F8D;
@@ -21,22 +17,19 @@
   --light-primary-color: #eef1f3;
 }
 
-/* Fonts */
 :root {
   --body-font:  'Comfortaa', sans-serif;
   --heading-font: 'Comfortaa', sans-serif;
   --secondary-font: 'Roboto Slab', serif;
 }
 
-/* Logo */
 .logo {
   position: fixed;
-  top: 10px; /* You can adjust the top position based on your design */
-  left: 10px; /* You can adjust the left position based on your design */
-  z-index: 1000; /* You can adjust the z-index based on your layout */
+  top: 10px; 
+  left: 10px; 
+  z-index: 1000; 
 }
 
-/* Billboard Text */
 
 .billboardtext-2 {
   color: #FF5B22;
@@ -67,7 +60,6 @@ body {
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.3rem;
-  /* --bs-body-color: #0a1622; */
 
   --bs-primary: #3F6B67;
   --bs-primary-rgb: 167, 215, 197;
@@ -118,11 +110,11 @@ body {
 a.coursename, a.tutorname {
   text-decoration: none;
 }
-
-div.card {
+  
+/* div.card {
  border: none;
  box-shadow: none;
-}
+} */
 
 
 
@@ -191,7 +183,6 @@ h6 {
 }
 
 
-/* nav bar style  */
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link:active,
 .navbar-nav .nav-link:hover {
@@ -206,7 +197,6 @@ h6 {
 }
 
 
-/* footer section style */
 a.footer-link {
   text-decoration: none;
   text-transform: none;

@@ -190,6 +190,7 @@ export const StuDashboard = (props) => {
                 </div>
 
                 <div className='main-content-row'>
+                    
                     <div className='content-column'>
                         <div className="recent-flex">
                             <div className="courses">
@@ -248,7 +249,7 @@ export const StuDashboard = (props) => {
                                     </div>
                                     <div className="card-body">
                                         <div className="table-responsive">
-                                        <table width="100%" className="dash">
+                                        <table width="100%">
                                             <thead>
                                                 <tr>
                                                     <td>Course title</td>
@@ -287,6 +288,7 @@ export const StuDashboard = (props) => {
 
                         
                     </div>
+
                     <div className='recent-completed'>
                         <div className="courses">
                             <div className="card">
@@ -323,6 +325,7 @@ export const StuDashboard = (props) => {
                             </div>
                         </div>
                     </div>
+                    
                 </div>
                 
 

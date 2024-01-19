@@ -367,47 +367,53 @@ export const TutDashboard = (props) => {
                                     </div>
                                     <div className="card-body">
                                         <div className="table-responsive">
-                                        <table width="100%" className="dash">
-                                            <thead>
-                                                <tr>
-                                                    <td>Course title</td>
-                                                    <td>Area</td>
-                                                    <td>Status</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody >
-                                                {session.map((item, index) => (
-                                                    <tr key={index}>
-                                                        <td>{item.cName}</td>
-                                                        <td>{item.subject}</td>
-                                                        <td>
-                                                            <span className="status"></span>
-                                                            <span style={{color: item.status === 1 ? 'green' : item.status === 2 ? 'red' : 'blue'}}>
-                                                            {item.status === 0 ? 'Pending' : item.status === 1 ? 'Approved' : item.status === 2 ? 'Declined' : item.status}
-                                                            </span>
-                                                        </td>
-                                                        <td style={{justifyContent: 'center'}}>
-                                                            <div style={{display: 'flex', flexDirection: 'row'}}>
-                                                                {item.status === 0 && <button className="approve" type="button" onClick={() => approveSession(item._id)}>Approve</button>}
-
-                                                                {item.status === 0 && <button style={{marginLeft: '10%'}} className="decline" type="button" onClick={() => declineSession(item._id)}>Decline</button>}
-
-                                                            </div>
-                                                        </td>
+                                            <table width="100%" className="dash">
+                                                <thead>
+                                                    <tr>
+                                                        <td>Course title</td>
+                                                        <td>Area</td>
+                                                        <td>Status</td>
                                                     </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                                </thead>
+                                                <tbody >
+                                                    {session.map((item, index) => (
+                                                        <tr key={index}>
+                                                            <td>{item.cName}</td>
+                                                            <td>{item.subject}</td>
+                                                            <td>
+                                                                <span className="status"></span>
+                                                                <span style={{color: item.status === 1 ? 'green' : item.status === 2 ? 'red' : 'blue'}}>
+                                                                {item.status === 0 ? 'Pending' : item.status === 1 ? 'Approved' : item.status === 2 ? 'Declined' : item.status}
+                                                                </span>
+                                                            </td>
+                                                            <td style={{justifyContent: 'center'}}>
+                                                                <div style={{display: 'flex', flexDirection: 'row'}}>
+                                                                    {item.status === 0 && <button className="approve" type="button" onClick={() => approveSession(item._id)}>Approve</button>}
 
+                                                                    {item.status === 0 && <button style={{marginLeft: '10%'}} className="decline" type="button" onClick={() => declineSession(item._id)}>Decline</button>}
+
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                 </div>
+
+                                </div>
                             </div>
-                        </div>
                             
                         </div>
 
 
-                        <div className='recent-completed'>
+
+
+
+                    </div>
+
+
+                    <div className='recent-completed'>
                         <div className="courses">
                             <div className="card">
                                 <div className="card-header">
@@ -444,12 +450,6 @@ export const TutDashboard = (props) => {
                             </div>
                         </div>
                     </div>
-
-
-                    </div>
-
-
-
                     
 
                 </div>

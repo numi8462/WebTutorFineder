@@ -174,7 +174,7 @@ main {
 }
 .recent-completed {
     margin-top: 3.5rem;
-    width: 100%;
+    width: 33%;
 }
 .card {
     background: #F4F9F4;
@@ -264,6 +264,7 @@ table {
     .main-content {
         width: 100%;
         margin-left: 0;
+
     }
     .main-content header {
         width: 100%;
@@ -711,7 +712,7 @@ table {
   }
 
   .content-column{
-    width: 100%;
+    width: 66%;
     display: flex;
     flex-direction: column;
   }
