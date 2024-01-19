@@ -65,7 +65,9 @@ export const Login = (props) => {
             <div className="container-register">
                 <div className="main-logo">
                     <a href="index.html">
-                    <img src={logoImg} alt="logo" className="img-fluid"></img>
+                    <div className="sidebar-brand" id='brand-logo'>
+                        <p>Tutor<span>Finder</span>.</p>
+                    </div>
                     </a>
                 </div>
                 <div className="form-box">

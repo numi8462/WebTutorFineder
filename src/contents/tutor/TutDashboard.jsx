@@ -283,7 +283,7 @@ export const TutDashboard = (props) => {
                                     </div>
                                     <div className="card-body">
                                         <div className="table-responsive">
-                                        <table width="100%">
+                                        <table width="100%" className="dash">
                                             <thead>
                                                 <tr>
                                                     <td>Course title</td>
@@ -363,7 +363,7 @@ export const TutDashboard = (props) => {
                                     </div>
                                     <div className="card-body">
                                         <div className="table-responsive">
-                                        <table width="100%">
+                                        <table width="100%" className="dash">
                                             <thead>
                                                 <tr>
                                                     <td>Course title</td>
@@ -401,11 +401,9 @@ export const TutDashboard = (props) => {
                         </div>
                             
                         </div>
-                    </div>
 
 
-
-                    <div className='recent-completed'>
+                        <div className='recent-completed'>
                         <div className="courses">
                             <div className="card">
                                 <div className="card-header">
@@ -413,7 +411,7 @@ export const TutDashboard = (props) => {
                                 </div>
                                 <div className="card-body">
                                     <div className="table-responsive">
-                                    <table width="100%">
+                                    <table width="100%" className="dash">
                                         <thead>
                                             <tr>
                                                 <td>Course title</td>
@@ -436,6 +434,13 @@ export const TutDashboard = (props) => {
                             </div>
                         </div>
                     </div>
+
+
+                    </div>
+
+
+
+                    
 
                 </div>
                 

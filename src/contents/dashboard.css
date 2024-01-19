@@ -36,6 +36,10 @@ header label span {
     z-index: 100;
     transition: width 300ms;
 }
+#brand-logo {
+    padding: 1rem;
+    font-size: 44px;
+}
 .sidebar-brand {
     font-family: 'Comfortaa', sans-serif;
     font-size: 36px;
@@ -170,7 +174,7 @@ main {
 }
 .recent-completed {
     margin-top: 3.5rem;
-    width: 32%;
+    width: 100%;
 }
 .card {
     background: #F4F9F4;
@@ -206,7 +210,6 @@ table {
 }
 .dash thead tr {
     border-top: 1px solid #f0f0f0;
-    border-bottom: 1px solid #f0f0f0;
 }
 .dash thead td {
     padding: .5rem 1rem;
@@ -333,58 +336,95 @@ table {
 }
 
 /* Course description page */
-
+.course-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    box-shadow: 0px 8px 22px -12px rgba(0,0,0,0.64);
+}
 .course-card {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 0 3rem;
+    margin: 1rem 3rem;
     padding: 1rem 3rem;
     box-sizing: border-box;
-    box-shadow: 0px 8px 22px -12px rgba(0,0,0,0.64);
 }
-.tutor-pp {
+.course-pp {
     display: flex;
     justify-content: center;
     height: 35%;
     margin: 1rem;
 }
-.tutor-pp img {
+.course-pp img {
     width: 70%;
     height: 100%;
     object-fit: cover;
 }
-.tutor-info {
+.course-info {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
-.tutor-info-top {
+.course-info-top {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
 }
-.tutor-info-top span {
+.course-info-top span {
     margin: 0 5px;
 }
-.tutor-info-top span i {
+.course-info-top span i {
     margin: 0 5px;
 }
-.tutor-info h4 {
+.course-info h4 {
     margin-bottom: 1rem;
 }
-.tutor-info p {
+.course-info p {
     margin-bottom: 1rem;
 }
-.tutor-info .price {
+.course-info .price {
     background: #F4F9F4;
     font-size: 20px;
     margin-bottom: 2rem;
     border-radius: 5px;
     padding: 5px 10px;
+}
+.tutor-card {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    background: #A7D7C5;
+    box-shadow: 0px 8px 22px -12px rgba(0,0,0,0.64);
+}
+.tutor-pp img {
+    height: 100px;
+    margin: .5rem;
+}
+.tutor-info-top {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+.tutor-info-top span {
+    margin-top: 5px;
+}
+.tutor-card a {
+    font-weight: 700;
 }
 .buttons button {
     margin: 0 1rem;
@@ -427,7 +467,8 @@ table {
     margin-top: 15px;
 }
 .search-wrapper {
-    border: 1px solid #f0f0f0;
+    border: 2px solid #3E6A67;
+    box-shadow: 0 15px 35px rgb(0 0 0 / 24%);
     border-radius: 30px;
     height: 50px;
     display: flex;
@@ -437,12 +478,12 @@ table {
     margin: .7rem 6rem;
     background: #F4F9F4;
     width: 50%;
-
 }
 .search-wrapper-content {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 .search-wrapper-content ::placeholder {
     color: #3E6A67;
@@ -457,37 +498,22 @@ table {
     outline: none;
     text-align: center;
     background: #F4F9F4;
+    width: 90%;
 }
-.degree-select {
-    flex: 0 0 calc(16.6667% -  10px);
-    background: #3E6A67;
-    padding: 3px 5px;
-    color: #F4F9F4;
-    margin: 5px;
-    cursor: pointer;
-    transition: all .4s ease;
+.search-button button {
+    background: none;
+    color: #3E6A67;
+    font-size: 24px;
+    border: none;
 }
-.degree-select:hover {
-    background: #FF9130;
+.search-button button:active {
+    font-size: 26px;
 }
 .category-head ul {
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
-.category-title2 {
-    flex: 0 0 calc(16.6667% -  10px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #3E6A67;
-    padding: 3px 5px;
-    color: #F4F9F4;
-    margin: 5px;
-    cursor: pointer;
-    transition: all .4s ease;
-    border-radius: 10px;
 }
 .category-title {
     flex: 0 0 calc(16.6667% -  10px);
@@ -501,6 +527,7 @@ table {
     cursor: pointer;
     transition: all .4s ease;
     border-radius: 10px;
+    font-size: 16px;
 }
 
 .category-title:hover {
@@ -596,10 +623,12 @@ table {
     padding: 8px;
     margin-bottom: 15px;
     box-sizing: border-box;
+    border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 4px;
   }
 
   #createcourse-button {
-    background-color: #74B49B;
+    background-color: #FF9130;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -608,7 +637,7 @@ table {
   }
 
   #createcourse-button:hover {
-    background-color: #5C8D89;
+    background-color: #3E6A67;
   }
 
   .approve {
@@ -672,7 +701,7 @@ table {
   }
 
   .content-column{
-    width: 66%;
+    width: 100%;
     display: flex;
     flex-direction: column;
   }

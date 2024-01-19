@@ -5,6 +5,7 @@ import { useNavigate, Link } from "react-router";
 import axios from 'axios';
 import courseImg from "../images/course1.png";
 import firebase from "firebase/compat/app";
+import tutorImg from '../homepage-frontend/images/default.jpg';
 
 export const Course = () => {
     const { cid } = useParams(); // Get the course id from the URL
@@ -171,25 +172,39 @@ export const Course = () => {
 
           <main>
             { course && tutor ? (
-            <div className="course-card">
-                <div className="tutor-pp">
-                    <img src={courseImg} alt="profile picture"/>
-                </div>
+            <div className="course-page">
+                    <div className="course-card">
+                        <div className="course-pp">
+                            <img src={courseImg} alt="profile picture"/>
+                        </div>
 
-                <div className="tutor-info">
-                    <div className="tutor-info-top">
-                        <span><i className="fa-solid fa-user"></i>{tutor.name}</span>
-                        <span><i className="fas fa-hourglass"></i>{course.hours} hours</span>
+                        <div className="course-info">
+                            <div className="course-info-top">
+                                <span><i className="fas fa-hourglass"></i>{course.hours} hours</span>
+                            </div>
+                            <h4>{course.subject}</h4>
+                            <p>{course.description}</p>
+                            <span className="price">${course.cost} per hour</span>
+                        </div>
+                        <div className="buttons">
+                            <button id="request" type="button" onClick={postSession}>Send Request</button>
+                            <button type="button">Contact the tutor</button>
                     </div>
-                    <h4>{course.subject}</h4>
-                    <p>{course.description}</p>
-                    <span className="price">${course.cost} per hour</span>
-                </div>
-                <div className="buttons">
-                    <button id="request" type="button" onClick={postSession}>Send Request</button>
-                    <button type="button">Contact the tutor</button>
-                </div>
+                    </div>
+                    <div className="tutor-card">
+                            <div className="tutor-info-top">
+                                <div className="tutor-pp">
+                                    <img src={tutorImg} alt="profile picture"/>
+                                </div>
+                                <span><i className="fa-solid fa-user"></i> {tutor.name}</span>
+                                <span><i class="fa-solid fa-graduation-cap"/> Degree level</span>
+                                <span><i className="fas fa-landmark"/> University</span>
+                            </div>
+                            <span className="middle"><a className="link">View more</a></span>
+                    </div>
+                    
             </div>
+
             ) : (
                 <></>
             )}

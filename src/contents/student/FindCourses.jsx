@@ -156,6 +156,9 @@ export const FindCourses = (props) => {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
+                    <div className='search-button'>
+                    <button class="fa-solid fa-magnifying-glass"></button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -186,17 +189,15 @@ export const FindCourses = (props) => {
                       <li>University</li>
                       
                     </div>
-                    <div className="category-title2" id="degree">
-                      <span><i className="fa-solid fa-graduation-cap" /></span>
-                      <select className='degree-select' value={degree} onChange={handleChange}>
-                      
+
+                      <select className='category-title' value={degree} onChange={handleChange}>
                         <option value="all">All Degrees</option>
                         <option value="bachelor">Bachelor's Degree</option>
                         <option value="doctorate">Doctorate's Degree</option>
                         <option value="masters">Master's Degree</option>
                         <option value="teaching">Teaching Degree</option>
                       </select>
-                    </div>
+                    
 
                   </ul>
                   <div className="tutors-collect">
