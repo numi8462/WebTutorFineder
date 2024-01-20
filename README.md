@@ -1,12 +1,8 @@
-### Github deployed Webpage
+# Github deployed Webpage
 
 http://numi8462.github.io/WebTutorFinder/
 
 make sure to `node server.js` before login
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
