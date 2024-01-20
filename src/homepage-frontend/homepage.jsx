@@ -459,11 +459,11 @@ const Homepage = () => {
             <div className="row">
                 <div className="col-md-4 my-3">
                 <h5 className="text-uppercase fw-bold mb-4">Contact us</h5>
-                <p><Icon className="social-icon text-primary fs-5 me-2" icon="mdi:location"
-                    style={{ verticalAlign: 'text-bottom' }}></Icon> <span className="fw-bold">Address: </span> 702 Nguyen Van Linh Street, Tan Hung, District 7, Ho Chi Minh City</p>
-                <p><Icon className="social-icon text-primary fs-5 me-2" icon="solar:phone-bold"
+                <p><Icon className="social-icon text-red fs-5 me-2" icon="mdi:location"
+                    style={{ verticalAlign: 'text-bottom'}}></Icon> <span className="fw-bold">Address: </span> 702 Nguyen Van Linh Street, Tan Hung, District 7, Ho Chi Minh City</p>
+                <p><Icon className="social-icon text-red fs-5 me-2" icon="solar:phone-bold"
                     style={{ verticalAlign: 'text-bottom' }}></Icon> <span className="fw-bold">Phone: </span>  028 3776 1300</p>
-                <p><Icon className="social-icon text-primary fs-5 me-2" icon="ic:baseline-email"
+                <p><Icon className="social-icon text-red fs-5 me-2" icon="ic:baseline-email"
                    style={{ verticalAlign: 'text-bottom' }}></Icon> <span className="fw-bold">Email: </span>
                     rmitsaigon@rmit.edu.vn
                 </p>
