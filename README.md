@@ -29,6 +29,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 ### Github deployed Webpage
 
-https://numi8462.github.io/homepage
+http://numi8462.github.io/WebTutorFinder/
 
 make sure to `node server.js` before login
