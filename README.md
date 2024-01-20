@@ -50,4 +50,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 https://numi8462.github.io/homepage
 
-make sure to node server.js before login
+make sure to `node server.js` before login
