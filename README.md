@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Github deployed Webpage
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+http://numi8462.github.io/WebTutorFinder/
+
+make sure to `node server.js` before login
 
 ## Available Scripts
 
@@ -27,8 +29,4 @@ Runs the server side of the application by connecting to MongoDB Atlas.
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### Github deployed Webpage
 
-http://numi8462.github.io/WebTutorFinder/
-
-make sure to `node server.js` before login
