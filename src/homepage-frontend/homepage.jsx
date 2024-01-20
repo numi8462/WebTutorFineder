@@ -32,11 +32,9 @@ const Homepage = () => {
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossOrigin="anonymous"></link>
 
         <nav className="main-menu d-flex navbar fixed-top navbar-expand-lg  "style={{backgroundColor: "#e9eeeb", display: 'flex'}}>
-            <div className="container-fluid" style={{height: "80px"}}>
-                <div className="main-logo" >
-                    <a>
-                    <img src={logoImg} alt="logo" className="img-fluid" style={{marginTop: '20%'}}></img>
-                    </a>
+            <div className="container-fluid" >
+                <div className="sidebar-brand-homepage">
+                    <p>Tutor<span>Finder</span>.</p>
                 </div>
 
                 <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" >
@@ -98,7 +96,7 @@ const Homepage = () => {
                 <div className="z-1 position-absolute m-3">
                     <span className="badge text-muted bg-primary">10 Hours</span>
                 </div>
-                <div className="card position-relative" style={{ height: '400px'}}>
+                <div className="card position-relative" style={{ height: '450px'}}>
                     <a href="courses-details.html"><img src={item4Img} className="img-fluid rounded-3" alt="image"></img></a>
 
                     <div style={{padding: '10px'}}>
@@ -133,7 +131,7 @@ const Homepage = () => {
                 <div className="z-1 position-absolute m-3">
                     <span className="badge text-muted bg-primary">25 Hours</span>
                 </div>
-                <div className="card position-relative" style={{height: '400px'}}>
+                <div className="card position-relative" style={{height: '450px'}}>
                     <a href="courses-details.html"><img src={item6Img} className="img-fluid rounded-3" alt="image"></img></a>
                     
                     <div style={{padding: '10px'}}>
@@ -167,7 +165,7 @@ const Homepage = () => {
                 <div className="z-1 position-absolute m-3">
                     <span className="badge text-muted bg-primary">40 Hours</span>
                 </div>
-                <div className="card position-relative" style={{ height: '400px'}}>
+                <div className="card position-relative" style={{ height: '450px'}}>
                     <a href="courses-details.html"><img src={item1Img} className="img-fluid rounded-3" alt="image"></img></a>
                     <div style={{padding: '10px',}}>
 
@@ -198,7 +196,7 @@ const Homepage = () => {
                 <div className="z-1 position-absolute m-3">
                     <span className="badge text-muted bg-primary">35 Hours</span>
                 </div>
-                <div className="card position-relative" style={{height: '400px'}}>
+                <div className="card position-relative" style={{height: '450px'}}>
                     <a href="courses-details.html"><img src={item2Img} className="img-fluid rounded-3" alt="image"></img></a>
                     <div style={{padding: '10px',}}>
 
@@ -229,13 +227,13 @@ const Homepage = () => {
                 <div className="z-1 position-absolute m-3">
                     <span className="badge text-muted bg-primary">45 Hours</span>
                 </div>
-                <div className="card position-relative" style={{ height: '400px'}}>
+                <div className="card position-relative" style={{ height: '500px'}}>
                     <a href="courses-details.html"><img src={item5Img} className="img-fluid rounded-3" alt="image"></img></a>
                     <div style={{padding: '10px',}}>
 
                     <span className="badge text-muted-light bg-success mt-3 mb-1">All Level</span>
                     <a href="courses-details.html" className='coursename'>
-                        <h5 className="py-2 m-0"><strong>Environmental Challenges and Solutions</strong></h5>
+                        <h5 className="py-2 m-0"><strong>Environmental Challenges and Problems</strong></h5>
                     </a>
 
                     <div className="card-text">
@@ -258,7 +256,7 @@ const Homepage = () => {
                 <div className="z-1 position-absolute m-3">
                     <span className="badge text-muted bg-primary">50 Hours</span>
                 </div>
-                <div className="card position-relative" style={{ height: '400px'}}>
+                <div className="card position-relative" style={{ height: '500px'}}>
                     <a href="courses-details.html"><img src={item10Img} className="img-fluid rounded-3" alt="image"></img></a>
                     <div style={{padding: '10px',}}>
 
@@ -288,7 +286,7 @@ const Homepage = () => {
                 <div className="z-1 position-absolute m-3">
                     <span className="badge text-muted bg-primary">30 Hours</span>
                 </div>
-                <div className="card position-relative" style={{height: '400px'}}>
+                <div className="card position-relative" style={{height: '500px'}}>
                     <a href="courses-details.html"><img src={item9Img} className="img-fluid rounded-3" alt="image"></img></a>
                     <div style={{padding: '10px',}}>
 
@@ -318,7 +316,7 @@ const Homepage = () => {
                 <div className="z-1 position-absolute m-3">
                     <span className="badge text-muted bg-primary">35 Hours</span>
                 </div>
-                <div className="card position-relative" style={{ height: '400px'}}>
+                <div className="card position-relative" style={{ height: '500px'}}>
                     <a href="courses-details.html"><img src={item8Img} className="img-fluid rounded-3" alt="image"></img></a>
                     <div style={{padding: '10px',}}>
 
@@ -355,7 +353,7 @@ const Homepage = () => {
             </div>
             <div className="isotope-container row" >
                 <div className="item digital col-md-4 col-lg-3 my-5" >
-                <div className="card position-relative" style={{height: '500px'}}>
+                <div className="card position-relative" style={{height: '100%'}}>
                     <a href="courses-details.html"><img src={team1Img} className="img-fluid rounded-3" alt="image"></img></a>
                     <div style={{padding: '10px', }}>
                     <span className="badge text-muted bg-success mt-3 mb-1">Certified</span>
@@ -381,7 +379,7 @@ const Homepage = () => {
                 </div>
                 <div className="item web col-md-4 col-lg-3 my-5">
 
-                <div className="card position-relative" style={{ height: '500px'}}>
+                <div className="card position-relative" style={{ height: '100%'}}>
                     <a href="courses-details.html"><img src={team5Img} className="img-fluid rounded-3" alt="image"></img></a>
                     <div style={{padding: '10px', }}>
 
@@ -407,8 +405,8 @@ const Homepage = () => {
                     </div>
                 </div>
                 </div>
-                <div className="item photo col-md-4 col-lg-3 my-5" style={{ height: '500px'}}>
-                <div className="card position-relative" style={{height: '500px'}}>
+                <div className="item photo col-md-4 col-lg-3 my-5">
+                <div className="card position-relative" style={{height: '100%'}}>
                     <a href="courses-details.html"><img src={team4Img} className="img-fluid rounded-3" alt="image"></img></a>
                     <div style={{padding: '10px', }}>
                     <span className="badge text-muted bg-success mt-3 mb-1">Certified</span>
@@ -430,7 +428,7 @@ const Homepage = () => {
                     </div>
                 </div>
                 </div>
-                <div className="item business col-md-4 col-lg-3 my-5" style={{ height: '500px'}}>
+                <div className="item business col-md-4 col-lg-3 my-5" style={{ height: '100%'}}>
                 <div className="card position-relative">
                     <a href="courses-details.html"><img src={team2Img} className="img-fluid rounded-3" alt="image"></img></a>
                     <div style={{padding: '10px', }}>

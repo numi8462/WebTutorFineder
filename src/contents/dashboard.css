@@ -40,6 +40,22 @@ header label span {
     padding: 1rem;
     font-size: 44px;
 }
+.sidebar-brand-homepage {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 50px;
+    text-shadow: 2px 1px rgba(0,0,0,.1);
+    padding: 1rem 0 1rem 1rem;
+    margin-top: 1rem;
+}
+.sidebar-brand-homepage p {
+    color: #3E6A67;
+    /* font-weight: bold; */
+}
+.sidebar-brand-homepage span {
+    color: #FF5B22;
+    /* font-weight: bold; */
+}
+
 .sidebar-brand {
     font-family: 'Comfortaa', sans-serif;
     font-size: 50px;
