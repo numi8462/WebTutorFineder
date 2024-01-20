@@ -6,7 +6,7 @@ import axios from 'axios';
 import '../../index.css';
 import { useNavigate } from "react-router-dom";
 
-export const TutProfile = (props) => {
+export const TutorProfile = (props) => {
   const [tutor, setTutor] = useState({});
   const { logout } = useAuth();
 
