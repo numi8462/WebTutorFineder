@@ -238,29 +238,30 @@ export const FindCourses = (props) => {
                         <div className="all-location" key={index} >
                             <div className='post-img'>
                               <img src={imageMap[item.subject]} alt="post" /> 
-                              <div className='post-content'>
-                              <h4>{item.name}</h4>
 
-                              <p>{item.description}</p>
-                              
-                              <div className='post-content-top'>
-                                <span><i className='fa fa-book'></i> {item.subject}</span>
+
+                            </div>
+                            <div className='post-content'>
+                                <h4>{item.name}</h4>
+
+                                <p>{item.description}</p>
                                 
-                                <span><i className='fas fa-hourglass'></i> Total {item.hours} hours</span>
+                                <div className='post-content-top'>
+                                  <span><i className='fa fa-book'></i> {item.subject}</span>
+                                  
+                                  <span><i className='fas fa-hourglass'></i> Total {item.hours} hours</span>
 
-                                <span><i className='fas fa-money-bill-wave'></i> ${item.cost} per hour</span>
+                                  <span><i className='fas fa-money-bill-wave'></i> ${item.cost} per hour</span>
+                                </div>
+
+                                <h4>Tutor Info</h4>
+                                <div className='post-content-top'>
+                                
+                                  <span><i className="fa-solid fa-building-columns"></i> {capitalizeFirstLetter(item.tutUni)}</span>
+                                  <span><i className='fa-solid fa-scroll'></i> {capitalizeFirstLetter(item.tutDegree)} Degree</span>
+                                </div>
+
                               </div>
-
-                              <h4>Tutor Info</h4>
-                              <div className='post-content-top'>
-                              
-                                <span><i className="fa-solid fa-building-columns"></i> {capitalizeFirstLetter(item.tutUni)}</span>
-                                <span><i className='fa-solid fa-scroll'></i> {capitalizeFirstLetter(item.tutDegree)} Degree</span>
-                              </div>
-
-                            </div>
-                            </div>
-            
 
                             <div>
                               <button type="button" className="read-btn" onClick={() => navigate(`/course/${item._id}`)}>View Course</button>

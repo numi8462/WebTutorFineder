@@ -12,6 +12,9 @@ export const TutDashboard = (props) => {
   const [tutorUID, setTutorUID] = useState(null);
   const [session, setSession] = useState([]);
   const [mySession, setMySession] = useState([]);
+  const [myCompletedSession, setMyCompletedSession] = useState([]);
+  const [myCurrentSession, setMyCurrentSession] = useState([]);
+  const [inProgress, setProgress] = useState(0);
   const navigate = useNavigate();
 
   // firebase.auth().onAuthStateChanged((user) => {
@@ -49,14 +52,17 @@ export const TutDashboard = (props) => {
     }
   };
 
-  const deleteCourse = async (cid) => {
-    try {
-      await axios.delete(`http://localhost:3001/courses/${cid}`);
-      // Refresh the courses after deletion
-      fetchCourses(tutorUID);
-    } catch (error) {
-      console.error('Error deleting course:', error);
+  const deleteCourse = async (_id) => {
+    if (window.confirm("Are you sure you want to Delete this course?")) {
+        try {
+            await axios.delete(`http://localhost:3001/courses/${_id}`);
+            // Refresh the courses after deletion
+            fetchCourses(tutorUID);
+          } catch (error) {
+            console.error('Error deleting course:', error);
+          }
     }
+
   };
 
   function fetchStudentData(id) {
@@ -238,15 +244,18 @@ export const TutDashboard = (props) => {
         
             <main className='main-flex'>
                 <div className="cards">
+
                     <div className="card-single">
                         <div>
-                            <h1>3</h1>
+                            <h1>{}</h1>
                             <span>Completed</span>
                         </div>
                         <div>
                             <span className="fa-solid fa-check"></span>
                         </div>
                     </div>
+
+
 
                     <div className="card-single">
                         <div>
@@ -260,8 +269,8 @@ export const TutDashboard = (props) => {
 
                     <div className="card-single">
                         <div>
-                            <h1>5</h1>
-                            <span>Totally</span>
+                            <h1>{mySession.length}</h1>
+                            <span>Total</span>
                         </div>
                         <div>
                             <span className="fa-solid fa-thumbtack"></span>
@@ -299,6 +308,7 @@ export const TutDashboard = (props) => {
                                                             <td>{item.subject}</td>
                                                             <td>{item.hours}</td>
                                                             <td>{item.cost * item.hours}</td>
+                                                            <td><button className='delete-btn' onClick={() => deleteCourse(item._id)}>Delete</button></td>
                                                         </tr>
                                                     ))}
                                             </tbody>

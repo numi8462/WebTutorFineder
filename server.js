@@ -182,8 +182,8 @@ app.get('/users', async (req, res) => {
 });
 
 // API endpoint to delete a course by ID
-app.delete('/courses/:cid', async (req, res) => {
-  const courseId = req.params.cid;
+app.delete('/courses/:_id', async (req, res) => {
+  const courseId = req.params._id;
 
   try {
     // Find and delete the course by ID

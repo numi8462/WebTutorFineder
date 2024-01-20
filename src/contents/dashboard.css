@@ -572,8 +572,8 @@ table {
     flex-direction: column;
     align-items: center;
     display: flex;
-    height: 800px;
-    max-height: 800px;
+    /* height: 800px;
+    max-height: 800px; */
 }
 
 .all {
@@ -586,6 +586,7 @@ table {
 .post-img {
     position: relative;
     height: 35%;
+    /* max-height: 800px; */
 }
 
 .post-content {
@@ -594,7 +595,6 @@ table {
     justify-content: center;
     flex-direction: column;
     justify-content: start;
-
 }
 .post-content-top {
     background: #F4F9F4;
@@ -606,6 +606,7 @@ table {
     /* justify-content: center; */
     flex-direction: column;
     /* align-items: center;  */
+
 }
 .post-content-top span {
     padding-right: 20px;
@@ -749,3 +750,15 @@ table {
     display: flex;
     flex-direction: column;
   }
+  .delete-btn {
+    border: none;
+    background: #ff7878;
+    color: #F4F9F4;
+    border-radius: 15px;
+    padding: 1px 10px;
+    transition: all .4s ease;
+    align-items: end;
+}
+.delete-btn:hover {
+    background: #ff1a1a;
+}
