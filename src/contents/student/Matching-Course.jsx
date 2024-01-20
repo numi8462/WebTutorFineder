@@ -27,7 +27,7 @@ export const Course = ({ course, student }) => {
 
     useEffect(() => {
         // Fetch the tutor's data
-        axios.get(`http://localhost:3001/getTutors/${course.tutorID}`)
+        axios.get(`https://tutorfinder-api.onrender.com/getTutors/${course.tutorID}`)
         .then(res => {
             setTutor(res.data);
         });

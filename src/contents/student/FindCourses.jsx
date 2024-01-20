@@ -80,7 +80,7 @@ export const FindCourses = (props) => {
     
         const fetchData = async () => {
           try {
-            const response = await axios.get(`http://localhost:3001/profile/${currentUser.uid}`);
+            const response = await axios.get(`https://tutorfinder-api.onrender.com/profile/${currentUser.uid}`);
             setStudent(response.data);
           } catch (error) {
             console.error("Error fetching profile data:", error);
@@ -89,7 +89,7 @@ export const FindCourses = (props) => {
     
         const fetchCourses = async () => {
           try {
-            const response = await axios.get(`http://localhost:3001/getFilteredCourses?search=${searchTerm}&sort=${sortOption}`);
+            const response = await axios.get(`https://tutorfinder-api.onrender.com/getFilteredCourses?search=${searchTerm}&sort=${sortOption}`);
             setCourses(response.data);
           } catch (error) {
             console.error("Error fetching courses:", error);

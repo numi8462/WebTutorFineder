@@ -29,7 +29,7 @@ export const Profile = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/profile/${uid}`);
+        const response = await axios.get(`https://tutorfinder-api.onrender.com/profile/${uid}`);
         setStudent(response.data);
 
       } catch (error) {
@@ -67,7 +67,7 @@ export const Profile = (props) => {
 
   const updateStudentInfo = async (updatedData) => {
     try {
-      await axios.put(`http://localhost:3001/update/${uid}`, updatedData);
+      await axios.put(`https://tutorfinder-api.onrender.com/update/${uid}`, updatedData);
     } catch (error) {
       console.error("Error updating profile data:", error);
     }

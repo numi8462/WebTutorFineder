@@ -43,7 +43,7 @@ export const StuDashboard = (props) => {
     }, [mySession]);
 
     function fetchTutorData(id) {
-        axios.get(`http://localhost:3001/getTutors/${id}`)
+        axios.get(`https://tutorfinder-api.onrender.com/getTutors/${id}`)
         .then((res) => {
             setTutor(res.data)
             return res.data
@@ -52,12 +52,12 @@ export const StuDashboard = (props) => {
 
     // Function to call data
     function fetchData() {
-        axios.get(`http://localhost:3001/profile/${uid}`)
+        axios.get(`https://tutorfinder-api.onrender.com/profile/${uid}`)
         .then((response) => {
             setStudent(response.data);
             console.log(response.data)
             console.log("name: ",student.name)
-            return axios.get(`http://localhost:3001/getSessions`);
+            return axios.get(`https://tutorfinder-api.onrender.com/getSessions`);
         })
         .then((response) => {
             const filteredSessions = response.data.filter(session => session.sid === uid && session.isConfirmed === false);
@@ -82,7 +82,7 @@ export const StuDashboard = (props) => {
 
     // Function to update the session
     function updateSession(id) {
-        axios.put(`http://localhost:3001/updateSession/${id}`, { isConfirmed: true })
+        axios.put(`https://tutorfinder-api.onrender.com/updateSession/${id}`, { isConfirmed: true })
         .then(response => {
             console.log(response.data);
             window.alert("Session updated successfully!");
@@ -95,7 +95,7 @@ export const StuDashboard = (props) => {
 
     // Function to delete the session
     function deleteSession(id) {
-        axios.delete(`http://localhost:3001/deleteSession/${id}`)
+        axios.delete(`https://tutorfinder-api.onrender.com/deleteSession/${id}`)
         .then(response => {
             console.log(response.data);
             window.alert("Session deleted successfully!");
@@ -107,7 +107,7 @@ export const StuDashboard = (props) => {
     }
 
     function complete(id) { // approve session
-        axios.put(`http://localhost:3001/updateSession/${id}`, { status: 4 })
+        axios.put(`https://tutorfinder-api.onrender.com/updateSession/${id}`, { status: 4 })
         .then(response => {
             console.log(response.data);
             window.alert("Course Completed");

@@ -85,7 +85,7 @@ export const RegisterTut = (props) => {
                 };
 
                 try {
-                    const response = await axios.post('http://localhost:3001/postTutor', updatedTutor);
+                    const response = await axios.post('https://tutorfinder-api.onrender.com/postTutor', updatedTutor);
                     console.log(response.data);
                 } catch (err) {
                     console.error(err);

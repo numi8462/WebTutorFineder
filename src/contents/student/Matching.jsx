@@ -32,15 +32,15 @@ export const Matching = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const profileResponse = await axios.get(`http://localhost:3001/profile/${uid}`);
+                const profileResponse = await axios.get(`https://tutorfinder-api.onrender.com/profile/${uid}`);
                 setStudent(profileResponse.data);
-                const coursesResponse = await axios.get(`http://localhost:3001/getCourses`);
+                const coursesResponse = await axios.get(`https://tutorfinder-api.onrender.com/getCourses`);
                 const courses = coursesResponse.data;
                 const filteredCoursesPromises = courses.map(async (course) => {
                     if (profileResponse.data.subjectOfInterest.includes(course.subject)) {
                         return course;
                     } else {
-                        const tutorResponse = await axios.get(`http://localhost:3001/getTutors/${course.tutorID}`);
+                        const tutorResponse = await axios.get(`https://tutorfinder-api.onrender.com/getTutors/${course.tutorID}`);
                         console.log(tutorResponse.data.uni)
                         if (tutorResponse.data.major === profileResponse.data.major) {
                             return course;

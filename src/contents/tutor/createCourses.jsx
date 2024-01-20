@@ -65,7 +65,7 @@ import '../../contents/dashboard.css';
         try {
           // Make a request to your server to create a new course
           console.log(subject)
-          await axios.post('http://localhost:3001/postCourse', {
+          await axios.post('https://tutorfinder-api.onrender.com/postCourse', {
             subject,
             name,
             description,
@@ -86,7 +86,7 @@ import '../../contents/dashboard.css';
       useEffect(() => {
         const fetchTutorInfo = async () => {
           try {
-            const response = await axios.get(`http://localhost:3001/getTutors/${tutorID}`);
+            const response = await axios.get(`https://tutorfinder-api.onrender.com/getTutors/${tutorID}`);
             const tutorData = response.data;
             setTutor(tutorData);
           } catch (error) {

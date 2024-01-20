@@ -49,21 +49,21 @@ export const Course = () => {
 
     useEffect(() => {
         if (currentUser && currentUser.uid) {
-            axios.get(`http://localhost:3001/profile/${currentUser.uid}`)
+            axios.get(`https://tutorfinder-api.onrender.com/profile/${currentUser.uid}`)
             .then((response) => {
                 setStudent(response.data);
             })
             .catch(err => console.log(err));
         }
         // Fetch the course details
-        axios.get(`http://localhost:3001/getCourse/${cid}`)
+        axios.get(`https://tutorfinder-api.onrender.com/getCourse/${cid}`)
             .then(response => {
                 console.log('Course data:', response.data);
                 setCourse(response.data);
                 // fetch tutor info
                 const tutorId = response.data.tutorID;
                 console.log('Tutor ID:', tutorId);
-                axios.get(`http://localhost:3001/getTutors/${tutorId}`)
+                axios.get(`https://tutorfinder-api.onrender.com/getTutors/${tutorId}`)
                     .then(response => {
                         console.log('Tutor data:', response.data);
                         setTutor(response.data);
@@ -88,7 +88,7 @@ export const Course = () => {
             isConfirmed: false,
 
         };
-        fetch('http://localhost:3001/getSessions')
+        fetch('https://tutorfinder-api.onrender.com/getSessions')
         .then(response => response.json())
         .then(sessions => {
             // Filter sessions by sid
@@ -102,7 +102,7 @@ export const Course = () => {
                 } else {
                     if (window.confirm('Do you really want to send this request?')) {
                         // If not, send the POST request to create a new session
-                        fetch('http://localhost:3001/postSessions', {
+                        fetch('https://tutorfinder-api.onrender.com/postSessions', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',

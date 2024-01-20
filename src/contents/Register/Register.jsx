@@ -89,7 +89,7 @@ export const Register = (props) => {
                 };
 
                 try {
-                    const response = await axios.post('http://localhost:3001/postStudents', updatedStudent);
+                    const response = await axios.post('https://tutorfinder-api.onrender.com/postStudents', updatedStudent);
                     console.log(response.data);
                 } catch (err) {
                     console.error(err);

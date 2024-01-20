@@ -29,7 +29,7 @@ function App() {
       <AuthProvider>
       <div className="App">
         <Routes>
-          <Route path="*" element={<Navigate to="/homepage" />} /> {/* Default route */} 
+          <Route path="*" element={<Navigate to="/" />} /> {/* Default route */} 
           <Route path="/details" element={<Detail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register  />} />
@@ -43,7 +43,7 @@ function App() {
           <Route path='/forgotPassword' element={<ForgotPassword/>}/>
           <Route path='/createCourse' element={<CreateCourse/>}/>
           <Route path='/matching' element={<Matching/>}/>
-          <Route path='/homepage' element={<Homepage/>}/>
+          <Route path='/' element={<Homepage/>}/>
         </Routes>
       </div>
       </AuthProvider>

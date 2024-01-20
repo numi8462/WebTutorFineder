@@ -43,7 +43,7 @@ export const TutorProfile = (props) => {
 
   const fetchData = async (uid) => {
     try {
-      const response = await axios.get(`http://localhost:3001/getTutors/${uid}`);
+      const response = await axios.get(`https://tutorfinder-api.onrender.com/getTutors/${uid}`);
       setTutor(response.data);
 
     } catch (error) {
@@ -57,7 +57,7 @@ export const TutorProfile = (props) => {
 
   const updateTutorInfo = async (updatedData) => {
     try {
-      await axios.put(`http://localhost:3001/updateTutor/${uid}`, updatedData);
+      await axios.put(`https://tutorfinder-api.onrender.com/updateTutor/${uid}`, updatedData);
     } catch (error) {
       console.error("Error updating profile data:", error);
     }

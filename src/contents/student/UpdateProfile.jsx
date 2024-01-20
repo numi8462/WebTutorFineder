@@ -24,7 +24,7 @@ const UpdateProfile = () => {
     e.preventDefault();
 
     // Update user data in the backend using uid
-    axios.put(`http://localhost:3001/update/${uid}`, formData)
+    axios.put(`https://tutorfinder-api.onrender.com/update/${uid}`, formData)
       .then(() => {
         alert('Profile updated successfully!');
         // Redirect to the user's profile page after successful update

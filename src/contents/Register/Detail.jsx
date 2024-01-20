@@ -27,7 +27,7 @@ export const Detail = (props) => {
         try {
             setError("")
             setLoading(true)
-            const response = await axios.post('http://localhost:3001/postStudents', student);
+            const response = await axios.post('https://tutorfinder-api.onrender.com/postStudents', student);
             console.log(response.data);
         } catch (err) {
             console.error(err);

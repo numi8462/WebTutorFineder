@@ -25,7 +25,7 @@ export const Login = (props) => {
             const uid = userCredential.user.uid; // Get uid from userCredential
             console.log(uid)
             // Fetch user by uid
-            const response = await fetch(`http://localhost:3001/getUser/${uid}`);
+            const response = await fetch(`https://tutorfinder-api.onrender.com/getUser/${uid}`);
             const data = await response.json();
             console.log("role is: "+data.role)
             // Navigate based on user's role

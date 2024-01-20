@@ -55,7 +55,7 @@ export const TutDashboard = (props) => {
 
   const fetchCourses = async (uid) => {
     try {
-      const response = await axios.get(`http://localhost:3001/getCourses/${uid}`);
+      const response = await axios.get(`https://tutorfinder-api.onrender.com/getCourses/${uid}`);
       setCourses(response.data);
       // console.log("course data: "+response.data)
     } catch (error) {
@@ -66,7 +66,7 @@ export const TutDashboard = (props) => {
   const deleteCourse = async (_id) => {
     if (window.confirm("Are you sure you want to Delete this course?")) {
         try {
-            await axios.delete(`http://localhost:3001/courses/${_id}`);
+            await axios.delete(`https://tutorfinder-api.onrender.com/courses/${_id}`);
             // Refresh the courses after deletion
             fetchCourses(tutorUID);
           } catch (error) {
@@ -77,7 +77,7 @@ export const TutDashboard = (props) => {
   };
 
   function fetchStudentData(id) {
-    axios.get(`http://localhost:3001/profile/${id}`)
+    axios.get(`https://tutorfinder-api.onrender.com/profile/${id}`)
     .then((res) => {
         setStudent(res.data)
         return res.data
@@ -85,10 +85,10 @@ export const TutDashboard = (props) => {
   }
 
   function fetchData(id) { // fetch tutor and session data
-    axios.get(`http://localhost:3001/getTutors/${id}`)
+    axios.get(`https://tutorfinder-api.onrender.com/getTutors/${id}`)
     .then((response) => {
         setTutor(response.data);
-        return axios.get(`http://localhost:3001/getSessions`);
+        return axios.get(`https://tutorfinder-api.onrender.com/getSessions`);
     })
     .then((response) => {
         const filteredSessions = response.data.filter(session => session.tid === id && session.isConfirmed === false);
@@ -114,7 +114,7 @@ export const TutDashboard = (props) => {
   // Function to update the session
   function approveSession(id) { // approve session
     if (window.confirm("Are you sure you want to approve?")) {
-        axios.put(`http://localhost:3001/updateSession/${id}`, { status: 1 })
+        axios.put(`https://tutorfinder-api.onrender.com/updateSession/${id}`, { status: 1 })
         .then(response => {
             console.log(response.data);
             window.alert("Session Approved");
@@ -127,7 +127,7 @@ export const TutDashboard = (props) => {
   }
   function declineSession(id) { // decline session
     if (window.confirm("Are you sure you want to decline?")) {
-        axios.put(`http://localhost:3001/updateSession/${id}`, { status: 2 })
+        axios.put(`https://tutorfinder-api.onrender.com/updateSession/${id}`, { status: 2 })
         .then(response => {
             console.log(response.data);
             window.alert("Session Declined");
@@ -160,7 +160,7 @@ export const TutDashboard = (props) => {
         if (!confirmCompletion) {
             return;
         }
-        axios.put(`http://localhost:3001/updateSession/${id}`, { hoursLeft: newHoursLeft, status: 3 })
+        axios.put(`https://tutorfinder-api.onrender.com/updateSession/${id}`, { hoursLeft: newHoursLeft, status: 3 })
         .then(response => {
             fetchData(tutorUID);
         })
@@ -168,7 +168,7 @@ export const TutDashboard = (props) => {
             console.error("Error updating session:", error);
         });
     } else {
-        axios.put(`http://localhost:3001/updateSession/${id}`, { hoursLeft: newHoursLeft })
+        axios.put(`https://tutorfinder-api.onrender.com/updateSession/${id}`, { hoursLeft: newHoursLeft })
         .then(response => {
             fetchData(tutorUID);
         })
@@ -194,7 +194,7 @@ export const TutDashboard = (props) => {
         // Ensure newHoursLeft is within the valid range
         // newHoursLeft = Math.min(2*sessionHours, newHoursLeft);
     
-        axios.put(`http://localhost:3001/updateSession/${id}`, { hoursLeft: newHoursLeft })
+        axios.put(`https://tutorfinder-api.onrender.com/updateSession/${id}`, { hoursLeft: newHoursLeft })
         .then(response => {
             fetchData(tutorUID);
         })
