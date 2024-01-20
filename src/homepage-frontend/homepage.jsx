@@ -71,12 +71,12 @@ const Homepage = () => {
 
         <section id="hero">
             <div className="container-fluid">
-            <div className="row">
+            <div className="row" style={{display: 'flex', flexDirection: 'row'}}>
                 <div className="col-md-8 col-lg-3 offset-md-2 padding-large ps-lg-0 pe-lg-5">
                 <h2 className="display-2 fw-semibold" style={{color: '#3F6B67'}}>Unlock Your</h2><h2 className="display-2 fw-semibold" style={{color: '#FF5B22'}}> Learning</h2><h2 className="display-2 fw-semibold" style={{color: '#3F6B67'}}> Potential with <span className="billboardtext-1">Tutor<span className='billboardtext-2'>Finder!</span></span></h2>
                 <p className="secondary-font my-4 pb-2"> Personalized online tutoring by expert educators. Tailored lessons, global community, and secure learning. Elevate your education with us today!</p>
                 </div>
-                <div className="col-md-6 col-lg-7 d-block d-md-none d-lg-block p-0">
+                <div className="" style={{width: '900px'}}>
                 <img src={billboardImg} alt="img" className="img-fluid"></img>
                 </div>
             </div>
