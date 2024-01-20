@@ -13,7 +13,7 @@ import { Course } from './contents/Course'
 import { StuDashboard } from './contents/student/StuDashboard';
 import { TutDashboard } from './contents/tutor/TutDashboard';
 import { ForgotPassword } from './contents/ForgotPassword';
-import { TutProfile } from './contents/tutor/TutProfile'
+import { TutorProfile } from './contents/tutor/TutorProfile'
 import CreateCourse from './contents/tutor/createCourses'
 import {Matching} from './contents/student/Matching';
 import Homepage from './homepage-frontend/homepage'
@@ -35,7 +35,7 @@ function App() {
           <Route path="/register" element={<Register  />} />
           <Route path="/registerTutor" element={<RegisterTut  />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/profileTutor" element={<TutProfile />} />
+          <Route path="/profileTutor" element={<TutorProfile />} />
           <Route path='/findcourses' element={<FindCourses/>}/>
           <Route path='/course/:cid' element={<Course/>}/> 
           <Route path='/studentDashboard' element={<StuDashboard/>}/>
