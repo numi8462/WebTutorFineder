@@ -9,6 +9,7 @@ export const FindCourses = (props) => {
     const [course, setCourses] = useState([])
     const [student, setStudent] = useState({});
     const { currentUser } = useAuth()
+    const { logout } = useAuth();
     const navigate = useNavigate();
     const [sortOption, setSortOption] = useState(''); // Empty string = Default
     const [searchTerm, setSearchTerm] = useState('');
@@ -25,15 +26,14 @@ export const FindCourses = (props) => {
       // add more subjects and images as needed
   };
 
-  const options = [
-    { value: 'Creative Arts and Design', label: 'Creative Arts and Design' },
-    { value: 'Marketing', label: 'Marketing' },
-    { value: 'Business and Management', label: 'Business and Management' },
-    { value: 'IT', label: 'IT' },
-    { value: 'Software Development', label: 'Software Development' },
-    { value: 'Engineering', label: 'Engineering' },
-    { value: 'Law', label: 'Law' },
-  ];
+    const handleLogout = async () => {
+      try {
+          await logout();
+          navigate('/login');  // Navigate to /login
+      } catch (error) {
+          console.error('Failed to log out', error);
+      }
+    };
 
     function capitalizeFirstLetter(str) {
       if (str && typeof str === 'string') {
@@ -67,6 +67,7 @@ export const FindCourses = (props) => {
       setSortOption(event.target.value);     
 
     };
+
     const handleSubChange = (event) => {
       setSubject(event.target.value);
       setSortOption(event.target.value);      
@@ -164,6 +165,9 @@ export const FindCourses = (props) => {
                 <small>Student</small>
               </div>
               
+              <button className='logout-btn' onClick={handleLogout}>
+                <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+              </button>
             </div>
           </header>
           <main>
@@ -211,7 +215,7 @@ export const FindCourses = (props) => {
 
                       <select className='category-title' value={degree} onChange={handleChange}>
                         <option value="all">All Degrees</option>
-                        <option value="bachelor">Bachelor's Degree</option>
+                        <option value="bachelors">Bachelor's Degree</option>
                         <option value="doctorate">Doctorate's Degree</option>
                         <option value="masters">Master's Degree</option>
                         <option value="teaching">Teaching Degree</option>

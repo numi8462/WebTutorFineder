@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Alert, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from "../../authentication/AuthContext"
 import Select from 'react-select';
 import firebase from 'firebase/compat/app';
 import axios from 'axios';
@@ -19,6 +20,7 @@ import '../../contents/dashboard.css';
     const [hours, setHours] = useState('');
     const [cost, setCost] = useState('');
     const [tutor, setTutor] = useState(null);
+    const { logout } = useAuth();
     const navigate = useNavigate();
 
     const options = [
@@ -30,6 +32,15 @@ import '../../contents/dashboard.css';
       { value: 'Engineering', label: 'Engineering' },
       { value: 'Law', label: 'Law' },
     ];
+
+    const handleLogout = async () => {
+      try {
+          await logout();
+          navigate('/login');  // Navigate to /login
+      } catch (error) {
+          console.error('Failed to log out', error);
+      }
+    };
 
     const getTutorIDFromAuthenticatedUser = () => {
         const user = firebase.auth().currentUser;
@@ -136,6 +147,9 @@ import '../../contents/dashboard.css';
                         <h4><span><i className='fa-solid fa-user'></i></span> {tutor ? tutor.name : 'Loading...'}</h4>
                         <small>Tutor</small>
                     </div>
+                    <button className='logout-btn' onClick={handleLogout}>
+                    <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                    </button>
                 </div>
             </header>  
             <main>

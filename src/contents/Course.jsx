@@ -13,6 +13,7 @@ export const Course = () => {
     const [tutor, setTutor] = useState();
     const [student, setStudent] = useState({});
     const { currentUser } = useAuth()
+    const { logout } = useAuth();
     const navigate = useNavigate();
     const imageMap = {
         'Creative Arts and Design': require('../images/Creative Arts and Design.png'),
@@ -23,6 +24,21 @@ export const Course = () => {
         'Engineering': require('../images/Engineering.png'),
         'Law': require('../images/Law.png'),
         // add more subjects and images as needed
+    };
+    const imageTutMap = {
+        'Andrew Garfield': require('../images/tutors/Andrew Garfield.jpg'),
+        'John Snow': require('../images/tutors/John Snow.jpg'),
+        'May Sophia': require('../images/tutors/May Sophia.jpg'),
+        'Harry Kane': require('../images/tutors/Harry Kane.jpg'),
+    };
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            navigate('/login');  // Navigate to /login
+        } catch (error) {
+            console.error('Failed to log out', error);
+        }
     };
 
     firebase.auth().onAuthStateChanged((user) => {
@@ -175,6 +191,10 @@ export const Course = () => {
                   <h4><span><i className='fa-solid fa-user'></i></span> {student.name}</h4> 
                   <small>Student</small>
               </div>
+
+              <button className='logout-btn' onClick={handleLogout}>
+                    <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                    </button>
             </div>
           </header>
 
@@ -185,7 +205,7 @@ export const Course = () => {
                     <div className="tutor-card">
                         <div className="tutor-info-top">
                             <div className="tutor-pp">
-                                <img src={tutorImg} alt="profile picture"/>
+                                <img src={imageTutMap[tutor.name]} alt="profile picture"/>
                             </div>
                             <div className="info">
                                 <span><i className="fa-solid fa-user"></i> {tutor.name}</span>

@@ -356,7 +356,7 @@ const Homepage = () => {
                 <div className="card position-relative" style={{height: '100%'}}>
                     <a href="courses-details.html"><img src={team1Img} className="img-fluid rounded-3" alt="image"></img></a>
                     <div style={{padding: '10px', }}>
-                    <span className="badge text-muted bg-success mt-3 mb-1">Certified</span>
+                    <span className="badge text-muted-light bg-success mt-3 mb-1">Certified</span>
 
                     <a href="courses-details.html" className='tutorname'>
                         <h5 className="py-2 m-0"><strong>Andrew Garfield</strong></h5>
@@ -383,7 +383,7 @@ const Homepage = () => {
                     <a href="courses-details.html"><img src={team5Img} className="img-fluid rounded-3" alt="image"></img></a>
                     <div style={{padding: '10px', }}>
 
-                    <span className="badge text-muted bg-success mt-3 mb-1" >Certified</span>
+                    <span className="badge text-muted-light bg-success mt-3 mb-1" >Certified</span>
 
                     <a href="courses-details.html" className='tutorname'>
                         <h5 className="py-2 m-0"><strong>May Sophia</strong></h5>
@@ -391,7 +391,7 @@ const Homepage = () => {
 
                     <div className="card-text">
                         <span className="rating d-flex align-items-center mb-2">
-                        <p className="text-muted fw-semibold m-0 me-2">History Professor</p>
+                        <p className="text-muted fw-semibold m-0 me-2">Software Developer</p>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
                         <Icon icon="clarity:star-solid" className="rating"></Icon>
@@ -409,9 +409,9 @@ const Homepage = () => {
                 <div className="card position-relative" style={{height: '100%'}}>
                     <a href="courses-details.html"><img src={team4Img} className="img-fluid rounded-3" alt="image"></img></a>
                     <div style={{padding: '10px', }}>
-                    <span className="badge text-muted bg-success mt-3 mb-1">Certified</span>
+                    <span className="badge text-muted-light bg-success mt-3 mb-1">Certified</span>
                     <a href="courses-details.html" className='tutorname'>
-                        <h5 className="py-2 m-0"><strong>May Sophia</strong></h5>
+                        <h5 className="py-2 m-0"><strong>Julia Derson</strong></h5>
                     </a>
 
                     <div className="card-text">
@@ -433,7 +433,7 @@ const Homepage = () => {
                     <a href="courses-details.html"><img src={team2Img} className="img-fluid rounded-3" alt="image"></img></a>
                     <div style={{padding: '10px', }}>
 
-                    <span className="badge text-muted bg-success mt-3 mb-1">Certified</span>
+                    <span className="badge text-muted-light bg-success mt-3 mb-1">Certified</span>
                     <a href="courses-details.html" className='tutorname'>
                         <h5 className="py-2 m-0"><strong>Josh Shander</strong></h5>
                     </a>

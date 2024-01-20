@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Alert, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from "../../authentication/AuthContext"
 import firebase from 'firebase/compat/app';
+import 'firebase/auth';
 import axios from 'axios';
 import '../../contents/dashboard.css';
 
@@ -16,12 +18,21 @@ export const TutDashboard = (props) => {
   const [myCurrentSession, setMyCurrentSession] = useState([]);
   const [inProgress, setProgress] = useState(0);
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   // firebase.auth().onAuthStateChanged((user) => {
   //   if (user) {
   //     setTutorUID(user.uid);
   //   }
   // });
+    const handleLogout = async () => {
+        try {
+            await logout();
+            navigate('/login');  // Navigate to /login
+        } catch (error) {
+            console.error('Failed to log out', error);
+        }
+    };
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
@@ -88,6 +99,12 @@ export const TutDashboard = (props) => {
         const confirmedSessions = response.data.filter(session => session.tid === id && session.isConfirmed === true);
         setMySession(confirmedSessions);  // Set mySession with the result
         // console.log(confirmedSessions);
+
+        const completedSessions = response.data.filter(session => session.tid === id && session.isConfirmed === true && session.status === 4);
+        setMyCompletedSession(completedSessions);
+
+        const currentSessions = response.data.filter(session => session.tid === id && session.isConfirmed === true && (session.status === 1 || session.status === 3));
+        setMyCurrentSession(currentSessions);
     })
     .catch((error) => {
         console.error("Error fetching data:", error);
@@ -239,7 +256,12 @@ export const TutDashboard = (props) => {
                         <h4><span><i className='fa-solid fa-user'></i></span> {tutor.name}</h4> 
                         <small>Tutor</small>
                     </div>
+
+                    <button className='logout-btn' onClick={handleLogout}>
+                    <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                    </button>
                 </div>
+
             </header>
         
             <main className='main-flex'>
@@ -247,7 +269,7 @@ export const TutDashboard = (props) => {
 
                     <div className="card-single">
                         <div>
-                            <h1>{}</h1>
+                            <h1>{myCompletedSession.length}</h1>
                             <span>Completed</span>
                         </div>
                         <div>
@@ -257,9 +279,9 @@ export const TutDashboard = (props) => {
 
 
 
-                    <div className="card-single">
+                    <div className="card-single-mid">
                         <div>
-                            <h1>2</h1>
+                            <h1>{myCurrentSession.length}</h1>
                             <span>in progress</span>
                         </div>
                         <div>
@@ -327,7 +349,7 @@ export const TutDashboard = (props) => {
                             <div className="courses">
                                 <div className="card">
                                     <div className="card-header">
-                                        <h3>My on going Sessions</h3>
+                                        <h3>Sessions in Progress</h3>
                                         {/* <button>See all <span className="fa-solid fa-chevron-down"></span></button> */}
                                     </div>
                                     <div className="card-body">

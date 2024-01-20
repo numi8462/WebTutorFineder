@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import { useAuth } from "../../authentication/AuthContext"
 import firebase from "firebase/compat/app";
 import axios from 'axios';
 import '../../index.css';
@@ -7,28 +8,28 @@ import { useNavigate } from "react-router-dom";
 
 export const TutProfile = (props) => {
   const [tutor, setTutor] = useState({});
+  const { logout } = useAuth();
+
   const navigate = useNavigate();
 
   // const { uid } = useParams();
   const [uid, setUid] = useState('')
 
-
+  const handleLogout = async () => {
+    try {
+        await logout();
+        navigate('/login');  // Navigate to /login
+    } catch (error) {
+        console.error('Failed to log out', error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`http://localhost:3001/getTutors/${uid}`);
-        setTutor(response.data);
-
-      } catch (error) {
-        console.error("Error fetching profile data:", error);
-      }
-    };
-
+  
     const handleAuthStateChange = (user) => {
       if (user) {
         setUid(user.uid);
-        fetchData(); // Fetch student data when user logs in
+        fetchData(user.uid); // Fetch student data when user logs in
       }
     };
 
@@ -39,6 +40,16 @@ export const TutProfile = (props) => {
       authUnsubscribe();
     };
   }, [uid]);
+
+  const fetchData = async (uid) => {
+    try {
+      const response = await axios.get(`http://localhost:3001/getTutors/${uid}`);
+      setTutor(response.data);
+
+    } catch (error) {
+      console.error("Error fetching profile data:", error);
+    }
+  };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault(); 
@@ -126,6 +137,9 @@ export const TutProfile = (props) => {
                         <h4><span><i className='fa-solid fa-user'></i></span> {tutor.name}</h4>
                         <small>Tutor</small>
                     </div>
+                    <button className='logout-btn' onClick={handleLogout}>
+                    <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                    </button>
                 </div>
             </header>
         

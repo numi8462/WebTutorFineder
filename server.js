@@ -344,7 +344,7 @@ app.get('/getFilteredCourses', async (req, res) => {
           filteredCourses.sort((a, b) => b.cost - a.cost);
           break;
         case 'costLowToHigh':
-          filteredCourses.sort((a, b) => a.hours - b.hours);
+          filteredCourses.sort((a, b) => a.cost - b.cost);
           break;
         case 'hoursHighToLow':
           filteredCourses.sort((a, b) => b.hours - a.hours);
@@ -352,11 +352,11 @@ app.get('/getFilteredCourses', async (req, res) => {
         case 'hoursLowToHigh':
           filteredCourses.sort((a, b) => a.hours - b.hours);
           break;
-        case 'bachelor':
+        case 'bachelors':
         case 'doctorate':
         case 'masters':
         case 'teaching':
-          filteredCourses = filteredCourses.filter(course => course.tutDegree.toLowerCase() === sort.toLowerCase());
+          filteredCourses = filteredCourses.filter(course => course.tutDegree && course.tutDegree.toLowerCase() === sort.toLowerCase());
           break;
         case 'Creative Arts and Design':
         case 'Marketing':

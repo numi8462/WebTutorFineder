@@ -434,6 +434,19 @@ header h1 {
   position: 'relative';
   margin-top: -150px;
 }
+.tut-box {
+  flex-direction: row;
+  display: flex;
+  border-radius: 25px;
+  border: 3px solid #accfc3;
+  /* background: #accfc3; */
+
+}
+.tut-box-btn {
+  flex-direction: row;
+  display: flex;
+  justify-content: end;
+}
 .tut-matching-table {
   margin-top: 1rem;
   border-radius: 15px;
@@ -441,7 +454,7 @@ header h1 {
 
 }
 .tut-matching-container {
-  background: #A7D7C5;
+  /* background: #A7D7C5; */
   margin: 1.5rem 1rem;
   border: 25px solid #F4F9F4;
   padding: 2rem;
@@ -455,10 +468,15 @@ header h1 {
   width: 30%;
   padding: 1rem;
   text-transform: capitalize;
-  
+  margin-top: 1rem;
 }
 .right-td {
   padding: 1rem;
+  margin-top: 1rem;
+  width: 50%;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
 }
 .status {
   color: #FF5B22;
@@ -481,4 +499,18 @@ header h1 {
 .update-btn:hover{
   background: #3E6A67;
   transition: .7s;
+}
+
+.tut-box-details-btn {
+  border: none;
+  background: #FF9130;
+  color: #F4F9F4;
+  border-radius: 15px;
+  padding: 10px 50px;
+  transition: all .4s ease;
+  align-items: end;
+  margin-bottom: 3rem;
+}
+.tut-box-details-btn:hover {
+  background: #3E6A67;
 }

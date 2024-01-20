@@ -4,7 +4,6 @@ import { useAuth } from '../../authentication/AuthContext';
 import firebase from "firebase/compat/app";
 import axios from 'axios';
 import '../../index.css';
-import courseImg from '../../homepage-frontend/images/default.jpg';
 import Course from './Matching-Course'
 
 export const Matching = (props) => {
@@ -12,6 +11,7 @@ export const Matching = (props) => {
     const [courses, setCourses] = useState([]);
     const navigate = useNavigate();
     const [uid, setUid] = useState('');
+    const { logout } = useAuth();
     // const [myUni, setMyUni] = useState(false);
   
     firebase.auth().onAuthStateChanged((user) => {
@@ -19,6 +19,15 @@ export const Matching = (props) => {
         setUid(user.uid);
       }
     });
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            navigate('/login');  // Navigate to /login
+        } catch (error) {
+            console.error('Failed to log out', error);
+        }
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -97,6 +106,10 @@ export const Matching = (props) => {
                             <h4><span><i className='fa-solid fa-user'></i></span> {student.name}</h4> 
                             <small>Student</small>
                         </div>
+
+                        <button className='logout-btn' onClick={handleLogout}>
+                        <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                        </button>
                     </div>
                 </header>
 

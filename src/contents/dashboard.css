@@ -146,8 +146,8 @@ header label span {
     justify-content: end;
 }
 .user-wrapper {
-    /* align-items: center;
-    justify-content: center; */
+    display: flex;
+    flex-direction: row;
 }
 .user-wrapper h4 {
     margin-bottom: 0rem;
@@ -189,6 +189,31 @@ main {
 .card-single:last-child h1,
 .card-single:last-child div:first-child span,
 .card-single:last-child div:last-child span {
+    color: #3E6A67;
+}
+
+.card-single-mid {
+    display: flex;
+    justify-content: space-between;
+    background: #F4F9F4;
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgb(0 0 0 / 24%);
+    font-size: 1rem;
+}
+.card-single-mid div:last-child span{
+    font-size: 2rem;
+    color: #FF5B22;
+}
+.card-single-mid div:first-child span{ 
+    color: #3E6A67;
+}
+.card-single-mid:last-child {
+    background: #A7D7C5;
+}
+.card-single-mid:last-child h1,
+.card-single-mid:last-child div:first-child span,
+.card-single-mid:last-child div:last-child span {
     color: #3E6A67;
 }
 .recent-flex {
@@ -440,9 +465,9 @@ table {
     /* box-shadow: 0px 8px 22px -12px rgba(0,0,0,0.64); */
 }
 .tutor-pp img {
-    height: 200px;
+    height: 300px;
     margin: .5rem;
-    border: 5px solid #3E6A67;
+    /* border: 5px solid #3E6A67; */
 }
 .info {
     display: flex;
@@ -777,4 +802,25 @@ table {
 }
 .delete-btn:hover {
     background: #ff1a1a;
+}
+
+.logout-btn {
+    /* background: #FF9130; */
+    /* color: #F4F9F4; */
+    border: 2px solid #3E6A67;
+    border-radius: 15px;
+    padding: 0px 20px 0px 20px;
+    transition: all .4s ease;
+    align-items: end;
+    margin-left: 2rem;
+    margin-top: 0.5rem;
+    font-size: 16px;
+    font-weight: bold;
+    color: #3E6A67;
+    height: 2rem;
+}
+.logout-btn:hover {
+    border: 2px solid #3E6A67;
+    background: #3E6A67;
+    color: white;
 }

@@ -10,8 +10,11 @@ export const StuDashboard = (props) => {
     const [tutor, setTutor] = useState({});
     const [session, setSession] = useState([]);
     const [mySession, setMySession] = useState([]);
+    const [myCompletedSession, setMyCompletedSession] = useState([]);
+    const [myCurrentSession, setMyCurrentSession] = useState([]);
     // const { uid } = useParams();
     const [uid, setUid] = useState('')
+    const { logout } = useAuth();
     const navigate = useNavigate();
 
     firebase.auth().onAuthStateChanged((user) => {
@@ -19,6 +22,15 @@ export const StuDashboard = (props) => {
         setUid(user.uid);
     }
     });
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            navigate('/login');  // Navigate to /login
+        } catch (error) {
+            console.error('Failed to log out', error);
+        }
+    };
 
     useEffect(() => {
         fetchData();
@@ -56,6 +68,12 @@ export const StuDashboard = (props) => {
             const confirmedSessions = response.data.filter(session => session.sid === uid && session.isConfirmed === true);
             setMySession(confirmedSessions);  // Set mySession with the result
             // console.log(confirmedSessions);
+
+            const completedSessions = response.data.filter(session => session.sid === uid && session.isConfirmed === true && session.status === 4);
+            setMyCompletedSession(completedSessions);
+    
+            const currentSessions = response.data.filter(session => session.sid === uid && session.isConfirmed === true && (session.status === 1 || session.status === 3));
+            setMyCurrentSession(currentSessions);
         })
         .catch((error) => {
             console.error("Error fetching data:", error);
@@ -152,6 +170,10 @@ export const StuDashboard = (props) => {
                         <h4><span><i className='fa-solid fa-user'></i></span> {student.name}</h4> 
                         <small>Student</small>
                     </div>
+
+                    <button className='logout-btn' onClick={handleLogout}>
+                    <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                    </button>
                 </div>
             </header>
         
@@ -159,7 +181,7 @@ export const StuDashboard = (props) => {
                 <div className="cards">
                     <div className="card-single">
                         <div>
-                            <h1>3</h1>
+                            <h1>{myCompletedSession.length}</h1>
                             <span>Completed</span>
                         </div>
                         <div>
@@ -167,9 +189,9 @@ export const StuDashboard = (props) => {
                         </div>
                     </div>
 
-                    <div className="card-single">
+                    <div className="card-single-mid">
                         <div>
-                            <h1>2</h1>
+                            <h1>{myCurrentSession.length}</h1>
                             <span>in progress</span>
                         </div>
                         <div>
@@ -179,8 +201,8 @@ export const StuDashboard = (props) => {
 
                     <div className="card-single">
                         <div>
-                            <h1>5</h1>
-                            <span>Totally</span>
+                            <h1>{mySession.length}</h1>
+                            <span>Total</span>
                         </div>
                         <div>
                             <span className="fa-solid fa-thumbtack"></span>

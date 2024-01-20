@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { useAuth } from "../../authentication/AuthContext"
 import firebase from "firebase/compat/app";
 import axios from 'axios';
 import '../../index.css';
@@ -9,6 +10,7 @@ import Select from 'react-select';
 export const Profile = (props) => {
   const [student, setStudent] = useState({});
   const [tutor, setTutor] = useState({});
+  const { logout } = useAuth();
   const navigate = useNavigate();
 
   // const { uid } = useParams();
@@ -34,7 +36,7 @@ export const Profile = (props) => {
         console.error("Error fetching profile data:", error);
       }
     };
-
+  
     const handleAuthStateChange = (user) => {
       if (user) {
         setUid(user.uid);
@@ -49,6 +51,15 @@ export const Profile = (props) => {
       authUnsubscribe();
     };
   }, [uid]);
+
+  const handleLogout = async () => {
+    try {
+        await logout();
+        navigate('/login');  // Navigate to /login
+    } catch (error) {
+        console.error('Failed to log out', error);
+    }
+};
 
   const handleFormSubmit = async (e) => {
     e.preventDefault(); 
@@ -147,6 +158,10 @@ export const Profile = (props) => {
                     <h4><span><i className='fa-solid fa-user'></i></span> {student.name}</h4> 
                     <small>Student</small>
                   </div>
+
+                  <button className='logout-btn' onClick={handleLogout}>
+                    <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                    </button>
                 </div>
             </header>
         
@@ -195,6 +210,7 @@ export const Profile = (props) => {
                       onChange={(e) => handleInputChange("birthdate", e.target.value)}
                     />
                   </div>
+                  
               </div>
                 
               <div className="right-info">
@@ -246,9 +262,11 @@ export const Profile = (props) => {
                   </div>
               </div>
               <div className="end-info">
-                <button className="btn" type='onSubmit' onClick={handleUpdateClick}>
-                  Update your info
-                </button>
+                <div className="end-info">
+                  <button className="update-btn" type='onSubmit' onClick={handleUpdateClick}>
+                    Update Profile
+                  </button>
+                </div>
               </div>
 
             </div>
