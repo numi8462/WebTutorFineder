@@ -32,6 +32,7 @@ export const Course = () => {
         'Harry Kane': require('../images/tutors/Harry Kane.jpg'),
     };
 
+
     const handleLogout = async () => {
         try {
             await logout();
@@ -205,7 +206,7 @@ export const Course = () => {
                     <div className="tutor-card">
                         <div className="tutor-info-top">
                             <div className="tutor-pp">
-                                <img src={imageTutMap[tutor.name]} alt="profile picture"/>
+                                <img src={imageTutMap[tutor.name || tutorImg]} alt="profile picture"/>
                             </div>
                             <div className="info">
                                 <span><i className="fa-solid fa-user"></i> {tutor.name}</span>
