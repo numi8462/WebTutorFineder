@@ -45,10 +45,10 @@ export const Login = (props) => {
         setLoading(false);
     }
 
-    const handleSwitch = () => {
+    const register = () => {
         navigate('/register');
     };
-    const handleSwitchTut = () => {
+    const registerTut = () => {
         navigate('/registerTutor');
     };
 
@@ -100,8 +100,8 @@ export const Login = (props) => {
                         <div className="bottom-links">
                             <span>New user?</span> 
                             <div className="q-links">
-                                <a onClick={handleSwitch} className="link" href="">Sign up as Student</a> 
-                                <a onClick={handleSwitchTut} className="link" href="">Sign up as Tutor</a>
+                                <a onClick={() => register()} className="link">Sign up as Student</a> 
+                                <a onClick={() => registerTut()} className="link">Sign up as Tutor</a>
                             </div>
                         </div>
                     </form>
