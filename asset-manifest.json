@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/WebTutorFinder/static/css/main.ed7d64a0.css",
+    "main.css": "/WebTutorFinder/static/css/main.b6caafab.css",
     "main.js": "/WebTutorFinder/static/js/main.5b62c8d6.js",
     "static/js/787.2d233181.chunk.js": "/WebTutorFinder/static/js/787.2d233181.chunk.js",
     "static/media/world-universities.csv": "/WebTutorFinder/static/media/world-universities.8f7f2d2ce54d02043ae2.csv",
@@ -33,12 +33,12 @@
     "static/media/logo.svg": "/WebTutorFinder/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "static/media/majors.txt": "/WebTutorFinder/static/media/majors.ee0027515b7862fce096.txt",
     "index.html": "/WebTutorFinder/index.html",
-    "main.ed7d64a0.css.map": "/WebTutorFinder/static/css/main.ed7d64a0.css.map",
+    "main.b6caafab.css.map": "/WebTutorFinder/static/css/main.b6caafab.css.map",
     "main.5b62c8d6.js.map": "/WebTutorFinder/static/js/main.5b62c8d6.js.map",
     "787.2d233181.chunk.js.map": "/WebTutorFinder/static/js/787.2d233181.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ed7d64a0.css",
+    "static/css/main.b6caafab.css",
     "static/js/main.5b62c8d6.js"
   ]
 }
