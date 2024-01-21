@@ -4,13 +4,13 @@ import { useAuth } from '../../authentication/AuthContext';
 import firebase from "firebase/compat/app";
 import axios from 'axios';
 import '../../index.css';
-import courseImg from '../../homepage-frontend/images/default.jpg';
 
 export const Course = ({ course, student }) => {
     const [tutor, setTutor] = useState(null);
     // const [student, setStudent] = useState({});
     const navigate = useNavigate();
     const [uid, setUid] = useState('');
+    const defaultImg = require('../../images/default.jpg');
     const imageMap = {
         'Andrew Garfield': require('../../images/tutors/Andrew Garfield.jpg'),
         'John Snow': require('../../images/tutors/John Snow.jpg'),
@@ -35,6 +35,10 @@ export const Course = ({ course, student }) => {
 
     }, [course.tutorID]);
 
+    const image = (tutor && tutor.name in imageMap) ? imageMap[tutor.name] : defaultImg;
+
+    
+
     if (!tutor) {
         return <tr>Loading...</tr>;
     }
@@ -43,7 +47,7 @@ export const Course = ({ course, student }) => {
             <tr className="tut-matching-container">
                 <div className="tut-box" >
                     <td className="left-td">
-                        <img src={imageMap[tutor.name]} alt="post" /> 
+                        <img src={image} alt="post" /> 
                     </td>
                     <td className="matching-td">
                         <h4><i className='fa-solid fa-user'></i> {tutor.name}</h4>
