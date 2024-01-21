@@ -5,7 +5,6 @@ import { useAuth } from "../authentication/AuthContext"
 import '../index.css'
 
 export const ForgotPassword = (props) => {
-    // const [email,setEmail] = useState('');
     const emailRef = useRef()
     const navigate = useNavigate();
 
@@ -31,11 +30,9 @@ export const ForgotPassword = (props) => {
 
         setLoading(false);
     }
-
-    const loginPage = () => {
+    const handleSwitch = () => {
         navigate('/login');
     };
-
     return (
         <div className="wrapper">
             <div className="container">
@@ -62,7 +59,7 @@ export const ForgotPassword = (props) => {
                         </div>
                         <div className="bottom-links">
                             <span className="q-links">
-                                <a onClick={() => loginPage} className="link" >Go back to Login</a>
+                                <a onClick={handleSwitch} className="link" >Go back to Login</a>
                             </span>
                         </div>
                     </form>
