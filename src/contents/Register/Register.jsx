@@ -30,7 +30,7 @@ export const Register = (props) => {
         birthdate: '',
         educationLevel: '',
         subjectOfInterest: [],
-        credit: 100,
+        credit: '9999',
         gender: '',
         user: 'student',
         uni: '',
