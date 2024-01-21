@@ -32,7 +32,7 @@ export const ForgotPassword = (props) => {
         setLoading(false);
     }
 
-    const handleSwitch = () => {
+    const loginPage = () => {
         navigate('/login');
     };
 
@@ -62,7 +62,7 @@ export const ForgotPassword = (props) => {
                         </div>
                         <div className="bottom-links">
                             <span className="q-links">
-                                <a onClick={handleSwitch} className="link" href="">Go back to Login</a>
+                                <a onClick={() => loginPage} className="link" >Go back to Login</a>
                             </span>
                         </div>
                     </form>

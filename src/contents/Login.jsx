@@ -44,6 +44,9 @@ export const Login = (props) => {
 
         setLoading(false);
     }
+    const forgotPass = () => {
+        navigate('/forgotPassword');
+    };
 
     const register = () => {
         navigate('/register');
@@ -89,7 +92,7 @@ export const Login = (props) => {
                             <input value={pass} type="password" placeholder="***********" id="password" name="password" onChange={(e) => setPass(e.target.value)}/>
                         </div>
                         <div className="reset">
-                            <a classNamehref="link" href="/forgotpassword"> Forgot password</a>
+                            <a onClick={() => forgotPass()} classNamehref="link"> Forgot password</a>
                         </div>
                         <div className="buttons-register">
                             <div className="btn-register">
